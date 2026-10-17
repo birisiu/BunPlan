@@ -7,6 +7,12 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
+import android.net.Uri;
+import android.os.Build;
+import androidx.webkit.WebViewAssetLoader;
+import androidx.webkit.WebViewClientCompat;
 
 import androidx.annotation.NonNull;
 
@@ -41,27 +47,60 @@ public class MainActivity extends Activity {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         web = new WebView(this);
-        WebSettings s = web.getSettings();
+        // Load ONLY trusted, locally-bundled UI from a distinct HTTPS origin.
+        // Never allow remote pages to obtain the JavaScript authentication interfaces.
+        final String localOrigin="https://appassets.androidplatform.net";
+        final WebViewAssetLoader loader=new WebViewAssetLoader.Builder()
+            .addPathHandler("/assets/",new WebViewAssetLoader.AssetsPathHandler(this))
+            .build();
+        WebSettings s=web.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
-        s.setAllowFileAccess(true);
+        s.setAllowFileAccess(false);
+        s.setAllowContentAccess(false);
+        s.setAllowFileAccessFromFileURLs(false);
+        s.setAllowUniversalAccessFromFileURLs(false);
+        s.setJavaScriptCanOpenWindowsAutomatically(false);
         s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        web.addJavascriptInterface(new JsBridge(), "BunPlanAds");
-        web.addJavascriptInterface(new BunPlanAuth(this).bridge(),"BunPlanAuth");
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O)s.setSafeBrowsingEnabled(true);
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
+
+        BunPlanAuth auth=new BunPlanAuth(this);
+        web.addJavascriptInterface(new JsBridge(),"BunPlanAds");
+        web.addJavascriptInterface(auth.bridge(),"BunPlanAuth");
         web.addJavascriptInterface(new BunPlanCloud(this).bridge(),"BunPlanCloud");
-        web.setWebViewClient(new WebViewClient(){
-            @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.startsWith("file:///android_asset/")) return false;
-                if (url.startsWith("https://")) {
-                    try {
-                        startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,android.net.Uri.parse(url)));
-                    } catch(Exception ignored) {}
+        web.addJavascriptInterface(new BunPlanGoogle(this,auth).bridge(),"BunPlanGoogle");
+        web.setWebViewClient(new WebViewClientCompat(){
+            @Override public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r){
+                if(isBundledAsset(r.getUrl()))return loader.shouldInterceptRequest(r.getUrl());
+                return super.shouldInterceptRequest(v,r);
+            }
+            private boolean isBundledAsset(Uri u){
+                return "https".equals(u.getScheme())
+                    && "appassets.androidplatform.net".equals(u.getHost())
+                    && u.getPath()!=null && u.getPath().startsWith("/assets/");
+            }
+            @Override public boolean shouldOverrideUrlLoading(WebView view,WebResourceRequest request){
+                Uri url=request.getUrl();
+                if(isBundledAsset(url))return false;
+                if(request.isForMainFrame() && "https".equals(url.getScheme())){
+                    try{startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,url));}
+                    catch(Exception ignored){}
+                }
+                return true;
+            }
+            @Override public boolean shouldOverrideUrlLoading(WebView view,String url){
+                Uri uri=Uri.parse(url);
+                if(isBundledAsset(uri))return false;
+                if("https".equals(uri.getScheme())){
+                    try{startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,uri));}
+                    catch(Exception ignored){}
                 }
                 return true;
             }
         });
         setContentView(web);
-        web.loadUrl("file:///android_asset/index.html");
+        web.loadUrl(localOrigin+"/assets/index.html");
         startConsent();
     }
 
