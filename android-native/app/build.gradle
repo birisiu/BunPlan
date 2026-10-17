@@ -2,8 +2,8 @@ plugins { id 'com.android.application' }
 android {
     namespace 'ro.bunplan.app'
     compileSdk 35
-    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 35; versionCode 37; versionName '3.7-admob-fix' }
-    buildTypes { debug { applicationIdSuffix '.adfix'; minifyEnabled false }; release { minifyEnabled false } }
+    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 35; versionCode 40; versionName '4.0-supabase-auth' }
+    buildTypes { debug { applicationIdSuffix '.cloudtest'; minifyEnabled false }; release { minifyEnabled false } }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
 dependencies {
