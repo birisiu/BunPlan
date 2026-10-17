@@ -1,32 +1,14 @@
 ﻿id,name,size,category,price_ron,currency,shop,image_url,stock_status,source_url,is_promotion
-lidl-bd70b11dcbac4d2161,"- 1664 Blanc Kronenbourg 5%, 11,9 EP",500ml,Bauturi,7.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8bf9bcc10623642a79,- Aqua Carpatica Apa min.carb. zmeura,330ml,Bauturi,5.09,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-87fc00ee362eb10bed,- Aqua Carpatica Apa minerala plata,2l,Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-9f63882d5691d23e7e,- Aqua Carpatica Flavours Pink Grapef,330ml,Bauturi,5.09,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-778d697c3e9db25f95,- Aqua CarpaticaApa miner. Lime-Menta,330ml,Bauturi,5.09,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-aeb8d3b0940d5c4505,- Cervus alb SK2,0.75l,Bauturi,15.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-318208521d4d740611,- Cervus rosu SK1,0.75l,Bauturi,15.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-1380efb4554eb6b1c3,- Chile Merlot 2022,"0,75l",Bauturi,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5545f2acddd9b7e271,- Drobeta Bautura spirt. 28%,500ml,Bauturi,22.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a8fef601ebea670562,- Fresh zmeura si afine 0%,"0,5l",Bauturi,3.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9bf5c79f04cb24c493,- Limoncino di Sorrento 30% Vol.,"0,5l",Bauturi,25.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-cdd5a75195b25f28d3,- Merlin's Limonada NO.1,"0,6l",Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-20313af5d2bbd3fdf0,- Milcov Băutură spirtoasă 28%,0.5L,Bauturi,23.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-710041cfc7e6508283,- Nestea Bautura racoritoare 6182,"1,5l",Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-30b90047635f7c73f6,- Pinot Grigio Italia sec,"0,75l",Bauturi,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-1c19926e3a3dad8df7,- Sange de Taur rosu,"0,75l",Bauturi,15.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-b3e1ab574733f12283,- Saniuta Bautura spirtoasa alc. 28%,500ml,Bauturi,21.45,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a5184a71d8faad3374,- Tedi Suc mar-banane,900ml,Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-8480d0a0d7126dd306,- Wembley SK2,"0,7l",Bauturi,53.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-b8f948b104daeacdbe,"- Zarea 5 Bautura spirtoasa 37,5%","0,7L",Bauturi,46.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a47a9ce22bd9221d04,Absolut Votca 40% alc.,"0,7l",Bauturi,69.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-96fe0b4da5df450800,Alcalia apa alcalina,"1,5l",Bauturi,4.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-95746ee8dbef81cff2,"Alexandrion 5 Brandy 37,5%","0,7l",Bauturi,48.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e611d13140ca70fa34,Allini Pinot Grigio Frizzante DOC,"0,75L",Bauturi,18.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-2163f5b871fd5b3888,Allini PM_Hugo la doza sort.,"0,2l",Bauturi,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9b0c10b3db2e1d4f38,Allini PM_Secco Bianco Italiano 2020,"0,2l",Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-28e2e90292ccd63449,Allini PM_Secco Rosato Italiano 2020,"0,2l",Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-0885656d66d9d138d1,Allini Spumante Bianco Dolce,"0,75l",Bauturi,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-547d55af493e2ce16d,Apa de izvor plata,5l,Bauturi,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2eafa43b69d744ad66,"Apa de izvor/ masa carbo, 2L",2l,Bauturi,1.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2bd60afd53d93520ab,"Apa de izvor/masa plata, 2L",2l,Bauturi,1.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -35,44 +17,19 @@ lidl-e35709744176b8fd2b,Apa minerala carbogazificata,2l,Bauturi,2.19,RON,Lidl,,u
 lidl-a7d1f8d5ce7b4382cd,Apa minerala carbogazificata,"2,5l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-520e30a95352e8737e,Apa minerala decarb. partial 6117,2l,Bauturi,2.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-adc40763390931c9e7,Apa minerala plata,2l,Bauturi,2.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-46e99378ea93beed74,Aperol Bitter Aperitiv 11%,"0,7l",Bauturi,76.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-740ba00c3faca7bc0d,"Argus PM_Bere blonda amaruie 5,2%","1,2l",Bauturi,4.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-70ec7585c769598df5,"Argus PM_Bere la doza 5%, 11°P",0.5l,Bauturi,2.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9fe5a5b10e0d6f2c35,"Argus PM_Bere Pils 5%, P.11","0,5l",Bauturi,2.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9d9f9d812d9f8d0bea,"Armilar Amaretto 21,5% vol.","0,7l",Bauturi,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4ebb41f37eb44acaa2,Averesti Busuioaca de Bohotin,"0,75l",Bauturi,13.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0494d16187241e7368,Bautura racoritoare zero zahar,1l,Bauturi,7.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4a4318925c82cf48fe,Beciul Domnesc Feteasca Neagra demi,"0,75l",Bauturi,23.15,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-fc2eb7f065760ca8a4,Ben Bracken Speyside Single Malt alc. 40%,"0,7l",Bauturi,72.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6ce2d871216a25e719,Bilbor Apa minerala plata,"1,5l",Bauturi,2.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-04dde9f144861dea9d,Bitterol Bitter Aperitiv 11% Vol.,"0,7 L",Bauturi,19.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-cf5948b90de404432b,Bitterol Bitterol Sprizz 5%,0.250l,Bauturi,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6bba8bf9dcecf1cb96,Bucovina 2GO Apa min. plata,700-ml,Bauturi,3.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-ba06df4e2286241090,Bucovina Apa mineral carbo.,"1,8l",Bauturi,4.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-ab5ef329d109a00b73,Bucovina Apa Minerala,"1,5l",Bauturi,3.45,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dcc58e40f7147e45e5,Bucovina Apa minerala plata,330ml,Bauturi,3.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e5d63b3ce0a44dda65,Caii de la Letea Chardonnay alb sec,750ml,Bauturi,37.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-36e1316cb767a327e5,Caloian Sauvignon Blanc,750ml,Bauturi,25.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-ba4fd7bb5bbd9b9c8a,Camara noastra Afinata / Visinata alc. 28% vol.,"0,7l",Bauturi,51.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-59a90b7b5ef5a4332a,Camara noastra Sirop cu stevie SK17,"0,5l",Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-554887e9784292767b,Camara noastra Sirop Visine/Fructe de padure,"0,5-l",Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2da170aa384f19573f,Camara noastra Sirop zmeura/afine/soc SK19,"0,5l",Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f7c912cc55f8344164,Camara noastra Suc de mere si catina presat direct,1l,Bauturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-929e4ee46eaec5524e,Camara noastra Suc de mere-afine presat direct,1l,Bauturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a65c33edc8262b6cb7,Captain Cook Bautura spirtoasa Spiced Gold,"0,7l",Bauturi,34.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-d1d088467bc4faca3c,Captain Morgan B. spirtoasa,"0,7l",Bauturi,83.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a204355182cf89beb9,Castel Huniade Feteasca 6227,"0,75l",Bauturi,25.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-621ca4cae65fa472c9,"Castel Huniade Rose 12,5%","0,75l",Bauturi,25.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a5feed8a1beb45a85a,Cava D'Oro Bautura spirtoasa,500ml,Bauturi,23.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-85138796f161d7bd25,Cervus Cepturum Fet. Neagra&Merlot,"0,75l",Bauturi,15.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3c11065ae8d879cfda,Cervus Cepturum Rose,"0,75l",Bauturi,15.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-2bcae2912de0e241af,Cervus Magnus Monte,"0,75l",Bauturi,31.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0a7b5f6ca358231c59,Ciao Bautura racoritoare necarbogaz,2l,Bauturi,9.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-cea8e5d60f8dd69142,Cimarosa Chardonnay sec Australia,"0,75l",Bauturi,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-2a3abcad413a80dbca,Cimarosa Sauvignon Blanc Marlborough,"0,75l",Bauturi,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-6ae2ece248fe60c628,Cimarosa Shiraz AUS sec,"0,75l",Bauturi,15.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5afa027ecb86bf6f77,Ciuc Radler 0% alc. Pepene 6592,500ml,Bauturi,4.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c8f558e0bde2e79de0,Ciuc Radler 0% Zmeura 6348,500ml,Bauturi,4.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-bc657153c723aa65d3,Coca Cola Fanta Grapefruit Roz Zero,2l,Bauturi,11.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5a9c24fdf4570323c1,Coca Cola Poiana Negri Apriga Apa minerala,2l,Bauturi,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-502bf96510fc90bc09,Coca Cola Schweppes Apa tonica,"0,5l",Bauturi,7.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -99,97 +56,39 @@ lidl-c32c5672b583d5f8ef,Coca-Cola Schweppes Bitter Lemon,"1,5l",Bauturi,11.49,RO
 lidl-eac455f6282701811d,Coca-Cola Schweppes Mand. Baut. racoritoare,"1,5l",Bauturi,11.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-3514a2431e7ba8636c,Coca-Cola Sprite Bautura carbogazoasa,2l,Bauturi,11.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-caecc1967e8f9c4b3e,Coca-Cola Zero,0.5l,Bauturi,6.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9e7393f2b808a46a0c,Corte alle Mura Chianti sec,"0,75l",Bauturi,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-df92f46381194dc14d,Cotnari Busuioaca de Bohotin,"0,75l",Bauturi,18.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-66c9a3426a0c466201,Cotnari Tamaioasa Romaneasca,"0,75l",Bauturi,18.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c3b0cf33616b93896b,Dom. Davidescu Rara Neagra,"0,75l",Bauturi,40.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-43d651ec33662342a2,Dom. Davidescu Rose Rara Neagra,"0,75l",Bauturi,40.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-0be61ae94c6b8a1aa0,Dom.Toh. Fet. neagra demisec,"0,75l",Bauturi,18.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4ef3bc832874cb766c,Domeniile Davidescu Chardonnay,750ml,Bauturi,40.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c438337b59bd8bda97,Domeniile Tohani Sauv. Blanc,"0,75l",Bauturi,18.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-24e97b906647439e78,Eticheta Galbena demi-dulce,"1,5 L",Bauturi,23.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b8fb81434c4e931f94,Fanta Madness struguri,"0,5l",Bauturi,6.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4c8a9d7b7dde54a8ed,Feteasca de Tohani alb,"0,75l",Bauturi,37.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-84cf2077a486144686,Feteasca de Tohani rose,"0,75l",Bauturi,37.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-bf5094e128dacc96d5,Freeway Apa tonica,"1,5l",Bauturi,3.25,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-f433c7e9173e8c8511,Freeway Bautura carb. lamaie indulc,2l,Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-ef868067707b9c49a7,Freeway Bautura carb. soc si lam.,2l,Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-63f6df05cd5f048a1c,Freeway Bautura carbo. Cola 0% zahar,2l,Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-1b6719efd441b30fdb,Freeway Bautura carbo. lamaie zah. red.,2l,Bauturi,4.85,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e619b27a3f616ba8e1,Freeway Bautura carbo. port. cu ind.,2l,Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9a356a2fe2d127c2d7,Freeway Bautura carbo. portocale,2l,Bauturi,4.85,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-870cc856a8721c10a6,Freeway Bautura carbogazoasa Cola,2l,Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f9d79f1ff52da01b87,Freeway Bautura carbogazoasa Cola (ZR),330ml,Bauturi,1.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5b257289f733d63e7a,Freeway Bautura carbogazoasa Cola 0% zahar,0.330l,Bauturi,1.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-d3d14cbff44d17e2ec,Freeway Bautura carbogazoasa Cola zah. red,2l,Bauturi,3.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c4fb9289dea6d94d41,Freeway Bautura carbogazoasa Tonic,330ml,Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e5bebf7a14bb402c7f,Freeway Bautura cu gust fr. pad,"1,5l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-61e42d5f36f68e7acd,Freeway High Protein Clear Whey Drink sort.,0.5l,Bauturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-cc8eef1f0978551bd5,Freeway Ice Tea Lamaie,"1,5l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b84751a149c87b87b4,Freeway Ice Tea Piersica ZR,"0,5l",Bauturi,2.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-33fc8c35045a714436,Freeway Ice Tea Piersica ZR,"1,5l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-05ce419c60e253a53e,Freeway PM_Limonada cu pulpa 12%,"0,33l",Bauturi,2.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a06569c24bae2ad94f,Granini Nectar portocale-mango,1l,Bauturi,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-ba3d6e1471658c3a6c,Grasa de Cotnari demidulce,750ml,Bauturi,18.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-26a1531b25b2a2f192,Hell Bautura energ. Classic,"0,25l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-8ab0457389c8d22289,J&B Whiskey alc. 40% vol.,"0,7l",Bauturi,68.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-6f7fd4c701a647e1ee,Jack Daniel's Whiskey 40%,"0,7l",Bauturi,96.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-777a5f2ba288ce0c9f,Jagdstolz Bitter plante 35%,"0,7l",Bauturi,26.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e80fdf7994c0185b78,Jameson Irish Whiskey 40% alc.,"0,7l",Bauturi,89.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-d4b4a9a0141f81e90a,Jidvei Dry Muscat DOC demisec,"0,75l",Bauturi,25.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-0b05135106aea95a74,Jidvei Feteasca Regala demisec 6772,"0,75l",Bauturi,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-6917b1191854f45d7c,Jidvei Gewurztraminer DOC demisec,"0,75l",Bauturi,25.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-49abefbaf4192e7f90,Jidvei Rose Grigorescu,"0,75l",Bauturi,25.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-0c8f4f07b5348ee6a9,Jim Beam Whiskey alc. 40%,700ml,Bauturi,69.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dcd78fab85b117bb32,Keia Apa minerala plata Sports,"0,7l",Bauturi,1.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dcec9dce0286bcc2ed,KONG STRONG Bautura energizanta clasic,"0,25l",Bauturi,1.85,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8978dd64c687e06a96,Merlin's Limonada lime si menta,"0,6l",Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9dd658c24ad2e75d02,Milbona Bautura cu cafea High Protein,330ml,Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4c9d7cc156bf0734c9,Mosia Tohani Cuvee Rose sec,0.750l,Bauturi,28.55,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-27b9e8ba50d91b9aac,Naturis Apa aromatizata lamaie,2l,Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-3bf3a55435b374a2b5,Nestea Bautura racoritoare 6183,"1,5l",Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-184015eae3e2e09a26,Pelin Carpatin SK1,"1,5l",Bauturi,28.55,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a778d55c8c133cb615,Pelin de Ostrov sort.,"0,75l",Bauturi,14.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3c81534437a559d6fa,Pepsi Bautura Carbogazoasa,"2,5l",Bauturi,14.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-0ec63a8729c2329a0c,Pepsi Pepsi Max,0.5l,Bauturi,6.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e201dc000c7c515acc,Pepsi Pepsi Regular,0.5l,Bauturi,6.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-7afcf771deaa31ef04,Pepsi Pepsi Twist,500 ml,Bauturi,6.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-118ef83b179c487d7c,"Pepsi Pepsi Twist bautura racoritoare 2,5","2,5l",Bauturi,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-33730f52824c036117,Pepsi Pepsi Twist zero zahar,2l,Bauturi,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-89fba8af5de3bb8ebb,"Perlenbacher PM_Bere Pils 4,9% alc. 11,2 EP","0,33l",Bauturi,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-9583ce4464881be42b,"Perlenbacher PM_Bere Pils 4,9% sticla (24436)","0,5l",Bauturi,3.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4b651ee3075e59cd08,Perlenbacher PM_Bere Radler alc. 2%,0.5l,Bauturi,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6ccc623c0b41f6bde6,PM_Apa minerala carbo light,"0,5l",Bauturi,1.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-bd378099e6c0c5b03e,PM_Apa minerala carbogazoasa,"0,5l",Bauturi,1.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7d4916603e5fec8614,PM_Apa minerala plata,"0,5l",Bauturi,1.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e73f28422cf7669ea1,PM_Ursus Cooler Grepfrut 0% alc.,500ml,Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-8da67dce32833b62ac,Premiat CS & FN demisec,1.5l,Bauturi,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-81273af145f7f77d6d,Purcari Chardonnay sec,"0,75l",Bauturi,39.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-2958f7a12e32da3351,Purcari Malbec de Purcari sec,"0,75l",Bauturi,55.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5bfd2c5d6a4b939e34,Purcari Rara Neagra sec,"0,75-L",Bauturi,39.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3a557d1f7b6a874103,Purcari Rose de Purcari,"0,75l",Bauturi,39.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-55db3e5d4b98c9c4e5,Red Bull Bautura energizan,0.25l,Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-212e86fa1c47d7c8e3,Red Bull Red Bull Bautura energiz.sort.,"0,25l",Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-dbb1f4e7c631138b0c,Reverie Vinars 36% (6078),"0,7l",Bauturi,39.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-943013ed940857eb12,Rosturi Feteasca Regala,"0,75l",Bauturi,35.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5ab02c467673b96301,Schwaben Wein Cabernet,"0,75l",Bauturi,18.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-7df2b14255a219f42b,Schwaben Wein Rose demidulce,750ml,Bauturi,18.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3a9750d5ef5ee35ccf,Sigilium Busuioaca Buhotin 12%Vol.,"0,75l",Bauturi,18.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-845f4c6454c1be67e1,Siti PM_Bautura Energizanta,"0,25l",Bauturi,1.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-091e4efbf6bf8a57ae,Solevita Aloe Vera Clasic zahar redus,"1,5l",Bauturi,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-93aefcd202540558fe,Solevita Aloe Vera SK6,"0,5l",Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c827fbd84d2ad117e3,Solevita Bautura Aloe vera Mango zahar redus,"1,5l",Bauturi,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-02aeb9390f9bf6cb88,Solevita Bautura morcovi&fructe sort.I,300ml,Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-db53efb4ba1eb0092b,Solevita Bautura portocale rosii 25%,1l,Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-964a6ab8798acffd16,Solevita Bautura racorit.Nata de Coco,"0,5l",Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-88560886950232e039,Solevita Bautura racoritoare multifruct,"0,4l",Bauturi,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-be94c0cb68a3eead5c,Solevita Bautura racoritoare multivitamin,2l,Bauturi,5.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-90ccc79cea53fac9d3,Solevita Bautura racoritoare piersici 12% za,2l,Bauturi,5.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e4d743fe15e8884925,Solevita Bautura racoritoare portocale 20%,"5x0,2l",Bauturi,6.6,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e20d4809e8e5b3fb60,Solevita Bautura racoritoare visine 5% zahar,2l,Bauturi,5.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5cd9869c66861c6fdf,Solevita Bio Ginger Shot sort.,0.5l,Bauturi,16.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-05368decad7346f01b,Solevita Cranberry Drink 27%,1l,Bauturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5aaafd0a233a595177,Solevita Funny Fruit Drink Multivitamin 10%,14x0.2l,Bauturi,25.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-aa1e671886ee562fe0,Solevita Limonada sort. SK 2,0.5l,Bauturi,5.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2eca3c3f8ba457e809,Solevita Nectar mere 50%,"5x0,2l",Bauturi,8.45,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7f074735c410ffa010,Solevita Nectar mere 50%,2l,Bauturi,8.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -209,23 +108,16 @@ lidl-239df3abe7b64275a2,Solevita Suc de portocale RFA,1l,Bauturi,14.49,RON,Lidl,
 lidl-5388b2791d854188b5,Solevita Suc de rosii 100%,1l,Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-81e5d0be683369572d,Solevita Suc fresh multifruct,1l,Bauturi,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f5b893e2364a8b5892,Solevita Suc Multivitamin,1l,Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a07a452705682bb7ee,Stalinskaya Music Cocktail 4.0% SK1,275ml,Bauturi,7.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-866e01f2ddde8ba231,Teachers Whiskey alc. 40% vol. 700-,700ml,Bauturi,61.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5212396361a73cc3e9,Tedi Suc de morcovi cu piersica,200ml,Bauturi,2.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0e1574f5936d5cdf90,Tedi Suc de morcovi zmeura,200ml,Bauturi,2.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dfa5f7cdf81d4bd71a,Tedi Suc mar-piersica,900ml,Bauturi,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-dc75e980432268ad39,"Tuborg Bere5%,EP.11,4(6803086)","0,5l",Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-51e4703fdbb9b400e6,Tymbark Cool Baut. rac. ananas,2-L,Bauturi,8.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-860af8941cde2229dd,Tymbark Cool Baut. rac. mar verde,2l,Bauturi,8.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-1a73cd04ed53a3b6d1,VILLA BONAGA Lambrusco frizzante rosu 2025,"0,75l",Bauturi,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6b931894cba050a349,Vitamin Aqua Baut.rac.MG,"0,6l",Bauturi,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0feda17a8dd2074fc2,"Vitamin aqua Mg, acai","0,6l",Bauturi,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-fa4201e1cdd1121018,Western Gold Bourbon Whiskey 40% alc.,"0,7l",Bauturi,43.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-52d6ac5cd7e8c174c9,Western Gold Whiskey Cola 5%,"0,33l",Bauturi,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-174575bc919edc2ed1,Wine Chocolate dulce,"0,75l",Bauturi,36.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c7a36d839ce301e0a8,Zarea Bon Fruits sort.,"0,75l",Bauturi,22.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-89678b0b644c262e39,Zarea Spumant Crystal demisec(6180),"0,75l",Bauturi,23.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a961ceb053c7dbd9d2,Zoresti Pelin rose,0.75l,Bauturi,14.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-98f44f2a6da25c7854,- Babybel Mini branza,100g,Branzeturi,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6f95777fcd811e2bdc,- Hochland Telemea Natur,350g,Branzeturi,18.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a7be22948ddc1c7768,Almette Branzica proaspata SK,150g,Branzeturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
