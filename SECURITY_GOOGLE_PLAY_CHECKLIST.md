@@ -5,7 +5,7 @@
 - Supabase Auth + PostgreSQL cu RLS pe tabelele private.
 - Funcția internă de profil mutată în schema `private` și lipsită de privilegii RPC pentru anon/authenticated.
 - RPC-urile `save_bunplan_week` și `load_bunplan_week` folosesc **SECURITY INVOKER**, deci accesul trece prin RLS.
-- Singura notă rămasă în Supabase Security Advisors este `import_runs` fără politici RLS, **intenționat inaccesibil** utilizatorilor aplicației.
+- Auditul RLS / funcții RPC nu mai are avertismente de privilegii. **Auditul actual Supabase arată însă un avertisment de tip WARN:** `auth_leaked_password_protection`. Detectarea parolelor compromise este disponibilă doar pe **Supabase Pro**; nu a fost activată și nu poate fi revendicată drept remediată pe planul Free. Mai există INFO `import_runs` fără politici RLS (intenționat inaccesibil utilizatorilor).
 - Android stochează acces/refresh tokens criptat AES-256-GCM prin Android Keystore (`SessionVault`); nu pune tokenurile în JavaScript.
 - WebView acceptă pagini numai din resursele aplicației servite ca HTTPS prin WebViewAssetLoader, fără permisiuni `file://`, mixed content și cu CSP. Linkurile externe se deschid în browser.
 - Google Credential Manager folosește nonce aleator și SHA-256 către Google, nonce brut către Supabase pentru verificarea ID tokenului.
