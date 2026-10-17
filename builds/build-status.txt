@@ -1,1 +1,1 @@
-SUCCESS - native test APK built on Sat Oct 17 15:27:47 UTC 2026
+SUCCESS - APK compiled + published at 2026-10-17T15:33:02Z UTC
