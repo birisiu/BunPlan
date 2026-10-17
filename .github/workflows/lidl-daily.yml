@@ -1,6 +1,10 @@
 name: Lidl daily food prices
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/lidl_daily.py'
+      - '.github/workflows/lidl-daily.yml'
   schedule:
     - cron: '30 9 * * *'
 permissions:
@@ -29,3 +33,12 @@ jobs:
             git commit -m "data: Lidl price snapshot"
             git push
           fi
+      - name: Upload price catalog for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: lidl-food-prices
+          path: |
+            data/lidl_products.json
+            data/lidl_products.csv
+          if-no-files-found: error
+          retention-days: 14
