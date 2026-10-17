@@ -684,4 +684,49 @@ if(nativeAds){try{window.BunPlanAds.getStatus();}catch(e){}}
 const old=window.draw;window.draw=function(){old();const l=document.querySelector('.bp-lock');if(l){const p=l.querySelector('p');if(p)p.textContent=nativeAds?'AdMob de test: lista se deblochează numai după recompensa confirmată.':'Acest browser nu poate afișa reclame native; testează APK-ul Android.';const b=l.querySelector('button');if(b&&b.getAttribute('onclick')==='bp35Unlock()')b.textContent='▶ Deblochează ingredientele · reclamă de test';}};
 window.draw();
 })();
+</script><script>
+(function(){
+ const auth=window.BunPlanAuth, cloud=window.BunPlanCloud;
+ if(!auth || !auth.hasSession()){window.location.replace('index.html');return;}
+ const widget=document.createElement('div');
+ widget.style='position:fixed;right:10px;top:65px;z-index:2000;max-width:210px';
+ widget.innerHTML='<button id="bp-cloud-open" style="background:#19513d;color:white;border:none;padding:10px 14px;border-radius:25px;box-shadow:0 4px 12px #0004;font-size:13px">☁ Salvează în cloud</button>';
+ document.body.appendChild(widget);
+ document.getElementById('bp-cloud-open').onclick=()=>{
+ const modal=document.createElement('div');modal.id='bp-cloud-dialog';
+ modal.style='position:fixed;inset:0;z-index:3001;background:#09261add;padding:24px;display:flex;align-items:center;justify-content:center';
+ modal.innerHTML='<div style="background:#fff;border-radius:22px;padding:23px;max-width:440px;width:100%;color:#194638"><h3 style="margin:0 0 8px">Planul tău în cloud</h3><p>Magazin: <b id="cloud-store"></b> · Săptămâna: <b id="cloud-week"></b></p><button id="cloud-save" class="btn block">☁ Salvează meniul pe server</button><button id="cloud-load" class="btn block">↓ Încarcă meniul salvat</button><button id="cloud-logout" class="btn block out">Deconectare</button><button id="cloud-close" class="btn block out">Închide</button><small>Planurile Lidl și Kaufland sunt păstrate separat.</small></div>';
+ document.body.appendChild(modal);
+ modal.querySelector('#cloud-store').textContent=bp35.store;
+ modal.querySelector('#cloud-week').textContent=bp35.week;
+ modal.querySelector('#cloud-close').onclick=()=>modal.remove();
+ modal.querySelector('#cloud-save').onclick=()=>{
+   if(!cloud){alert('Funcția cloud necesită APK-ul Android BunPlan 4.0');return;}
+   cloud.saveWeek(bp35.store,bp35.week,Math.max(1,Number(state.budget||400)),JSON.stringify(bp100.days));
+   modal.remove();
+ };
+ modal.querySelector('#cloud-load').onclick=()=>{
+   if(!cloud){alert('Funcția cloud necesită APK-ul Android BunPlan 4.0');return;}
+   cloud.loadWeek(bp35.store,bp35.week);
+   modal.remove();
+ };
+ modal.querySelector('#cloud-logout').onclick=()=>{
+   auth.logout();window.location.replace('index.html');
+ };
+ };
+ window.BunPlanCloudDone=function(action,result){
+ if(!result||!result.ok){alert('Eroare la sincronizarea cloud: '+(result?.message||'necunoscut'));return;}
+ if(action==='save'){alert('Meniul a fost salvat în cloud pentru '+result.data.store+' · '+result.data.week_start+'.');return;}
+ const d=result.data;
+ if(d.store!==bp35.store.toLowerCase()||d.week_start!==bp35.week){alert('Răspunsul aparține altei liste, nu modificăm planul curent.');return;}
+ const days=bp35EmptyPlan();
+ for(const m of (d.meals||[])){
+   if(Number.isInteger(m.day)&&m.day>=0&&m.day<7 && BP_MEALS.includes(m.slot) && bpRecipe(m.recipe)){days[m.day][m.slot]=m.recipe;}
+ }
+ bp100.days=days;
+ bp35Commit();
+ draw();
+ alert('Meniul pentru '+bp35.store+' a fost încărcat din cloud.');
+ };
+})();
 </script></body></html>
