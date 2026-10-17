@@ -106,6 +106,16 @@ public final class BunPlanAuth {
             }catch(Exception ex){error("google",ex);}
         });
     }
+    public void exchangeGoogleOAuthCode(String code,String verifier){
+        pool.execute(()->{
+            try {
+                if(code==null||code.length()<5||verifier==null||verifier.length()<32)
+                    throw new Exception("Sesiunea de conectare Google a expirat. Încearcă din nou.");
+                JSONObject body=new JSONObject().put("auth_code",code).put("code_verifier",verifier);
+                successLogin("google",post("/auth/v1/token?grant_type=pkce",body,null),"");
+            }catch(Exception ex){error("google",ex);}
+        });
+    }
     private void recover(String email){
         pool.execute(()->{
             try{
