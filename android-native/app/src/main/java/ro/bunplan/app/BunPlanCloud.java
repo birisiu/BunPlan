@@ -26,7 +26,7 @@ public class BunPlanCloud {
   HttpURLConnection con=(HttpURLConnection)new URL(BASE+url).openConnection();
   con.setRequestMethod("POST");con.setConnectTimeout(15000);con.setReadTimeout(20000);
   con.setDoOutput(true);con.setRequestProperty("Content-Type","application/json");
-  con.setRequestProperty("apikey",APIKEY);con.setRequestProperty("Authorization","Bearer "+token);
+  con.setRequestProperty("apikey",APIKEY);if(!APIKEY.equals(token))con.setRequestProperty("Authorization","Bearer "+token);
   try(OutputStream o=con.getOutputStream()){o.write(payload.toString().getBytes(StandardCharsets.UTF_8));}
   int status=con.getResponseCode();
   String s;
