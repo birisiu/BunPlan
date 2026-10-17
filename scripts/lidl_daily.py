@@ -15,10 +15,10 @@ FOOD=("lactate","branz","legume","fructe","carne","peste","paine","patiserie",
       "miere","gem","dulcet","proaspete","produse de baza","ulei",
       "unt","margarina","copt","supe","inghetata","mezeluri")
 EXCLUDE=re.compile(
-    r"\\b(bere|vin|wine|votca|vodca|vodka|whisky|whiskey|bourbon|brandy|"
+    r"\b(bere|vin|wine|votca|vodca|vodka|whisky|whiskey|bourbon|brandy|"
     r"cognac|gin|rom|lichior|prosecco|sampanie|cidru|tequila|alcool|coniac|"
     r"merlot|chardonnay|pinot|feteasca|sauvignon|spumant|aperitiv|amaretto|"
-    r"limoncello|limoncino|spirtoasa|spirtoasa|spirt)\\b",re.I)
+    r"limoncello|limoncino|spirtoasa|spirtoasa|spirt)\b",re.I)
 # "Bauturi" also contains alcoholic drinks. Do not assume everything in it is food.
 SAFE_DRINK_TERMS=("apa ","apa.","apa_","apa minerala","aqua ","suc ","suc de ","nectar",
                   "limonad","racoritoare","racorit.","baut.rac","baut. rac",
@@ -71,7 +71,7 @@ def main():
                 if nc=="bauturi":
                     nn=norm(name)
                     if not any(term in nn for term in SAFE_DRINK_TERMS) or re.search(
-                        r"\\b[1-9][0-9]?(?:[.,][0-9]+)?\\s*%\\s*(?:alc|vol)",nn):
+                        r"\b[1-9][0-9]?(?:[.,][0-9]+)?\s*%\s*(?:alc|vol)",nn):
                         continue
                 key=norm(name)+"|"+norm(size).replace(" ","")+"|"+nc
                 pid="lidl-"+hashlib.sha256(key.encode()).hexdigest()[:18]
