@@ -976,4 +976,97 @@ window.BunPlanCloudDone=function(action,result){
 if(nativeCloud)nativeCloud.loadProfile();
 if(state.tab==='home'||state.tab==='stores')draw();
 })();
-</script></body></html>
+</script>
+<script>
+/* BunPlan 4.6: Cloud recipe library. Old 100 recipes remain available offline.
+   New generated recipes are labelled as unreviewed; product pricing is not invented. */
+(function(){
+'use strict';
+const RECIPE_API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/recipes';
+const API_KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
+const CACHE='bunplan-cloud-recipes-v1';
+let cloud=[],loading=true,loadError='',visible=40;
+const previousLibrary=bpLibrary,previousDetail=bpDetail,previousOpen=bpOpen;
+function content(r){
+ return [r.title,r.category,...(r.tags||[]),...(r.ingredient_details||[]).map(i=>i.name||'')].join(' ').toLocaleLowerCase('ro');
+}
+function compatible(r){
+ return {id:r.legacy_key,title:r.title,category:r.category,servings:r.servings,
+ minutes:r.minutes_to_prepare,ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
+ steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
+ unreviewed:r.source_status==='generated_unreviewed'};
+}
+function items(){
+ const old=BP100.map(r=>({...r,cloud:false}));
+ return old.concat(cloud.map(r=>({...r,cloud:true})));
+}
+function filtered(){
+ const q=(bp100.query||'').trim().toLocaleLowerCase('ro');
+ return items().filter(r=>(bp100.category==='Toate'||r.category===bp100.category)&&
+ (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
+ [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
+}
+function row(r){
+ const note=r.cloud?'Instrucțiuni detaliate · verifică ingredientele și alergenii':'Disponibil în planul săptămânal';
+ return '<button class="bp-recipecard" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
+ '<span class="bp-emoji">'+(BP100_EMOJI[r.category]||'🍲')+'</span>'+
+ '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
+}
+function fill(){
+ const results=document.getElementById('bpCloudResults');
+ if(!results)return;
+ const all=filtered();
+ results.innerHTML=all.slice(0,visible).map(row).join('')||'<div class="notice">Nu am găsit rețete pentru filtrele alese.</div>';
+ const cnt=document.getElementById('bpCloudCount');if(cnt)cnt.textContent=all.length+' rețete găsite';
+ const more=document.getElementById('bpCloudMore');if(more)more.style.display=visible<all.length?'block':'none';
+}
+window.bpCloudFilter=function(value){bp100.query=value;visible=40;bpSave();fill()};
+window.bpCloudCat=function(c){bp100.category=c;visible=40;bpSave();draw()};
+window.bpCloudMore=function(){visible+=40;fill()};
+window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
+bpLibrary=function(){
+ const categories=['Toate',...new Set(items().map(r=>r.category))];
+ const count=BP100.length+cloud.length;
+ return commonTop()+heading('Rețete de gătit','Pași detaliați, cantități și idei pentru familie.')+
+ '<div class="bp-notice"><b>'+count.toLocaleString('ro-RO')+' rețete disponibile</b> · '+BP100.length+' clasice și '+cloud.length+' variante noi din Supabase. '+
+ (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
+ ' Variantele noi necesită verificare culinară; prețurile nu sunt confirmate.</div>'+
+ '<input class="p-headsearch" aria-label="Caută rețete" placeholder="Caută rețete sau ingrediente…" value="'+esc(bp100.query||'')+'" oninput="bpCloudFilter(this.value)"/>'+
+ '<div class="bp-categories">'+categories.map(c=>'<button class="chip '+(bp100.category===c?'selected':'')+'" onclick="bpCloudCat('+JSON.stringify(c).replace(/"/g,'&quot;')+')">'+esc(c)+'</button>').join('')+'</div>'+
+ '<div class="row" style="margin:12px 0 18px"><b id="bpCloudCount"></b><button class="btn sm" onclick="go(\'menu100\')">Planul meu →</button></div>'+
+ '<div id="bpCloudResults"></div><button class="btn out block" id="bpCloudMore" style="margin:15px 0" onclick="bpCloudMore()">Încarcă alte rețete ↓</button>'+
+ '<div class="bp-notice">Rețetele noi pot fi consultate pas cu pas. Adăugarea lor în meniuri cu buget Lidl/Kaufland va fi activată după corelarea ingredientelor cu catalogul de prețuri.</div>';
+};
+const oldDraw=draw;
+draw=function(){
+ oldDraw();
+ if(state.tab==='library100')fill();
+};
+bpDetail=function(){
+ const r=cloud.find(x=>x.id===bp100.detail);
+ if(!r)return previousDetail();
+ return commonTop()+
+ '<button class="back" onclick="go(\'library100\')">← Înapoi la rețete</button>'+
+ '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ '<h1 class="title">'+esc(r.title)+'</h1>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
+ '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
+ '<div class="bp-listingredients">'+r.ingredients.map(i=>'<div class="bp-ing"><div><strong>'+esc(i.name)+'</strong><small>'+Number(i.quantity)+' '+esc(i.unit)+'</small></div></div>').join('')+'</div>'+
+ '<h2 class="h2" style="margin:22px 0 12px">Cum se prepară, pas cu pas</h2><ol class="bp-steps">'+r.steps.map(st=>'<li>'+esc(st)+'</li>').join('')+'</ol>'+
+ '<div class="bp-notice">Această variantă este disponibilă pentru consultare. Nu are încă produse Lidl/Kaufland și prețuri asociate; nu calculăm un buget înșelător.</div>'+
+ '<button class="btn out block" onclick="go(\'library100\')">Înapoi la catalog</button>';
+};
+function redraw(){if(state.tab==='library100')draw();else if(state.tab==='detail100'&&bp100.detail?.startsWith('BP'))draw();}
+try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length)cloud=saved.map(compatible);}catch(e){}
+loading=true;redraw();
+fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status&legacy_key=like.BP%25&order=legacy_key.asc&limit=1000',
+ {headers:{apikey:API_KEY,Accept:'application/json'}})
+ .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
+  if(!Array.isArray(data)||data.length!==1000)throw Error('Biblioteca returnează '+(Array.isArray(data)?data.length:'date invalide')+' din 1.000');
+  cloud=data.map(compatible);try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(e){}
+  loadError='';loading=false;redraw();
+ }).catch(error=>{loading=false;loadError=error.message||'conexiune indisponibilă';redraw();});
+})();
+</script>
+</body></html>
