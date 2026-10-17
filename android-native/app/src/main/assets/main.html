@@ -1069,4 +1069,284 @@ fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,
  }).catch(error=>{loading=false;loadError=error.message||'conexiune indisponibilă';redraw();});
 })();
 </script>
+
+<script>
+/* BunPlan 4.7 - cloud recipes are real planner inputs.
+ * Estimate != a published price; a catalog listing != local stock.
+ * Every weekly cart is retailer- and week-specific. */
+(function(){
+'use strict';
+const API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/';
+const KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
+const CACHE='bunplan-ingredient-price-refs-v1';
+const MANUAL='bunplan-manual-unknown-price-v1';
+let references=[],refMap=new Map(),slugStore=new Map(),cloud=[],pending=true;
+const names={};
+let manual={};
+try{manual=JSON.parse(localStorage.getItem(MANUAL)||'{}')||{}}catch(_){}
+const originalPick=bp35Pick,originalPriceStatus=bp35PriceStatus,originalBadge=bp35Badge;
+const originalBasket=bpBasket,originalMenu=bpMenu,originalHome=home;
+const originalDetail=bpDetail,originalCopy=bpCopy;
+const normalize=v=>String(v||'').trim().toLocaleLowerCase('ro-RO');
+const slugify=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+const storeKey=s=>s==='Kaufland'?'kaufland':'lidl';
+function reference(label,store){return refMap.get(normalize(label)+'|'+storeKey(store))}
+function saveManual(){try{localStorage.setItem(MANUAL,JSON.stringify(manual))}catch(_){}}
+function convert(ing){
+ const name=String(ing.name||'Ingredient');
+ const ref=reference(name,'Lidl')||reference(name,'Kaufland');
+ const id=ref?.ingredient_slug||'cloud_missing_'+slugify(name);
+ names[id]??=name;
+ const originalUnit=String(ing.unit||'g');
+ let unit=ref?.normalized_unit||originalUnit;
+ let quantity=Number(ing.quantity)||0;
+ if(ref?.ingredient_slug){
+   const multiplier=Number(ref.quantity_multiplier)||1;
+   if(originalUnit===unit || (originalUnit==='g'&&unit==='ml') ||(originalUnit==='ml'&&unit==='g')){
+     quantity*=multiplier;
+   }else if(originalUnit==='felii'&&unit==='g'){
+     quantity*=multiplier;
+   }else if(originalUnit==='buc'&&unit==='g'){
+     quantity*=multiplier;
+   }else if(originalUnit==='g'&&unit==='buc'){
+     quantity*=multiplier;
+   }else{
+     unit=originalUnit; // incompatible base measure -> never claim a priced pack
+   }
+ }
+ return {id,quantity:Math.round(quantity*1000)/1000,unit,source_name:name,source_quantity:Number(ing.quantity)||0,source_unit:originalUnit};
+}
+function registerRecipes(){
+ if(!cloud.length)return;
+ for(let i=BP100.length-1;i>=0;i--)if(/^BP\d{4}$/.test(BP100[i].id))BP100.splice(i,1);
+ for(const r of cloud){
+  BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
+   minutes:Number(r.minutes)||0,steps:r.steps||[],tags:r.tags||[],
+   ingredients:(r.ingredients||[]).map(convert),cloud:true,unreviewed:true});
+ }
+ if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
+}
+window.bunplanCloudRecipeUpdate=function(rows){cloud=Array.isArray(rows)?rows:[];registerRecipes()};
+if(Array.isArray(window.bunplanCloudLatest)){cloud=window.bunplanCloudLatest;registerRecipes()}
+function setRefs(rows){
+ if(!Array.isArray(rows))return;
+ references=rows;
+ refMap=new Map(rows.map(x=>[normalize(x.label)+'|'+x.store_id,x]));
+ slugStore=new Map(rows.filter(x=>x.ingredient_slug).map(x=>[x.ingredient_slug+'|'+x.store_id,x]));
+ pending=false;
+ registerRecipes();
+}
+try{const cached=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(cached))setRefs(cached)}catch(_){}
+fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500',
+ {headers:{apikey:KEY,Accept:'application/json'}})
+ .then(async r=>{if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();
+  if(!Array.isArray(data)||data.length<250)throw Error('Maparea ingredientelor este incompletă');
+  setRefs(data);try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(_){}
+ }).catch(e=>{pending=false;console.warn('BunPlan price references unavailable',e);if(state.tab==='basket100'||state.tab==='detail100')draw()});
+// "Not priced" never counts as zero-cost food.
+bp35Pick=function(store,id,need){
+ const ref=slugStore.get(id+'|'+storeKey(store));
+ const quantity=Number(need.quantity)||0;
+ const baseUnit=typeof BP100_UNITS==='object'?BP100_UNITS[id]:undefined;
+ const manualKey=storeKey(store)+'|'+id+'|'+need.unit;
+ const custom=manual[manualKey];
+ if(custom&&Number(custom.price)>0&&Number(custom.pack)>0){
+  const count=Math.max(1,Math.ceil(quantity/Number(custom.pack)));
+  return {id,store,a:need,price:Number(custom.price),packageQty:Number(custom.pack),count,
+   cost:Math.round(count*Number(custom.price)*100)/100,type:'manual',name:names[id]||bpName(id)};
+ }
+ if(!baseUnit||baseUnit!==need.unit){
+  return {id,store,a:need,price:null,packageQty:null,count:0,cost:0,type:'missing',
+    name:names[id]||bpName(id)};
+ }
+ let found;
+ try{found=originalPick(store,id,need)}catch(e){
+  return {id,store,a:need,price:null,packageQty:null,count:0,cost:0,type:'missing',name:names[id]||bpName(id)};
+ }
+ // Estimates come from Supabase's labelled, UNVERIFIED budget model.
+ if(found.type==='estimate'&&ref&&Number(ref.estimated_price_ron)>0&&Number(ref.pack_quantity)>0&&ref.pack_unit===need.unit){
+  const count=Math.max(1,Math.ceil(quantity/Number(ref.pack_quantity)));
+  found={...found,price:Number(ref.estimated_price_ron),packageQty:Number(ref.pack_quantity),
+   count,cost:Math.round(count*Number(ref.estimated_price_ron)*100)/100,
+   estimateSource:'Supabase: '+String(ref.estimate_method||'model nevalidat')};
+ }
+ return found;
+};
+bp35PriceStatus=function(x){
+ if(x.type==='missing')return 'Preț indisponibil în catalog';
+ return x.type==='estimate'?'Estimare orientativă, neconfirmată':originalPriceStatus(x);
+};
+bp35Badge=function(x){
+ return x.type==='missing'?'<span class="bp35-badge estimate">Neestimat</span>':originalBadge(x);
+};
+const oldName=bpName;
+bpName=function(id){return names[id]||oldName(id)};
+bpTotals=function(){
+ const totals={};
+ for(const d of bp100.days){
+  for(const id of Object.values(d)){
+   const r=bpRecipe(id);if(!r)continue;
+   const factor=(Math.max(1,Number(state.adults)||1)+0.65*Math.max(0,Number(state.children)||0))/Math.max(1,Number(r.servings)||2);
+   for(const it of r.ingredients||[]){
+    const qty=Number(it.quantity)||0;
+    if(qty<=0)continue;
+    const key=it.id;
+    if(!totals[key])totals[key]={quantity:0,unit:it.unit};
+    if(totals[key].unit!==it.unit){continue;} // disallow adding incompatible units
+    totals[key].quantity+=qty*factor;
+   }
+  }
+ }
+ return totals;
+};
+const oldCalc=bp35Calc;
+bp35Calc=function(){
+ const result=oldCalc();
+ const missing=result.rows.filter(x=>x.type==='missing');
+ return {...result,missing:missing.length,incomplete:missing.length>0};
+};
+window.bpUnknownPrice=function(id,unit){
+ const store=storeKey(bp35.store);
+ const label=names[id]||bpName(id);
+ const raw=prompt('Prețul unui pachet de '+label+' la '+bp35.store+' (lei). Introdu manual doar dacă îl cunoști:');
+ if(raw===null)return;
+ const price=Number(String(raw).replace(',','.'));
+ if(!Number.isFinite(price)||price<=0){alert('Preț invalid.');return;}
+ const sz=prompt('Cantitatea acelui pachet în '+unit+' (ex. 500):');
+ if(sz===null)return;
+ const pack=Number(String(sz).replace(',','.'));
+ if(!Number.isFinite(pack)||pack<=0){alert('Cantitate invalidă.');return;}
+ manual[store+'|'+id+'|'+unit]={price,pack};
+ saveManual();draw();
+};
+window.bpBrowseProducts=async function(id){
+ const token=slugify(names[id]||id).split('_').filter(x=>x.length>2).slice(-1)[0]||slugify(id);
+ const store=storeKey(bp35.store);
+ const modal=document.createElement('div');
+ modal.className='modalback';
+ modal.id='bp-product-search-modal';
+ modal.innerHTML='<section class="modal" role="dialog" aria-modal="true">'+
+ '<button class="back" id="bp-catalog-close">✕ Închide</button>'+
+ '<h2>Produse posibile · '+esc(bp35.store)+'</h2>'+
+ '<p class="muted">Prețuri din catalog, nu confirmări de stoc. Gramajele lipsă nu sunt transformate în costuri exacte ale rețetei.</p>'+
+ '<div id="bp-catalog-results" class="notice">Se caută produse…</div></section>';
+ document.body.appendChild(modal);
+ modal.querySelector('#bp-catalog-close').onclick=()=>modal.remove();
+ modal.onclick=e=>{if(e.target===modal)modal.remove()};
+ try{
+  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id'+
+   '&store_id=eq.'+store+'&name=ilike.*'+encodeURIComponent(token)+'*&order=amount_ron.asc&limit=16';
+  const response=await fetch(url,{headers:{apikey:KEY}});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const offers=await response.json();
+  if(!modal.isConnected)return;
+  modal.querySelector('#bp-catalog-results').innerHTML=offers.length?offers.map(p=>{
+   const link=(String(p.source_url||'').startsWith('https://')?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.source_url)+'">Sursa prețului ↗</a>':'');
+   return '<div class="offer" style="align-items:flex-start"><div class="grow"><strong>'+esc(p.name)+'</strong>'+
+   '<small>'+esc(p.captured_on||'')+' · '+(p.pack_amount&&p.pack_unit?esc(p.pack_amount+' '+p.pack_unit):'Ambalaj neprecizat')+'</small>'+
+   '<small>'+link+'</small></div><b class="price">'+ron(Number(p.amount_ron))+' lei</b></div>';
+  }).join(''):'<p>Nu există rezultate după acest cuvânt în catalogul încărcat. Nu înseamnă că magazinul nu vinde ingredientul.</p>';
+ }catch(err){if(modal.isConnected)modal.querySelector('#bp-catalog-results').textContent='Nu am putut verifica produsele de catalog: '+err.message}
+};
+bp35BasketRows=function(c){
+ function row(x,key){
+  const bought=bp35Marked(key);
+  const cost=x.type==='missing'?'Fără preț':(x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei';
+  const label=bpName(x.id);
+  const amount=x.a?Math.ceil(x.a.quantity)+' '+bp35Unit(x.a):x.qty+' × '+x.amount;
+  const extra=x.a?(x.type==='missing'?'Preț neacoperit în această versiune':bp35Pack(x)):'adăugat din catalog';
+  return '<div class="bp35-product '+(bought?'bought':'')+'">'+
+    '<label style="display:flex;gap:10px;align-items:center;min-width:0;flex:1">'+
+    '<input type="checkbox" '+(bought?'checked':'')+' onchange="bp35ToggleBought('+JSON.stringify(key).replace(/"/g,'&quot;')+',this.checked,this)"/>'+
+    '<span class="bp35-productinfo"><b>'+esc(label)+'</b><small>Necesar: '+esc(amount)+' · '+esc(extra)+'</small>'+
+    '<small>'+esc(bp35PriceStatus(x))+'</small></span></label>'+
+    '<span class="bp35-productprice">'+esc(cost)+bp35Badge(x)+'</span>'+
+    '<div style="flex-basis:100%;display:flex;gap:7px;flex-wrap:wrap;margin-top:7px">'+
+    '<button class="btn out sm" onclick="bpBrowseProducts('+JSON.stringify(x.id).replace(/"/g,'&quot;')+')">Caută în catalog</button>'+
+    (x.type==='missing'?'<button class="btn out sm" onclick="bpUnknownPrice('+JSON.stringify(x.id).replace(/"/g,'&quot;')+','+JSON.stringify(x.a.unit).replace(/"/g,'&quot;')+')">Introdu preț cunoscut</button>':'')+
+    '</div></div>';
+ }
+ return c.rows.map(x=>row(x,'i:'+x.id)).join('')+
+  (c.extras.length?'<h3 class="bp35-subhead">Produse alese din catalog</h3>'+c.extras.map(x=>{
+   const bought=bp35Marked('p:'+x.id);
+   return '<label class="bp35-product '+(bought?'bought':'')+'"><input type="checkbox" '+(bought?'checked':'')+' onchange="bp35ToggleBought('+JSON.stringify('p:'+x.id).replace(/"/g,'&quot;')+',this.checked,this)"/>'+
+     '<span class="bp35-productinfo"><b>'+esc(x.name)+'</b><small>'+x.qty+' × '+esc(x.amount)+' · '+esc(bp35.store)+'</small></span>'+
+     '<span class="bp35-productprice">'+ron(x.total)+' lei</span></label>';
+  }).join(''):'');
+};
+bpBasket=function(){
+ const c=bp35Calc(),count=bpCountPlan(),budget=Number(state.budget)||0,unlocked=!!state.unlocks[bp35Key()];
+ const checked=[...c.rows.map(x=>'i:'+x.id),...c.extras.map(x=>'p:'+x.id)].filter(bp35Marked).length;
+ const note=c.incomplete?'Sunt '+c.missing+' ingrediente fără preț. Suma este doar un subtotal; bugetul final nu poate fi determinat.':
+ 'Subtotal estimativ pentru coș: verifică prețurile la raft.';
+ return commonTop()+heading('Lista de cumpărături','Cantități consolidate din toate mesele alese.')+
+ bp35Progress()+
+ '<div class="bp35-smallstore">Magazin: <b>'+esc(bp35.store)+'</b> · '+esc(bp35Pretty(bp35.week))+
+ ' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+' <button class="link" onclick="go(\\'menu100\\')">Modifică planul</button></div>'+
+ '<div class="bp35-summary"><small>'+(c.incomplete?'Subtotal cu prețuri, nu totalul coșului':'Coș orientativ')+' · '+esc(bp35.store)+'</small>'+
+ '<strong>'+(count?'≈ '+ron(c.total)+' lei':'Nu există mese în plan')+'</strong>'+
+ '<span>'+count+' mese · '+c.rows.length+' ingrediente · '+c.extras.length+' produse adăugate</span>'+
+ '<span>'+esc(note)+'</span>'+
+ '<span>'+(c.incomplete?'Buget săptămânal: '+ron(budget)+' lei · comparație indisponibilă':'Buget: '+ron(budget)+' lei · '+(budget>=c.total?'diferență estimată '+ron(budget-c.total)+' lei':'depășire estimată '+ron(c.total-budget)+' lei'))+'</span></div>'+
+ '<div class="bp35-warning">Prețuri: '+c.verified+' publicate, '+c.estimated+' estimări de model, '+c.manual+' introduse de utilizator, '+c.missing+' lipsă. <b>Un produs din catalog nu confirmă stocul într-un magazin fizic.</b></div>'+
+ (!count?'<button class="btn block" onclick="go(\\'menu100\\')">Alege prima rețetă →</button>':
+ (!unlocked?'<div class="bp-lock"><h3>Deblochează lista '+esc(bp35.store)+'</h3><p>Lista se deschide după confirmarea recompensei publicitare.</p><button class="btn block" onclick="bp35Unlock()">▶ Deblochează ingredientele</button></div>':
+ '<div class="bp35-boughtheading"><h2 class="h2">Produsele '+esc(bp35.store)+'</h2><span>'+checked+'/'+(c.rows.length+c.extras.length)+' bifate</span></div>'+
+ '<div class="bp35-checklist">'+bp35BasketRows(c)+'</div>'+
+ '<button class="btn block" style="margin-top:16px" onclick="bpCopy()">Copiază lista</button>'))+
+ '<div class="bp35-actions"><button class="btn block out" onclick="go(\\'menu100\\')">← Modifică meniul</button></div>';
+};
+bpMenu=function(){
+ const html=originalMenu();const c=bp35Calc();
+ return c.missing?html+'<div class="bp35-warning">Atenție: '+c.missing+' ingrediente nu au preț. Suma afișată este un subtotal orientativ, nu întregul coș.</div>':html;
+};
+home=function(){
+ const html=originalHome();const c=bp35Calc();
+ return c.missing?html+'<div class="bp35-warning">Buget incomplet: '+c.missing+' ingrediente fără preț. Totalul real nu este calculabil.</div>':html;
+};
+bpCopy=function(){
+ const c=bp35Calc();
+ if(!c.missing)return originalCopy();
+ const txt=['BunPlan · '+c.store+' · '+bp35Pretty(bp35.week),
+  'Subtotal, NU total final: '+ron(c.total)+' lei',
+  'Ingrediente fără preț: '+c.missing,
+  ...c.rows.map(x=>bpName(x.id)+' · '+Math.ceil(x.a.quantity)+' '+x.a.unit+' · '+(x.type==='missing'?'preț necunoscut':ron(x.cost)+' lei ('+bp35PriceStatus(x)+')')),
+  ...c.extras.map(x=>x.name+' · '+x.qty+' × '+x.amount+' · '+ron(x.total)+' lei'),
+  'Prețurile și disponibilitatea depind de magazin și dată.'].join('\n');
+ if(navigator.clipboard?.writeText)navigator.clipboard.writeText(txt).then(()=>alert('Lista a fost copiată.')).catch(()=>prompt('Copiază:',txt));
+ else prompt('Copiază:',txt);
+};
+bpDetail=function(){
+ const r=BP100.find(x=>x.id===bp100.detail);
+ if(!r||!r.cloud)return originalDetail();
+ const prices=bp35RecipePrice(r);
+ const missing=prices.rows.filter(x=>x.type==='missing').length;
+ return commonTop()+
+ '<button class="back" onclick="go(\\'library100\\')">← Rețete</button>'+
+ '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ '<h1 class="title">'+esc(r.title)+'</h1>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>'+Number(r.minutes)+' minute</span><span>'+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp35-warning">Rețetă generată automat. Verifică ingredientele, alergenii și timpii de gătire. '+(pending?'Se încarcă datele de preț.':'')+'</div>'+
+ '<div class="bp35-recipecost"><small>'+(missing?'Subtotal parțial · ':'Cost estimativ · ')+esc(bp35.store)+'</small>'+
+ '<b>'+(prices.rows.some(x=>x.type!=='missing')?'≈ '+ron(prices.total)+' lei':'Fără prețuri')+'</b>'+
+ '<span>'+missing+' ingrediente fără preț · '+prices.estimated+' estimări, '+prices.published+' prețuri publicate</span></div>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Ingrediente</h2>'+
+ '<div class="bp-listingredients">'+prices.rows.map((x,i)=>{
+ const orig=r.ingredients[i];const name=orig.source_name||bpName(orig.id);
+ return '<div class="bp-ing"><div><strong>'+esc(name)+'</strong><small>'+
+ Number(orig.source_quantity||orig.quantity)+' '+esc(orig.source_unit||orig.unit)+'</small>'+
+ '<small>'+esc(bp35PriceStatus(x))+'</small></div><div class="bp-ingright">'+
+ (x.type==='missing'?'Preț lipsă':(x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei')+
+ '</div></div>';
+ }).join('')+'</div>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Preparare pas cu pas</h2>'+
+ '<ol class="bp-steps">'+r.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Adaugă în meniul săptămânal</h2>'+
+ '<div class="bp-selects"><select id="bpDay">'+BP_DAYS.map((d,i)=>'<option value="'+i+'" '+(bp100.day===i?'selected':'')+'>'+esc(d)+'</option>').join('')+'</select>'+
+ '<select id="bpMeal">'+BP_MEALS.map(m=>'<option>'+esc(m)+'</option>').join('')+'</select></div>'+
+ '<button class="btn block" onclick="bp35SaveMeal('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">＋ Adaugă în plan · '+esc(bp35.store)+'</button>'+
+ '<p class="brand-disclaimer">Lista finală combină cantitățile repetate. Prețurile de model nu sunt oferte confirmate și nu verifică stocurile locale.</p>';
+};
+})();
+</script>
 </body></html>
