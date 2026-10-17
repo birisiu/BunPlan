@@ -22,7 +22,9 @@ jobs:
         with:
           gradle-version: '8.10.2'
       - name: Build APK with Google test ads SDK
-        run: gradle --no-daemon -p android-native :app:assembleDebug
+        run: |
+          set -o pipefail
+          gradle --no-daemon -p android-native :app:assembleDebug 2>&1 | tee bunplan-build.log
       - name: Save APK in public repository for direct installation
         if: success()
         run: |
@@ -39,7 +41,8 @@ jobs:
         if: failure()
         run: |
           mkdir -p builds
-          printf 'FAILURE - native build at %s. Open Actions logs.\n' "$(date -u)" > builds/build-status.txt
+          printf 'FAILURE - native build at %s.\n' "$(date -u)" > builds/build-status.txt
+          tail -n 150 bunplan-build.log >> builds/build-status.txt || true
           git config user.name bunplan-bot
           git config user.email bunplan-bot@users.noreply.github.com
           git add builds/build-status.txt
