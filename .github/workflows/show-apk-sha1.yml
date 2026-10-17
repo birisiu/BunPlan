@@ -20,6 +20,6 @@ jobs:
           SIGNER=$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)
           test -x "$SIGNER"
           echo '=== Google OAuth test APK signing certificate ==='
-          "$SIGNER" verify --print-certs "$APK" | grep -E '(Signer #1 certificate SHA-1 digest|Signer #1 certificate SHA-256 digest)'
+          "$SIGNER" verify --print-certs "$APK"
           echo 'Package name (test): ro.bunplan.app.securitytest'
           echo 'CAUTION: GitHub-hosted debug signing certificates can change on future builds. For durable Google OAuth configure a stable signing key kept only in GitHub secrets.'
