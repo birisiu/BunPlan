@@ -24,11 +24,13 @@ jobs:
         with:
           gradle-version: '8.10.2'
       - name: Build APK with Google Mobile Ads and UMP
+        env:
+          BUNPLAN_GOOGLE_WEB_CLIENT_ID: ${{ vars.BUNPLAN_GOOGLE_WEB_CLIENT_ID }}
         run: gradle --no-daemon -p android-native :app:assembleDebug
       - name: Save verified APK as workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BunPlan-4.0-Cloud-TEST
+          name: BunPlan-4.1-Security-Google-TEST
           path: android-native/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 20
@@ -43,9 +45,9 @@ jobs:
             git fetch origin main
             git checkout -B main origin/main
             mkdir -p builds
-            cp /tmp/bunplan-release.apk builds/BunPlan-4.0-Cloud-TEST.apk
+            cp /tmp/bunplan-release.apk builds/BunPlan-4.1-Security-Google-TEST.apk
             printf 'SUCCESS - APK compiled + published at %s UTC\n' "$(date -u +%FT%TZ)" > builds/build-status.txt
-            git add builds/BunPlan-4.0-Cloud-TEST.apk builds/build-status.txt
+            git add builds/BunPlan-4.1-Security-Google-TEST.apk builds/build-status.txt
             git commit -m "build: publish BunPlan AdMob 3.7 test" || true
             if git push origin HEAD:main; then
               exit 0
