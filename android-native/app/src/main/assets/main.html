@@ -605,6 +605,7 @@ draw();
 // Prices are never copied between Lidl and Kaufland. Estimates are not store quotes.
 const BP35_STORE_KEY='bunplan35-weekly-plans-v1';
 const BP35_BUY_KEY='bunplan35-purchased-v1';
+function bpStoreBrand(s){return s==='Lidl'||s==='Kaufland'?'<span class="storebrand"><img src="brands/'+(s==='Lidl'?'lidl':'kaufland')+'.svg" alt="Logo '+s+'"><span class="storebrand-name">'+s+'</span></span>':'<span>'+esc(s)+'</span>';}
 const BP35_STORES=['Lidl','Kaufland'];
 const BP35_LOOSE=new Set(['banane','mere','pere','cartofi','cartofi_dulci','conopida','broccoli','dovlecel','vinete','varza','morcovi','ceapa','rosii','ardei','castraveti','lamaie','portocale','sfecla','telina','praz','avocado']);
 const BP35_MIN_G={lamaie:120,ceapa:100,rosii:120,ardei:150,castraveti:180,conopida:250,broccoli:250,avocado:150};
@@ -738,7 +739,7 @@ window.draw();
  const auth=window.BunPlanAuth, cloud=window.BunPlanCloud;
  if(!auth || !auth.hasSession()){window.location.replace('index.html');return;}
  const widget=document.createElement('div');
- widget.style='position:fixed;right:10px;top:65px;z-index:2000;max-width:210px';
+ widget.style='display:none';
  widget.innerHTML='<button id="bp-cloud-open" style="background:#19513d;color:white;border:none;padding:10px 14px;border-radius:25px;box-shadow:0 4px 12px #0004;font-size:13px">☁ Salvează în cloud</button>';
  document.body.appendChild(widget);
  document.getElementById('bp-cloud-open').onclick=()=>{
@@ -818,6 +819,8 @@ function applyPrefs(p){
  working.name=state.name;
  storage();draw();
 }
+window.bpProfileSaveWeek=function(){if(nativeCloud)nativeCloud.saveWeek(bp35.store,bp35.week,Math.max(1,+state.budget||400),JSON.stringify(bp100.days));};
+window.bpProfileLoadWeek=function(){if(nativeCloud)nativeCloud.loadWeek(bp35.store,bp35.week);};
 window.bpProfileSave=function(){
  if(nativeCloud)nativeCloud.saveProfile(JSON.stringify(preferences()));
  else alert('Salvarea online funcționează în aplicația Android.');
@@ -873,6 +876,8 @@ window.profileScreen=function(){
    '<button class="btn block" onclick="bpProfileSave()">☁ Salvează preferințele în cloud</button>'+
    '<button class="btn out block" style="margin-top:9px" onclick="bpProfileReload()">↻ Încarcă preferințele din cloud</button>'+
    '<p class="profile-status" id="bp-profile-status">Planurile și listele rămân separate pe magazin și săptămână.</p>'+
+   '<button class="btn out block" style="margin-top:12px" onclick="bpProfileSaveWeek()">☁ Salvează meniul săptămânii</button>'+
+   '<button class="btn out block" style="margin-top:9px" onclick="bpProfileLoadWeek()">↓ Încarcă meniul săptămânii</button>'+
    '<button class="btn out block" style="margin-top:12px" onclick="go(\'plan\')">▦ Planifică săptămâna →</button>'+
    '<button class="btn out block" style="margin-top:9px" onclick="go(\'list\')">☑ Vezi lista de cumpărături →</button>');
  out+=profileBlock('Securitate și confidențialitate',
