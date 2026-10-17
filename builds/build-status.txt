@@ -1,1 +1,55 @@
-FAILURE - native build at Sat Oct 17 13:41:13 UTC 2026, run 39037562773.
+FAILURE - native build at Sat Oct 17 13:42:42 UTC 2026, run 39037623383.
+
+Welcome to Gradle 8.10.2!
+
+Here are the highlights of this release:
+ - Support for Java 23
+ - Faster configuration cache
+ - Better configuration cache reports
+
+For more details see https://docs.gradle.org/8.10.2/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:javaPreCompileDebug
+> Task :app:generateDebugResValues
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+
+> Task :app:processDebugMainManifest FAILED
+/home/runner/work/BunPlan/BunPlan/android-native/app/src/main/AndroidManifest.xml Error:
+	uses-sdk:minSdkVersion 23 cannot be smaller than version 24 declared in library [com.google.android.gms:play-services-ads:25.5.0] /home/runner/.gradle/caches/8.10.2/transforms/b94cfa77a446ef1cb1543f60b118486a/transformed/play-services-ads-25.5.0/AndroidManifest.xml as the library might be using APIs not available in 23
+	Suggestion: use a compatible library with a minSdk of at most 23,
+		or increase this project's minSdk version to at least 24,
+		or use tools:overrideLibrary="com.google.android.gms.ads.impl" to force usage (may lead to runtime failures)
+
+See https://developer.android.com/r/studio-ui/build/manifest-merger for more information about the manifest merger.
+
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792244530852.json
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:processDebugMainManifest'.
+> Manifest merger failed : uses-sdk:minSdkVersion 23 cannot be smaller than version 24 declared in library [com.google.android.gms:play-services-ads:25.5.0] /home/runner/.gradle/caches/8.10.2/transforms/b94cfa77a446ef1cb1543f60b118486a/transformed/play-services-ads-25.5.0/AndroidManifest.xml as the library might be using APIs not available in 23
+  	Suggestion: use a compatible library with a minSdk of at most 23,
+  		or increase this project's minSdk version to at least 24,
+  		or use tools:overrideLibrary="com.google.android.gms.ads.impl" to force usage (may lead to runtime failures)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 38s
+11 actionable tasks: 11 executed
