@@ -1339,7 +1339,7 @@ bpDetail=function(){
  (x.type==='missing'?'Preț lipsă':(x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei')+
  '</div></div>';
  }).join('')+'</div>'+
- '<h2 class="h2" style="margin:20px 0 11px">Preparare pas cu pas</h2>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Cum se prepară, pas cu pas</h2>'+
  '<ol class="bp-steps">'+r.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>'+
  '<h2 class="h2" style="margin:20px 0 11px">Adaugă în meniul săptămânal</h2>'+
  '<div class="bp-selects"><select id="bpDay">'+BP_DAYS.map((d,i)=>'<option value="'+i+'" '+(bp100.day===i?'selected':'')+'>'+esc(d)+'</option>').join('')+'</select>'+
