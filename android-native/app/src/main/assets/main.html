@@ -51,7 +51,7 @@ button{touch-action:manipulation;min-height:40px}input,select,textarea{max-width
 .profile-store-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .profile-store-buttons button{border:1.5px solid var(--border);border-radius:16px;background:#fff;padding:12px 10px;display:flex;gap:9px;align-items:center;min-width:0;font-size:12px;font-weight:800}
 .profile-store-buttons button.active{border-color:#2c744c;background:#eff9db}
-.profile-store-buttons img{height:35px;width:35px;object-fit:contain}
+.profile-store-buttons img{height:35px;width:35px;object-fit:contain}.retailer-tile{min-height:85px;justify-content:flex-start;border:2px solid var(--border);display:flex}.retailer-tile.active{border-color:#2e7655;background:#eef7dd}.retailer-tile .storebrand img{width:44px;height:44px}
 .profile-status{font-size:12px;line-height:1.4;min-height:18px;color:#416b4b}
 .title{font-size:clamp(24px,5.7vw,32px);overflow-wrap:anywhere}
 @media(max-width:359px){
@@ -847,6 +847,26 @@ function buttons(key,options,current){
 }
 function profileBlock(title,body){return '<section class="profile-block"><h2>'+title+'</h2>'+body+'</section>'}
 function profileLabel(label){return '<div class="profile-label">'+label+'</div>'}
+window.home=function(){
+ const bill=bp35Calc(),count=bpCountPlan();
+ const week=bp35Pretty(bp35.week)+' – '+bp35Pretty(bp35ISO(bp35Date(bp35.week,6)));
+ const amount=count?'≈ '+ron(bill.total)+' lei':'Alege prima rețetă';
+ return commonTop()+
+ '<section class="hero" style="min-height:210px"><div class="orb"></div><div class="smallcaps">MENIUL TĂU DE 7 ZILE</div><h1 style="font-size:29px;line-height:1.15;position:relative;max-width:310px;margin:15px 0;color:#fff">Mai puțin stres.<br>Mai multă organizare.</h1><div class="herofoot"><span>'+week+'</span><button class="btn lime sm" onclick="go(\'menu100\')">Planifică →</button></div></section>'+
+ '<section class="storepanel"><div class="row"><div><div class="smallcaps">MAGAZIN SELECTAT</div><h2 class="h2" style="margin-top:8px">'+bpStoreBrand(bp35.store)+'</h2></div><button class="btn out sm" onclick="go(\'stores\')">Schimbă</button></div><p class="muted" style="margin-top:13px">Produsele și prețurile listei se folosesc numai pentru '+bp35.store+'.</p></section>'+
+ '<section class="storepanel"><div class="smallcaps">BUGETUL SĂPTĂMÂNII</div><h2 class="heroMoney" style="font-size:31px;color:var(--forest)">'+amount+'</h2><p class="muted">'+count+' mese planificate · buget '+ron(state.budget)+' lei</p><button class="btn block" onclick="go(\'menu100\')">1. Construiește meniul</button><button class="btn out block" style="margin-top:10px" onclick="go(\'basket100\')">2. Vezi lista de cumpărături</button></section>'+
+ '<section class="storepanel"><h2 class="h2">Cum funcționează</h2><p class="sub">Alegi Lidl sau Kaufland → adaugi rețete pe zile → primești ingredientele, cantitățile și un buget aproximativ.</p><button class="btn out block" onclick="go(\'library100\')">Explorează cele 100 de rețete</button><p class="brand-disclaimer">Prețurile marcate estimativ nu sunt prețuri oficiale. Disponibilitatea la raft poate varia.</p></section>';
+};
+window.storesScreen=function(){
+ const items=['Lidl','Kaufland'].map(s=>
+ '<button class="store retailer-tile '+(bp35.store===s?'active':'')+'" style="width:100%;text-align:left;cursor:pointer" onclick="bp35ChooseStore(\''+s+'\')">'+
+ '<span>'+bpStoreBrand(s)+'</span><span style="margin-left:auto;font-size:12px">'+(bp35.store===s?'✓ Selectat':'Alege →')+'</span></button>').join('');
+ return commonTop()+heading('Alege magazinul','Cumperi ingredientele doar din magazinul selectat.')+
+ '<div class="notice">Planurile Lidl și Kaufland sunt independente. Trecerea la alt magazin nu mută produse și nu combină prețurile.</div>'+
+ '<div class="store-choices">'+items+'</div>'+
+ '<button class="btn block" onclick="go(\'menu100\')">Continuă cu '+bp35.store+' →</button>'+
+ '<div class="brand-disclaimer">Siglele sunt folosite pentru identificarea magazinelor. BunPlan nu este afiliată oficial cu retailerii.</div>';
+};
 window.profileScreen=function(){
  const email=nativeAuth?nativeAuth.currentEmail():'';
  const name=esc(state.name||'Utilizator BunPlan');
@@ -918,5 +938,6 @@ window.BunPlanCloudDone=function(action,result){
  if(typeof prevHandler==='function')prevHandler(action,result);
 };
 if(nativeCloud)nativeCloud.loadProfile();
+if(state.tab==='home'||state.tab==='stores')draw();
 })();
 </script></body></html>
