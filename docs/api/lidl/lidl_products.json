@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Lidl Romania",
-    "checked_at": "2026-10-17T11:55:49+00:00",
-    "product_count": 1741,
+    "checked_at": "2026-10-17T11:56:08+00:00",
+    "product_count": 1729,
     "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
     "price_scope": "national permanent assortment; not store-specific",
     "stock_available": false,
@@ -56,19 +56,6 @@
       "size": "330ml",
       "category": "Bauturi",
       "price_ron": 5.09,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-6d9a29c02b0f077f98",
-      "name": "- Fresh Mix de bere Cirese si lamaie",
-      "size": "500ml",
-      "category": "Bauturi",
-      "price_ron": 3.69,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
@@ -381,19 +368,6 @@
       "size": "1l",
       "category": "Bauturi",
       "price_ron": 7.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-be933493b1c82871d4",
-      "name": "Castelgy Castelgy Gin & Tonic 5% Vol.",
-      "size": "0,33l",
-      "category": "Bauturi",
-      "price_ron": 6.99,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
@@ -1486,32 +1460,6 @@
       "size": "0,6l",
       "category": "Bauturi",
       "price_ron": 6.49,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-52d6ac5cd7e8c174c9",
-      "name": "Western Gold Whiskey Cola 5%",
-      "size": "0,33l",
-      "category": "Bauturi",
-      "price_ron": 6.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-174575bc919edc2ed1",
-      "name": "Wine Chocolate dulce",
-      "size": "0,75l",
-      "category": "Bauturi",
-      "price_ron": 36.69,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
@@ -5979,19 +5927,6 @@
       "is_promotion": false
     },
     {
-      "id": "lidl-709ff407eeee453044",
-      "name": "Belbake Aroma naturala de vanilie bourbon",
-      "size": "20ml",
-      "category": "Conserve",
-      "price_ron": 13.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
       "id": "lidl-6eb0e5e4576d2ccdad",
       "name": "Bucegi Pate de porc",
       "size": "120g",
@@ -7448,19 +7383,6 @@
       "is_promotion": false
     },
     {
-      "id": "lidl-3e6024fe8dfcfc67be",
-      "name": "- Praline cu cirese si lichior",
-      "size": "165g",
-      "category": "Dulciuri si snackuri",
-      "price_ron": 11.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
       "id": "lidl-f0699d6988bddf0714",
       "name": "Alesto Amestec nuci sort protein",
       "size": "150g",
@@ -8787,19 +8709,6 @@
       "is_promotion": false
     },
     {
-      "id": "lidl-754c68ce9f3c966bb7",
-      "name": "J.D. Gross Bomboane de ciocolata cu brandy",
-      "size": "250g",
-      "category": "Dulciuri si snackuri",
-      "price_ron": 12.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
       "id": "lidl-98366ea68147094b81",
       "name": "J.D. Gross Ciocolata Ecuador 70%",
       "size": "125g",
@@ -9892,19 +9801,6 @@
       "is_promotion": false
     },
     {
-      "id": "lidl-1aaaec18111f7ee659",
-      "name": "Palace Praline cu lichior whiskey",
-      "size": "150g",
-      "category": "Dulciuri si snackuri",
-      "price_ron": 9.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
       "id": "lidl-797c309aa7de60a7a5",
       "name": "Palace Selectie de praline",
       "size": "400g",
@@ -9988,19 +9884,6 @@
       "size": "200g",
       "category": "Dulciuri si snackuri",
       "price_ron": 7.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-09111ce4176c441a1e",
-      "name": "Rom Authentic baton",
-      "size": "25g",
-      "category": "Dulciuri si snackuri",
-      "price_ron": 1.79,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
@@ -12302,19 +12185,6 @@
       "size": "50g",
       "category": "Ingrediente pentru copt",
       "price_ron": 1.29,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-c8bdb4af0f42550d83",
-      "name": "Dr. Oetker Esenta de rom",
-      "size": "4x2ml",
-      "category": "Ingrediente pentru copt",
-      "price_ron": 4.99,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
@@ -17601,19 +17471,6 @@
       "is_promotion": false
     },
     {
-      "id": "lidl-b46e132b7838c0f1af",
-      "name": "Pikok Carnati de bere SK2",
-      "size": "400g",
-      "category": "Mezeluri",
-      "price_ron": 13.99,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
       "id": "lidl-add43954cae0057bea",
       "name": "Pikok Carnati Oltenesti 350g",
       "size": "350g",
@@ -21766,19 +21623,6 @@
       "size": "1000ml",
       "category": "Produse de baza",
       "price_ron": 2.49,
-      "currency": "RON",
-      "shop": "Lidl",
-      "image_url": null,
-      "stock_status": "unknown",
-      "source_url": "https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb",
-      "is_promotion": false
-    },
-    {
-      "id": "lidl-13c3396db85a5e9220",
-      "name": "Amestec otet alcool si vin",
-      "size": "1000ml",
-      "category": "Produse de baza",
-      "price_ron": 3.55,
       "currency": "RON",
       "shop": "Lidl",
       "image_url": null,
