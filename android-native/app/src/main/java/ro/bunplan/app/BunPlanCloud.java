@@ -1,7 +1,5 @@
 package ro.bunplan.app;
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.webkit.JavascriptInterface;
 import org.json.JSONObject;
 import java.net.HttpURLConnection;
@@ -17,10 +15,10 @@ public class BunPlanCloud {
  private static final String BASE="https://aedyviqoelgbbrrtwayu.supabase.co";
  private static final String APIKEY="sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z";
  private final Activity activity;
- private final SharedPreferences prefs;
+ private final SessionVault vault;
  private final ExecutorService pool=Executors.newSingleThreadExecutor();
  public BunPlanCloud(Activity activity){
-  this.activity=activity;this.prefs=activity.getSharedPreferences("bunplan_auth",Context.MODE_PRIVATE);
+  this.activity=activity;this.vault=new SessionVault(activity);
  }
  private String http(String url,JSONObject payload,String token) throws Exception{
   HttpURLConnection con=(HttpURLConnection)new URL(BASE+url).openConnection();
@@ -52,7 +50,7 @@ public class BunPlanCloud {
     try{
       if(!("Lidl".equals(store)||"Kaufland".equals(store))||week==null||!week.matches("\\d{4}-\\d{2}-\\d{2}"))
         throw new Exception("Magazin sau săptămână invalidă");
-      String token=prefs.getString("access_token","");
+      String token=vault.token();
       if(token.isEmpty())throw new Exception("Autentifică-te din nou");
       JSONObject req=new JSONObject().put("p_store",store.toLowerCase()).put("p_week_start",week);
       if(action.equals("save")){
@@ -63,13 +61,17 @@ public class BunPlanCloud {
       try{body=http("/rest/v1/rpc/"+endpoint,req,token);}
       catch(Exception e){
         if(!e.getMessage().contains("401")&&!e.getMessage().toLowerCase().contains("jwt"))throw e;
-        String refresh=prefs.getString("refresh_token","");
+        String refresh=vault.refresh();
         if(refresh.isEmpty())throw new Exception("Sesiunea a expirat, autentifică-te din nou");
         JSONObject refreshed=new JSONObject(http("/auth/v1/token?grant_type=refresh_token",
           new JSONObject().put("refresh_token",refresh),APIKEY));
         token=refreshed.getString("access_token");
-        prefs.edit().putString("access_token",token)
-          .putString("refresh_token",refreshed.optString("refresh_token",refresh)).apply();
+        JSONObject encrypted=vault.read();
+        if(encrypted==null)throw new Exception("Sesiunea nu mai este disponibilă");
+        encrypted.put("access_token",token);
+        encrypted.put("refresh_token",refreshed.optString("refresh_token",refresh));
+        encrypted.put("expires_at",System.currentTimeMillis()/1000L+Math.max(30,refreshed.optLong("expires_in",3600)));
+        vault.save(encrypted);
         body=http("/rest/v1/rpc/"+endpoint,req,token);
       }
       response.put("ok",true).put("data",new JSONObject(body));
