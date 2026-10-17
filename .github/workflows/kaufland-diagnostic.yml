@@ -54,6 +54,19 @@ jobs:
                 if el:
                   d['samples'].append({'selector':pat+' ancestor '+str(i),'html':str(el)[:2800]})
                   el=el.parent
+          for script in s.find_all('script'):
+            txt=script.string or ''
+            if 'window.SSR' not in txt or '\"OfferTemplate\"' not in txt:continue
+            import re
+            m=re.search(r"window\\.SSR\\[[^]]+\\]\\s*=\\s*",txt)
+            if not m:continue
+            try: payload,_=json.JSONDecoder().raw_decode(txt[m.end():])
+            except Exception as exc:
+              d['json_error']=str(exc);continue
+            cats=[cat for cycle in payload.get('props',{}).get('offerData',{}).get('cycles',[]) for cat in cycle.get('categories',[])]
+            d['ssr_categories']=[{'name':cat.get('displayName'),'count':len(cat.get('offers',[])),'id':cat.get('offerCategoryId')} for cat in cats]
+            d['offer_examples']=[o for cat in cats for o in cat.get('offers',[])][:5]
+            break
           pathlib.Path('diagnostic.json').write_text(json.dumps(d,ensure_ascii=False,indent=2))
           PY
           git config user.name bunplan-bot
