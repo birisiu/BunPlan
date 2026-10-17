@@ -38,6 +38,12 @@ public class MainActivity extends Activity {
     private static final Pattern PLAN_KEY = Pattern.compile("^(Lidl|Kaufland)\\|\\d{4}-\\d{2}-\\d{2}$");
     private WebView web;
     private BunPlanGoogleBrowser googleBrowser;
+    public void startGoogleBrowser(){
+        runOnUiThread(() -> {
+            if (googleBrowser != null) googleBrowser.start();
+            else authError("Conectarea Google se inițializează. Încearcă din nou.");
+        });
+    }
     public void authError(String message){eval("if(window.BunPlanAuthDone)window.BunPlanAuthDone(\'google\',"+new JSONObject(java.util.Collections.singletonMap("message",message)).toString().replace("{","{\"ok\":false,") + ");");}
     public void eval(String js){if(web!=null)web.evaluateJavascript(js,null);}
     private RewardedInterstitialAd rewardedAd;
