@@ -42,8 +42,8 @@ const bridge=window.BunPlanAuth;
 function persist(){localStorage.setItem(KEY,JSON.stringify(w));}
 function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 function brand(){return '<header class="brand"><span class="brand-icon">✓</span><span>BunPlan</span></header>'}
-function opt(label,key,value){let selected=w[key]===value;return '<button class="choice '+(selected?'selected':'')+'" onclick="bpChange('+JSON.stringify(key)+','+JSON.stringify(value)+')">'+esc(label)+'</button>'}
-function multi(label,value){let selected=w.exclusions.includes(value);return '<button class="choice '+(selected?'selected':'')+'" onclick="bpExclude('+JSON.stringify(value)+')">'+esc(label)+'</button>'}
+function opt(label,key,value){let selected=w[key]===value;return '<button class="choice '+(selected?'selected':'')+'" onclick="bpChange('+esc(JSON.stringify(key))+','+esc(JSON.stringify(value))+')">'+esc(label)+'</button>'}
+function multi(label,value){let selected=w.exclusions.includes(value);return '<button class="choice '+(selected?'selected':'')+'" onclick="bpExclude('+esc(JSON.stringify(value))+')'">'+esc(label)+'</button>'}
 function storeCard(name){return '<button class="choice store '+(w.store===name?'selected':'')+'" onclick="bpChange(\'store\',\''+name+'\')"><img src="'+LOGOS[name]+'" alt="Logo '+name+'"/><span>'+name+'</span><span style="margin-left:auto">'+(w.store===name?'✓':'→')+'</span></button>'}
 function welcome(){return '<div>'+brand()+'</div><div class="illustration"><strong>Mese bune.<br>Buget sub control.</strong><small>100 de rețete • Lidl și Kaufland • 7 zile organizate</small></div><h1 class="heading">Planifică simplu.<br>Cumpără inteligent.</h1><p class="sub">Răspunde la câteva întrebări și îți pregătim un plan pe măsura familiei tale. Creezi contul la final, nu la început.</p><div class="flexgap"></div><button class="action" onclick="bpStart()">Începem →</button><button class="smallaction" onclick="bpAuth('login')">Am deja cont</button><p class="logofoot">Magazinele sunt mărci independente. BunPlan nu este o aplicație oficială Lidl sau Kaufland.</p>'}
 const titles=['Ce buget ai pentru cumpărături?','Pentru câte persoane gătești?','Cum preferi să mănânci?','Cât de des gătești?','Unde faci cumpărăturile?'];
@@ -65,7 +65,7 @@ window.bpChange=function(key,value){if(!Object.prototype.hasOwnProperty.call(def
 window.bpCity=function(value){w.city=String(value).slice(0,100);persist();}
 window.bpExclude=function(x){w.exclusions=w.exclusions.includes(x)?w.exclusions.filter(a=>a!==x):[...w.exclusions,x];persist();display();}
 window.bpBack=function(){if(page==='auth'){page='wizard';w.step=4;}else if(w.step>0)w.step--;else page='welcome';persist();display();}
-window.bpNext=function(){if(w.step<4){w.step++;persist();display();return;}if(!w.city.trim()){alert('Completează orașul.');return;}w.completed=true;persist();page='auth';mode='signup';display();}
+window.bpNext=function(){if(w.step<4){w.step++;persist();display();return;}if(!w.city.trim()){alert('Completează orașul.');return;}w.completed=true;persist();if(bridge&&bridge.hasSession()){window.location.replace('main.html');return;}page='auth';mode='signup';display();}
 window.bpAuth=function(m){page='auth';mode=m;display();}
 window.bpGoogleBrowser=function(){if(!window.BunPlanGoogleBrowser){toast('Această metodă funcționează numai în APK Android.');return;}toast('Deschidem conectarea Google într-un browser securizat…');window.BunPlanGoogleBrowser.signIn();}
 window.bpGoogleNative=function(){if(!window.BunPlanGoogle){toast('Aplicația Google de pe dispozitiv nu este disponibilă.');return;}toast('Verificăm conturile Google disponibile…');window.BunPlanGoogle.signIn();}
