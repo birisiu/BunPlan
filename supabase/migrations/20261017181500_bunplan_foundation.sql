@@ -188,7 +188,7 @@ create table public.shopping_items (
  pack_count integer check(pack_count>0),
  pack_price_ron numeric(12,2) check(pack_price_ron>=0),
  budget_cost_ron numeric(12,2) check(budget_cost_ron>=0),
- price_status text not null default 'estimate'
+ price_status text not null default 'estimated'
     check(price_status in ('confirmed','estimated','user_entered')),
  price_observed_on date,
  purchased boolean not null default false,
