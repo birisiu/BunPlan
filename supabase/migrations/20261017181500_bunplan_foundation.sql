@@ -54,6 +54,7 @@ create table public.ingredients (
 
 create table public.recipes (
  id uuid primary key default gen_random_uuid(),
+ legacy_key text unique,
  title text not null,
  description text,
  category text not null,
