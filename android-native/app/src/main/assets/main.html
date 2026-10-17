@@ -19,6 +19,21 @@
 .bp-checkbox{display:flex;gap:8px;align-items:center;font-size:11px;margin:14px 0;line-height:1.4;color:#355c48}.bp-checkbox input{width:17px;height:17px}
 .bp-lock{text-align:center;background:white;border-radius:21px;padding:25px 18px;border:1px solid #e1e7dc}.bp-lock b{display:block;margin-top:12px;font-size:18px}.bp-lock p{font-size:12px;color:#78897e;line-height:1.6}.bp-sum{background:#113d2c;border-radius:21px;color:white;padding:19px;margin:18px 0}.bp-sum small,.bp-sum span{display:block;color:#d6e4dc}.bp-sum strong{display:block;font-size:30px;margin:7px 0}.bp-sum span{font-size:11px;line-height:1.6}
 
+/* BunPlan 4.5: readable compact layout and stable shopping-item interaction */
+.bp35-product{min-width:0;overflow-wrap:anywhere;contain:layout style}
+.bp35-product input[type=checkbox]{width:23px;height:23px;flex:none;accent-color:#175640;cursor:pointer}
+.bp35-productinfo{min-width:0;overflow-wrap:anywhere}
+.bp35-product.bought{background:#f1f6eb}
+.bp35-boughtheading span{font-variant-numeric:tabular-nums}
+@media(max-width:360px){
+ .bp35-product{gap:8px;padding:12px 9px}
+ .bp35-productprice{font-size:12px}
+ .bp35-smallstore{overflow-wrap:anywhere}
+ .top{gap:9px}.logo{font-size:20px}
+ .hero{padding:18px}.heroMoney{font-size:36px}
+ .bottom{padding-left:4px;padding-right:4px}
+}
+@media (prefers-reduced-motion:reduce){.bp35-product{transition:none!important}}
 /* BunPlan 4.3 responsive layout, safe-area support, retailer identification */
 html,body{width:100%;overflow-x:hidden}
 .app{width:100%;max-width:780px;margin:0 auto;min-height:100dvh}
@@ -686,10 +701,27 @@ function bp35Calc(){
  return {store,rows,extras,verified:rows.filter(x=>x.type==='published').length,estimated:rows.filter(x=>x.type==='estimate').length,manual:rows.filter(x=>x.type==='manual').length,
  total:Math.round((subtotal+extraTotal)*100)/100,low:Math.max(0,Math.round((subtotal+extraTotal-uncertain*.3)*100)/100),high:Math.round((subtotal+extraTotal+uncertain*.3)*100)/100,uncertain};
 }
-function bp35ToggleBought(key,checked){const k=bp35Key();if(!bp35.bought[k])bp35.bought[k]={};bp35.bought[k][key]=!!checked;bp35Remember();draw()}
+function bp35ToggleBought(key,checked,input){
+ // Never rebuild the full WebView when ticking a shopping item.
+ // Rebuilding calls draw() -> window.scrollTo(0,0), which jumps the screen
+ // and can also lose focus / checkbox animation on Android.
+ const k=bp35Key();
+ if(!bp35.bought[k])bp35.bought[k]={};
+ bp35.bought[k][key]=!!checked;
+ bp35Remember();
+ const box=input && input.closest ? input.closest('.bp35-product') : null;
+ if(box) box.classList.toggle('bought',!!checked);
+ const heading=document.querySelector('.bp35-boughtheading span');
+ if(heading){
+   const total=document.querySelectorAll('.bp35-checklist .bp35-product input[type="checkbox"]').length;
+   const done=document.querySelectorAll('.bp35-checklist .bp35-product input[type="checkbox"]:checked').length;
+   heading.textContent=done+'/'+total+' bifate';
+   heading.setAttribute('aria-live','polite');
+ }
+}
 function bp35Marked(key){return !!(bp35.bought[bp35Key()]||{})[key]}
-function bp35BasketRows(calc){const ing=calc.rows.map(x=>{let label=bp35PriceStatus(x);const src=x.type==='published'&&x.verifiedProduct?.source?`<a class="bp35-src" href="${esc(x.verifiedProduct.source)}" target="_blank" rel="noopener">Vezi sursa ${calc.store} ↗</a>`:'';return `<label class="bp35-product ${bp35Marked('i:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('i:'+x.id)?'checked':''} onchange="bp35ToggleBought('i:${x.id}',this.checked)"/><span class="bp35-productinfo"><b>${esc(bpName(x.id))}</b><small>Necesar: ${Math.ceil(x.a.quantity)} ${bp35Unit(x.a)} · ${bp35Pack(x)}</small><small>${esc(label)} · ${ron(x.price)} lei ${x.loose?'per '+x.packageQty+' g':'/ ambalaj'}</small>${src}</span><span class="bp35-productprice">${x.type==='estimate'?'≈ ':''}${ron(x.cost)} lei${bp35Badge(x)}</span></label>`}).join('');
- const extra=calc.extras.length?`<h3 class="bp35-subhead">Produse adăugate separat din catalog</h3>${calc.extras.map(x=>`<label class="bp35-product ${bp35Marked('p:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('p:'+x.id)?'checked':''} onchange="bp35ToggleBought('p:${x.id}',this.checked)"/><span class="bp35-productinfo"><b>${esc(x.name)}</b><small>${x.qty} × ${esc(x.amount)} · selectat doar din ${calc.store}</small><small>Preț salvat; verifică valabilitatea ofertei înainte de cumpărare</small></span><span class="bp35-productprice">${ron(x.total)} lei</span></label>`).join('')}`:'';
+function bp35BasketRows(calc){const ing=calc.rows.map(x=>{let label=bp35PriceStatus(x);const src=x.type==='published'&&x.verifiedProduct?.source?`<a class="bp35-src" href="${esc(x.verifiedProduct.source)}" target="_blank" rel="noopener">Vezi sursa ${calc.store} ↗</a>`:'';return `<label class="bp35-product ${bp35Marked('i:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('i:'+x.id)?'checked':''} onchange="bp35ToggleBought('i:${x.id}',this.checked,this)"/><span class="bp35-productinfo"><b>${esc(bpName(x.id))}</b><small>Necesar: ${Math.ceil(x.a.quantity)} ${bp35Unit(x.a)} · ${bp35Pack(x)}</small><small>${esc(label)} · ${ron(x.price)} lei ${x.loose?'per '+x.packageQty+' g':'/ ambalaj'}</small>${src}</span><span class="bp35-productprice">${x.type==='estimate'?'≈ ':''}${ron(x.cost)} lei${bp35Badge(x)}</span></label>`}).join('');
+ const extra=calc.extras.length?`<h3 class="bp35-subhead">Produse adăugate separat din catalog</h3>${calc.extras.map(x=>`<label class="bp35-product ${bp35Marked('p:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('p:'+x.id)?'checked':''} onchange="bp35ToggleBought('p:${x.id}',this.checked,this)"/><span class="bp35-productinfo"><b>${esc(x.name)}</b><small>${x.qty} × ${esc(x.amount)} · selectat doar din ${calc.store}</small><small>Preț salvat; verifică valabilitatea ofertei înainte de cumpărare</small></span><span class="bp35-productprice">${ron(x.total)} lei</span></label>`).join('')}`:'';
  return ing+extra;
 }
 // Budget is always visible even if a rewarded ad (demo) has not yet been watched.
