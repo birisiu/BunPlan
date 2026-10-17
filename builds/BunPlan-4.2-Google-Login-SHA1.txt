@@ -1,1 +1,1 @@
-V2 Signer: certificate SHA-1 digest: 6908929a17e1442af670ad27f1fff7a7b8d5d448
+V2 Signer: certificate SHA-1 digest: cd0e27cf641e7f7d622e4f5c6c5172a9eb230d5f
