@@ -6,7 +6,7 @@ on:
       - 'android-native/**'
       - '.github/workflows/build-bunplan-admob-test.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,6 +23,29 @@ jobs:
           gradle-version: '8.10.2'
       - name: Build APK with Google test ads SDK
         run: gradle --no-daemon -p android-native :app:assembleDebug
+      - name: Save APK in public repository for direct installation
+        if: success()
+        run: |
+          mkdir -p builds
+          cp android-native/app/build/outputs/apk/debug/*.apk builds/BunPlan-3.6-AdMob-TEST.apk
+          printf 'SUCCESS - native test APK built on %s\n' "$(date -u)" > builds/build-status.txt
+          git config user.name bunplan-bot
+          git config user.email bunplan-bot@users.noreply.github.com
+          git add builds/
+          git commit -m "build: test AdMob APK" || true
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Record build error for diagnostics
+        if: failure()
+        run: |
+          mkdir -p builds
+          printf 'FAILURE - native build at %s. Open Actions logs.\n' "$(date -u)" > builds/build-status.txt
+          git config user.name bunplan-bot
+          git config user.email bunplan-bot@users.noreply.github.com
+          git add builds/build-status.txt
+          git commit -m "build: mark AdMob build failure" || true
+          git pull --rebase origin main
+          git push origin HEAD:main
       - uses: actions/upload-artifact@v4
         with:
           name: BunPlan-3.6-AdMob-TEST-APK
