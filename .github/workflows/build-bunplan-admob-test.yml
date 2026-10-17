@@ -43,7 +43,7 @@ jobs:
       - name: Save verified APK as workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BunPlan-4.2-Google-Login-TEST
+          name: BunPlan-4.3-UX-Google-TEST
           path: android-native/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 20
@@ -58,10 +58,10 @@ jobs:
             git fetch origin main
             git checkout -B main origin/main
             mkdir -p builds
-            cp /tmp/bunplan-release.apk builds/BunPlan-4.2-Google-Login-TEST.apk
-            cp /tmp/bunplan-sha1.txt builds/BunPlan-4.2-Google-Login-SHA1.txt
+            cp /tmp/bunplan-release.apk builds/BunPlan-4.3-UX-Google-TEST.apk
+            cp /tmp/bunplan-sha1.txt builds/BunPlan-4.3-UX-Google-SHA1.txt
             printf 'SUCCESS - APK compiled + published at %s UTC\n' "$(date -u +%FT%TZ)" > builds/build-status.txt
-            git add builds/BunPlan-4.2-Google-Login-TEST.apk builds/BunPlan-4.2-Google-Login-SHA1.txt builds/build-status.txt
+            git add builds/BunPlan-4.3-UX-Google-TEST.apk builds/BunPlan-4.3-UX-Google-SHA1.txt builds/build-status.txt
             git commit -m "build: publish BunPlan 4.2 Google Login OAuth test and signature" || true
             if git push origin HEAD:main; then
               exit 0
