@@ -244,6 +244,12 @@ revoke all on public.stores,public.store_locations,public.profiles,public.ingred
   public.product_prices,public.price_estimates,public.weekly_plans,public.planned_meals,
   public.shopping_items,public.ad_rewards,public.import_runs
   from anon,authenticated;
+-- Server-side import workers use service_role; mobile clients never receive that key.
+grant all on public.stores,public.store_locations,public.profiles,public.ingredients,
+  public.recipes,public.recipe_ingredients,public.products,public.product_ingredient_matches,
+  public.product_prices,public.price_estimates,public.weekly_plans,public.planned_meals,
+  public.shopping_items,public.ad_rewards,public.import_runs to service_role;
+grant usage,select on all sequences in schema public to service_role;
 grant select on public.stores,public.store_locations,public.ingredients,public.recipes,
   public.recipe_ingredients,public.products,public.product_ingredient_matches,
   public.product_prices,public.price_estimates to anon,authenticated;
