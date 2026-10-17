@@ -667,14 +667,20 @@ function unlockWithAd(){
  const existing=document.getElementById('ad-choice');if(existing)existing.remove();
  const b=document.createElement('div');b.id='ad-choice';
  b.style='position:fixed;inset:0;z-index:3000;background:#09281bd9;display:grid;place-items:center;padding:24px';
- b.innerHTML='<section style="background:white;border-radius:24px;padding:24px;max-width:400px"><h2>Reclamă Google de test</h2><p>Urmărește reclama pentru a debloca ingredientele pentru '+bp35.store+'. Poți renunța, fără să primești recompensa.</p><button class="btn block" id="ad-watch">Vizionează reclama</button><button class="btn block out" id="ad-skip">Nu acum</button></section>';
+ b.innerHTML='<section style="background:white;border-radius:24px;padding:24px;max-width:400px"><h2>Reclamă Google de test</h2><p>Urmărește reclama pentru a debloca ingredientele pentru '+bp35.store+'. Poți renunța, fără să primești recompensa.</p><p id="ad-status" style="font-size:12px;color:#567;padding:8px">Verific starea reclamei Google…</p><button class="btn block" id="ad-watch">Vizionează reclama</button><button class="btn block out" id="ad-skip">Nu acum</button></section>';
  document.body.appendChild(b);
  b.querySelector('#ad-skip').onclick=()=>b.remove();
  b.querySelector('#ad-watch').onclick=()=>{b.remove();window.BunPlanAds.showRewardedInterstitial(bp35Key())};
 }
 window.bp35Unlock=unlockWithAd;
 window.bunPlanOnAdEarned=function(key){if(!nativeAds||key!==bp35Key())return;state.unlocks[key]=true;storage();draw();};
-window.bunPlanOnAdError=function(message){alert('Reclama nu este disponibilă: '+message)};
+window.bunPlanAdStatus=function(message){
+ const e=document.getElementById('ad-status');
+ if(e)e.textContent='Google AdMob: '+message;
+};
+window.bunPlanOnAdError=function(message){alert('Reclama nu este disponibilă: '+message+'. Verifică internetul/consimțământul și încearcă din nou.');};
+if(nativeAds){try{window.BunPlanAds.getStatus();}catch(e){}}
+
 const old=window.draw;window.draw=function(){old();const l=document.querySelector('.bp-lock');if(l){const p=l.querySelector('p');if(p)p.textContent=nativeAds?'AdMob de test: lista se deblochează numai după recompensa confirmată.':'Acest browser nu poate afișa reclame native; testează APK-ul Android.';const b=l.querySelector('button');if(b&&b.getAttribute('onclick')==='bp35Unlock()')b.textContent='▶ Deblochează ingredientele · reclamă de test';}};
 window.draw();
 })();
