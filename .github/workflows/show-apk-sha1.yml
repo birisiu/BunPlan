@@ -1,0 +1,25 @@
+name: Show BunPlan APK Google OAuth SHA1
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/show-apk-sha1.yml'
+permissions:
+  contents: read
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read signing certificate from published BunPlan 4.1 APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK=builds/BunPlan-4.1-Security-Google-TEST.apk
+          test -s "$APK"
+          SIGNER=$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)
+          test -x "$SIGNER"
+          echo '=== Google OAuth test APK signing certificate ==='
+          "$SIGNER" verify --print-certs "$APK" | grep -E '(Signer #1 certificate SHA-1 digest|Signer #1 certificate SHA-256 digest)'
+          echo 'Package name (test): ro.bunplan.app.securitytest'
+          echo 'CAUTION: GitHub-hosted debug signing certificates can change on future builds. For durable Google OAuth configure a stable signing key kept only in GitHub secrets.'
