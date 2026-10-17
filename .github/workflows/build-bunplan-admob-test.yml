@@ -7,6 +7,9 @@ on:
       - '.github/workflows/build-bunplan-admob-test.yml'
 permissions:
   contents: write
+concurrency:
+  group: bunplan-apk-publish
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,43 +20,37 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Check preinstalled Android SDK
-        run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
-          ls "$ANDROID_HOME/platforms" || true
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.10.2'
-      - name: Build APK with Google test ads SDK
-        run: |
-          set -o pipefail
-          gradle --no-daemon -p android-native :app:assembleDebug 2>&1 | tee bunplan-build.log
-      - name: Save APK in public repository for direct installation
-        if: success()
-        run: |
-          mkdir -p builds
-          cp android-native/app/build/outputs/apk/debug/*.apk builds/BunPlan-3.7-AdMob-TEST-FIX.apk
-          printf 'SUCCESS - native test APK built on %s\n' "$(date -u)" > builds/build-status.txt
-          git config user.name bunplan-bot
-          git config user.email bunplan-bot@users.noreply.github.com
-          git add builds/
-          git commit -m "build: test AdMob APK" || true
-          git pull --rebase origin main
-          git push origin HEAD:main
-      - name: Record build error for diagnostics
-        if: failure()
-        run: |
-          mkdir -p builds
-          printf 'FAILURE - native build at %s, run %s.\n' "$(date -u)" "$GITHUB_RUN_ID" > builds/build-status.txt
-          tail -n 150 bunplan-build.log >> builds/build-status.txt || true
-          git config user.name bunplan-bot
-          git config user.email bunplan-bot@users.noreply.github.com
-          git add builds/build-status.txt
-          git commit -m "build: mark AdMob build failure" || true
-          git pull --rebase origin main
-          git push origin HEAD:main
-      - uses: actions/upload-artifact@v4
+      - name: Build APK with Google Mobile Ads and UMP
+        run: gradle --no-daemon -p android-native :app:assembleDebug
+      - name: Save verified APK as workflow artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: BunPlan-3.7-AdMob-TEST-FIX-APK
+          name: BunPlan-3.7-AdMob-TEST-FIX
           path: android-native/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+          retention-days: 20
+      - name: Publish APK to public builds folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp android-native/app/build/outputs/apk/debug/*.apk /tmp/bunplan-release.apk
+          git config user.name bunplan-bot
+          git config user.email bunplan-bot@users.noreply.github.com
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git checkout -B main origin/main
+            mkdir -p builds
+            cp /tmp/bunplan-release.apk builds/BunPlan-3.7-AdMob-TEST-FIX.apk
+            printf 'SUCCESS - APK compiled + published at %s UTC\n' "$(date -u +%FT%TZ)" > builds/build-status.txt
+            git add builds/BunPlan-3.7-AdMob-TEST-FIX.apk builds/build-status.txt
+            git commit -m "build: publish BunPlan AdMob 3.7 test" || true
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "GitHub publish conflict persisted, but APK is available in Actions Artifacts."
+          exit 1
