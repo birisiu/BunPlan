@@ -1,8 +1,8 @@
 plugins { id 'com.android.application' }
 android {
     namespace 'ro.bunplan.app'
-    compileSdk 35
-    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 35; resValue 'string','google_web_client_id',(System.getenv('BUNPLAN_GOOGLE_WEB_CLIENT_ID') ?: ''); versionCode 41; versionName '4.1-security-google' }
+    compileSdk 36
+    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 36; resValue 'string','google_web_client_id',(System.getenv('BUNPLAN_GOOGLE_WEB_CLIENT_ID') ?: ''); versionCode 41; versionName '4.1-security-google' }
     buildTypes { debug { applicationIdSuffix '.securitytest'; minifyEnabled false }; release { minifyEnabled false } }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
