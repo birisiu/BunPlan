@@ -35,6 +35,8 @@ public class MainActivity extends Activity {
     private static final String TEST_UNIT = "ca-app-pub-3940256099942544/5354046379";
     private static final Pattern PLAN_KEY = Pattern.compile("^(Lidl|Kaufland)\\|\\d{4}-\\d{2}-\\d{2}$");
     private WebView web;
+    private BunPlanGoogleBrowser googleBrowser;
+    public void authError(String message){eval("if(window.BunPlanAuthDone)window.BunPlanAuthDone(\'google\',"+new JSONObject(java.util.Collections.singletonMap("message",message)).toString().replace("{","{\"ok\":false,") + ");");}
     public void eval(String js){if(web!=null)web.evaluateJavascript(js,null);}
     private RewardedInterstitialAd rewardedAd;
     private ConsentInformation consent;
@@ -70,6 +72,8 @@ public class MainActivity extends Activity {
         web.addJavascriptInterface(auth.bridge(),"BunPlanAuth");
         web.addJavascriptInterface(new BunPlanCloud(this).bridge(),"BunPlanCloud");
         web.addJavascriptInterface(new BunPlanGoogle(this,auth).bridge(),"BunPlanGoogle");
+        googleBrowser=new BunPlanGoogleBrowser(this,auth);
+        web.addJavascriptInterface(googleBrowser.bridge(),"BunPlanGoogleBrowser");
         web.setWebViewClient(new WebViewClientCompat(){
             @Override public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r){
                 if(isBundledAsset(r.getUrl()))return loader.shouldInterceptRequest(r.getUrl());
@@ -101,6 +105,9 @@ public class MainActivity extends Activity {
         });
         setContentView(web);
         web.loadUrl(localOrigin+"/assets/index.html");
+        if(getIntent()!=null && getIntent().getData()!=null){
+            web.postDelayed(()->{if(googleBrowser!=null)googleBrowser.handleIntent(getIntent());},350);
+        }
         startConsent();
     }
 
@@ -208,6 +215,11 @@ public class MainActivity extends Activity {
         @JavascriptInterface public void getStatus() {
             runOnUiThread(()->status(lastStatus));
         }
+    }
+    @Override protected void onNewIntent(android.content.Intent intent){
+        super.onNewIntent(intent);
+        setIntent(intent);
+        if(googleBrowser!=null)googleBrowser.handleIntent(intent);
     }
     @Override protected void onDestroy() {
         if(web!=null){web.destroy();web=null;}
