@@ -41,7 +41,7 @@ jobs:
         if: failure()
         run: |
           mkdir -p builds
-          printf 'FAILURE - native build at %s.\n' "$(date -u)" > builds/build-status.txt
+          printf 'FAILURE - native build at %s, run %s.\n' "$(date -u)" "$GITHUB_RUN_ID" > builds/build-status.txt
           tail -n 150 bunplan-build.log >> builds/build-status.txt || true
           git config user.name bunplan-bot
           git config user.email bunplan-bot@users.noreply.github.com
