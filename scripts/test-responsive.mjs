@@ -100,9 +100,21 @@ try{
      legacy_key:'BP'+String(i+1).padStart(4,'0'),title:i===0?'Terci de ovăz cu mere':'Rețeta cloud '+(i+1),
      category:'Mic dejun',servings:2,minutes_to_prepare:18,
      instructions:['Spală ingredientele.','Prepară la foc mic.','Servește.'],
-     ingredient_details:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
+     ingredient_details:i===0?[{name:'mere',quantity:150,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
    }));
    await page.route('**/rest/v1/recipes**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(cloud)}));
+   const refs=Array.from({length:165},(_,i)=>i===0?'mere':i===1?'migdale':'ingredient_mock_'+i).flatMap(label=>
+     ['lidl','kaufland'].map(store_id=>({
+       label,store_id,ingredient_slug:label==='mere'?'mere':null,
+       quantity_multiplier:1,normalized_unit:'g',mapping_note:'test',
+       pack_quantity:label==='mere'?1000:null,pack_unit:label==='mere'?'g':null,
+       estimated_price_ron:label==='mere'?(store_id==='lidl'?4.49:5.89):null,
+       estimate_method:'budget_model_unverified'
+     })));
+   await page.route('**/rest/v1/bunplan_recipe_ingredient_pricing**',route=>
+     route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(refs)}));
+   await page.route('**/rest/v1/bunplan_store_catalog_prices**',route=>
+     route.fulfill({status:200,contentType:'application/json',body:JSON.stringify([{store_id:'lidl',name:'Mere Golden',pack_amount:null,pack_unit:null,amount_ron:3.49,captured_on:'2026-10-17',source_url:'https://www.lidl.ro/'}])}));
    await page.addInitScript(()=>{
      window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com'}};
      window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
@@ -119,6 +131,30 @@ try{
    if(found)await cloudButton.click();
    const details=await page.getByText('Cum se prepară, pas cu pas').isVisible();
    if(!found||!details||errors.length)failures.push({test:'cloud-catalog',searchCount,found,details,errors});
+   await page.waitForFunction(()=>BP100.some(x=>x.id==='BP0001'&&x.cloud),null,{timeout:10000});
+   const add=page.locator('button').filter({hasText:'Adaugă în plan'}).last();
+   if(await add.isVisible())await add.click();
+   const planned=await page.evaluate(()=>bp100.days[0]['Mic dejun']==='BP0001');
+   if(!planned)failures.push({test:'cloud-recipe-plan-assignment',planned});
+   await page.evaluate(()=>{state.unlocks[bp35Key()]=true;storage();go('basket100')});
+   const shopping=await page.evaluate(()=>({
+     count:document.querySelectorAll('.bp35-checklist .bp35-product input[type="checkbox"]').length,
+     missing:bp35Calc().missing,store:bp35.store,
+     subtotal:bp35Calc().total,mark:document.body.textContent.includes('subtotal')
+   }));
+   if(shopping.count!==2||shopping.missing!==1||shopping.store!=='Lidl'||!shopping.mark)
+      failures.push({test:'cloud-recipe-shopping',shopping});
+   await page.evaluate(()=>document.querySelector('.bp35-checklist input[type="checkbox"]')?.click());
+   const checked=await page.evaluate(()=>document.querySelector('.bp35-boughtheading span')?.textContent);
+   if(!checked?.startsWith('1/'))failures.push({test:'cloud-recipe-checkbox',checked});
+   const prices=await page.evaluate(()=>{
+      const lidl=bp35Calc().total;
+      bp35ChooseStore('Kaufland');bp100.days[0]['Mic dejun']='BP0001';bp35Commit();
+      const kaufland=bp35Calc().total;
+      const storeIsolation=Object.values(bp35.bought[bp35Key()]||{}).some(Boolean);
+      return {lidl,kaufland,storeIsolation};
+   });
+   if(!(prices.kaufland>prices.lidl)||prices.storeIsolation)failures.push({test:'store-pricing-and-purchased-isolation',prices});
    await page.close();
  }
 }catch(e){failures.push({fatal:String(e.stack||e)})}
