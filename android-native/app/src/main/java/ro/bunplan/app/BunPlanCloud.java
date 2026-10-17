@@ -79,9 +79,40 @@ public class BunPlanCloud {
     callback(action,response);
   });
  }
+ private void permanentlyDeleteAccount(){
+  pool.execute(()->{
+    JSONObject result=new JSONObject();
+    try{
+      String token=vault.token();
+      if(token.isEmpty())throw new Exception("Sesiunea a expirat. Autentifică-te din nou.");
+      JSONObject body=new JSONObject(http("/functions/v1/delete-account",
+          new JSONObject().put("confirmation","ȘTERGE"),token));
+      if(!body.optBoolean("ok"))throw new Exception("Serverul nu a confirmat ștergerea.");
+      vault.clear();
+      result.put("ok",true).put("message","Contul și datele au fost șterse.");
+    }catch(Exception ex){
+      try{result.put("ok",false).put("message",ex.getMessage());}catch(Exception ignored){}
+    }
+    callback("delete",result);
+  });
+ }
  public class Bridge {
   @JavascriptInterface public void saveWeek(String store,String week,double budget,String days){call("save",store,week,budget,days);}
   @JavascriptInterface public void loadWeek(String store,String week){call("load",store,week,0,"[]");}
+  @JavascriptInterface public void deleteAccount(String typed){
+   activity.runOnUiThread(()->{
+     if(!"ȘTERGE".equals(typed)){
+       callback("delete",new org.json.JSONObject(java.util.Collections.singletonMap("message","Scrie ȘTERGE pentru confirmare.")));
+       return;
+     }
+     new android.app.AlertDialog.Builder(activity)
+       .setTitle("Ștergere definitivă cont")
+       .setMessage("Contul BunPlan, meniurile și datele asociate vor fi eliminate. Operația nu poate fi anulată.")
+       .setNegativeButton("Renunță",(dialog,which)->dialog.dismiss())
+       .setPositiveButton("Șterge definitiv",(dialog,which)->permanentlyDeleteAccount())
+       .show();
+   });
+  }
  }
  public Bridge bridge(){return new Bridge();}
 }
