@@ -2,7 +2,8 @@
 
 Aplicație în dezvoltare pentru meniuri săptămânale, buget alimentar și liste de cumpărături pe magazin.
 
-- [APK Android 4.1 — securitate + Google Credential Manager TEST](https://raw.githubusercontent.com/birisiu/BunPlan/main/builds/BunPlan-4.1-Security-Google-TEST.apk) — compilat, Google OAuth necesită configurarea Google Cloud
+- [APK Android 4.2 — Google Login TEST](https://raw.githubusercontent.com/birisiu/BunPlan/main/builds/BunPlan-4.2-Google-Login-TEST.apk) — compilat cu clientul OAuth Web, necesită configurarea Google Provider în Supabase și Android OAuth client corelat cu SHA-1
+- [Pașii de configurare Google OAuth](GOOGLE_OAUTH_SETUP.md)
 - [Checklist securitate și cerințe Google Play](SECURITY_GOOGLE_PLAY_CHECKLIST.md)
 - [Instalare backend Supabase și autentificare reală](BACKEND_SETUP.md) — migrarea este pregătită, serverul trebuie configurat
 - [Migrare PostgreSQL și RLS](supabase/migrations/20261017181500_bunplan_foundation.sql)
