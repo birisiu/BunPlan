@@ -34,7 +34,7 @@ def main():
         sheet="EPEL" if "EPEL" in book.sheets else book.sheets[0]
         with book.get_sheet(sheet) as sh:
             rows=([c.v for c in row] for row in sh.rows(sparse=False))
-            header=None;products={};headers_seen=0
+            header=None;products={};conflicts={};headers_seen=0
             for line in rows:
                 normalized=[norm(x) for x in line]
                 if header is None:
@@ -62,14 +62,27 @@ def main():
                 record={"id":pid,"name":name,"size":size,"category":cat,"price_ron":price,
                         "currency":"RON","shop":"Lidl","image_url":None,"stock_status":"unknown",
                         "source_url":SOURCE,"is_promotion":False}
+                if pid in conflicts:
+                    conflicts[pid]["prices"].add(price)
+                    continue
                 if pid in products and products[pid]["price_ron"]!=price:
-                    raise RuntimeError("Ambiguous duplicate product price: "+name)
+                    # The published workbook occasionally reuses a product description
+                    # for distinct rows with different prices. Without a stable article/EAN
+                    # code, neither price is safe to associate with that description.
+                    old=products.pop(pid)
+                    conflicts[pid]={"name":name,"prices":{old["price_ron"],price}}
+                    continue
                 products[pid]=record
+    if conflicts:
+        print(f"Excluded {len(conflicts)} ambiguous product descriptions with conflicting prices.")
+        for item in list(conflicts.values())[:20]:
+            print(f"AMBIGUOUS {item['name']}: {sorted(item['prices'])}")
     if len(products)<200:raise RuntimeError(f"Only {len(products)} food products: not updating existing data")
     now=datetime.now(timezone.utc).isoformat(timespec="seconds")
     payload={"meta":{"store":"Lidl Romania","checked_at":now,"product_count":len(products),
             "source_url":SOURCE,"price_scope":"national permanent assortment; not store-specific",
-            "stock_available":False,"promotions_included":False,"images_included":False},
+            "stock_available":False,"promotions_included":False,"images_included":False,
+            "ambiguous_products_excluded":len(conflicts)},
             "products":sorted(products.values(),key=lambda p:(norm(p["category"]),norm(p["name"])))}
     for directory in (ROOT/"data",ROOT/"docs"/"api"/"lidl"):
         directory.mkdir(parents=True,exist_ok=True)
