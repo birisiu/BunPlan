@@ -1,5 +1,19 @@
 # Google Sign-In pentru BunPlan — configurare OAuth
 
+## Soluția alternativă când Google Play Services nu poate autentifica (BunPlan 4.3)
+
+Butonul principal **„Continuă cu Google”** deschide un browser securizat (Chrome Custom Tabs), cu OAuth PKCE. Nu folosește Google Credential Manager și nu necesită selectorul nativ din Play Services.
+
+**Acțiune obligatorie, de făcut manual în Supabase:** în [Authentication → URL Configuration](https://supabase.com/dashboard/project/aedyviqoelgbbrrtwayu/auth/url-configuration), la **Redirect URLs / Additional Redirect URLs**, adaugă exact:
+`bunplan://oauth-callback`
+
+Această adresă este interceptată numai de aplicația Android BunPlan care are un flux PKCE valid în curs. Google Cloud Web OAuth client trebuie să păstreze redirect-ul către Supabase:
+`https://aedyviqoelgbbrrtwayu.supabase.co/auth/v1/callback`.
+
+**Verifică Google Provider activ** în [Supabase Auth Providers](https://supabase.com/dashboard/project/aedyviqoelgbbrrtwayu/auth/providers). Client Secret trebuie să fie valoarea NOUĂ rotită în Google Cloud, nepublicată. Dacă Google Cloud proiectul este în Testing, adaugă contul de test în Audience.
+
+Butonul secundar **„Folosește contul Google de pe telefon”** rămâne opțiunea nativă; în cazul unei erori se afișează **tipul exact** de eroare Credential Manager / Play Services. Acesta poate depinde de clientul Google Android, SHA-1 și disponibilitatea Google Play Services.
+
 ## 1. Acreditări Google Cloud
 
 Clientul Web OAuth este de tipul corect. **Client ID-ul este public** și este introdus în `android-native/app/build.gradle` ca valoare implicită pentru `google_web_client_id`.
