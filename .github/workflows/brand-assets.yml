@@ -1,0 +1,42 @@
+name: Add supermarket identification logos
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/brand-assets.yml'
+permissions:
+  contents: write
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download verified retailer SVGs from Wikimedia Commons
+        run: |
+          set -euo pipefail
+          mkdir -p android-native/app/src/main/assets/brands
+          curl --fail --location --retry 3 --silent --show-error 'https://upload.wikimedia.org/wikipedia/commons/9/91/Lidl-Logo.svg' -o android-native/app/src/main/assets/brands/lidl.svg
+          curl --fail --location --retry 3 --silent --show-error 'https://upload.wikimedia.org/wikipedia/commons/4/44/Kaufland_201x_logo.svg' -o android-native/app/src/main/assets/brands/kaufland.svg
+          for file in android-native/app/src/main/assets/brands/*.svg; do
+            test "$(wc -c < "$file")" -lt 60000
+            grep -qi '<svg' "$file"
+            ! grep -Eiq '<script|onload=|javascript:' "$file"
+          done
+      - name: Commit bundled logos for offline display
+        run: |
+          git config user.name bunplan-bot
+          git config user.email bunplan-bot@users.noreply.github.com
+          for attempt in 1 2 3; do
+            cp android-native/app/src/main/assets/brands/lidl.svg /tmp/bp-lidl.svg
+            cp android-native/app/src/main/assets/brands/kaufland.svg /tmp/bp-kaufland.svg
+            git fetch origin main
+            git checkout -B main origin/main
+            mkdir -p android-native/app/src/main/assets/brands
+            cp /tmp/bp-lidl.svg android-native/app/src/main/assets/brands/lidl.svg
+            cp /tmp/bp-kaufland.svg android-native/app/src/main/assets/brands/kaufland.svg
+            git add android-native/app/src/main/assets/brands/
+            git commit -m 'assets: bundle verified Lidl and Kaufland identification logos' || exit 0
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 3
+          done
+          exit 1
