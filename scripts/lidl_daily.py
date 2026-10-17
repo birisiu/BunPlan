@@ -15,6 +15,13 @@ FOOD=("lactate","branz","legume","fructe","carne","peste","paine","patiserie",
       "miere","gem","dulcet","proaspete","produse de baza","ulei",
       "unt","margarina","copt","supe","inghetata","mezeluri")
 EXCLUDE=re.compile(r"\b(bere|vin|vodca|vodka|whisky|gin|rom|lichior|prosecco|sampanie|cidru|tequila|alcool|coniac)\b",re.I)
+# "Bauturi" also contains alcoholic drinks. Do not assume everything in it is food.
+SAFE_DRINK_TERMS=("apa ","apa.","apa_","apa minerala","aqua ","suc ","suc de ","nectar",
+                  "limonad","racoritoare","racorit.","baut.rac","baut. rac",
+                  "cola","fanta","sprite","schweppes","tonic","ice tea","iced tea",
+                  "ceai ","sirop ","smoothie","juice","energizant","energy drink",
+                  "isotonic","zero zahar","fresh ","protein drink","whey drink",
+                  "0% alc","bautura fara alcool","bautura nealcoolica")
 def norm(x):
     s=unicodedata.normalize("NFKD",str(x or ""))
     return " ".join("".join(c for c in s if not unicodedata.combining(c)).lower().split())
@@ -57,6 +64,10 @@ def main():
                 except IndexError:continue
                 nc=norm(cat)
                 if not name or not price or not any(word in nc for word in FOOD) or EXCLUDE.search(norm(name)):continue
+                if nc=="bauturi":
+                    nn=norm(name)
+                    if not any(term in nn for term in SAFE_DRINK_TERMS):
+                        continue
                 key=norm(name)+"|"+norm(size).replace(" ","")+"|"+nc
                 pid="lidl-"+hashlib.sha256(key.encode()).hexdigest()[:18]
                 record={"id":pid,"name":name,"size":size,"category":cat,"price_ron":price,
