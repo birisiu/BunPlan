@@ -96,9 +96,29 @@ public class BunPlanCloud {
     callback("delete",result);
   });
  }
+ private void profileRequest(String action,String json){
+  pool.execute(()->{
+    JSONObject result=new JSONObject();
+    try {
+      String token=vault.token();
+      if(token.isEmpty())throw new Exception("Autentifică-te pentru a salva profilul");
+      String method=action.equals("profile-save")?"save_bunplan_profile":"load_bunplan_profile";
+      JSONObject request=action.equals("profile-save")
+          ?new JSONObject().put("p_preferences",new JSONObject(json))
+          :new JSONObject();
+      String data=http("/rest/v1/rpc/"+method,request,token);
+      result.put("ok",true).put("data",new JSONObject(data));
+    }catch(Exception error){
+      try{result.put("ok",false).put("message",error.getMessage());}catch(Exception ignored){}
+    }
+    callback(action,result);
+  });
+ }
  public class Bridge {
   @JavascriptInterface public void saveWeek(String store,String week,double budget,String days){call("save",store,week,budget,days);}
   @JavascriptInterface public void loadWeek(String store,String week){call("load",store,week,0,"[]");}
+  @JavascriptInterface public void saveProfile(String json){profileRequest("profile-save",json);}
+  @JavascriptInterface public void loadProfile(){profileRequest("profile-load","{}");}
   @JavascriptInterface public void deleteAccount(String typed){
    activity.runOnUiThread(()->{
      if(!"ȘTERGE".equals(typed)){
