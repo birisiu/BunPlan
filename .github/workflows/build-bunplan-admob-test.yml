@@ -27,10 +27,21 @@ jobs:
         env:
           BUNPLAN_GOOGLE_WEB_CLIENT_ID: ${{ vars.BUNPLAN_GOOGLE_WEB_CLIENT_ID }}
         run: gradle --no-daemon -p android-native :app:assembleDebug
+      - name: Verify Android signing certificate and write Google SHA-1 metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK=$(find android-native/app/build/outputs/apk/debug -name '*.apk' -type f | head -1)
+          SIGNER=$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)
+          test -s "$APK"
+          "$SIGNER" verify --print-certs "$APK" > /tmp/bunplan-apk-certificates.txt
+          cat /tmp/bunplan-apk-certificates.txt
+          grep -i 'certificate SHA-1 digest' /tmp/bunplan-apk-certificates.txt | head -1 > /tmp/bunplan-sha1.txt
+          cat /tmp/bunplan-sha1.txt
       - name: Save verified APK as workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BunPlan-4.1-Security-Google-TEST
+          name: BunPlan-4.2-Google-Login-TEST
           path: android-native/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 20
@@ -45,10 +56,11 @@ jobs:
             git fetch origin main
             git checkout -B main origin/main
             mkdir -p builds
-            cp /tmp/bunplan-release.apk builds/BunPlan-4.1-Security-Google-TEST.apk
+            cp /tmp/bunplan-release.apk builds/BunPlan-4.2-Google-Login-TEST.apk
+            cp /tmp/bunplan-sha1.txt builds/BunPlan-4.2-Google-Login-SHA1.txt
             printf 'SUCCESS - APK compiled + published at %s UTC\n' "$(date -u +%FT%TZ)" > builds/build-status.txt
-            git add builds/BunPlan-4.1-Security-Google-TEST.apk builds/build-status.txt
-            git commit -m "build: publish BunPlan AdMob 3.7 test" || true
+            git add builds/BunPlan-4.2-Google-Login-TEST.apk builds/BunPlan-4.2-Google-Login-SHA1.txt builds/build-status.txt
+            git commit -m "build: publish BunPlan 4.2 Google Login OAuth test and signature" || true
             if git push origin HEAD:main; then
               exit 0
             fi
