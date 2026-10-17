@@ -1,0 +1,38 @@
+name: Kaufland parser diagnosis
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/kaufland-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install requests beautifulsoup4
+      - name: Examine public offers HTML
+        run: |
+          python - <<'PY'
+          import requests,bs4
+          u='https://www.kaufland.ro/oferte/prezentare-generala-oferte.html'
+          r=requests.get(u,timeout=25,headers={'User-Agent':'Mozilla/5.0 (compatible; BunPlan/1.0)'})
+          print('STATUS',r.status_code,'LENGTH',len(r.content),'FINAL',r.url)
+          print('PREVIEW',r.text[:200])
+          s=bs4.BeautifulSoup(r.text,'html.parser')
+          for pattern in ('Piept de pui','Lămâi','Laptele','Banane','Orez'):
+            matches=s.find_all(string=lambda t: bool(t and pattern.lower() in t.lower()),limit=5)
+            print('MATCH',pattern,len(matches))
+            for t in matches[:3]:
+              p=t.parent
+              print('TOKEN',repr(str(t)[:100]))
+              for i in range(3):
+                if not p:break
+                print('ANCESTOR',i,p.name,str(p.get('class','')),p.get_text(' ',strip=True)[:350])
+                p=p.parent
+          for key in ('kloffer','offer-card','product','price'):
+            tags=s.select('[class*="'+key+'"]')
+            print('CSS',key,len(tags),'first',str(tags[0])[:800] if tags else 'none')
+          PY
