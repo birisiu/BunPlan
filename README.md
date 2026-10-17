@@ -1,7 +1,29 @@
-# BunPlan
+# BunPlan – catalog Lidl România
 
-Aplicație demonstrativă de planificare a meniului săptămânal și a cumpărăturilor.
+Acest repository public conține importatorul pentru lista oficială Lidl România de prețuri a **sortimentului permanent**. Scopul este furnizarea unui catalog alimentar pentru aplicația de planificare a meselor BunPlan.
 
-Modulul Lidl importă prețurile sortimentului permanent din lista oficială publicată de Lidl România. Nu indică stocurile locale și nu cuprinde toate promoțiile.
+## Catalogul public
 
-Actualizarea prin GitHub Actions necesită prima rulare manuală și verificarea jurnalelor.
+- [JSON complet](https://raw.githubusercontent.com/birisiu/BunPlan/main/docs/api/lidl/lidl_products.json)
+- [CSV](https://github.com/birisiu/BunPlan/blob/main/data/lidl_products.csv)
+- [Rulări GitHub Actions](https://github.com/birisiu/BunPlan/actions/workflows/lidl-daily.yml)
+
+Fișierul JSON conține: `meta.checked_at`, `meta.product_count` și `products` cu `id`, `name`, `size`, `category`, `price_ron`, `shop` și `source_url`.
+
+## Actualizare
+
+Workflow: `.github/workflows/lidl-daily.yml`. Este programat zilnic la **09:30 UTC** și rulează și după modificări ale importatorului. Procesul descarcă XLSB din lista publicată de Lidl, filtrează alimentele și băuturile nealcoolice, păstrează separat descrierile ambigue și publică doar după validare.
+
+Pentru rerulare manuală: **Actions → Lidl daily food prices → Run workflow**.
+
+## Limite importante
+
+- **Nu** este un API oficial Lidl și nu oferă date de stoc la nivel de magazin.
+- Prețurile reflectă fișierul public Lidl și **nu includ promoțiile temporare**, Lidl Plus sau imaginile produselor.
+- Produsele fără identificator unic și cu prețuri contradictorii sunt excluse din importul principal pentru a evita informații greșite.
+- Contul de produse poate varia în fiecare zi. Verificați mereu câmpul `meta.checked_at`.
+- Reutilizarea comercială a datelor și a mărcilor/fotografiilor trebuie verificată separat.
+
+## Integrarea în aplicație
+
+Aplicația BunPlan 3.2 încarcă JSON-ul public prin HTTPS la pornire și poate reutiliza ultima copie salvată când nu există internet. Datele Lidl nu trebuie confundate cu prețurile istorice ale altor retaileri.
