@@ -18,6 +18,55 @@
 .bp-meal{display:flex;align-items:center;justify-content:space-between;gap:8px;background:white;border:1px solid #e7ebe1;border-radius:18px;margin:9px 0;padding:12px}.bp-meal div:first-child{min-width:0}.bp-meal small,.bp-meal span{display:block;font-size:10px;color:#748a7d;margin:4px 0}.bp-meal b{display:block;font-size:13px;line-height:1.35}.bp-meal button{border:0;background:#edf4e6;color:#226b4f;border-radius:9px;padding:8px;font-weight:700;font-size:11px;margin-left:4px}
 .bp-checkbox{display:flex;gap:8px;align-items:center;font-size:11px;margin:14px 0;line-height:1.4;color:#355c48}.bp-checkbox input{width:17px;height:17px}
 .bp-lock{text-align:center;background:white;border-radius:21px;padding:25px 18px;border:1px solid #e1e7dc}.bp-lock b{display:block;margin-top:12px;font-size:18px}.bp-lock p{font-size:12px;color:#78897e;line-height:1.6}.bp-sum{background:#113d2c;border-radius:21px;color:white;padding:19px;margin:18px 0}.bp-sum small,.bp-sum span{display:block;color:#d6e4dc}.bp-sum strong{display:block;font-size:30px;margin:7px 0}.bp-sum span{font-size:11px;line-height:1.6}
+
+/* BunPlan 4.3 responsive layout, safe-area support, retailer identification */
+html,body{width:100%;overflow-x:hidden}
+.app{width:100%;max-width:780px;margin:0 auto;min-height:100dvh}
+.scroll{padding:clamp(15px,4vw,28px) clamp(14px,4vw,28px) calc(112px + env(safe-area-inset-bottom));overflow-wrap:anywhere}
+.bottom{max-width:780px;gap:2px;padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
+.nav{min-width:0;flex:1;min-height:49px;padding:6px 2px;font-size:clamp(9px,2.7vw,12px);white-space:nowrap}
+.nav .ni{font-size:20px}.nav.active .ni{padding:0 8px}
+button{touch-action:manipulation;min-height:40px}input,select,textarea{max-width:100%;min-width:0}input[type=date]{font-size:16px}
+.storebrand{display:inline-flex;align-items:center;justify-content:flex-start;gap:9px;font-weight:800;min-width:0}
+.storebrand img{width:39px;height:39px;object-fit:contain;border-radius:9px;flex-shrink:0}
+.storebrand .storebrand-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp35-store .storebrand img{width:42px;height:42px}
+.bp35-storegrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.bp35-store{min-width:0;min-height:90px;overflow:hidden}
+.bp35-store>span,.bp35-store>b,.bp35-store>small{min-width:0}
+.store-brand-lidl{border-color:#d0d9f4;background:linear-gradient(135deg,#fff,#fffceb)}
+.store-brand-kaufland{border-color:#f0d9dd;background:linear-gradient(135deg,#fff,#fff5f5)}
+.brand-disclaimer{color:#8b9187;font-size:10px;line-height:1.5;margin:13px 0}
+.profile-hero{background:linear-gradient(135deg,#174e3a,#267458);padding:20px;border-radius:23px;color:white;margin:13px 0 18px;display:flex;gap:12px;align-items:center}
+.profile-hero strong{font-size:19px;display:block}.profile-hero small{font-size:12px;color:#d2eddd;display:block;margin-top:6px;overflow-wrap:anywhere}
+.profile-avatar{border-radius:17px;min-width:52px;height:52px;display:grid;place-items:center;background:#e5f4ba;color:#184c35;font-weight:900;font-size:20px}
+.profile-block{margin:16px 0;padding:19px;border:1px solid var(--border);border-radius:21px;background:#fff}
+.profile-block h2{font-size:17px;margin:0 0 14px;letter-spacing:-.3px}
+.profile-label{font-size:12px;font-weight:800;margin:17px 0 8px;color:#476b56}
+.profile-choice{display:flex;flex-wrap:wrap;gap:8px}
+.profile-choice button{border-radius:100px;min-height:43px;border:1px solid var(--border);padding:9px 14px;font-size:12px;background:#f7f9f3;color:#234b35}
+.profile-choice button.active{background:#195b41;color:#fff;border-color:#195b41}
+.profile-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.profile-action{margin:6px 0;width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between}
+.profile-store-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.profile-store-buttons button{border:1.5px solid var(--border);border-radius:16px;background:#fff;padding:12px 10px;display:flex;gap:9px;align-items:center;min-width:0;font-size:12px;font-weight:800}
+.profile-store-buttons button.active{border-color:#2c744c;background:#eff9db}
+.profile-store-buttons img{height:35px;width:35px;object-fit:contain}
+.profile-status{font-size:12px;line-height:1.4;min-height:18px;color:#416b4b}
+.title{font-size:clamp(24px,5.7vw,32px);overflow-wrap:anywhere}
+@media(max-width:359px){
+ .scroll{padding-left:12px;padding-right:12px}
+ .recipes{gap:8px}.recipebody{padding:10px}.recipebody strong{font-size:12px}
+ .profile-block{padding:14px}.profile-store-buttons img{width:29px;height:29px}
+ .storebrand img{width:31px;height:31px}
+ .nav .ni{font-size:18px}
+}
+@media(min-width:560px){
+ .recipes{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .hero{min-height:180px}
+ .profile-block{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style><style id="real-catalog-style">
 .real-banner{background:#e9f5df;border:1px solid #d0e5c4;color:#18452f;border-radius:18px;padding:14px;font-size:12px;line-height:1.5;margin:15px 0}.cataloglink{background:#153c2d;color:white;border-radius:22px;padding:18px;margin-top:18px}.cataloglink h3{margin:5px 0 9px;font-size:18px}.cataloggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}.p-card{background:white;border:1px solid #e7eae0;border-radius:20px;padding:11px;overflow:hidden}.p-ph{height:138px;border-radius:15px;background:#f3f5ef;display:grid;place-items:center;margin-bottom:9px;overflow:hidden}.p-ph img{width:100%;height:100%;object-fit:contain;padding:5px}.p-icon{font-size:53px}.p-name{font-size:13px;font-weight:800;min-height:36px;line-height:1.35}.p-brand{font-size:11px;color:#718376}.p-price{color:#143f30;font-weight:900;font-size:22px;margin:5px 0}.p-unit{color:#7b8c82;font-size:11px}.p-pill{display:inline-flex;background:#eef4e6;border-radius:999px;padding:4px 7px;font-weight:800;color:#31704a;font-size:9px;margin:6px 0}.p-pill.sale{background:#ffedd9;color:#a34d18}.p-foot{font-size:10px;color:#7a8b81;line-height:1.4;min-height:26px}.p-actions{display:flex;gap:5px;margin-top:9px}.p-actions button{font-size:10px;padding:8px;border-radius:10px;border:1px solid #dbe5d6;background:white;font-weight:800;color:#164936;flex:1}.p-actions button.add{background:#d6f47b;color:#173d2b;border:0}.p-headsearch{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #e2e9db;background:white;font:inherit}.p-source{text-decoration:underline;color:#245f4b}.p-muted{font-size:12px;color:#839185}.p-stores{display:flex;gap:7px;overflow:auto;padding:4px 0 10px}.p-stores button{white-space:nowrap}.p-linerow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e6eae2}.p-linerow img{width:48px;height:52px;object-fit:contain}.p-linerow .p-emoji{width:48px;text-align:center;font-size:28px}.p-total{padding:13px;border-radius:14px;background:#e5f4d5;color:#143d29;font-weight:800;margin:12px 0}.p-ribbon{font-size:10px;letter-spacing:.3px;color:#677d67}.p-itemoffer{display:flex;gap:10px;align-items:center;padding:10px;background:white;border:1px solid #e6eae0;border-radius:15px;margin-top:8px}.p-itemoffer img{width:45px;height:47px;object-fit:contain}.p-itemoffer .price{font-weight:800;color:#19523b}
 
@@ -609,7 +658,7 @@ function bp35Unit(x){return x.unit==='buc'?'buc.':x.unit}
 function bp35Pack(row){return row.loose?'la vrac · aprox. '+Math.ceil(row.pricedQty)+' g':row.count+' × '+bp34PackLabel(row.a.unit,row.packageQty)}
 function bp35PriceStatus(row){return row.type==='published'?'Preț publicat · '+row.store:row.type==='manual'?'Preț introdus de tine · '+row.store:'Preț estimat · '+row.store}
 function bp35Badge(row){return `<span class="bp35-badge ${row.type==='published'?'ok':row.type==='manual'?'manual':'estimate'}">${row.type==='published'?'Publicat':row.type==='manual'?'Introdus':'Estimativ'}</span>`}
-function bp35StoreSelect(){return `<div class="bp35-choice"><div class="bp35-eyebrow">PASUL 1 · UNDE FACI CUMPĂRĂTURILE?</div><div class="bp35-storegrid">${BP35_STORES.map(s=>`<button class="bp35-store ${bp35.store===s?'active':''}" onclick="bp35ChooseStore('${s}')"><span>${s==='Lidl'?'🟡':'🔴'} ${s}</span>${bp35.store===s?'<b>✓ Selectat</b>':'<small>Alege magazinul</small>'}</button>`).join('')}</div><small>Fiecare magazin are propriul meniu, propria listă și propriile prețuri. Nu se amestecă.</small></div>`}
+function bp35StoreSelect(){return `<div class="bp35-choice"><div class="bp35-eyebrow">PASUL 1 · UNDE FACI CUMPĂRĂTURILE?</div><div class="bp35-storegrid">${BP35_STORES.map(s=>`<button class="bp35-store ${bp35.store===s?'active':''}" onclick="bp35ChooseStore('${s}')"><span>${bpStoreBrand(s)}</span>${bp35.store===s?'<b>✓ Selectat</b>':'<small>Alege magazinul</small>'}</button>`).join('')}</div><small>Fiecare magazin are propriul meniu, propria listă și propriile prețuri. Nu se amestecă.</small></div>`}
 function bp35WeekSelect(){return `<div class="bp35-week"><div><span class="bp35-eyebrow">PASUL 2 · SĂPTĂMÂNA PENTRU CARE PLANIFICI</span><b>${bp35Pretty(bp35.week)} – ${bp35Pretty(bp35ISO(bp35Date(bp35.week,6)))}</b></div><div class="bp35-weekcontrols"><button onclick="bp35NextWeek(-1)" aria-label="Săptămâna anterioară">‹</button><input type="date" aria-label="Alege data săptămânii" value="${bp35.week}" onchange="bp35ChooseWeek(this.value)"/><button onclick="bp35NextWeek(1)" aria-label="Săptămâna următoare">›</button></div></div>`}
 function bp35Progress(){return `<div class="bp35-progress"><span>① Magazin</span><span>② Rețete</span><span>③ Lista de cumpărături</span></div>`}
 const bp35OldLibrary=bpLibrary;
@@ -733,5 +782,136 @@ window.draw();
  draw();
  alert('Meniul pentru '+bp35.store+' a fost încărcat din cloud.');
  };
+})();
+</script><script>
+(function(){
+'use strict';
+const LOGOS={Lidl:'brands/lidl.svg',Kaufland:'brands/kaufland.svg'};
+const nativeAuth=window.BunPlanAuth,nativeCloud=window.BunPlanCloud;
+window.bpStoreBrand=function(s){
+ if(!LOGOS[s])return '<span>'+esc(s)+'</span>';
+ return '<span class="storebrand"><img src="'+LOGOS[s]+'" alt="Sigla '+s+'"/><span class="storebrand-name">'+s+'</span></span>';
+};
+let exclusionPrefs=[];
+let working={name:'',meals:3,time:30,city:'București'};
+const qs=localStorage.getItem('bunplan_onboard_v2');
+let onboard=null;try{onboard=JSON.parse(qs);}catch(e){}
+function preferences(){
+ return {name:working.name||state.name,adults:state.adults,children:state.children,
+   diet:state.diet,exclusions:exclusionPrefs,budget:state.budget,
+   meals:working.meals,time:working.time,city:state.city,store:bp35.store};
+}
+function applyPrefs(p){
+ if(!p||typeof p!=='object')return;
+ if(typeof p.name==='string'&&p.name.trim())state.name=p.name.trim().slice(0,80);
+ if(Number.isInteger(+p.adults))state.adults=Math.max(1,Math.min(12,+p.adults));
+ if(Number.isInteger(+p.children))state.children=Math.max(0,Math.min(12,+p.children));
+ if(typeof p.diet==='string')state.diet=p.diet.slice(0,64);
+ if(Array.isArray(p.exclusions))exclusionPrefs=p.exclusions.filter(x=>typeof x==='string').slice(0,20);
+ if(Number.isFinite(+p.budget))state.budget=Math.max(50,Math.min(100000,+p.budget));
+ if(Number.isInteger(+p.meals))working.meals=Math.max(1,Math.min(5,+p.meals));
+ if(Number.isInteger(+p.time))working.time=Math.max(5,Math.min(240,+p.time));
+ if(typeof p.city==='string')state.city=p.city.slice(0,100);
+ if(p.store==='Lidl'||p.store==='Kaufland') {
+   if(p.store!==bp35.store)bp35ChooseStore(p.store);
+ }
+ working.name=state.name;
+ storage();draw();
+}
+window.bpProfileSave=function(){
+ if(nativeCloud)nativeCloud.saveProfile(JSON.stringify(preferences()));
+ else alert('Salvarea online funcționează în aplicația Android.');
+};
+window.bpProfileReload=function(){
+ if(nativeCloud)nativeCloud.loadProfile();
+};
+window.bpProfileUpdate=function(k,v){
+ if(k==='budget')state.budget=Math.max(50,Math.min(100000,+v));
+ else if(k==='name'){state.name=String(v).trim().slice(0,80);working.name=state.name;}
+ else if(k==='city')state.city=String(v).trim().slice(0,100);
+ else if(k==='adults')state.adults=+v;
+ else if(k==='children')state.children=+v;
+ else if(k==='diet')state.diet=v;
+ else if(k==='meals')working.meals=+v;
+ else if(k==='time')working.time=+v;
+ else if(k==='store'){bp35ChooseStore(v);state.store=v;state.stores=[v];}
+ else if(k==='exclude')exclusionPrefs=exclusionPrefs.includes(v)?exclusionPrefs.filter(x=>x!==v):[...exclusionPrefs,v];
+ else return;
+ storage();draw();
+};
+function buttons(key,options,current){
+ return '<div class="profile-choice">'+options.map(v=>'<button class="'+(current===v?'active':'')+'" onclick="bpProfileUpdate(\''+key+'\', '+JSON.stringify(v).replace(/"/g,'&quot;')+')">'+esc(String(v))+'</button>').join('')+'</div>';
+}
+function profileBlock(title,body){return '<section class="profile-block"><h2>'+title+'</h2>'+body+'</section>'}
+function profileLabel(label){return '<div class="profile-label">'+label+'</div>'}
+window.profileScreen=function(){
+ const email=nativeAuth?nativeAuth.currentEmail():'';
+ const name=esc(state.name||'Utilizator BunPlan');
+ let out=commonTop()+heading('Profilul meu','Preferințele tale și contul BunPlan, într-un singur loc.');
+ out+='<div class="profile-hero"><div class="profile-avatar">'+esc((state.name||'B').slice(0,1).toUpperCase())+'</div><div style="min-width:0;flex:1"><strong>'+name+'</strong><small>'+esc(email)+'</small><small>Cont securizat • Supabase</small></div></div>';
+ out+=profileBlock('Date personale',
+   profileLabel('Nume afișat')+'<input class="field" aria-label="Nume" maxlength="80" value="'+esc(state.name)+'" onchange="bpProfileUpdate(\'name\',this.value)">'+
+   profileLabel('E-mail de autentificare')+'<input class="field" readonly value="'+esc(email)+'" aria-label="E-mail cont">'+
+   '<small class="muted">Adresa e-mail se gestionează prin autentificarea securizată. Nu se modifică direct din profil.</small>');
+ out+=profileBlock('Buget și familie',
+   profileLabel('Buget săptămânal: '+state.budget+' lei')+
+   '<input type="range" min="100" max="2000" step="25" style="width:100%;accent-color:#195b41" value="'+state.budget+'" onchange="bpProfileUpdate(\'budget\',+this.value)">'+
+   profileLabel('Adulți')+buttons('adults',[1,2,3,4],state.adults)+
+   profileLabel('Copii')+buttons('children',[0,1,2,3],state.children));
+ out+=profileBlock('Preferințe alimentare',
+   profileLabel('Stil alimentar')+buttons('diet',['Echilibrat','Economic','Vegetarian','Bogat în proteine'],state.diet)+
+   profileLabel('Exclude din sugestii (opțional)')+'<div class="profile-choice">'+
+   ['Lactate','Gluten','Ouă','Pește','Nuci'].map(x=>'<button class="'+(exclusionPrefs.includes(x)?'active':'')+'" onclick="bpProfileUpdate(\'exclude\', '+JSON.stringify(x).replace(/"/g,'&quot;')+')">'+esc(x)+'</button>').join('')+'</div>'+
+   '<div class="notice">Excluderile sunt preferințe. Pentru alergii, verifică întotdeauna ingredientele și etichetele.</div>'+
+   profileLabel('Mese pe zi')+buttons('meals',[2,3],working.meals)+
+   profileLabel('Timp maxim pentru o rețetă')+buttons('time',[15,30,45,60],working.time));
+ out+=profileBlock('Magazin și locație',
+   '<div class="profile-store-buttons">'+['Lidl','Kaufland'].map(s=>'<button class="'+(bp35.store===s?'active':'')+'" onclick="bpProfileUpdate(\'store\',\''+s+'\')"><img src="'+LOGOS[s]+'" alt="'+s+'"/> '+s+'</button>').join('')+'</div>'+
+   profileLabel('Oraș')+'<input class="field" maxlength="100" aria-label="Oraș" value="'+esc(state.city)+'" onchange="bpProfileUpdate(\'city\',this.value)">'+
+   '<p class="brand-disclaimer">Identitate vizuală folosită doar pentru identificare. BunPlan nu este afiliată oficial cu Lidl sau Kaufland.</p>');
+ out+=profileBlock('Sincronizare și date',
+   '<button class="btn block" onclick="bpProfileSave()">☁ Salvează preferințele în cloud</button>'+
+   '<button class="btn out block" style="margin-top:9px" onclick="bpProfileReload()">↻ Încarcă preferințele din cloud</button>'+
+   '<p class="profile-status" id="bp-profile-status">Planurile și listele rămân separate pe magazin și săptămână.</p>'+
+   '<button class="btn out block" style="margin-top:12px" onclick="go(\'plan\')">▦ Planifică săptămâna →</button>'+
+   '<button class="btn out block" style="margin-top:9px" onclick="go(\'list\')">☑ Vezi lista de cumpărături →</button>');
+ out+=profileBlock('Securitate și confidențialitate',
+   '<button class="btn out block" onclick="bpProfileResetPassword()">Recuperează sau schimbă parola</button>'+
+   '<button class="btn out block" style="margin-top:9px" onclick="bpProfilePrivacy()">Politica de confidențialitate</button>'+
+   '<button class="btn out block" style="margin-top:9px" onclick="bpProfileLogout()">Deconectare</button>'+
+   '<button class="btn out block" style="margin-top:9px;color:#b83729" onclick="bpProfileDelete()">Șterge definitiv contul și datele</button>');
+ return out;
+};
+function message(x){let e=document.getElementById('bp-profile-status');if(e)e.textContent=x;}
+window.bpProfileResetPassword=function(){
+ const email=nativeAuth?nativeAuth.currentEmail():'';
+ if(email && nativeAuth){nativeAuth.recover(email);alert('Dacă există un cont cu această adresă, vei primi instrucțiuni de recuperare a parolei.');}
+ else alert('Autentifică-te pentru recuperarea parolei.');
+};
+window.bpProfilePrivacy=function(){location.href='https://github.com/birisiu/BunPlan/blob/main/PRIVACY.md';};
+window.bpProfileLogout=function(){
+ if(!confirm('Vrei să te deconectezi? Datele nesincronizate se pot pierde.'))return;
+ if(nativeAuth)nativeAuth.logout();
+ localStorage.clear();
+ location.replace('index.html');
+};
+window.bpProfileDelete=function(){
+ const typed=prompt('Pentru a șterge definitiv contul și datele, introdu ȘTERGE');
+ if(typed==='ȘTERGE'&&nativeCloud)nativeCloud.deleteAccount(typed);
+};
+const prevHandler=window.BunPlanCloudDone;
+window.BunPlanCloudDone=function(action,result){
+ if(action==='profile-save'){message(result&&result.ok?'Preferințele au fost salvate în cloud.':'Nu s-a putut salva profilul: '+(result?.message||''));return;}
+ if(action==='profile-load'){
+   if(!result||!result.ok){message('Nu s-a putut încărca profilul.');return;}
+   const data=result.data||{};
+   if(data.onboarding_completed){applyPrefs(data);}
+   else if(onboard&&onboard.completed){applyPrefs(onboard);window.bpProfileSave();}
+   return;
+ }
+ if(action==='delete'&&result&&result.ok){localStorage.clear();}
+ if(typeof prevHandler==='function')prevHandler(action,result);
+};
+if(nativeCloud)nativeCloud.loadProfile();
 })();
 </script></body></html>
