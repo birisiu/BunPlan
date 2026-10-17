@@ -30,13 +30,15 @@ Supabase Google Provider:
 - Scopes: `openid`, `email`, `profile`.
 - Păstrează nonce-check activ.
 
+**APK 4.3:** SHA-1 (debug, numai această compilare): `86:E1:AE:A8:72:55:FC:34:18:70:E2:A4:BE:D0:D0:F5:EA:DC:15:6B`. Acest pas este necesar **numai pentru butonul secundar nativ**, nu pentru loginul principal prin browser OAuth PKCE.
+
 ## 2. Client Android OAuth pentru APK-ul de test
 
 Creează un alt client OAuth tip **Android** în Google Cloud Auth Clients.
 
-- **Android package:** `ro.bunplan.app.securitytest`
-- **SHA-1:** citește amprenta din [BunPlan-4.2-Google-Login-SHA1.txt](builds/BunPlan-4.2-Google-Login-SHA1.txt), obținută automat prin `apksigner verify --print-certs` pentru APK-ul publicat efectiv.
-- Folosește numai APK-ul `builds/BunPlan-4.2-Google-Login-TEST.apk` care are exact acel SHA-1.
+- **Android package:** `ro.bunplan.app.ux43test`
+- **SHA-1:** citește amprenta din [BunPlan-4.3-UX-Google-SHA1.txt](builds/BunPlan-4.3-UX-Google-SHA1.txt), obținută automat prin `apksigner verify --print-certs` pentru APK-ul publicat efectiv.
+- Folosește numai APK-ul `builds/BunPlan-4.3-UX-Google-TEST.apk` care are exact acel SHA-1.
 
 Adaugă noul Android Client ID și în lista **Additional Client IDs / Client IDs** din Google Provider Supabase, dacă este solicitată de proiect.
 
