@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
         s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         web.addJavascriptInterface(new JsBridge(), "BunPlanAds");
         web.addJavascriptInterface(new BunPlanAuth(this).bridge(),"BunPlanAuth");
+        web.addJavascriptInterface(new BunPlanCloud(this).bridge(),"BunPlanCloud");
         web.setWebViewClient(new WebViewClient(){
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.startsWith("file:///android_asset/")) return false;
