@@ -20,7 +20,7 @@ try{
   for(let i=0;i<5;i++){
    await page.getByText(i===4?'Continuă spre cont':'Continuă →',{exact:true}).click();
   }
-  const loginVisible=await page.getByText('Continuă cu Google',{exact:true}).isVisible();
+  const loginVisible=await page.locator('button.action.google').isVisible();
   const metrics=await page.evaluate(()=>({screen:document.documentElement.scrollWidth,viewport:window.innerWidth,hasBrand:document.body.textContent.includes('BunPlan')}));
   if(!loginVisible||metrics.screen>metrics.viewport+2||errors.length)failures.push({width,loginVisible,metrics,errors});
   if(width===390)await page.screenshot({path:screens+'/onboarding-390.png',fullPage:true});
@@ -37,7 +37,9 @@ try{
     localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,step:4,store:'Lidl',name:'Tester',city:'București',budget:450,adults:2,children:1,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
   });
   await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
-  await page.getByText('Profil',{exact:true}).first().click();
+  const debug=await page.evaluate(()=>({url:location.href,body:document.body.innerText.slice(0,800),tabCount:document.querySelectorAll('nav button').length}));
+  console.log('MAIN PRE-PROFILE',width,JSON.stringify({debug,errors}));
+  await page.locator('nav button').filter({hasText:'Profil'}).first().click({timeout:10000});
   const profileVisible=await page.getByText('Securitate și confidențialitate',{exact:true}).isVisible();
   const metrics=await page.evaluate(()=>({screen:document.documentElement.scrollWidth,viewport:innerWidth}));
   if(!profileVisible||metrics.screen>metrics.viewport+2||errors.length)failures.push({width,profileVisible,metrics,errors});
