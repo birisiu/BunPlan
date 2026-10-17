@@ -2,7 +2,7 @@ plugins { id 'com.android.application' }
 android {
     namespace 'ro.bunplan.app'
     compileSdk 35
-    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 23; targetSdk 35; versionCode 36; versionName '3.6-test-admob' }
+    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 35; versionCode 36; versionName '3.6-test-admob' }
     buildTypes { debug { applicationIdSuffix '.adtest'; minifyEnabled false }; release { minifyEnabled false } }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
