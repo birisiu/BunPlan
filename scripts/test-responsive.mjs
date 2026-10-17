@@ -67,10 +67,11 @@ try{
   const total=await rows.count();
   if(total<2)failures.push({width,test:'shopping-list rows',total});
   else{
-   await rows.first().scrollIntoViewIfNeeded();
-   await page.evaluate(()=>document.querySelector('main.scroll').dataset.qaStable='yes');
+   // Playwright locator.check() may itself scroll the page to the element;
+   // trigger the native checkbox change with DOM click to isolate app scrolling.
+   await page.evaluate(()=>{window.scrollTo(0,350);document.querySelector('main.scroll').dataset.qaStable='yes'});
    const before=await page.evaluate(()=>scrollY);
-   await rows.first().check();
+   await page.evaluate(()=>document.querySelector('.bp35-checklist .bp35-product input[type=checkbox]').click());
    const after=await page.evaluate(()=>scrollY);
    const status=await page.evaluate(()=>({
     stable:document.querySelector('main.scroll')?.dataset.qaStable==='yes',
