@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -30,7 +31,11 @@ public final class BunPlanAuth {
   int code=con.getResponseCode();
   InputStream stream=code<400?con.getInputStream():con.getErrorStream();
   String response;
-  try(InputStream in=stream){response=new String(in.readAllBytes(),StandardCharsets.UTF_8);}
+  try(InputStream in=stream;ByteArrayOutputStream output=new ByteArrayOutputStream()){
+   byte[] buf=new byte[4096];int read;
+   while((read=in.read(buf))!=-1)output.write(buf,0,read);
+   response=new String(output.toByteArray(),StandardCharsets.UTF_8);
+  }
   con.disconnect();
   if(code>=400){
    JSONObject error;try{error=new JSONObject(response);}catch(Exception ex){throw new Exception("Server HTTP "+code);}
