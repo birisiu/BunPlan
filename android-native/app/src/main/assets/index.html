@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover">
-<title>BunPlan</title><style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';"><title>BunPlan</title><style>
 :root{font-family:system-ui,sans-serif;color:#12382b;background:#f4f7ed}
 *{box-sizing:border-box}body{margin:0;padding:32px 22px}section{max-width:450px;margin:auto}
 h1{font-size:34px;margin:15px 0}h2{font-size:26px;line-height:1.15;margin:16px 0}
@@ -17,6 +17,8 @@ button.other{color:#16543c;background:#e0f2ba}button:disabled{opacity:.55}
 <input id="password" type="password" autocomplete="current-password" placeholder="Parola (minimum 8 caractere)">
 <p id="message"></p><button id="action" onclick="submitAuth()">Conectează-te</button>
 <button class="other" id="switch" onclick="toggle()">Nu ai cont? Înregistrează-te</button>
+<button class="other" id="google-signin" onclick="googleSignIn()">Continuă cu Google</button>
+<button class="other" style="background:transparent" onclick="recoverPassword()">Am uitat parola</button>
 <small>Autentificare Supabase • datele sunt salvate securizat în cloud</small>
 </div></section><script>
 let signup=false,busy=false;
@@ -25,6 +27,8 @@ const bridge=window.BunPlanAuth;
 if(bridge&&bridge.hasSession())window.location.replace('main.html');
 function toggle(){signup=!signup;$('displayHolder').style.display=signup?'block':'none';$('action').textContent=signup?'Creează cont':'Conectează-te';$('switch').textContent=signup?'Ai deja cont? Conectează-te':'Nu ai cont? Înregistrează-te';$('subtitle').textContent=signup?'Creează contul și confirmă adresa de e-mail.':'Conectează-te pentru a continua.';show('');}
 function show(msg){$('message').textContent=msg;$('message').style.display=msg?'block':'none';}
+function googleSignIn(){if(!window.BunPlanGoogle){show('Google Sign-In necesită versiunea Android.');return;}show('Deschid selectorul de cont Google…');window.BunPlanGoogle.signIn();}
+function recoverPassword(){const e=$('email').value.trim();if(!e.includes('@')){show('Introdu adresa de e-mail pentru recuperare.');return;}if(!bridge){show('Recuperarea parolei necesită aplicația Android.');return;}show('Solicit recuperarea parolei…');bridge.recover(e);}
 function submitAuth(){if(busy)return;if(!bridge){show('Autentificarea este disponibilă numai în aplicația Android.');return;} const e=$('email').value.trim(),p=$('password').value;if(!e.includes('@')||p.length<8){show('Introdu un e-mail valid și o parolă de minimum 8 caractere.');return;}busy=true;$('action').disabled=true;show('Conectare la server...');signup?bridge.signup(e,p,$('display').value):bridge.login(e,p);}
-window.BunPlanAuthDone=function(action,r){busy=false;$('action').disabled=false;if(!r.ok){show(r.message||'Eroare de autentificare.');return;}if(r.signed_in){window.location.replace('main.html');return;}show(r.message||'Confirmă contul pe e-mail și conectează-te.');};
+window.BunPlanAuthDone=function(action,r){busy=false;$('action').disabled=false;if(!r.ok){show(r.message||'Eroare de autentificare.');return;}if(action==='recover'){show(r.message||'Verifică e-mailul.');return;}if(r.signed_in){window.location.replace('main.html');return;}show(r.message||'Confirmă contul pe e-mail și conectează-te.');};
 </script></body></html>
