@@ -61,19 +61,29 @@ public class MainActivity extends Activity {
         // Android 15+ draws edge-to-edge. Apply the system-bar / cutout safe area
         // to the entire WebView so EVERY BunPlan screen stays below the clock
         // and battery indicators, rather than adding a fragile fixed CSS offset.
-        web.setOnApplyWindowInsetsListener((v, insets) -> {
+        // Apply system-bar insets to an OUTER container, not to WebView itself:
+        // WebView may override its padding during layout/resize, which causes
+        // the logo to overlap the clock on Android 15/16 edge-to-edge devices.
+        android.widget.FrameLayout root = new android.widget.FrameLayout(this);
+        root.setBackgroundColor(android.graphics.Color.rgb(247, 248, 239));
+        root.setFitsSystemWindows(false);
+        root.setOnApplyWindowInsetsListener((view, insets) -> {
             if (Build.VERSION.SDK_INT >= 30) {
                 android.graphics.Insets safe = insets.getInsets(
-                    WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
-                v.setPadding(safe.left, safe.top, safe.right, safe.bottom);
+                    WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars()
+                        | WindowInsets.Type.displayCutout());
+                view.setPadding(safe.left, safe.top, safe.right, safe.bottom);
             } else {
-                v.setPadding(insets.getSystemWindowInsetLeft(),
+                view.setPadding(insets.getSystemWindowInsetLeft(),
                     insets.getSystemWindowInsetTop(),
                     insets.getSystemWindowInsetRight(),
                     insets.getSystemWindowInsetBottom());
             }
             return insets;
         });
+        root.addView(web, new android.widget.FrameLayout.LayoutParams(
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT));
         // Load ONLY trusted, locally-bundled UI from a distinct HTTPS origin.
         // Never allow remote pages to obtain the JavaScript authentication interfaces.
         final String localOrigin="https://appassets.androidplatform.net";
@@ -136,7 +146,10 @@ public class MainActivity extends Activity {
                 return true;
             }
         });
-        setContentView(web);
+        getWindow().setStatusBarColor(android.graphics.Color.rgb(247, 248, 239));
+        getWindow().setNavigationBarColor(android.graphics.Color.rgb(255, 255, 255));
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+        setContentView(root);
         web.loadUrl(localOrigin+"/assets/index.html");
         if(getIntent()!=null && getIntent().getData()!=null){
             web.postDelayed(()->{if(googleBrowser!=null)googleBrowser.handleIntent(getIntent());},350);
