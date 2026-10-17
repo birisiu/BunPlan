@@ -67,7 +67,7 @@ button{touch-action:manipulation;min-height:40px}input,select,textarea{max-width
  .profile-block{padding:24px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style><style id="real-catalog-style">
+@media(max-width:390px){.profile-row,.profile-store-buttons{grid-template-columns:minmax(0,1fr)}.profile-hero{padding:15px}.profile-block{padding:14px}.profile-choice button{min-height:44px}.field{font-size:16px}.profile-hero strong{font-size:17px}}\n@media(min-width:391px) and (max-width:540px){.profile-store-buttons img{width:32px;height:32px}.profile-block{padding:16px}}\n</style><style id="real-catalog-style">
 .real-banner{background:#e9f5df;border:1px solid #d0e5c4;color:#18452f;border-radius:18px;padding:14px;font-size:12px;line-height:1.5;margin:15px 0}.cataloglink{background:#153c2d;color:white;border-radius:22px;padding:18px;margin-top:18px}.cataloglink h3{margin:5px 0 9px;font-size:18px}.cataloggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}.p-card{background:white;border:1px solid #e7eae0;border-radius:20px;padding:11px;overflow:hidden}.p-ph{height:138px;border-radius:15px;background:#f3f5ef;display:grid;place-items:center;margin-bottom:9px;overflow:hidden}.p-ph img{width:100%;height:100%;object-fit:contain;padding:5px}.p-icon{font-size:53px}.p-name{font-size:13px;font-weight:800;min-height:36px;line-height:1.35}.p-brand{font-size:11px;color:#718376}.p-price{color:#143f30;font-weight:900;font-size:22px;margin:5px 0}.p-unit{color:#7b8c82;font-size:11px}.p-pill{display:inline-flex;background:#eef4e6;border-radius:999px;padding:4px 7px;font-weight:800;color:#31704a;font-size:9px;margin:6px 0}.p-pill.sale{background:#ffedd9;color:#a34d18}.p-foot{font-size:10px;color:#7a8b81;line-height:1.4;min-height:26px}.p-actions{display:flex;gap:5px;margin-top:9px}.p-actions button{font-size:10px;padding:8px;border-radius:10px;border:1px solid #dbe5d6;background:white;font-weight:800;color:#164936;flex:1}.p-actions button.add{background:#d6f47b;color:#173d2b;border:0}.p-headsearch{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #e2e9db;background:white;font:inherit}.p-source{text-decoration:underline;color:#245f4b}.p-muted{font-size:12px;color:#839185}.p-stores{display:flex;gap:7px;overflow:auto;padding:4px 0 10px}.p-stores button{white-space:nowrap}.p-linerow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e6eae2}.p-linerow img{width:48px;height:52px;object-fit:contain}.p-linerow .p-emoji{width:48px;text-align:center;font-size:28px}.p-total{padding:13px;border-radius:14px;background:#e5f4d5;color:#143d29;font-weight:800;margin:12px 0}.p-ribbon{font-size:10px;letter-spacing:.3px;color:#677d67}.p-itemoffer{display:flex;gap:10px;align-items:center;padding:10px;background:white;border:1px solid #e6eae0;border-radius:15px;margin-top:8px}.p-itemoffer img{width:45px;height:47px;object-fit:contain}.p-itemoffer .price{font-weight:800;color:#19523b}
 
 .bp-homepromo{background:#e9f4cf;border-radius:22px;margin:20px 0 8px;padding:18px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -917,7 +917,11 @@ window.bpProfilePrivacy=function(){location.href='https://github.com/birisiu/Bun
 window.bpProfileLogout=function(){
  if(!confirm('Vrei să te deconectezi? Datele nesincronizate se pot pierde.'))return;
  if(nativeAuth)nativeAuth.logout();
+ // Keep only the fact that the first-run questionnaire was completed.
+ // Never retain another account's private profile or shopping data on logout.
+ const firstRunCompleted=(()=>{try{return !!JSON.parse(localStorage.getItem('bunplan_onboard_v2')||'null')?.completed;}catch(_){return false;}})();
  localStorage.clear();
+ if(firstRunCompleted)localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true}));
  location.replace('index.html');
 };
 window.bpProfileDelete=function(){
