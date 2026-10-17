@@ -32,7 +32,7 @@ jobs:
         if: success()
         run: |
           mkdir -p builds
-          cp android-native/app/build/outputs/apk/debug/*.apk builds/BunPlan-3.6-AdMob-TEST.apk
+          cp android-native/app/build/outputs/apk/debug/*.apk builds/BunPlan-3.7-AdMob-TEST-FIX.apk
           printf 'SUCCESS - native test APK built on %s\n' "$(date -u)" > builds/build-status.txt
           git config user.name bunplan-bot
           git config user.email bunplan-bot@users.noreply.github.com
@@ -54,6 +54,6 @@ jobs:
           git push origin HEAD:main
       - uses: actions/upload-artifact@v4
         with:
-          name: BunPlan-3.6-AdMob-TEST-APK
+          name: BunPlan-3.7-AdMob-TEST-FIX-APK
           path: android-native/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
