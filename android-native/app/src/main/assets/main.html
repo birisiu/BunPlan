@@ -1282,19 +1282,19 @@ bpBasket=function(){
  return commonTop()+heading('Lista de cumpărături','Cantități consolidate din toate mesele alese.')+
  bp35Progress()+
  '<div class="bp35-smallstore">Magazin: <b>'+esc(bp35.store)+'</b> · '+esc(bp35Pretty(bp35.week))+
- ' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+' <button class="link" onclick="go(\\'menu100\\')">Modifică planul</button></div>'+
+ ' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+' <button class="link" onclick="go(\'menu100\')">Modifică planul</button></div>'+
  '<div class="bp35-summary"><small>'+(c.incomplete?'Subtotal cu prețuri, nu totalul coșului':'Coș orientativ')+' · '+esc(bp35.store)+'</small>'+
  '<strong>'+(count?'≈ '+ron(c.total)+' lei':'Nu există mese în plan')+'</strong>'+
  '<span>'+count+' mese · '+c.rows.length+' ingrediente · '+c.extras.length+' produse adăugate</span>'+
  '<span>'+esc(note)+'</span>'+
  '<span>'+(c.incomplete?'Buget săptămânal: '+ron(budget)+' lei · comparație indisponibilă':'Buget: '+ron(budget)+' lei · '+(budget>=c.total?'diferență estimată '+ron(budget-c.total)+' lei':'depășire estimată '+ron(c.total-budget)+' lei'))+'</span></div>'+
  '<div class="bp35-warning">Prețuri: '+c.verified+' publicate, '+c.estimated+' estimări de model, '+c.manual+' introduse de utilizator, '+c.missing+' lipsă. <b>Un produs din catalog nu confirmă stocul într-un magazin fizic.</b></div>'+
- (!count?'<button class="btn block" onclick="go(\\'menu100\\')">Alege prima rețetă →</button>':
+ (!count?'<button class="btn block" onclick="go(\'menu100\')">Alege prima rețetă →</button>':
  (!unlocked?'<div class="bp-lock"><h3>Deblochează lista '+esc(bp35.store)+'</h3><p>Lista se deschide după confirmarea recompensei publicitare.</p><button class="btn block" onclick="bp35Unlock()">▶ Deblochează ingredientele</button></div>':
  '<div class="bp35-boughtheading"><h2 class="h2">Produsele '+esc(bp35.store)+'</h2><span>'+checked+'/'+(c.rows.length+c.extras.length)+' bifate</span></div>'+
  '<div class="bp35-checklist">'+bp35BasketRows(c)+'</div>'+
  '<button class="btn block" style="margin-top:16px" onclick="bpCopy()">Copiază lista</button>'))+
- '<div class="bp35-actions"><button class="btn block out" onclick="go(\\'menu100\\')">← Modifică meniul</button></div>';
+ '<div class="bp35-actions"><button class="btn block out" onclick="go(\'menu100\')">← Modifică meniul</button></div>';
 };
 bpMenu=function(){
  const html=originalMenu();const c=bp35Calc();
@@ -1322,7 +1322,7 @@ bpDetail=function(){
  const prices=bp35RecipePrice(r);
  const missing=prices.rows.filter(x=>x.type==='missing').length;
  return commonTop()+
- '<button class="back" onclick="go(\\'library100\\')">← Rețete</button>'+
+ '<button class="back" onclick="go(\'library100\')">← Rețete</button>'+
  '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>'+Number(r.minutes)+' minute</span><span>'+Number(r.servings)+' porții</span></div>'+
