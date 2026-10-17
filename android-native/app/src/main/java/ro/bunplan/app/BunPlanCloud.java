@@ -50,8 +50,7 @@ public class BunPlanCloud {
     try{
       if(!("Lidl".equals(store)||"Kaufland".equals(store))||week==null||!week.matches("\\d{4}-\\d{2}-\\d{2}"))
         throw new Exception("Magazin sau săptămână invalidă");
-      String token=vault.token();
-      if(token.isEmpty())throw new Exception("Autentifică-te din nou");
+      String token=freshSessionToken();
       JSONObject req=new JSONObject().put("p_store",store.toLowerCase()).put("p_week_start",week);
       if(action.equals("save")){
         req.put("p_budget",budget).put("p_days",new org.json.JSONArray(days));
@@ -96,12 +95,30 @@ public class BunPlanCloud {
     callback("delete",result);
   });
  }
+ private String freshSessionToken() throws Exception{
+   JSONObject stored=vault.read();
+   if(stored==null)throw new Exception("Autentifică-te pentru a continua");
+   String token=stored.optString("access_token","");
+   if(token.isEmpty())throw new Exception("Sesiunea a expirat");
+   long expires=stored.optLong("expires_at",0L);
+   if(expires>0 && expires-System.currentTimeMillis()/1000L<90){
+     String refresh=stored.optString("refresh_token","");
+     if(refresh.isEmpty())throw new Exception("Sesiunea a expirat. Conectează-te din nou.");
+     JSONObject updated=new JSONObject(http("/auth/v1/token?grant_type=refresh_token",
+       new JSONObject().put("refresh_token",refresh),APIKEY));
+     token=updated.getString("access_token");
+     stored.put("access_token",token);
+     stored.put("refresh_token",updated.optString("refresh_token",refresh));
+     stored.put("expires_at",System.currentTimeMillis()/1000L+Math.max(30,updated.optLong("expires_in",3600)));
+     vault.save(stored);
+   }
+   return token;
+ }
  private void profileRequest(String action,String json){
   pool.execute(()->{
     JSONObject result=new JSONObject();
     try {
-      String token=vault.token();
-      if(token.isEmpty())throw new Exception("Autentifică-te pentru a salva profilul");
+      String token=freshSessionToken();
       String method=action.equals("profile-save")?"save_bunplan_profile":"load_bunplan_profile";
       JSONObject request=action.equals("profile-save")
           ?new JSONObject().put("p_preferences",new JSONObject(json))
