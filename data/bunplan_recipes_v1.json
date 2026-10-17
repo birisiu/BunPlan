@@ -1,0 +1,4749 @@
+{
+  "schema_version": 1,
+  "source": "BunPlan existing recipe library",
+  "default_servings": 2,
+  "ingredient_units": {
+    "ovaz": "g",
+    "lapte": "ml",
+    "iaurt": "g",
+    "iaurt_grecesc": "g",
+    "banane": "g",
+    "mere": "g",
+    "pere": "g",
+    "fructe_padure": "g",
+    "afine": "g",
+    "oua": "buc",
+    "paine": "g",
+    "unt": "g",
+    "branza_vaci": "g",
+    "telemea": "g",
+    "mozzarella": "g",
+    "cascaval": "g",
+    "parmezan": "g",
+    "ricotta": "g",
+    "smantana": "g",
+    "miere": "g",
+    "scortisoara": "g",
+    "cacao": "g",
+    "faina": "g",
+    "praf_copt": "g",
+    "vanilie": "g",
+    "nuci": "g",
+    "arahide": "g",
+    "stafide": "g",
+    "seminte_chia": "g",
+    "gem": "g",
+    "pui_piept": "g",
+    "pui_pulpe": "g",
+    "curcan": "g",
+    "porc": "g",
+    "carne_tocata": "g",
+    "vita": "g",
+    "sunca": "g",
+    "somon": "g",
+    "pastrav": "g",
+    "peste_alb": "g",
+    "sardine": "g",
+    "ton": "g",
+    "creveti": "g",
+    "cartofi": "g",
+    "cartofi_dulci": "g",
+    "orez": "g",
+    "paste": "g",
+    "couscous": "g",
+    "bulgur": "g",
+    "malai": "g",
+    "linte": "g",
+    "naut": "g",
+    "fasole": "g",
+    "fasole_verde": "g",
+    "mazare": "g",
+    "porumb": "g",
+    "ciuperci": "g",
+    "spanac": "g",
+    "broccoli": "g",
+    "conopida": "g",
+    "dovlecel": "g",
+    "vinete": "g",
+    "varza": "g",
+    "morcovi": "g",
+    "ceapa": "g",
+    "ceapa_verde": "g",
+    "usturoi": "g",
+    "rosii": "g",
+    "rosii_conserva": "g",
+    "ardei": "g",
+    "castraveti": "g",
+    "salata": "g",
+    "rucola": "g",
+    "avocado": "g",
+    "lamaie": "g",
+    "portocale": "g",
+    "patrunjel": "g",
+    "marar": "g",
+    "busuioc": "g",
+    "ghimbir": "g",
+    "masline": "g",
+    "sfecla": "g",
+    "telina": "g",
+    "praz": "g",
+    "ulei": "ml",
+    "ulei_masline": "ml",
+    "otet": "ml",
+    "sos_soia": "ml",
+    "lapte_cocos": "ml",
+    "pasta_tomate": "g",
+    "bors": "ml",
+    "supa_legume": "ml",
+    "apa": "ml",
+    "sare": "g",
+    "piper": "g",
+    "boia": "g",
+    "curry": "g",
+    "chimion": "g",
+    "oregano": "g",
+    "cimbru": "g",
+    "drojdie": "g",
+    "tortilla": "buc",
+    "lipie": "buc",
+    "pesmet": "g",
+    "orez_lapte": "g",
+    "zahar": "g",
+    "ciocolata": "g"
+  },
+  "recipes": [
+    {
+      "id": "R001",
+      "title": "Terci de ovăz cu banane",
+      "category": "Mic dejun",
+      "minutes": 12,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ovaz",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 350,
+          "unit": "ml"
+        },
+        {
+          "id": "banane",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe ovăzul cu laptele 6–8 minute.",
+        "Pasează o parte din banană și încorporeaz-o.",
+        "Servește cu banană feliată și scorțișoară."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R002",
+      "title": "Overnight oats cu mere",
+      "category": "Mic dejun",
+      "minutes": 10,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ovaz",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 200,
+          "unit": "ml"
+        },
+        {
+          "id": "mere",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă ovăzul cu iaurtul și laptele.",
+        "Lasă acoperit la frigider cel puțin 6 ore.",
+        "Adaugă mărul ras și scorțișoara înainte de servire."
+      ],
+      "tags": [
+        "fără gătire",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R003",
+      "title": "Omletă cu spanac și telemea",
+      "category": "Mic dejun",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "oua",
+          "quantity": 4,
+          "unit": "buc"
+        },
+        {
+          "id": "spanac",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "telemea",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 10,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie spanacul în tigaie cu ulei.",
+        "Toarnă ouăle bătute, apoi presară telemeaua.",
+        "Gătește la foc mic până ouăle sunt bine închegate."
+      ],
+      "tags": [
+        "proteic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R004",
+      "title": "Sandviș cald cu cașcaval și roșii",
+      "category": "Mic dejun",
+      "minutes": 12,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paine",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "cascaval",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "unt",
+          "quantity": 12,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Unge subțire pâinea cu unt.",
+        "Așază cașcavalul și roșiile între felii.",
+        "Rumenește într-o tigaie sau aparat de sandvișuri."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R005",
+      "title": "Ouă fierte cu avocado și pâine",
+      "category": "Mic dejun",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "oua",
+          "quantity": 4,
+          "unit": "buc"
+        },
+        {
+          "id": "avocado",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe ouăle până sunt tari.",
+        "Pasează avocado cu zeamă de lămâie.",
+        "Servește pe pâine alături de ouăle feliate."
+      ],
+      "tags": [
+        "proteic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R006",
+      "title": "Iaurt cu fructe de pădure și nuci",
+      "category": "Mic dejun",
+      "minutes": 5,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "iaurt_grecesc",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "fructe_padure",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "nuci",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "id": "ovaz",
+          "quantity": 50,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Împarte iaurtul în două boluri.",
+        "Adaugă fructele și ovăzul.",
+        "Presară nucile tocate chiar înainte de servire."
+      ],
+      "tags": [
+        "fără gătire",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R007",
+      "title": "Clătite cu banane și ovăz",
+      "category": "Mic dejun",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "banane",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ovaz",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 80,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 10,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Mixează banana, ouăle, ovăzul și laptele.",
+        "Toarnă porții mici într-o tigaie ușor unsă.",
+        "Coace pe ambele părți până se rumenesc."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R008",
+      "title": "Brânză de vaci cu castraveți și toast",
+      "category": "Mic dejun",
+      "minutes": 8,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "branza_vaci",
+          "quantity": 240,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "marar",
+          "quantity": 8,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă brânza cu mărarul tocat.",
+        "Feliază castraveții.",
+        "Servește cu pâine prăjită."
+      ],
+      "tags": [
+        "rapid",
+        "proteic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R009",
+      "title": "Mămăligă cu ou și brânză",
+      "category": "Mic dejun",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "malai",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 600,
+          "unit": "ml"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "telemea",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe mămăliga amestecând până se îngroașă.",
+        "Fierbe ouăle sau gătește-le în tigaie până sunt făcute.",
+        "Servește cu telemea și iaurt."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R010",
+      "title": "Budincă de chia cu pere",
+      "category": "Mic dejun",
+      "minutes": 10,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "seminte_chia",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 350,
+          "unit": "ml"
+        },
+        {
+          "id": "pere",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "miere",
+          "quantity": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă semințele în lapte și îndulcește după gust.",
+        "Lasă la frigider 3–4 ore, amestecând la început.",
+        "Completează cu pere cubulețe."
+      ],
+      "tags": [
+        "fără gătire",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R011",
+      "title": "Toast franțuzesc cu mere",
+      "category": "Mic dejun",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paine",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "lapte",
+          "quantity": 120,
+          "unit": "ml"
+        },
+        {
+          "id": "mere",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 2,
+          "unit": "g"
+        },
+        {
+          "id": "unt",
+          "quantity": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Bate ouăle cu laptele.",
+        "Înmoaie feliile și rumenește-le în unt până sunt bine gătite.",
+        "Servește cu măr feliat și scorțișoară."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R012",
+      "title": "Tortilla cu ou și legume",
+      "category": "Mic dejun",
+      "minutes": 18,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "tortilla",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "oua",
+          "quantity": 3,
+          "unit": "buc"
+        },
+        {
+          "id": "ardei",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 80,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Gătește bine ouăle amestecate cu ardei.",
+        "Împarte umplutura pe tortilla cu roșii și mozzarella.",
+        "Rulează și rumenește puțin în tigaie."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R013",
+      "title": "Supă cremă de conopidă",
+      "category": "Supe și ciorbe",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "conopida",
+          "quantity": 550,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 150,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        },
+        {
+          "id": "apa",
+          "quantity": 600,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa în ulei și adaugă legumele.",
+        "Fierbe cu apă până se înmoaie.",
+        "Pasează, adaugă laptele și mai încălzește 2 minute."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R014",
+      "title": "Supă cremă de broccoli",
+      "category": "Supe și ciorbe",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "broccoli",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 650,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe broccoli, cartofii și ceapa în apă.",
+        "Pasează totul fin.",
+        "Încorporează smântâna și încălzește fără fierbere intensă."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R015",
+      "title": "Ciorbă de legume cu borș",
+      "category": "Supe și ciorbe",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "telina",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "bors",
+          "quantity": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "apa",
+          "quantity": 850,
+          "unit": "ml"
+        },
+        {
+          "id": "patrunjel",
+          "quantity": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe legumele tăiate cuburi până devin fragede.",
+        "Adaugă roșiile și borșul fiert separat.",
+        "Potrivește gustul și pune pătrunjelul la final."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R016",
+      "title": "Ciorbă de pui cu legume",
+      "category": "Supe și ciorbe",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_pulpe",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "telina",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 1000,
+          "unit": "ml"
+        },
+        {
+          "id": "patrunjel",
+          "quantity": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe puiul și îndepărtează spuma.",
+        "Adaugă legumele și fierbe până carnea este pătrunsă.",
+        "Pune roșiile și pătrunjelul la final."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R017",
+      "title": "Supă de linte roșie",
+      "category": "Supe și ciorbe",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "linte",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 700,
+          "unit": "ml"
+        },
+        {
+          "id": "curry",
+          "quantity": 3,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa și morcovii în ulei.",
+        "Adaugă lintea clătită, roșiile, apa și curry.",
+        "Fierbe 18–22 minute, apoi pasează parțial."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R018",
+      "title": "Ciorbă de fasole cu cimbru",
+      "category": "Supe și ciorbe",
+      "minutes": 50,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "fasole",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "telina",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 850,
+          "unit": "ml"
+        },
+        {
+          "id": "cimbru",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Folosește fasole fiartă sau din conservă bine scursă.",
+        "Fierbe legumele până sunt fragede.",
+        "Adaugă fasolea, roșiile și cimbrul și mai fierbe 15 minute."
+      ],
+      "tags": [
+        "vegan"
+      ]
+    },
+    {
+      "id": "R019",
+      "title": "Supă de roșii cu orez",
+      "category": "Supe și ciorbe",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "rosii_conserva",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 700,
+          "unit": "ml"
+        },
+        {
+          "id": "busuioc",
+          "quantity": 8,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Călește ceapa și morcovul în ulei.",
+        "Adaugă roșiile, apa și orezul spălat.",
+        "Fierbe până orezul este gata și pune busuiocul."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R020",
+      "title": "Supă de ciuperci cu smântână",
+      "category": "Supe și ciorbe",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ciuperci",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 650,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Sotează ciupercile și ceapa în ulei.",
+        "Adaugă cartofii și apa, apoi fierbe 20 minute.",
+        "Pasează jumătate din supă și amestecă smântâna."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R021",
+      "title": "Ciorbă de perișoare",
+      "category": "Supe și ciorbe",
+      "minutes": 60,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "carne_tocata",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 1,
+          "unit": "buc"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "telina",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "bors",
+          "quantity": 250,
+          "unit": "ml"
+        },
+        {
+          "id": "apa",
+          "quantity": 1000,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Amestecă carnea cu orezul și oul și formează perișoare.",
+        "Fierbe legumele 15 minute, apoi pune perișoarele.",
+        "Lasă să fiarbă până carnea e făcută, adaugă roșiile și borșul."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R022",
+      "title": "Supă de cartofi cu praz",
+      "category": "Supe și ciorbe",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "praz",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 250,
+          "unit": "ml"
+        },
+        {
+          "id": "apa",
+          "quantity": 550,
+          "unit": "ml"
+        },
+        {
+          "id": "unt",
+          "quantity": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Înmoaie prazul feliat în unt.",
+        "Adaugă cartofii și apa; fierbe până se înmoaie.",
+        "Pasează și completează cu lapte, apoi încălzește."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R023",
+      "title": "Piept de pui cu orez și morcovi",
+      "category": "Pui și curcan",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul separat.",
+        "Gătește puiul cubulețe în tigaie până este pătruns.",
+        "Adaugă legumele și servește lângă orez."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R024",
+      "title": "Pui la cuptor cu cartofi",
+      "category": "Pui și curcan",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_pulpe",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 650,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 15,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 20,
+          "unit": "ml"
+        },
+        {
+          "id": "cimbru",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Taie cartofii și pune-i în tavă cu ulei și usturoi.",
+        "Așază pulpele condimentate deasupra.",
+        "Coace la 200°C circa 45 minute, până carnea este bine gătită."
+      ],
+      "tags": [
+        "economic"
+      ]
+    },
+    {
+      "id": "R025",
+      "title": "Ostropel de pui cu mămăligă",
+      "category": "Pui și curcan",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_pulpe",
+          "quantity": 460,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 18,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "malai",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 18,
+          "unit": "ml"
+        },
+        {
+          "id": "apa",
+          "quantity": 450,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rumenește pulpele și gătește-le până sunt pătrunse.",
+        "Fierbe sosul de roșii cu ceapa și usturoiul și adaugă puiul.",
+        "Pregătește mămăliga separat și servește."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R026",
+      "title": "Curry de pui cu lapte de cocos",
+      "category": "Pui și curcan",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "lapte_cocos",
+          "quantity": 250,
+          "unit": "ml"
+        },
+        {
+          "id": "ardei",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "curry",
+          "quantity": 6,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul.",
+        "Sotează puiul și legumele, apoi adaugă curry.",
+        "Toarnă laptele de cocos și gătește până puiul este pătruns."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R027",
+      "title": "Pui cu broccoli și usturoi",
+      "category": "Pui și curcan",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 370,
+          "unit": "g"
+        },
+        {
+          "id": "broccoli",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 15,
+          "unit": "g"
+        },
+        {
+          "id": "sos_soia",
+          "quantity": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "orez",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul și gătește broccoli la abur.",
+        "Rumenește puiul în ulei, apoi adaugă usturoiul și sosul de soia.",
+        "Gătește până puiul este făcut și servește cu broccoli și orez."
+      ],
+      "tags": [
+        "proteic",
+        "rapid"
+      ]
+    },
+    {
+      "id": "R028",
+      "title": "Pui cu ciuperci și smântână",
+      "category": "Pui și curcan",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        },
+        {
+          "id": "orez",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul separat.",
+        "Rumenește puiul, apoi adaugă ceapa și ciupercile.",
+        "Încorporează smântâna și fierbe până carnea este făcută."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R029",
+      "title": "Pulpe de pui cu legume mediteraneene",
+      "category": "Pui și curcan",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_pulpe",
+          "quantity": 520,
+          "unit": "g"
+        },
+        {
+          "id": "dovlecel",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "masline",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 20,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Pune legumele într-o tavă cu ulei și măsline.",
+        "Așază pulpele deasupra.",
+        "Coace până puiul este pătruns și legumele rumenite."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R030",
+      "title": "Chifteluțe de curcan la cuptor",
+      "category": "Pui și curcan",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "curcan",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 1,
+          "unit": "buc"
+        },
+        {
+          "id": "pesmet",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă carnea cu oul, pesmetul și ceapa tocată.",
+        "Modelează chifteluțe și coace circa 25 minute.",
+        "Fierbe cartofii și servește cu iaurt drept sos."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R031",
+      "title": "Tocăniță de pui cu mazăre",
+      "category": "Pui și curcan",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_pulpe",
+          "quantity": 420,
+          "unit": "g"
+        },
+        {
+          "id": "mazare",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Gătește ceapa, morcovii și carnea în puțin ulei.",
+        "Adaugă mazărea, roșiile și puțină apă.",
+        "Fierbe acoperit până carnea este pătrunsă."
+      ],
+      "tags": [
+        "economic"
+      ]
+    },
+    {
+      "id": "R032",
+      "title": "Șnițel de pui la cuptor",
+      "category": "Pui și curcan",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "pesmet",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 18,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Taie pieptul în felii subțiri.",
+        "Trece prin ou și pesmet, apoi așază pe tavă unsă.",
+        "Coace până este pătruns și servește cu cartofi fierți."
+      ],
+      "tags": [
+        "familie"
+      ]
+    },
+    {
+      "id": "R033",
+      "title": "Wrap cu pui și iaurt",
+      "category": "Pui și curcan",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "lipie",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 10,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rumenește puiul fâșii până este gătit complet.",
+        "Întinde iaurtul pe lipii.",
+        "Adaugă puiul și legumele și rulează."
+      ],
+      "tags": [
+        "rapid",
+        "proteic"
+      ]
+    },
+    {
+      "id": "R034",
+      "title": "Frigărui de pui cu ardei",
+      "category": "Pui și curcan",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înfige bucățile de pui și legume pe bețe.",
+        "Coace pe grill sau în cuptor până puiul este făcut.",
+        "Servește cu orez fiert."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R035",
+      "title": "Pui cu lămâie și fasole verde",
+      "category": "Pui și curcan",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 380,
+          "unit": "g"
+        },
+        {
+          "id": "fasole_verde",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe cartofii și fasolea verde separat.",
+        "Gătește puiul cu ulei și usturoi până este pătruns.",
+        "Stropește cu lămâie și servește alături de legume."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R036",
+      "title": "Pilaf de pui cu ciuperci",
+      "category": "Pui și curcan",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 330,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Călește ceapa, morcovul și ciupercile.",
+        "Adaugă orezul, bucățile de pui și apă de trei ori volumul orezului.",
+        "Gătește acoperit până orezul și carnea sunt făcute."
+      ],
+      "tags": [
+        "economic"
+      ]
+    },
+    {
+      "id": "R037",
+      "title": "Chiftele de porc și vită cu piure",
+      "category": "Carne",
+      "minutes": 50,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "carne_tocata",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 1,
+          "unit": "buc"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "pesmet",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 550,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 130,
+          "unit": "ml"
+        },
+        {
+          "id": "unt",
+          "quantity": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă carnea cu ou, ceapă și pesmet și formează chiftele.",
+        "Coace-le până sunt complet pătrunse.",
+        "Fă piure din cartofii fierți, lapte și unt."
+      ],
+      "tags": [
+        "familie"
+      ]
+    },
+    {
+      "id": "R038",
+      "title": "Spaghete bolognese",
+      "category": "Carne",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "carne_tocata",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele al dente.",
+        "Gătește carnea cu ceapa și morcovul, apoi adaugă roșiile.",
+        "Fierbe sosul până carnea este făcută și amestecă cu pastele."
+      ],
+      "tags": [
+        "familie"
+      ]
+    },
+    {
+      "id": "R039",
+      "title": "Ardei umpluți cu carne și orez",
+      "category": "Carne",
+      "minutes": 65,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ardei",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "carne_tocata",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Scobește ardeii și umple-i cu amestec de carne, orez și ceapă.",
+        "Pune-i într-o oală cu roșiile și apă cât să-i acopere parțial.",
+        "Fierbe domol până carnea și orezul sunt complet gătite."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R040",
+      "title": "Tocăniță de porc cu cartofi",
+      "category": "Carne",
+      "minutes": 65,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "porc",
+          "quantity": 430,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 530,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rumenește cuburile de porc și adaugă ceapa și ardeiul.",
+        "Completează cu apă și fierbe până începe să se frăgezească.",
+        "Pune cartofii și roșiile, apoi fierbe până totul este gata."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R041",
+      "title": "Vită cu ciuperci și orez",
+      "category": "Carne",
+      "minutes": 60,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "vita",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "sos_soia",
+          "quantity": 25,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul.",
+        "Rumenește fâșiile de vită și adaugă ceapa și ciupercile.",
+        "Stinge cu sosul de soia și gătește până carnea este fragedă."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R042",
+      "title": "Musaca de cartofi",
+      "category": "Carne",
+      "minutes": 70,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 650,
+          "unit": "g"
+        },
+        {
+          "id": "carne_tocata",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 1,
+          "unit": "buc"
+        }
+      ],
+      "steps": [
+        "Fierbe cartofii în felii până sunt aproape gata.",
+        "Gătește carnea cu ceapa și roșiile până e pătrunsă.",
+        "Așază straturi, acoperă cu ou și smântână și coace."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R043",
+      "title": "Fasole cu carne de porc",
+      "category": "Carne",
+      "minutes": 70,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "fasole",
+          "quantity": 380,
+          "unit": "g"
+        },
+        {
+          "id": "porc",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "cimbru",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Folosește fasole fiartă sau din conservă clătită.",
+        "Gătește carnea cu legumele și puțină apă până se frăgezește.",
+        "Adaugă fasolea, roșiile și cimbrul, apoi mai fierbe."
+      ],
+      "tags": [
+        "economic"
+      ]
+    },
+    {
+      "id": "R044",
+      "title": "Burger de casă cu vită",
+      "category": "Carne",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "vita",
+          "quantity": 380,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "cascaval",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 80,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Modelează carnea în două chiftele plate.",
+        "Gătește complet pe grill sau în tigaie.",
+        "Montează burgerii cu legume și cașcaval în pâine."
+      ],
+      "tags": [
+        "familie"
+      ]
+    },
+    {
+      "id": "R045",
+      "title": "Chili con carne cu orez",
+      "category": "Carne",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "carne_tocata",
+          "quantity": 340,
+          "unit": "g"
+        },
+        {
+          "id": "fasole",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "porumb",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "boia",
+          "quantity": 4,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul separat.",
+        "Rumenește carnea cu ceapa până este gătită.",
+        "Adaugă fasolea fiartă, roșiile, porumbul și boiaua, apoi fierbe 15 minute."
+      ],
+      "tags": [
+        "economic"
+      ]
+    },
+    {
+      "id": "R046",
+      "title": "Porc cu varză la cuptor",
+      "category": "Carne",
+      "minutes": 70,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "porc",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "varza",
+          "quantity": 650,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 20,
+          "unit": "ml"
+        },
+        {
+          "id": "cimbru",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Înmoaie varza și ceapa în tigaie cu puțin ulei.",
+        "Pune carnea și legumele în tavă cu roșiile.",
+        "Coace acoperit, apoi descoperit, până carnea este pătrunsă."
+      ],
+      "tags": [
+        "tradițional"
+      ]
+    },
+    {
+      "id": "R047",
+      "title": "Tocăniță de linte cu legume",
+      "category": "Vegetarian",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "linte",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa, morcovul și ardeiul.",
+        "Pune lintea clătită, roșiile și apă.",
+        "Fierbe până lintea este fragedă și sosul legat."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R048",
+      "title": "Curry de năut și spanac",
+      "category": "Vegetarian",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "naut",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "spanac",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "lapte_cocos",
+          "quantity": 200,
+          "unit": "ml"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "curry",
+          "quantity": 5,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 130,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul.",
+        "Înmoaie ceapa, apoi adaugă năutul gătit, roșiile, cocosul și curry.",
+        "Pune spanacul la final și mai fierbe 5 minute."
+      ],
+      "tags": [
+        "vegan"
+      ]
+    },
+    {
+      "id": "R049",
+      "title": "Mâncare de fasole verde cu roșii",
+      "category": "Vegetarian",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "fasole_verde",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Sotează ceapa cu usturoiul.",
+        "Adaugă fasolea verde, roșiile și puțină apă.",
+        "Fierbe până fasolea este fragedă și servește cu pâine."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R050",
+      "title": "Vinete umplute cu legume și orez",
+      "category": "Vegetarian",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "vinete",
+          "quantity": 600,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Scobește vinetele și coace jumătățile 15 minute.",
+        "Amestecă orezul fiert cu legumele sotate.",
+        "Umple vinetele, presară mozzarella și mai coace 20 minute."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R051",
+      "title": "Dovlecei gratinați cu mozzarella",
+      "category": "Vegetarian",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "dovlecel",
+          "quantity": 550,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "busuioc",
+          "quantity": 8,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        },
+        {
+          "id": "paine",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Așază dovleceii și roșiile feliate în tavă.",
+        "Stropește cu ulei și presară mozzarella.",
+        "Coace până se rumenește și servește cu pâine."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R052",
+      "title": "Cartofi copți cu brânză și iaurt",
+      "category": "Vegetarian",
+      "minutes": 50,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 650,
+          "unit": "g"
+        },
+        {
+          "id": "branza_vaci",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "marar",
+          "quantity": 8,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Coace cartofii în coajă până devin fragezi.",
+        "Amestecă brânza cu iaurt și mărar.",
+        "Despică cartofii și umple-i, servește cu castraveți."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R053",
+      "title": "Tocană de ciuperci cu mămăligă",
+      "category": "Vegetarian",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ciuperci",
+          "quantity": 550,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "malai",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 600,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Sotează ciupercile cu ceapa până scade lichidul.",
+        "Adaugă roșiile și gătește sosul.",
+        "Fierbe mămăliga și servește cu tocana."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R054",
+      "title": "Salată caldă de năut cu ardei",
+      "category": "Vegetarian",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "naut",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 35,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 18,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rumenește ușor ardeii și ceapa.",
+        "Adaugă năutul gătit și încălzește.",
+        "Pune roșiile, lămâia și uleiul înainte de servire."
+      ],
+      "tags": [
+        "rapid",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R055",
+      "title": "Conopidă pane la cuptor",
+      "category": "Vegetarian",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "conopida",
+          "quantity": 550,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "pesmet",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rupe conopida în buchețele și opărește 4 minute.",
+        "Trece buchețelele prin ou și pesmet și coace până sunt rumene.",
+        "Servește cu sos de iaurt și usturoi."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R056",
+      "title": "Mazăre cu morcovi și ou",
+      "category": "Vegetarian",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "mazare",
+          "quantity": 420,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 4,
+          "unit": "buc"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa și morcovii.",
+        "Adaugă mazărea și puțină apă, fierbe până se înmoaie.",
+        "Gătește ouăle separat și servește alături."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R057",
+      "title": "Dhal de linte roșie",
+      "category": "Vegetarian",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "linte",
+          "quantity": 210,
+          "unit": "g"
+        },
+        {
+          "id": "lapte_cocos",
+          "quantity": 200,
+          "unit": "ml"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "ghimbir",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "curry",
+          "quantity": 6,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul separat.",
+        "Sotează ceapa și ghimbirul cu curry.",
+        "Adaugă lintea, roșiile și cocosul și fierbe până lintea se destramă."
+      ],
+      "tags": [
+        "vegan"
+      ]
+    },
+    {
+      "id": "R058",
+      "title": "Ghiveci de legume la cuptor",
+      "category": "Vegetarian",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 330,
+          "unit": "g"
+        },
+        {
+          "id": "dovlecel",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "vinete",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 280,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 25,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Taie toate legumele bucăți asemănătoare.",
+        "Amestecă-le cu ulei și pune-le într-o tavă.",
+        "Coace la 190°C până sunt bine pătrunse, amestecând la mijloc."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R059",
+      "title": "Paste cu roșii și busuioc",
+      "category": "Paste și orez",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 340,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 85,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "busuioc",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele conform ambalajului.",
+        "Înmoaie ceapa și usturoiul, apoi adaugă roșiile.",
+        "Fierbe sosul 10 minute, combină cu pastele și busuiocul."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R060",
+      "title": "Paste cu ciuperci și smântână",
+      "category": "Paste și orez",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "parmezan",
+          "quantity": 50,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele.",
+        "Sotează ciupercile și ceapa până se evaporă lichidul.",
+        "Adaugă smântâna, pastele și parmezanul."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R061",
+      "title": "Paste cu broccoli și mozzarella",
+      "category": "Paste și orez",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "broccoli",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele, punând broccoli în aceeași apă în ultimele 4 minute.",
+        "Sotează usturoiul în ulei.",
+        "Amestecă totul cu mozzarella și puțină apă de la paste."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R062",
+      "title": "Risotto cu ciuperci",
+      "category": "Paste și orez",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unt",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "id": "parmezan",
+          "quantity": 55,
+          "unit": "g"
+        },
+        {
+          "id": "supa_legume",
+          "quantity": 650,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa și ciupercile în unt.",
+        "Adaugă orezul și completează treptat cu supă caldă, amestecând.",
+        "Când orezul e cremos și gătit, încorporează parmezanul."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R063",
+      "title": "Pilaf de legume",
+      "category": "Paste și orez",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 210,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "mazare",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie ceapa și legumele în ulei.",
+        "Adaugă orezul spălat și apă circa de trei ori volumul lui.",
+        "Fierbe acoperit până orezul este gătit."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R064",
+      "title": "Orez cu ou și legume",
+      "category": "Paste și orez",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 3,
+          "unit": "buc"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "mazare",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa_verde",
+          "quantity": 70,
+          "unit": "g"
+        },
+        {
+          "id": "sos_soia",
+          "quantity": 25,
+          "unit": "ml"
+        },
+        {
+          "id": "ulei",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul și lasă-l să se răcească puțin.",
+        "Gătește ouăle bine într-o tigaie și scoate-le.",
+        "Sotează legumele, adaugă orezul, ouăle și sosul de soia."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R065",
+      "title": "Couscous cu legume și brânză",
+      "category": "Paste și orez",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "couscous",
+          "quantity": 190,
+          "unit": "g"
+        },
+        {
+          "id": "dovlecel",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "telemea",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 35,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Hidratează couscousul conform ambalajului.",
+        "Sotează dovlecelul și ardeiul.",
+        "Amestecă și adaugă telemea și lămâie."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R066",
+      "title": "Bulgur cu năut și pătrunjel",
+      "category": "Paste și orez",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "bulgur",
+          "quantity": 190,
+          "unit": "g"
+        },
+        {
+          "id": "naut",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "patrunjel",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe bulgurul și lasă-l să se răcească.",
+        "Taie legumele și combină-le cu năutul fiert.",
+        "Amestecă cu pătrunjel, lămâie și ulei."
+      ],
+      "tags": [
+        "vegan"
+      ]
+    },
+    {
+      "id": "R067",
+      "title": "Lasagna simplă cu carne",
+      "category": "Paste și orez",
+      "minutes": 65,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "carne_tocata",
+          "quantity": 340,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 200,
+          "unit": "ml"
+        },
+        {
+          "id": "faina",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "id": "unt",
+          "quantity": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Gătește carnea cu ceapa și roșiile.",
+        "Pregătește sos alb din unt, făină și lapte.",
+        "Montează foi de lasagna cu sosurile și mozzarella; coace până sunt fragede."
+      ],
+      "tags": [
+        "familie"
+      ]
+    },
+    {
+      "id": "R068",
+      "title": "Macaroane cu brânză la cuptor",
+      "category": "Paste și orez",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 240,
+          "unit": "g"
+        },
+        {
+          "id": "branza_vaci",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "telemea",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "lapte",
+          "quantity": 160,
+          "unit": "ml"
+        },
+        {
+          "id": "unt",
+          "quantity": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele pe jumătate și scurge-le.",
+        "Amestecă brânzeturile cu ouăle și laptele.",
+        "Toarnă peste paste și coace până compoziția se încheagă."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R069",
+      "title": "Orez cu roșii și fasole",
+      "category": "Paste și orez",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 190,
+          "unit": "g"
+        },
+        {
+          "id": "fasole",
+          "quantity": 260,
+          "unit": "g"
+        },
+        {
+          "id": "rosii_conserva",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "porumb",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "boia",
+          "quantity": 3,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul.",
+        "Sotează ceapa, adaugă roșiile, fasolea fiartă și porumbul.",
+        "Amestecă cu orezul și mai gătește 5 minute."
+      ],
+      "tags": [
+        "economic",
+        "vegan"
+      ]
+    },
+    {
+      "id": "R070",
+      "title": "Paste cu ricotta și spanac",
+      "category": "Paste și orez",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ricotta",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "spanac",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 25,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele și păstrează puțină apă.",
+        "Înmoaie spanacul cu usturoiul în ulei.",
+        "Amestecă ricotta, pastele, lămâia și puțin lichid de la fierbere."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R071",
+      "title": "Somon cu broccoli și cartofi",
+      "category": "Pește și fructe de mare",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "somon",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "id": "broccoli",
+          "quantity": 380,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 460,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 18,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Pune cartofii la copt.",
+        "Adaugă somonul condimentat și gătește până este pătruns.",
+        "Fierbe broccoli la abur și servește cu lămâie."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R072",
+      "title": "Păstrăv la cuptor cu mămăligă",
+      "category": "Pește și fructe de mare",
+      "minutes": 45,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pastrav",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "malai",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "apa",
+          "quantity": 600,
+          "unit": "ml"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 60,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Coace păstrăvul eviscerat cu usturoi și felii de lămâie până este făcut.",
+        "Fierbe mămăliga.",
+        "Verifică și îndepărtează oasele înainte de servire."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R073",
+      "title": "Pește alb cu legume la tavă",
+      "category": "Pește și fructe de mare",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "peste_alb",
+          "quantity": 380,
+          "unit": "g"
+        },
+        {
+          "id": "dovlecel",
+          "quantity": 230,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 20,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Coace cartofii și morcovii 15 minute.",
+        "Adaugă dovlecelul, ardeiul și peștele.",
+        "Continuă coacerea până peștele este bine făcut."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R074",
+      "title": "Paste cu somon și smântână",
+      "category": "Pește și fructe de mare",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "somon",
+          "quantity": 270,
+          "unit": "g"
+        },
+        {
+          "id": "paste",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "smantana",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "id": "spanac",
+          "quantity": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele.",
+        "Gătește somonul separat până este pătruns.",
+        "Amestecă smântâna și spanacul cu pastele, apoi adaugă somonul și lămâia."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R075",
+      "title": "Salată de ton cu fasole albă",
+      "category": "Pește și fructe de mare",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ton",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "fasole",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Scurge tonul și fasolea fiartă.",
+        "Taie legumele.",
+        "Amestecă ingredientele cu zeamă de lămâie și ulei."
+      ],
+      "tags": [
+        "rapid",
+        "proteic"
+      ]
+    },
+    {
+      "id": "R076",
+      "title": "Sardine cu cartofi și salată",
+      "category": "Pește și fructe de mare",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "sardine",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 35,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe cartofii și lasă-i să se răcească puțin.",
+        "Spală și taie salata și roșiile.",
+        "Servește cu sardinele scurse și zeamă de lămâie."
+      ],
+      "tags": [
+        "rapid"
+      ]
+    },
+    {
+      "id": "R077",
+      "title": "Creveți cu usturoi și orez",
+      "category": "Pește și fructe de mare",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "creveti",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 18,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 20,
+          "unit": "ml"
+        },
+        {
+          "id": "patrunjel",
+          "quantity": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul.",
+        "Gătește creveții în ulei cu usturoiul până sunt complet făcuți.",
+        "Stropește cu lămâie și adaugă pătrunjelul."
+      ],
+      "tags": [
+        "rapid",
+        "proteic"
+      ]
+    },
+    {
+      "id": "R078",
+      "title": "Pește alb cu piure de conopidă",
+      "category": "Pește și fructe de mare",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "peste_alb",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "id": "conopida",
+          "quantity": 480,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 110,
+          "unit": "ml"
+        },
+        {
+          "id": "unt",
+          "quantity": 18,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 35,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe conopida și paseaz-o cu lapte și unt.",
+        "Gătește peștele în cuptor până e pătruns.",
+        "Servește cu zeamă de lămâie."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R079",
+      "title": "Somon cu orez și mazăre",
+      "category": "Pește și fructe de mare",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "somon",
+          "quantity": 340,
+          "unit": "g"
+        },
+        {
+          "id": "orez",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "mazare",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul și mazărea separat.",
+        "Coace somonul până este bine gătit.",
+        "Servește cu zeamă de lămâie și puțin ulei."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R080",
+      "title": "Păstrăv cu roșii și usturoi",
+      "category": "Pește și fructe de mare",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pastrav",
+          "quantity": 430,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 280,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 18,
+          "unit": "g"
+        },
+        {
+          "id": "cartofi",
+          "quantity": 420,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 18,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Taie cartofii și începe coacerea lor.",
+        "Pune păstrăvul cu roșiile și usturoiul în tavă.",
+        "Coace până peștele și cartofii sunt gata."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R081",
+      "title": "Salată cu ouă și avocado",
+      "category": "Cină și salate",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "oua",
+          "quantity": 4,
+          "unit": "buc"
+        },
+        {
+          "id": "avocado",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 140,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe ouăle tari.",
+        "Taie legumele și avocado.",
+        "Combină și servește cu pâine."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R082",
+      "title": "Salată grecească cu telemea",
+      "category": "Cină și salate",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "telemea",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "masline",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 18,
+          "unit": "ml"
+        },
+        {
+          "id": "paine",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Taie legumele în bucăți mari.",
+        "Adaugă telemeaua și măslinele.",
+        "Stropește cu ulei și servește cu pâine."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R083",
+      "title": "Salată de pui cu iaurt",
+      "category": "Cină și salate",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pui_piept",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 35,
+          "unit": "g"
+        },
+        {
+          "id": "paine",
+          "quantity": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Gătește puiul până este pătruns și taie-l fâșii.",
+        "Combină salata și legumele.",
+        "Pregătește dressingul de iaurt cu lămâie și servește."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R084",
+      "title": "Tortilla cu năut și legume",
+      "category": "Cină și salate",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "tortilla",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "naut",
+          "quantity": 260,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "salata",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Pasează grosier năutul gătit cu iaurtul.",
+        "Feliază legumele.",
+        "Umple tortilla cu amestecul și legumele, apoi rulează."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R085",
+      "title": "Salată de sfeclă cu brânză",
+      "category": "Cină și salate",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "sfecla",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "id": "branza_vaci",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "nuci",
+          "quantity": 45,
+          "unit": "g"
+        },
+        {
+          "id": "rucola",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 16,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Folosește sfeclă deja coaptă sau fiartă.",
+        "Feliaz-o și așaz-o peste rucola.",
+        "Adaugă brânza, nucile și uleiul."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R086",
+      "title": "Salată de cartofi cu iaurt",
+      "category": "Cină și salate",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "cartofi",
+          "quantity": 530,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa_verde",
+          "quantity": 70,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "marar",
+          "quantity": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe cartofii în coajă, răcește-i și feliază-i.",
+        "Taie ceapa verde și castraveții.",
+        "Amestecă cu iaurt și mărar."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R087",
+      "title": "Frittata cu legume la cuptor",
+      "category": "Cină și salate",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "oua",
+          "quantity": 5,
+          "unit": "buc"
+        },
+        {
+          "id": "spanac",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 12,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Înmoaie legumele câteva minute în tigaie.",
+        "Bate ouăle și amestecă cu legumele și mozzarella.",
+        "Coace într-o tavă mică până ouăle sunt complet închegate."
+      ],
+      "tags": [
+        "proteic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R088",
+      "title": "Bruschete cu roșii și mozzarella",
+      "category": "Cină și salate",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paine",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "mozzarella",
+          "quantity": 130,
+          "unit": "g"
+        },
+        {
+          "id": "busuioc",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rumenește feliile de pâine.",
+        "Amestecă roșiile cuburi cu busuioc și ulei.",
+        "Așază pe pâine și adaugă mozzarella."
+      ],
+      "tags": [
+        "rapid",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R089",
+      "title": "Salată de paste cu legume",
+      "category": "Cină și salate",
+      "minutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paste",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "rosii",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "telemea",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 15,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele și răcește-le sub apă rece.",
+        "Taie legumele și brânza.",
+        "Amestecă totul cu ulei."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R090",
+      "title": "Lipie cu hummus de casă",
+      "category": "Cină și salate",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "lipie",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "naut",
+          "quantity": 280,
+          "unit": "g"
+        },
+        {
+          "id": "usturoi",
+          "quantity": 12,
+          "unit": "g"
+        },
+        {
+          "id": "lamaie",
+          "quantity": 45,
+          "unit": "g"
+        },
+        {
+          "id": "ulei_masline",
+          "quantity": 25,
+          "unit": "ml"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "morcovi",
+          "quantity": 170,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Pasează năutul gătit cu usturoi, lămâie și ulei.",
+        "Taie legumele bețișoare.",
+        "Servește hummusul cu lipie și legume."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R091",
+      "title": "Toast cu ciuperci și cașcaval",
+      "category": "Cină și salate",
+      "minutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "paine",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "ciuperci",
+          "quantity": 280,
+          "unit": "g"
+        },
+        {
+          "id": "cascaval",
+          "quantity": 110,
+          "unit": "g"
+        },
+        {
+          "id": "ceapa",
+          "quantity": 70,
+          "unit": "g"
+        },
+        {
+          "id": "unt",
+          "quantity": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Sotează ciupercile și ceapa până scade apa.",
+        "Pune compoziția pe pâine cu cașcavalul.",
+        "Gratinează până se topește brânza."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R092",
+      "title": "Salată de orez cu pui",
+      "category": "Cină și salate",
+      "minutes": 30,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "pui_piept",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "id": "ardei",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "porumb",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "id": "castraveti",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul și gătește complet puiul.",
+        "Răcește ingredientele gătite și taie legumele.",
+        "Amestecă totul cu iaurt."
+      ],
+      "tags": [
+        "proteic"
+      ]
+    },
+    {
+      "id": "R093",
+      "title": "Banana bread cu ovăz",
+      "category": "Desert și gustări",
+      "minutes": 55,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "banane",
+          "quantity": 320,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "ovaz",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 100,
+          "unit": "ml"
+        },
+        {
+          "id": "praf_copt",
+          "quantity": 8,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 3,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Pasează bananele și amestecă-le cu ouăle și laptele.",
+        "Încorporează ovăzul măcinat, praful de copt și scorțișoara.",
+        "Coace într-o formă mică la 175°C circa 35–40 minute."
+      ],
+      "tags": [
+        "fără zahăr adăugat"
+      ]
+    },
+    {
+      "id": "R094",
+      "title": "Biscuiți cu mere și ovăz",
+      "category": "Desert și gustări",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "mere",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "id": "ovaz",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "banane",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 3,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 10,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Rade merele și pasează banana.",
+        "Amestecă cu ovăzul și scorțișoara.",
+        "Formează biscuiți și coace 20–25 minute."
+      ],
+      "tags": [
+        "fără zahăr adăugat"
+      ]
+    },
+    {
+      "id": "R095",
+      "title": "Brioșe cu iaurt și afine",
+      "category": "Desert și gustări",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "faina",
+          "quantity": 190,
+          "unit": "g"
+        },
+        {
+          "id": "iaurt",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "oua",
+          "quantity": 2,
+          "unit": "buc"
+        },
+        {
+          "id": "afine",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "id": "praf_copt",
+          "quantity": 8,
+          "unit": "g"
+        },
+        {
+          "id": "ulei",
+          "quantity": 35,
+          "unit": "ml"
+        },
+        {
+          "id": "zahar",
+          "quantity": 45,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Amestecă ouăle, iaurtul și uleiul.",
+        "Încorporează făina, praful de copt, zahărul și afinele.",
+        "Împarte în forme și coace 20–25 minute."
+      ],
+      "tags": [
+        "gustare"
+      ]
+    },
+    {
+      "id": "R096",
+      "title": "Mere coapte cu nuci",
+      "category": "Desert și gustări",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "mere",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "id": "nuci",
+          "quantity": 70,
+          "unit": "g"
+        },
+        {
+          "id": "miere",
+          "quantity": 25,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 3,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Scobește merele fără a perfora baza.",
+        "Umple cu nuci, miere și scorțișoară.",
+        "Coace până merele se înmoaie."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R097",
+      "title": "Biluțe energizante cu ovăz",
+      "category": "Desert și gustări",
+      "minutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "ovaz",
+          "quantity": 160,
+          "unit": "g"
+        },
+        {
+          "id": "arahide",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "id": "miere",
+          "quantity": 65,
+          "unit": "g"
+        },
+        {
+          "id": "cacao",
+          "quantity": 18,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 35,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Mărunțește ovăzul și arahidele.",
+        "Amestecă-le cu miere, cacao și puțin lapte.",
+        "Modelează biluțe și răcește-le înainte de servire."
+      ],
+      "tags": [
+        "fără coacere"
+      ]
+    },
+    {
+      "id": "R098",
+      "title": "Budincă de orez cu lapte",
+      "category": "Desert și gustări",
+      "minutes": 40,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "orez",
+          "quantity": 140,
+          "unit": "g"
+        },
+        {
+          "id": "lapte",
+          "quantity": 600,
+          "unit": "ml"
+        },
+        {
+          "id": "zahar",
+          "quantity": 35,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 3,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul în lapte la foc mic, amestecând des.",
+        "Când devine cremos, adaugă zahărul.",
+        "Împarte în boluri și presară scorțișoară."
+      ],
+      "tags": [
+        "economic",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "R099",
+      "title": "Iaurt cu banane și cacao",
+      "category": "Desert și gustări",
+      "minutes": 5,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "iaurt_grecesc",
+          "quantity": 340,
+          "unit": "g"
+        },
+        {
+          "id": "banane",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "id": "cacao",
+          "quantity": 15,
+          "unit": "g"
+        },
+        {
+          "id": "nuci",
+          "quantity": 30,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Pasează o banană cu cacao și o parte din iaurt.",
+        "Împarte crema în boluri.",
+        "Completează cu restul de iaurt și nucile tocate."
+      ],
+      "tags": [
+        "rapid",
+        "fără coacere"
+      ]
+    },
+    {
+      "id": "R100",
+      "title": "Pere la cuptor cu ricotta",
+      "category": "Desert și gustări",
+      "minutes": 35,
+      "servings": 2,
+      "ingredients": [
+        {
+          "id": "pere",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "id": "ricotta",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "id": "nuci",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "id": "miere",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "id": "scortisoara",
+          "quantity": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Taie perele în jumătăți și scoate cotoarele.",
+        "Coace 15 minute, apoi umple cu ricotta și nuci.",
+        "Mai coace 8 minute și servește cu miere."
+      ],
+      "tags": [
+        "vegetarian"
+      ]
+    }
+  ]
+}
