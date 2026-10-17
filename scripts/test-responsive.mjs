@@ -90,6 +90,37 @@ try{
   }
   await page.close();
  }
+
+ // Cloud catalog regression: 1000 records from Supabase + 100 classic recipes
+ // should appear in the searchable app library without breaking recipe details.
+ {
+   const page=await browser.newPage({viewport:{width:390,height:850}});
+   const errors=[];page.on('pageerror',e=>errors.push(e.message));
+   const cloud=Array.from({length:1000},(_,i)=>({
+     legacy_key:'BP'+String(i+1).padStart(4,'0'),title:i===0?'Terci de ovăz cu mere':'Rețeta cloud '+(i+1),
+     category:'Mic dejun',servings:2,minutes_to_prepare:18,
+     instructions:['Spală ingredientele.','Prepară la foc mic.','Servește.'],
+     ingredient_details:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
+   }));
+   await page.route('**/rest/v1/recipes**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(cloud)}));
+   await page.addInitScript(()=>{
+     window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com'}};
+     window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
+     window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
+     localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',city:'București',name:'Tester',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
+   });
+   await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
+   await page.evaluate(()=>go('library100'));
+   await page.waitForFunction(()=>document.body.textContent.includes('1.100 rețete disponibile'),null,{timeout:15000});
+   await page.locator('.p-headsearch').fill('Terci de ovăz cu mere');
+   const searchCount=await page.locator('#bpCloudCount').textContent();
+   const cloudButton=page.locator('#bpCloudResults button').filter({hasText:'Terci de ovăz cu mere'}).first();
+   const found=await cloudButton.isVisible();
+   if(found)await cloudButton.click();
+   const details=await page.getByText('Cum se prepară, pas cu pas').isVisible();
+   if(!found||!details||errors.length)failures.push({test:'cloud-catalog',searchCount,found,details,errors});
+   await page.close();
+ }
 }catch(e){failures.push({fatal:String(e.stack||e)})}
 finally{if(browser)await browser.close();server.kill();}
 console.log(JSON.stringify({passed:!failures.length,failures},null,2));
