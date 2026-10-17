@@ -23,6 +23,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.10.2'
+      - name: Validate onboarding/app scripts and brand assets
+        run: node scripts/check-bunplan-js.mjs
       - name: Build APK with Google Mobile Ads and UMP
         env:
           BUNPLAN_GOOGLE_WEB_CLIENT_ID: ${{ vars.BUNPLAN_GOOGLE_WEB_CLIENT_ID }}
