@@ -46,6 +46,49 @@ try{
   if(width===390)await page.screenshot({path:screens+'/profile-390.png',fullPage:true});
   await page.close();
  }
+
+ for(const width of [320,390,430,768]){
+  const page=await browser.newPage({viewport:{width,height:760},deviceScaleFactor:1});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{
+   window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com';}};
+   window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
+   window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
+   localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',name:'Tester',city:'București',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
+  });
+  await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
+  await page.evaluate(()=>{
+   bp100.days[0]['Mic dejun']='R001';
+   bp100.days[0]['Prânz']='R003';
+   bp35Commit();
+   state.unlocks[bp35Key()]=true;storage();go('basket100');
+  });
+  const rows=page.locator('.bp35-checklist .bp35-product input[type=checkbox]');
+  const total=await rows.count();
+  if(total<2)failures.push({width,test:'shopping-list rows',total});
+  else{
+   await rows.first().scrollIntoViewIfNeeded();
+   await page.evaluate(()=>document.querySelector('main.scroll').dataset.qaStable='yes');
+   const before=await page.evaluate(()=>scrollY);
+   await rows.first().check();
+   const after=await page.evaluate(()=>scrollY);
+   const status=await page.evaluate(()=>({
+    stable:document.querySelector('main.scroll')?.dataset.qaStable==='yes',
+    checked:document.querySelector('.bp35-checklist input[type=checkbox]')?.checked,
+    progress:document.querySelector('.bp35-boughtheading span')?.textContent,
+    overflow:document.documentElement.scrollWidth-innerWidth
+   }));
+   if(!status.stable||!status.checked||!status.progress?.startsWith('1/')||Math.abs(after-before)>8||status.overflow>2||errors.length)
+    failures.push({width,test:'shopping-checkbox-no-jump',before,after,status,errors});
+   if(width===390)await page.screenshot({path:screens+'/shopping-390.png',fullPage:true});
+   const cross=await page.evaluate(()=>{
+    bp35ChooseStore('Kaufland');
+    return {store:bp35.store,checked:Object.values(bp35.bought[bp35Key()]||{}).some(Boolean)};
+   });
+   if(cross.store!=='Kaufland'||cross.checked)failures.push({width,test:'store-isolation',cross});
+  }
+  await page.close();
+ }
 }catch(e){failures.push({fatal:String(e.stack||e)})}
 finally{if(browser)await browser.close();server.kill();}
 console.log(JSON.stringify({passed:!failures.length,failures},null,2));
