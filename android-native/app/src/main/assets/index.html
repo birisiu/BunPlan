@@ -1,34 +1,78 @@
-<!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';"><title>BunPlan</title><style>
-:root{font-family:system-ui,sans-serif;color:#12382b;background:#f4f7ed}
-*{box-sizing:border-box}body{margin:0;padding:32px 22px}section{max-width:450px;margin:auto}
-h1{font-size:34px;margin:15px 0}h2{font-size:26px;line-height:1.15;margin:16px 0}
-p{color:#607268;line-height:1.5}input{display:block;width:100%;border:1px solid #cfdccc;background:white;border-radius:15px;margin:11px 0;padding:17px;font-size:16px}
-button{font-size:16px;font-weight:750;border:0;border-radius:16px;padding:17px;cursor:pointer;width:100%;margin:8px 0;color:white;background:#16543c}
-button.other{color:#16543c;background:#e0f2ba}button:disabled{opacity:.55}
-.hero{background:#164b36;color:white;border-radius:28px;padding:25px;margin:23px 0}
-.hero p{color:#e0efdb}#message{background:#e0edcf;padding:14px;border-radius:12px;display:none;line-height:1.5}
-.brand{font-size:24px;font-weight:900}small{display:block;text-align:center;color:#798b7e;margin:20px 0}
-</style></head><body><section><div class="brand">🥬 BunPlan</div><div class="hero"><h2>Planifică mesele, nu cheltuielile neprevăzute.</h2><p>Rețete, buget săptămânal și lista de cumpărături pentru Lidl sau Kaufland.</p></div>
-<div id="login">
-<h1>Contul tău BunPlan</h1><p id="subtitle">Conectează-te pentru a continua.</p>
-<div id="displayHolder" style="display:none"><input autocomplete="name" id="display" placeholder="Numele tău"></div>
-<input id="email" type="email" autocomplete="email" placeholder="Adresa de e-mail">
-<input id="password" type="password" autocomplete="current-password" placeholder="Parola (minimum 8 caractere)">
-<p id="message"></p><button id="action" onclick="submitAuth()">Conectează-te</button>
-<button class="other" id="switch" onclick="toggle()">Nu ai cont? Înregistrează-te</button>
-<button class="other" id="google-signin" onclick="googleSignIn()">Continuă cu Google</button>
-<button class="other" style="background:transparent" onclick="recoverPassword()">Am uitat parola</button>
-<small>Autentificare Supabase • datele sunt salvate securizat în cloud</small>
-</div></section><script>
-let signup=false,busy=false;
-const $=id=>document.getElementById(id);
+<!doctype html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f6f8f2">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';">
+<title>BunPlan — Planifică bine, cumpără simplu</title>
+<style>
+:root{font-family:system-ui,-apple-system,Roboto,sans-serif;background:#f6f8f2;color:#163729;--forest:#174e3a;--muted:#6b8071;--line:#dfe8da;--lime:#def3a4}
+*{box-sizing:border-box}html,body{padding:0;margin:0;min-height:100%}button,input{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #9fce76;outline-offset:2px}
+.shell{max-width:660px;margin:auto;min-height:100dvh;padding:clamp(17px,4.5vw,34px) clamp(16px,5vw,30px) calc(23px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.brand{display:flex;gap:11px;align-items:center;font-size:25px;font-weight:900;letter-spacing:-1px}.brand-icon{background:var(--forest);width:39px;height:39px;border-radius:13px;display:grid;place-items:center;color:var(--lime)}
+.panel{background:#fff;border:1px solid #e1e8da;border-radius:27px;padding:clamp(19px,5vw,32px);box-shadow:0 10px 40px #174d3f0b;margin-top:24px}
+.eyebrow{color:#6f8a65;text-transform:uppercase;font-size:11px;font-weight:900;letter-spacing:1.5px}.heading{font-size:clamp(28px,7vw,39px);font-weight:900;line-height:1.12;letter-spacing:-1.2px;margin:16px 0 12px}.sub{font-size:14px;line-height:1.6;color:var(--muted)}
+.illustration{background:radial-gradient(circle at 84% 10%,#d9f58b 0 21%,transparent 21%),radial-gradient(circle at 20% 105%,#32795f 0 20%,transparent 20%),#175640;border-radius:27px;margin:25px 0;padding:30px 24px;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden}
+.illustration strong{font-size:29px;letter-spacing:-1.2px;max-width:270px;line-height:1.12}.illustration small{margin-top:12px;font-size:12px;color:#d9f5dc}
+.progress{background:#e1ead9;height:7px;border-radius:999px;overflow:hidden;margin:17px 0}.progress i{display:block;height:100%;background:#1e6549;transition:width .3s}
+.label{font-size:12px;font-weight:800;margin:14px 0 9px;display:block}.input{width:100%;border:1px solid #d7e0d4;border-radius:16px;min-height:52px;padding:13px 15px;color:#163729;background:#fff;font-size:16px}
+.fieldgroup{margin:17px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.choice{border:1.5px solid var(--line);background:white;color:#243e2e;border-radius:17px;padding:14px 10px;display:flex;align-items:center;justify-content:center;gap:9px;min-height:55px;font-size:14px;font-weight:800;transition:background .15s}
+.choice.selected{background:#e4f5c7;border-color:#27593d}.choice img{height:30px;width:30px;object-fit:contain;flex-shrink:0}
+.choice.store{justify-content:flex-start;min-height:76px;padding:13px}.choice.store img{height:43px;width:43px;border-radius:8px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}.chips .choice{min-height:40px;padding:9px 14px}
+.money{font-size:44px;letter-spacing:-1.5px;font-weight:900;color:var(--forest);margin:11px 0}.money small{font-size:16px}
+.note{padding:13px 14px;background:#edf6dc;border-radius:15px;color:#59735c;font-size:12px;line-height:1.5;margin:20px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.action{width:100%;border:0;border-radius:16px;min-height:54px;padding:13px;background:var(--forest);color:#fff;font-size:15px;font-weight:800;margin:9px 0}
+.action.alt{background:#f3f7e9;color:var(--forest);border:1px solid #dce8d4}.action:disabled{opacity:.45}
+.action.google{background:#fff;border:1px solid #d1ddcf;color:#253d2b}.google-icon{display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#4285f4;margin-right:9px}
+.smallaction{background:transparent;border:0;color:#245b42;font-weight:800;padding:9px 5px;font-size:13px}
+.flexgap{flex:1;min-height:12px}.err{padding:13px;color:#953a21;border-radius:12px;background:#fcebe4;margin:12px 0;display:none;line-height:1.4;font-size:13px}
+.muted{color:var(--muted);font-size:12px;line-height:1.6}.bottombar{margin-top:15px}
+.logofoot{font-size:11px;line-height:1.6;color:#899a88;text-align:center;padding:22px 5px 4px}
+@media(max-width:360px){.choice{font-size:12px;padding:11px 5px}.panel{padding:16px}.shell{padding:14px 12px}.heading{font-size:27px}.choice.store img{width:34px;height:34px}}
+@media(min-width:700px){.shell{justify-content:center}.panel{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><main class="shell" id="root" aria-live="polite"></main>
+<script>
+(function(){
+'use strict';
+const KEY='bunplan_onboard_v2', LOGOS={Lidl:'brands/lidl.svg',Kaufland:'brands/kaufland.svg'};
+const defaults={step:0,budget:450,adults:2,children:0,diet:'Echilibrat',exclusions:[],meals:3,time:30,store:'Lidl',stores:['Lidl'],city:'București',name:'',completed:false};
+let w={...defaults},page='welcome',mode='signup',busy=false;
+try{const t=JSON.parse(localStorage.getItem(KEY)||'null');if(t&&typeof t==='object')w={...w,...t};}catch(_){}
 const bridge=window.BunPlanAuth;
-if(bridge&&bridge.hasSession())window.location.replace('main.html');
-function toggle(){signup=!signup;$('displayHolder').style.display=signup?'block':'none';$('action').textContent=signup?'Creează cont':'Conectează-te';$('switch').textContent=signup?'Ai deja cont? Conectează-te':'Nu ai cont? Înregistrează-te';$('subtitle').textContent=signup?'Creează contul și confirmă adresa de e-mail.':'Conectează-te pentru a continua.';show('');}
-function show(msg){$('message').textContent=msg;$('message').style.display=msg?'block':'none';}
-function googleSignIn(){if(!window.BunPlanGoogle){show('Google Sign-In necesită versiunea Android.');return;}show('Deschid selectorul de cont Google…');window.BunPlanGoogle.signIn();}
-function recoverPassword(){const e=$('email').value.trim();if(!e.includes('@')){show('Introdu adresa de e-mail pentru recuperare.');return;}if(!bridge){show('Recuperarea parolei necesită aplicația Android.');return;}show('Solicit recuperarea parolei…');bridge.recover(e);}
-function submitAuth(){if(busy)return;if(!bridge){show('Autentificarea este disponibilă numai în aplicația Android.');return;} const e=$('email').value.trim(),p=$('password').value;if(!e.includes('@')||p.length<8){show('Introdu un e-mail valid și o parolă de minimum 8 caractere.');return;}busy=true;$('action').disabled=true;show('Conectare la server...');signup?bridge.signup(e,p,$('display').value):bridge.login(e,p);}
-window.BunPlanAuthDone=function(action,r){busy=false;$('action').disabled=false;if(!r.ok){show(r.message||'Eroare de autentificare.');return;}if(action==='recover'){show(r.message||'Verifică e-mailul.');return;}if(r.signed_in){window.location.replace('main.html');return;}show(r.message||'Confirmă contul pe e-mail și conectează-te.');};
+function persist(){localStorage.setItem(KEY,JSON.stringify(w));}
+function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function brand(){return '<header class="brand"><span class="brand-icon">✓</span><span>BunPlan</span></header>'}
+function opt(label,key,value){let selected=w[key]===value;return '<button class="choice '+(selected?'selected':'')+'" onclick="bpChange('+JSON.stringify(key)+','+JSON.stringify(value)+')">'+esc(label)+'</button>'}
+function multi(label,value){let selected=w.exclusions.includes(value);return '<button class="choice '+(selected?'selected':'')+'" onclick="bpExclude('+JSON.stringify(value)+')">'+esc(label)+'</button>'}
+function storeCard(name){return '<button class="choice store '+(w.store===name?'selected':'')+'" onclick="bpChange(\'store\',\''+name+'\')"><img src="'+LOGOS[name]+'" alt="Logo '+name+'"/><span>'+name+'</span><span style="margin-left:auto">'+(w.store===name?'✓':'→')+'</span></button>'}
+function welcome(){return '<div>'+brand()+'</div><div class="illustration"><strong>Mese bune.<br>Buget sub control.</strong><small>100 de rețete • Lidl și Kaufland • 7 zile organizate</small></div><h1 class="heading">Planifică simplu.<br>Cumpără inteligent.</h1><p class="sub">Răspunde la câteva întrebări și îți pregătim un plan pe măsura familiei tale. Creezi contul la final, nu la început.</p><div class="flexgap"></div><button class="action" onclick="bpStart()">Începem →</button><button class="smallaction" onclick="bpAuth('login')">Am deja cont</button><p class="logofoot">Magazinele sunt mărci independente. BunPlan nu este o aplicație oficială Lidl sau Kaufland.</p>'}
+const titles=['Ce buget ai pentru cumpărături?','Pentru câte persoane gătești?','Cum preferi să mănânci?','Cât de des gătești?','Unde faci cumpărăturile?'];
+function stepFields(){
+ switch(w.step){
+ case 0:return '<div class="money">'+Number(w.budget)+' <small>lei / săptămână</small></div><input style="width:100%;accent-color:#175640" type="range" min="100" max="2000" step="25" aria-label="Buget săptămânal" value="'+w.budget+'" oninput="bpChange(\'budget\',+this.value)"><div class="row muted"><span>100 lei</span><span>2.000 lei</span></div><div class="note">Vei vedea un total orientativ al ingredientelor, separat pentru fiecare supermarket.</div>';
+ case 1:return '<div class="fieldgroup"><label class="label">Adulți</label><div class="grid">'+[1,2,3,4].map(n=>opt(n+' adulți','adults',n)).join('')+'</div></div><div class="fieldgroup"><label class="label">Copii</label><div class="grid">'+[0,1,2,3].map(n=>opt(n+' copii','children',n)).join('')+'</div></div>';
+ case 2:return '<div class="grid">'+['Echilibrat','Economic','Vegetarian','Bogat în proteine'].map(n=>opt(n,'diet',n)).join('')+'</div><div class="fieldgroup"><label class="label">Alimente de exclus (opțional)</label><div class="chips">'+['Lactate','Gluten','Ouă','Pește','Nuci'].map(n=>multi(n,n)).join('')+'</div></div><div class="note">Aceste preferințe nu înlocuiesc verificarea etichetelor în cazul alergiilor.</div>';
+ case 3:return '<div class="fieldgroup"><label class="label">Mese pe zi</label><div class="grid">'+[2,3].map(n=>opt(n+' mese','meals',n)).join('')+'</div></div><div class="fieldgroup"><label class="label">Timp maxim de gătit</label><div class="grid">'+[15,30,45,60].map(n=>opt(n+' minute','time',n)).join('')+'</div></div>';
+ default:return '<div class="grid">'+storeCard('Lidl')+storeCard('Kaufland')+'</div><div class="fieldgroup"><label class="label" for="bpCity">Orașul tău</label><input class="input" id="bpCity" maxlength="100" placeholder="De exemplu, București" value="'+esc(w.city)+'" oninput="bpCity(this.value)"></div><div class="note">Alegi un magazin principal pentru prima listă. Poți trece oricând la celălalt, fără să se amestece prețurile sau produsele.</div>';
+ }
+}
+function wizard(){return brand()+'<div class="panel"><div class="row"><button class="smallaction" onclick="bpBack()">← Înapoi</button><span class="eyebrow">Pasul '+(w.step+1)+' din 5</span></div><div class="progress"><i style="width:'+((w.step+1)*20)+'%"></i></div><h1 class="heading">'+titles[w.step]+'</h1><p class="sub">Personalizăm rețetele și bugetul tău.</p>'+stepFields()+'</div><div class="flexgap"></div><button class="action" onclick="bpNext()">'+(w.step===4?'Continuă spre cont':'Continuă →')+'</button><p class="logofoot">Preferințele pot fi schimbate ulterior din Profil.</p>'}
+function account(){return brand()+'<div class="panel"><button class="smallaction" onclick="bpBack()">← Înapoi</button><div class="eyebrow">Ultimul pas • contul tău</div><h1 class="heading">'+(mode==='signup'?'Salvează-ți planul.':'Bine ai revenit!')+'</h1><p class="sub">Datele tale se pot păstra în contul securizat BunPlan prin Supabase.</p><div id="msg" class="err" role="status"></div>'+(mode==='signup'?'<label class="label">Numele tău</label><input id="name" class="input" type="text" autocomplete="name" placeholder="Cum te cheamă?" maxlength="80" value="'+esc(w.name)+'">':'')+'<label class="label" for="email">E-mail</label><input class="input" id="email" autocomplete="email" type="email" placeholder="email@exemplu.ro"><label class="label" for="password">Parolă</label><input class="input" id="password" type="password" autocomplete="'+(mode==='signup'?'new-password':'current-password')+'" minlength="8" placeholder="Minimum 8 caractere"><button class="action" id="loginButton" onclick="bpSubmit()">'+(mode==='signup'?'Creează contul':'Conectează-te')+'</button><div class="row" style="margin:9px 0"><span class="muted">sau</span><span class="muted">autentifică-te cu Google</span></div><button class="action google" onclick="bpGoogleBrowser()"><span class="google-icon">G</span> Continuă cu Google</button><button class="action alt" onclick="bpGoogleNative()">Folosește contul Google de pe telefon</button><div class="row"><button class="smallaction" onclick="bpAuth(\''+(mode==='signup'?'login':'signup')+'\')">'+(mode==='signup'?'Am deja cont':'Creează cont nou')+'</button><button class="smallaction" onclick="bpRecover()">Am uitat parola</button></div></div><p class="logofoot">Prin utilizare accepți prelucrarea minimă a datelor pentru gestionarea contului și meniurilor.</p>'}
+function display(){let r=document.getElementById('root');r.innerHTML=page==='welcome'?welcome():page==='wizard'?wizard():account();window.scrollTo({top:0,behavior:'instant'});}
+function toast(message){const m=document.getElementById('msg');if(m){m.style.display='block';m.textContent=message;}}
+window.bpStart=function(){w.step=0;page='wizard';persist();display();}
+window.bpChange=function(key,value){if(!Object.prototype.hasOwnProperty.call(defaults,key))return;w[key]=value;if(key==='store')w.stores=[value];persist();display();}
+window.bpCity=function(value){w.city=String(value).slice(0,100);persist();}
+window.bpExclude=function(x){w.exclusions=w.exclusions.includes(x)?w.exclusions.filter(a=>a!==x):[...w.exclusions,x];persist();display();}
+window.bpBack=function(){if(page==='auth'){page='wizard';w.step=4;}else if(w.step>0)w.step--;else page='welcome';persist();display();}
+window.bpNext=function(){if(w.step<4){w.step++;persist();display();return;}if(!w.city.trim()){alert('Completează orașul.');return;}w.completed=true;persist();page='auth';mode='signup';display();}
+window.bpAuth=function(m){page='auth';mode=m;display();}
+window.bpGoogleBrowser=function(){if(!window.BunPlanGoogleBrowser){toast('Această metodă funcționează numai în APK Android.');return;}toast('Deschidem conectarea Google într-un browser securizat…');window.BunPlanGoogleBrowser.signIn();}
+window.bpGoogleNative=function(){if(!window.BunPlanGoogle){toast('Aplicația Google de pe dispozitiv nu este disponibilă.');return;}toast('Verificăm conturile Google disponibile…');window.BunPlanGoogle.signIn();}
+window.bpRecover=function(){const e=(document.getElementById('email')||{}).value||'';if(!e.includes('@')){toast('Introdu adresa de e-mail mai întâi.');return;}bridge.recover(e);toast('Solicităm instrucțiunile de recuperare…');}
+window.bpSubmit=function(){if(busy)return;const e=document.getElementById('email').value.trim(),p=document.getElementById('password').value;w.name=(document.getElementById('name')||{}).value||w.name;if(!/^\S+@\S+\.\S+$/.test(e)||p.length<8){toast('Introdu un e-mail valid și o parolă de minimum 8 caractere.');return;}persist();busy=true;document.getElementById('loginButton').disabled=true;toast('Contactăm serverul…');if(!bridge){toast('Necesită aplicația Android.');busy=false;return;}mode==='signup'?bridge.signup(e,p,w.name):bridge.login(e,p);}
+window.BunPlanAuthDone=function(action,r){busy=false;let b=document.getElementById('loginButton');if(b)b.disabled=false;if(!r||!r.ok){toast(r&&r.message?r.message:'Conectarea nu a reușit.');return;}if(action==='recover'){toast(r.message||'Verifică e-mailul.');return;}if(r.signed_in){persist();window.location.replace('main.html');return;}toast(r.message||'Confirmă contul pe e-mail și revino la conectare.');};
+if(bridge&&bridge.hasSession()&&w.completed){window.location.replace('main.html');}
+else{page=w.completed?'auth':'welcome';mode='signup';display();}
+})();
 </script></body></html>
