@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
     private boolean loading = false;
     private boolean showing = false;
     private boolean adsInitialized = false;
+    private boolean consentStarted = false;
     private String lastStatus = "Se inițializează AdMob";
 
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,14 @@ public class MainActivity extends Activity {
         googleBrowser=new BunPlanGoogleBrowser(this,auth);
         web.addJavascriptInterface(googleBrowser.bridge(),"BunPlanGoogleBrowser");
         web.setWebViewClient(new WebViewClientCompat(){
+            @Override public void onPageFinished(WebView view,String url){
+                super.onPageFinished(view,url);
+                if(!consentStarted && url!=null && url.startsWith("https://appassets.androidplatform.net/assets/main.html")){
+                    consentStarted=true;
+                    startConsent();
+                }
+            }
+
             @Override public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r){
                 if(isBundledAsset(r.getUrl()))return loader.shouldInterceptRequest(r.getUrl());
                 return super.shouldInterceptRequest(v,r);
@@ -108,7 +117,6 @@ public class MainActivity extends Activity {
         if(getIntent()!=null && getIntent().getData()!=null){
             web.postDelayed(()->{if(googleBrowser!=null)googleBrowser.handleIntent(getIntent());},350);
         }
-        startConsent();
     }
 
     private void status(String message) {
