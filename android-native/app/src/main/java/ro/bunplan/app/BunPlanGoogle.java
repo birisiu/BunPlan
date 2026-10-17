@@ -46,6 +46,12 @@ public final class BunPlanGoogle {
         }
     }
     public void signIn(){
+        // Always prefer OAuth PKCE browser login: Credential Manager can fail
+        // on devices with outdated or unavailable Google Play Services.
+        activity.startGoogleBrowser();
+        return;
+    }
+    private void signInLegacyNative(){
         if(inProgress)return;
         final String webClientId=activity.getString(R.string.google_web_client_id).trim();
         if(webClientId.isEmpty() || !webClientId.endsWith(".apps.googleusercontent.com")){
