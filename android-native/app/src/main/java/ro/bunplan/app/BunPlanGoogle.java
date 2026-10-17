@@ -8,6 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.concurrent.Executor;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.ConnectionResult;
+import androidx.credentials.exceptions.GetCredentialCancellationException;
+import androidx.credentials.exceptions.NoCredentialException;
 
 import androidx.annotation.NonNull;
 import androidx.credentials.Credential;
@@ -48,6 +52,11 @@ public final class BunPlanGoogle {
             notifyError("Conectarea Google este pregătită în cod, dar lipsește Client ID-ul OAuth din Google Cloud. Configurează-l înainte de test.");
             return;
         }
+        int googlePlayStatus=GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(activity);
+        if(googlePlayStatus!=ConnectionResult.SUCCESS){
+            notifyError("Google Play Services indisponibil (cod "+googlePlayStatus+"): "+GoogleApiAvailability.getInstance().getErrorString(googlePlayStatus)+". Actualizează Google Play Services sau încearcă loginul prin browser.");
+            return;
+        }
         try {
             byte[] randomness=new byte[32];
             new SecureRandom().nextBytes(randomness);
@@ -81,12 +90,17 @@ public final class BunPlanGoogle {
                     }
                     @Override public void onError(@NonNull GetCredentialException error){
                         inProgress=false;
-                        notifyError("Nu s-a putut selecta contul Google. Verifică Play Services sau încearcă din nou.");
+                        android.util.Log.e("BunPlanGoogle","Credential Manager: "+error.getType()+" / "+error.getMessage(),error);
+                        String type=error.getType()==null?"necunoscut":error.getType();
+                        if(error instanceof GetCredentialCancellationException)notifyError("Ai închis selecția contului Google.");
+                        else if(error instanceof NoCredentialException)notifyError("Nu există o acreditare Google disponibilă (NoCredential). Verifică clientul OAuth Android/SHA-1 și contul Google selectat. Tip: "+type);
+                        else notifyError("Google Credential Manager a eșuat: "+type+" — "+(error.getMessage()==null?"fără detalii":error.getMessage())+". Poți încerca autentificarea prin browser.");
                     }
                 });
         }catch(Exception e){
             inProgress=false;
-            notifyError("Autentificarea Google nu poate porni pe acest dispozitiv.");
+            android.util.Log.e("BunPlanGoogle","Google sign-in initialization",e);
+            notifyError("Google Login: "+e.getClass().getSimpleName()+" — "+(e.getMessage()==null?"verifică Play Services":e.getMessage()));
         }
     }
     public class Bridge{
