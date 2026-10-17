@@ -3,7 +3,7 @@
 ## Ce este deja în repository
 
 - **Android:** `android-native/` — versiunea de test AdMob 3.7, recompensă la deblocarea listei. Reclamele sunt doar cele demonstrative Google.
-- **PostgreSQL + Supabase Auth:** `supabase/migrations/20261017181500_bunplan_foundation.sql` — 14 tabele, relații și politici RLS.
+- **PostgreSQL + Supabase Auth:** `supabase/migrations/20261017181500_bunplan_foundation.sql` — 15 tabele, relații și politici RLS.
 - **Conținut:** `data/bunplan_recipes_v1.json` (100 rețete, 107 ingrediente) și `data/bunplan_estimated_packs_v1.json` (costuri orientative, explicit neverificate).
 - **Import:** `scripts/seed_bunplan_supabase.py` pentru rețete; `scripts/sync_catalog_to_supabase.py` pentru produse și prețuri documentate.
 - **Acțiuni automate:** `.github/workflows/seed-supabase.yml` (o dată, manual), `.github/workflows/sync-supabase.yml` (zilnic după fluxurile de catalog), plus workflow-urile Lidl/Kaufland existente.
@@ -49,4 +49,4 @@ Pentru catalogul Kaufland complet și verificat la nivel de filială, este neces
 
 ## Pentru un produs pregătit de lansare
 
-Înlocuiește autentificarea HTML demonstrativă cu un client Supabase Auth securizat în Android, implementează ștergerea contului, recuperearea parolei, sincronizare offline/conflicte, accesibilitate, politică GDPR și un sistem de observabilitate care alertează la importuri eșuate sau date expirate.
+Înlocuiește autentificarea HTML demonstrativă cu un client Supabase Auth securizat în Android, implementează ștergerea contului, recuperarea parolei, sincronizare offline/conflicte, accesibilitate, politică GDPR și un sistem de observabilitate care alertează la importuri eșuate sau date expirate.
