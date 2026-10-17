@@ -970,7 +970,7 @@ window.BunPlanCloudDone=function(action,result){
    else if(onboard&&onboard.completed){applyPrefs(onboard);window.bpProfileSave();}
    return;
  }
- if(action==='delete'&&result&&result.ok){localStorage.clear();}
+ if(action==='delete'){if(result&&result.ok){localStorage.clear();location.replace('index.html');}else{message('Ștergerea contului a eșuat: '+(result?.message||'Încearcă din nou.'));}return;}
  if(typeof prevHandler==='function')prevHandler(action,result);
 };
 if(nativeCloud)nativeCloud.loadProfile();
