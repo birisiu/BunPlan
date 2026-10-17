@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
     private static final String TEST_UNIT = "ca-app-pub-3940256099942544/5354046379";
     private static final Pattern PLAN_KEY = Pattern.compile("^(Lidl|Kaufland)\\|\\d{4}-\\d{2}-\\d{2}$");
     private WebView web;
+    public void eval(String js){if(web!=null)web.evaluateJavascript(js,null);}
     private RewardedInterstitialAd rewardedAd;
     private ConsentInformation consent;
     private String pendingKey;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity {
         s.setAllowFileAccess(true);
         s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         web.addJavascriptInterface(new JsBridge(), "BunPlanAds");
+        web.addJavascriptInterface(new BunPlanAuth(this).bridge(),"BunPlanAuth");
         web.setWebViewClient(new WebViewClient(){
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.startsWith("file:///android_asset/")) return false;
