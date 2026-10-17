@@ -1,3 +1,17 @@
+# BunPlan — Android, rețete și prețuri Lidl/Kaufland
+
+Aplicație în dezvoltare pentru meniuri săptămânale, buget alimentar și liste de cumpărături pe magazin.
+
+- [APK Android 3.7 cu AdMob TEST](https://github.com/birisiu/BunPlan/raw/refs/heads/main/builds/BunPlan-3.7-AdMob-TEST-FIX.apk) — compilat; necesita test pe telefon
+- [Instalare backend Supabase și autentificare reală](BACKEND_SETUP.md) — migrarea este pregătită, serverul trebuie configurat
+- [Migrare PostgreSQL și RLS](supabase/migrations/20261017181500_bunplan_foundation.sql)
+- [100 rețete + 107 ingrediente](data/bunplan_recipes_v1.json)
+- [Estimări de buget distincte per retailer](data/bunplan_estimated_packs_v1.json)
+
+**Important:** până la conectarea și migrarea proiectului Supabase, APK-ul folosește încă autentificare demonstrativă și stocare locală. Reclamele folosesc ID-uri demonstrative Google, fără monetizare.
+
+---
+
 # BunPlan – catalog Lidl România
 
 Acest repository public conține importatorul pentru lista oficială Lidl România de prețuri a **sortimentului permanent**. Scopul este furnizarea unui catalog alimentar pentru aplicația de planificare a meselor BunPlan.
