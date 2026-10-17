@@ -11,6 +11,8 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.net.Uri;
 import android.os.Build;
+import android.view.View;
+import android.view.WindowInsets;
 import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 
@@ -50,6 +52,22 @@ public class MainActivity extends Activity {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         web = new WebView(this);
+        // Android 15+ draws edge-to-edge. Apply the system-bar / cutout safe area
+        // to the entire WebView so EVERY BunPlan screen stays below the clock
+        // and battery indicators, rather than adding a fragile fixed CSS offset.
+        web.setOnApplyWindowInsetsListener((v, insets) -> {
+            if (Build.VERSION.SDK_INT >= 30) {
+                android.graphics.Insets safe = insets.getInsets(
+                    WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
+                v.setPadding(safe.left, safe.top, safe.right, safe.bottom);
+            } else {
+                v.setPadding(insets.getSystemWindowInsetLeft(),
+                    insets.getSystemWindowInsetTop(),
+                    insets.getSystemWindowInsetRight(),
+                    insets.getSystemWindowInsetBottom());
+            }
+            return insets;
+        });
         // Load ONLY trusted, locally-bundled UI from a distinct HTTPS origin.
         // Never allow remote pages to obtain the JavaScript authentication interfaces.
         final String localOrigin="https://appassets.androidplatform.net";
