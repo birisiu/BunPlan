@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BunPlan Admin · Biblioteca culinară</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js" defer></script>
+<script src="admin.js" defer></script>
+</head><body>
+<div id="app">
+ <section id="login" class="login-shell">
+  <div class="login-card">
+   <div class="app-logo"><span class="logo-box">✓</span><div><strong>bun<span>plan</span></strong><small>ADMIN · EDITOR DE CONȚINUT</small></div></div>
+   <h1>Administrare BunPlan</h1><p>Editează rețetele și fotografiile care apar în aplicație, fără să reconstruiești APK-ul.</p>
+   <form id="login-form"><label>E-mail administrator<input type="email" id="login-email" autocomplete="username" required placeholder="email@exemplu.ro"></label>
+    <label>Parolă<input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••"></label>
+    <button class="primary" type="submit">Autentificare</button>
+   </form><div id="login-message" class="message" role="alert"></div>
+   <small>Acces doar pentru conturile aprobate în Supabase. Nu există înregistrare liberă.</small>
+  </div>
+ </section>
+ <div id="workspace" class="workspace hidden">
+  <aside class="sidebar">
+    <div class="app-logo"><span class="logo-box">✓</span><div><strong>bun<span>plan</span></strong><small>CONTENT STUDIO</small></div></div>
+    <nav aria-label="Secțiuni admin">
+     <button data-section="dashboard" class="tab active">▦ <span>Dashboard</span></button>
+     <button data-section="recipes" class="tab">🍽 <span>Rețete</span></button>
+     <button data-section="ingredients" class="tab">🥕 <span>Ingrediente</span></button>
+    </nav>
+    <div class="sidebar-foot"><small id="admin-email"></small><button id="logout" class="light">Deconectare ↗</button></div>
+  </aside>
+  <main class="main">
+   <header class="topbar"><div><span class="eyebrow">BUNPLAN CONTENT STUDIO</span><h1 id="page-title">Dashboard</h1></div>
+    <span id="connection-state" class="connection">Conectat</span></header>
+   <div id="flash" class="message" role="status"></div>
+   <section id="dashboard" class="panel-section">
+    <div class="stats" id="stats"><div class="stat"><small>Rețete</small><strong>—</strong></div></div>
+    <div class="panel"><h2>Calitatea imaginilor</h2>
+     <p>Fotografiile din vechiul sistem automat sunt considerate <strong>neconfirmate</strong>. BunPlan afișează un simbol neutru până când încarci sau aprobi manual o fotografie.</p>
+     <button class="primary" id="review-photos">Verifică rețetele fără imagini →</button>
+    </div>
+    <div class="panel"><h2>Flux de publicare</h2><p>1. Caută o rețetă · 2. Corectează pașii și ingredientele · 3. Încarcă o fotografie exactă · 4. Marcheaz-o ca verificată · 5. Publică.</p></div>
+   </section>
+   <section id="recipes" class="panel-section hidden">
+    <div class="toolbar"><input type="search" id="recipe-search" placeholder="Caută rețetă după nume…" aria-label="Caută rețetă">
+     <select id="recipe-filter" aria-label="Filtru rețete"><option value="all">Toate</option><option value="no-photo">Fără fotografie verificată</option><option value="draft">Nepublicate</option><option value="review">De verificat</option></select>
+     <button class="primary" id="new-recipe">+ Rețetă nouă</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Rețetă</th><th>Categorie</th><th>Imagine</th><th>Publicare</th><th></th></tr></thead><tbody id="recipe-table"></tbody></table></div>
+    <div class="pager"><span id="recipe-count"></span><div><button class="light" id="recipe-prev">← Înapoi</button><button class="light" id="recipe-next">Înainte →</button></div></div>
+   </section>
+   <section id="ingredients" class="panel-section hidden">
+    <div class="toolbar"><input type="search" id="ingredient-search" placeholder="Caută ingrediente…" aria-label="Caută ingrediente">
+     <button class="primary" id="new-ingredient">+ Ingredient nou</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Ingredient</th><th>Unitate</th><th>Imagine</th><th></th></tr></thead><tbody id="ingredient-table"></tbody></table></div>
+    <div class="pager"><span id="ingredient-count"></span><div><button class="light" id="ingredient-prev">← Înapoi</button><button class="light" id="ingredient-next">Înainte →</button></div></div>
+   </section>
+  </main>
+ </div>
+ <div id="editor-backdrop" class="editor-backdrop hidden">
+  <div class="editor" role="dialog" aria-modal="true" aria-labelledby="editor-heading">
+   <div class="editor-top"><div><span class="eyebrow" id="editor-type"></span><h2 id="editor-heading">Editează rețeta</h2></div><button id="editor-close" class="icon-button" aria-label="Închide">✕</button></div>
+   <form id="edit-form">
+    <div id="edit-fields"></div>
+    <div class="editor-actions"><button type="button" class="light" id="editor-cancel">Anulează</button><button type="submit" class="primary" id="editor-save">Salvează modificările</button></div>
+   </form>
+  </div>
+ </div>
+</div></body></html>
