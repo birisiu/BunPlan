@@ -20,72 +20,37 @@ const aliases={
  'orez fiert':'orez','faina':'faina','bulgur fiert':'orez',
  'migdale':'nuci','fasole alba fiarta':'fasole','fasole rosie fiarta':'fasole'
 };
+// A photograph is shown only after an administrator explicitly confirms its
+// suitability. Never guess a soup, meat, or dessert photo by category.
 function photoForRecipe(recipe){
- if(!recipe)return null;
- if(recipe.id&&M.originals?.[recipe.id])return M.originals[recipe.id];
- const key=recipe.variant_of;
- if(key&&M.recipes?.[key])return M.recipes[key];
- const title=normalize(recipe.title),names=familyList.sort((a,b)=>b.length-a.length);
- let m=names.find(n=>title.startsWith(normalize(n)));
- if(!m){
-  if(/pasta|paste|spaghett/.test(title))m='Paste';
-  else if(/supa crema/.test(title))m='Supă cremă';
-  else if(/supa de linte/.test(title))m='Supă de linte';
-  else if(/ciorba/.test(title))m='Ciorbă de legume';
-  else if(/tocan|tocanita/.test(title))m='Tocană vegetariană';
-  else if(/salat/.test(title))m='Salată consistentă';
-  else if(/omlet/.test(title))m='Omletă pufoasă';
-  else if(/pui/.test(title))m='Piept de pui la tigaie';
-  else if(/terci/.test(title))m='Terci de ovăz cald';
- }
- if(M.recipes?.[m])return M.recipes[m];
- // Classic dishes often have an English/alternative title.
- // Fall back to an appropriate dish family, never to arbitrary stock photos.
- const c=normalize(recipe.category);
- const groups=[
-  [/overnight|ovaz peste noapte/,'Ovăz peste noapte'],
-  [/iaurt|yogurt/,'Budincă de chia'],
-  [/omlet|oua|ou fiert|frittata/,'Omletă pufoasă'],
-  [/sandvis|toast|bruschete/,'Toast integral'],
-  [/clatite|pancak|biscuit/,'Clătite de ovăz'],
-  [/mamali|polenta/,'Pilaf'],
-  [/muscaca|lasagna/,'Gratin de legume'],
-  [/ardei umplut/,'Ardei umpluți'],
-  [/peste|somon|pastrav|sardine/,'File de pește la cuptor'],
-  [/crevet/,'Creveți sotați'],
-  [/risotto/,'Risotto'],
-  [/pila[fv]|orez/,'Pilaf'],
-  [/paste|spaghet|macaroan/,'Paste'],
-  [/salata/,'Salată consistentă'],
-  [/pui|ostropel|snitel/,'Piept de pui la tigaie'],
-  [/porc|cotlet/,'Cotlet de porc la tigaie'],
-  [/vita|chili|chiftel/,'Chifteluțe de vită la cuptor'],
-  [/tocan|fasole/,'Tocană vegetariană'],
-  [/briose|banana bread|chec/,'Brioșe fragede']
- ];
- for(const [rx,family] of groups){
-  if(rx.test(title)&&M.recipes?.[family])return M.recipes[family];
- }
- const byCategory={
-  'mic dejun':['Terci de ovăz cald','Clătite de ovăz','Omletă pufoasă'],
-  'supe si ciorbe':['Ciorbă de legume','Supă cremă'],
-  'pui si curcan':['Piept de pui la tigaie','Curry de pui'],
-  'carne':['Tocăniță de vită','Cotlet de porc la tigaie'],
-  'vegetarian':['Legume la cuptor','Salată consistentă'],
-  'paste si orez':['Paste','Risotto'],
-  'peste si fructe de mare':['File de pește la cuptor','Pește la tigaie'],
-  'cina si salate':['Salată consistentă','Legume la cuptor'],
-  'desert si gustari':['Brioșe fragede','Crumble la cuptor']
- };
- return (byCategory[c]||[]).map(k=>M.recipes?.[k]).find(Boolean)||null;
+ if(!recipe||recipe.image_reviewed!==true||typeof recipe.photo_url!=='string')return null;
+ if(!/^https:\/\//i.test(recipe.photo_url))return null;
+ return {src:recipe.photo_url,license:recipe.photo_credit||'Fotografie aprobată de administrator',
+         author:recipe.photo_credit||'',source:null};
 }
+const approvedIngredients=new Map();
 function photoForIngredient(name){
- const slug=normalize(name).replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
- const mapped=aliases[normalize(name)]||slug;
- return M.ingredients?.[mapped]||null;
+ const n=normalize(name);
+ const slug=n.replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+ const alias=aliases[n]||slug;
+ return approvedIngredients.get(n)||approvedIngredients.get(alias)||null;
 }
 window.bpFoodProductPhoto=photoForIngredient;
 window.bpFoodRecipePhoto=photoForRecipe;
+fetch('https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/ingredients?select=slug,name,image_url,image_reviewed&limit=500',
+ {headers:{apikey:'sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z'}})
+ .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
+ .then(data=>{
+   approvedIngredients.clear();
+   for(const row of data){
+    if(row.image_reviewed===true&&/^https:\/\//i.test(row.image_url||'')){
+      const value={src:row.image_url};
+      approvedIngredients.set(normalize(row.name),value);
+      approvedIngredients.set(normalize(row.slug),value);
+    }
+   }
+   if(state.tab==='basket100')draw();
+ }).catch(error=>console.warn('BunPlan: ingredient photo sync unavailable',error));
 function imageTag(photo,alt,cls){
  if(!photo)return '';
  return '<img class="'+cls+'" loading="lazy" decoding="async" src="'+esc(photo.src)+'" alt="'+esc(alt)+
