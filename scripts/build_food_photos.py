@@ -95,6 +95,7 @@ INGREDIENT_SEARCH = {
 "creveti":"shrimp","unt":"butter","parmezan":"parmesan cheese","fructe_padure":"mixed berries",
 "rosii_conserva":"tomato puree","seminte_chia":"chia seeds"
 }
+ORIGINAL_SEARCH = dict(line.split('|',1) for line in "R001|banana oatmeal porridge\nR002|overnight oats apple\nR003|spinach cheese omelette\nR004|grilled cheese tomato sandwich\nR005|boiled eggs avocado toast\nR006|yogurt berries walnuts\nR007|banana oat pancakes\nR008|cottage cheese toast cucumber\nR009|polenta egg cheese\nR010|chia pudding pear\nR011|french toast apple\nR012|egg vegetable tortilla wrap\nR013|cauliflower cream soup\nR014|broccoli cream soup\nR015|vegetable soup bowl\nR016|chicken vegetable soup\nR017|red lentil soup\nR018|white bean soup\nR019|tomato soup rice\nR020|cream mushroom soup\nR021|meatball soup\nR022|potato leek soup\nR023|chicken rice carrots\nR024|roasted chicken potatoes\nR025|chicken tomato sauce stew\nR026|chicken coconut curry\nR027|chicken broccoli\nR028|creamy chicken mushrooms\nR029|roasted chicken vegetables\nR030|baked turkey meatballs\nR031|chicken pea stew\nR032|baked chicken schnitzel\nR033|chicken wrap salad\nR034|chicken pepper kebab\nR035|lemon chicken green beans\nR036|chicken mushroom rice pilaf\nR037|meatballs mashed potatoes\nR038|spaghetti bolognese\nR039|stuffed peppers meat rice\nR040|pork potato stew\nR041|beef mushrooms rice\nR042|moussaka potatoes\nR043|pork beans stew\nR044|beef cheeseburger\nR045|chili con carne bowl\nR046|roasted pork cabbage\nR047|lentil vegetable stew\nR048|chickpea spinach curry\nR049|green beans tomato sauce\nR050|stuffed eggplant rice vegetables\nR051|zucchini mozzarella gratin\nR052|baked potato cheese\nR053|mushroom polenta stew\nR054|chickpea pepper salad\nR055|cauliflower baked breaded\nR056|peas carrots eggs\nR057|red lentil dhal\nR058|roasted mixed vegetables\nR059|pasta tomato basil\nR060|pasta creamy mushrooms\nR061|pasta broccoli mozzarella\nR062|mushroom risotto\nR063|vegetable rice pilaf\nR064|egg fried rice vegetables\nR065|vegetable couscous salad\nR066|bulgur chickpeas salad\nR067|lasagna bolognese\nR068|macaroni cheese baked\nR069|tomato bean rice\nR070|pasta ricotta spinach\nR071|baked salmon broccoli potatoes\nR072|baked trout polenta\nR073|baked white fish vegetables\nR074|salmon cream pasta\nR075|tuna bean salad\nR076|sardines potato salad\nR077|garlic shrimp rice\nR078|fish cauliflower puree\nR079|salmon rice peas\nR080|baked trout tomatoes\nR081|egg avocado salad\nR082|greek salad feta\nR083|chicken yogurt salad\nR084|chickpea tortilla wrap\nR085|beetroot cheese salad\nR086|potato yogurt salad\nR087|vegetable frittata\nR088|bruschetta tomato mozzarella\nR089|pasta salad vegetables\nR090|hummus pita bread\nR091|mushroom cheese toast\nR092|chicken rice salad\nR093|banana bread oats\nR094|oat apple cookies\nR095|blueberry yogurt muffins\nR096|baked apple walnuts\nR097|oat energy balls\nR098|rice pudding milk\nR099|banana yogurt cocoa\nR100|baked pears ricotta" .splitlines())
 def slug(s):
     s = unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode('ascii')
     return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
@@ -148,9 +149,10 @@ def download_one(entry):
 def main():
     jobs=[('recipes',k,v) for k,v in FAMILY_SEARCH.items()]
     jobs += [('ingredients',k,v) for k,v in INGREDIENT_SEARCH.items()]
+    jobs += [('originals',k,v) for k,v in ORIGINAL_SEARCH.items()]
     if os.getenv('BUNPLAN_PHOTO_SAMPLE','')=='1':
-        jobs=jobs[:5]+jobs[50:55]
-    manifest={'recipes':{},'ingredients':{},'notice':'Representative photos, not photographs of each exact recipe variation.',
+        jobs=jobs[:5]+jobs[len(FAMILY_SEARCH):len(FAMILY_SEARCH)+5]+jobs[-10:-5]
+    manifest={'recipes':{},'ingredients':{},'originals':{},'notice':'Representative photos, not photographs of each exact recipe variation.',
               'credit':'Photographs: Wikimedia Commons. Individual credits under each image.'}
     errors=0
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
@@ -164,7 +166,7 @@ def main():
             if (i+1)%20==0:print(f'Food images: {i+1}/{len(jobs)}',flush=True)
     target=DEST/'food-photos-generated.js'
     target.write_text('window.BunPlanPhotoMap='+json.dumps(manifest,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')
-    count=sum(len(manifest[k]) for k in ('recipes','ingredients'))
+    count=sum(len(manifest[k]) for k in ('recipes','ingredients','originals'))
     print(f'BunPlan Commons photos: {count}/{len(jobs)} downloaded, {errors} unavailable',flush=True)
     if count<10 and os.getenv('BUNPLAN_PHOTO_SAMPLE','')!='1':
         print('Not enough verified food photos; refusing to mark visual build complete',file=sys.stderr)
