@@ -65,7 +65,7 @@ try{
   })};
  },{known});
  await page.goto(root+'/admin/index.html',{waitUntil:'domcontentloaded'});
- await page.locator('#login-email').fill('admin@example.com');
+ await page.locator('#login-email').fill('ADMIN');
  await page.locator('#login-password').fill('secret-password');
  await page.locator('#login-form button[type=submit]').click();
  await page.waitForSelector('#workspace:not(.hidden)',{timeout:7000});
