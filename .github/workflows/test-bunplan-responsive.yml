@@ -22,6 +22,12 @@ jobs:
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install chromium
+      - name: Prepare licensed sample food photography
+        env:
+          BUNPLAN_PHOTO_SAMPLE: '1'
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/build_food_photos.py
       - name: Exercise onboarding, profile and shopping list on different phones
         run: node scripts/test-responsive.mjs
       - name: Keep UI screenshots for review
