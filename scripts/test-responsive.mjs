@@ -116,7 +116,21 @@ try{
         title:document.querySelector('h1')?.textContent?.slice(0,80)
       };
     },screen);
-    if(state.width>state.vw+2||!state.main||!state.menu||state.buttons<2||errors.length)
+    if(screen==='home'){
+      const b=await page.evaluate(()=>({
+        home:!!document.querySelector('.bp-brand-home'),
+        dayCount:document.querySelectorAll('.bp-weekline button').length,
+        logo:!!document.querySelector('.bp-brand-symbol')&&document.querySelector('.bp-brand-symbol').naturalWidth>0,
+        navCount:document.querySelectorAll('nav.bottom .nav').length,
+        navIcons:document.querySelectorAll('nav.bottom .nav .ni svg').length,
+        budget:!!document.querySelector('.bp-brand-ring'),
+        theme:getComputedStyle(document.body).backgroundColor
+      }));
+      if(!b.home||b.dayCount!==7||!b.logo||b.navCount!==4||b.navIcons!==4||!b.budget)
+        failures.push({test:'branding-home',width,b});
+      if(width===390)await page.screenshot({path:screens+'/bunplan-brand-home-390.png',fullPage:true});
+    }
+        if(state.width>state.vw+2||!state.main||!state.menu||state.buttons<2||errors.length)
       failures.push({test:'navigation-responsive-smoke',width,screen,state,errors:[...errors]});
   }
   await page.evaluate(()=>{bp100.detail='R001';go('detail100')});
@@ -157,6 +171,15 @@ try{
    await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
    await page.evaluate(()=>go('library100'));
    await page.waitForFunction(()=>document.body.textContent.includes('1.100 rețete disponibile'),null,{timeout:15000});
+   const gallery=await page.evaluate(()=>({
+      count:document.querySelectorAll('nav.bottom .nav').length,
+      grid:getComputedStyle(document.querySelector('#bpCloudResults')).gridTemplateColumns,
+      width:document.documentElement.scrollWidth-window.innerWidth,
+      logo:document.querySelector('.bp-brand-symbol')?.naturalWidth||0
+   }));
+   if(gallery.count!==4||gallery.width>2||gallery.logo===0)
+      failures.push({test:'branded-recipe-gallery',gallery});
+   await page.screenshot({path:screens+'/bunplan-brand-recipes-390.png',fullPage:true});
    await page.locator('.p-headsearch').fill('Terci de ovăz cu mere');
    const searchCount=await page.locator('#bpCloudCount').textContent();
    const cloudButton=page.locator('#bpCloudResults button').filter({hasText:'Terci de ovăz cu mere'}).first();
