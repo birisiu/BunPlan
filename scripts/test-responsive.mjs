@@ -100,15 +100,15 @@ try{
      legacy_key:'BP'+String(i+1).padStart(4,'0'),title:i===0?'Terci de ovăz cu mere':'Rețeta cloud '+(i+1),
      category:'Mic dejun',servings:2,minutes_to_prepare:18,
      instructions:['Spală ingredientele.','Prepară la foc mic.','Servește.'],
-     ingredient_details:i===0?[{name:'mere',quantity:150,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
+     ingredient_details:i===0?[{name:'fulgi de ovăz',quantity:100,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
    }));
    await page.route('**/rest/v1/recipes**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(cloud)}));
-   const refs=Array.from({length:165},(_,i)=>i===0?'mere':i===1?'migdale':'ingredient_mock_'+i).flatMap(label=>
+   const refs=Array.from({length:165},(_,i)=>i===0?'fulgi de ovăz':i===1?'migdale':'ingredient_mock_'+i).flatMap(label=>
      ['lidl','kaufland'].map(store_id=>({
-       label,store_id,ingredient_slug:label==='mere'?'mere':null,
+       label,store_id,ingredient_slug:label==='fulgi de ovăz'?'ovaz':null,
        quantity_multiplier:1,normalized_unit:'g',mapping_note:'test',
-       pack_quantity:label==='mere'?1000:null,pack_unit:label==='mere'?'g':null,
-       estimated_price_ron:label==='mere'?(store_id==='lidl'?4.49:5.89):null,
+       pack_quantity:label==='fulgi de ovăz'?500:null,pack_unit:label==='fulgi de ovăz'?'g':null,
+       estimated_price_ron:label==='fulgi de ovăz'?(store_id==='lidl'?2.49:3.49):null,
        estimate_method:'budget_model_unverified'
      })));
    await page.route('**/rest/v1/bunplan_recipe_ingredient_pricing**',route=>
@@ -144,6 +144,40 @@ try{
    }));
    if(shopping.count!==2||shopping.missing!==1||shopping.store!=='Lidl'||!shopping.mark)
       failures.push({test:'cloud-recipe-shopping',shopping});
+   // Regression for the screenshot: the ingredient name must not break into
+   // one-character lines when price and "Caută în catalog" appear beside it.
+   for(const width of [320,360,390,430,768]){
+     await page.setViewportSize({width,height:840});
+     const sizes=await page.evaluate(()=>{
+       const el=document.querySelector('.bp35-checklist .bp35-product');
+       const info=el?.querySelector('.bp35-productinfo');
+       const name=info?.querySelector('b');
+       const actions=el?.querySelector('.bp48-shopping-actions');
+       const price=el?.querySelector('.bp48-shopping-price');
+       const rect=x=>x?.getBoundingClientRect();
+       const r=rect(el),n=rect(name),a=rect(actions),p=rect(price);
+       return {
+         itemWidth:r?.width,itemHeight:r?.height,nameWidth:n?.width,
+         infoWidth:rect(info)?.width,actionsWidth:a?.width,
+         priceWidth:p?.width,priceOutside:p?.right>r?.right+1,
+         actionOutside:a?.right>r?.right+1,
+         horizontalOverflow:document.documentElement.scrollWidth-window.innerWidth,
+         text:name?.textContent,rows:document.querySelectorAll('.bp35-checklist .bp35-product').length,
+       };
+     });
+     if(!sizes.itemWidth||sizes.nameWidth<130||sizes.itemHeight>270||
+        sizes.priceOutside||sizes.actionOutside||sizes.horizontalOverflow>2||
+        sizes.text!=='fulgi de ovăz'||sizes.rows!==2)
+       failures.push({test:'visual-shopping-layout',width,sizes});
+     if(width===390)await page.screenshot({path:screens+'/shopping-products-390.png',fullPage:true});
+   }
+   await page.setViewportSize({width:390,height:840});
+   const queryButton=page.locator('.bp48-shopping-actions button').filter({hasText:'Caută în catalog'}).first();
+   await queryButton.click();
+   const dialogOpen=await page.locator('#bp-product-search-modal').isVisible();
+   if(!dialogOpen)failures.push({test:'catalog-modal-open'});
+   await page.locator('#bp-catalog-close').click();
+   if(await page.locator('#bp-product-search-modal').count())failures.push({test:'catalog-modal-close'});
    await page.evaluate(()=>document.querySelector('.bp35-checklist input[type="checkbox"]')?.click());
    const checked=await page.evaluate(()=>document.querySelector('.bp35-boughtheading span')?.textContent);
    if(!checked?.startsWith('1/'))failures.push({test:'cloud-recipe-checkbox',checked});
