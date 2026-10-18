@@ -994,7 +994,7 @@ function compatible(r){
  return {id:r.legacy_key,title:r.title,category:r.category,servings:r.servings,
  minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,
  short_description:r.short_description||'',description:r.description||'',
- photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,
+ photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',
  ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
  steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
  unreviewed:r.source_status==='generated_unreviewed'};
@@ -1061,17 +1061,17 @@ bpDetail=function(){
  '<button class="btn out block" onclick="go(\'library100\')">Înapoi la catalog</button>';
 };
 function redraw(){if(state.tab==='library100')draw();else if(state.tab==='detail100'&&bp100.detail?.startsWith('BP'))draw();}
-try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
+try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
 loading=true;redraw();
 // The published catalog includes the original 100, the 1,000 generated recipes
 // and all newly created admin recipes. Public RLS blocks unpublished content.
 function updateOriginalRows(rows){
- const known=rows.filter(r=>/^R\\d{3}$/.test(r.legacy_key));
+ const known=rows.filter(r=>/^R\d{3}$/.test(r.legacy_key));
  if(!known.length)return; // Keep offline bundled originals if server is partial.
  const published=new Set(known.map(r=>r.legacy_key));
  for(let i=BP100.length-1;i>=0;i--){
   const current=BP100[i];
-  if(/^R\\d{3}$/.test(current.id)&&!published.has(current.id))BP100.splice(i,1);
+  if(/^R\d{3}$/.test(current.id)&&!published.has(current.id))BP100.splice(i,1);
  }
  for(const item of known){
   const r=compatible(item);
@@ -1079,7 +1079,7 @@ function updateOriginalRows(rows){
   if(!current){current={id:r.id,ingredients:[],steps:[],tags:[]};BP100.push(current)}
   Object.assign(current,{title:r.title,category:r.category,servings:r.servings,
    minutes:r.minutes,steps:r.steps,tags:r.tags,allergens:r.allergens,
-   photo_url:r.photo_url,image_reviewed:r.image_reviewed,
+   photo_url:r.photo_url,image_reviewed:r.image_reviewed,photo_credit:r.photo_credit||'',
    short_description:r.short_description,description:r.description,unreviewed:r.unreviewed});
   if(r.ingredients.length&&window.bunplanNormalizeIngredient){
    current.ingredients=r.ingredients.map(it=>{
@@ -1090,14 +1090,14 @@ function updateOriginalRows(rows){
   }
  }
 }
-fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500',
+fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500',
  {headers:{apikey:API_KEY,Accept:'application/json'}})
  .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
   if(!Array.isArray(data))throw Error('Date invalide din catalogul Supabase');
   updateOriginalRows(data);
-  cloud=data.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
+  cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
   window.bunplanCloudLatest=cloud;window.bunplanCloudRecipeUpdate?.(cloud);
-  try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
+  try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
   loadError='';loading=false;redraw();
  }).catch(error=>{loading=false;loadError=error.message||'conexiune indisponibilă';redraw();});
 })();
@@ -1157,7 +1157,7 @@ function registerRecipes(){
   BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
    minutes:Number(r.minutes)||0,variant_of:r.variant_of||null,steps:r.steps||[],tags:r.tags||[],
    short_description:r.short_description||'',description:r.description||'',
-   photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,unreviewed:r.unreviewed,
+   photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',unreviewed:r.unreviewed,
    ingredients:(r.ingredients||[]).map(convert),cloud:true,unreviewed:true});
  }
  if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
