@@ -19,6 +19,21 @@
 .bp-checkbox{display:flex;gap:8px;align-items:center;font-size:11px;margin:14px 0;line-height:1.4;color:#355c48}.bp-checkbox input{width:17px;height:17px}
 .bp-lock{text-align:center;background:white;border-radius:21px;padding:25px 18px;border:1px solid #e1e7dc}.bp-lock b{display:block;margin-top:12px;font-size:18px}.bp-lock p{font-size:12px;color:#78897e;line-height:1.6}.bp-sum{background:#113d2c;border-radius:21px;color:white;padding:19px;margin:18px 0}.bp-sum small,.bp-sum span{display:block;color:#d6e4dc}.bp-sum strong{display:block;font-size:30px;margin:7px 0}.bp-sum span{font-size:11px;line-height:1.6}
 
+/* BunPlan 4.5: readable compact layout and stable shopping-item interaction */
+.bp35-product{min-width:0;overflow-wrap:anywhere;contain:layout style}
+.bp35-product input[type=checkbox]{width:23px;height:23px;flex:none;accent-color:#175640;cursor:pointer}
+.bp35-productinfo{min-width:0;overflow-wrap:anywhere}
+.bp35-product.bought{background:#f1f6eb}
+.bp35-boughtheading span{font-variant-numeric:tabular-nums}
+@media(max-width:360px){
+ .bp35-product{gap:8px;padding:12px 9px}
+ .bp35-productprice{font-size:12px}
+ .bp35-smallstore{overflow-wrap:anywhere}
+ .top{gap:9px}.logo{font-size:20px}
+ .hero{padding:18px}.heroMoney{font-size:36px}
+ .bottom{padding-left:4px;padding-right:4px}
+}
+@media (prefers-reduced-motion:reduce){.bp35-product{transition:none!important}}
 /* BunPlan 4.3 responsive layout, safe-area support, retailer identification */
 html,body{width:100%;overflow-x:hidden}
 .app{width:100%;max-width:780px;margin:0 auto;min-height:100dvh}
@@ -67,7 +82,7 @@ button{touch-action:manipulation;min-height:40px}input,select,textarea{max-width
  .profile-block{padding:24px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style><style id="real-catalog-style">
+@media(max-width:390px){.profile-row,.profile-store-buttons{grid-template-columns:minmax(0,1fr)}.profile-hero{padding:15px}.profile-block{padding:14px}.profile-choice button{min-height:44px}.field{font-size:16px}.profile-hero strong{font-size:17px}}\n@media(min-width:391px) and (max-width:540px){.profile-store-buttons img{width:32px;height:32px}.profile-block{padding:16px}}\n</style><style id="real-catalog-style">
 .real-banner{background:#e9f5df;border:1px solid #d0e5c4;color:#18452f;border-radius:18px;padding:14px;font-size:12px;line-height:1.5;margin:15px 0}.cataloglink{background:#153c2d;color:white;border-radius:22px;padding:18px;margin-top:18px}.cataloglink h3{margin:5px 0 9px;font-size:18px}.cataloggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}.p-card{background:white;border:1px solid #e7eae0;border-radius:20px;padding:11px;overflow:hidden}.p-ph{height:138px;border-radius:15px;background:#f3f5ef;display:grid;place-items:center;margin-bottom:9px;overflow:hidden}.p-ph img{width:100%;height:100%;object-fit:contain;padding:5px}.p-icon{font-size:53px}.p-name{font-size:13px;font-weight:800;min-height:36px;line-height:1.35}.p-brand{font-size:11px;color:#718376}.p-price{color:#143f30;font-weight:900;font-size:22px;margin:5px 0}.p-unit{color:#7b8c82;font-size:11px}.p-pill{display:inline-flex;background:#eef4e6;border-radius:999px;padding:4px 7px;font-weight:800;color:#31704a;font-size:9px;margin:6px 0}.p-pill.sale{background:#ffedd9;color:#a34d18}.p-foot{font-size:10px;color:#7a8b81;line-height:1.4;min-height:26px}.p-actions{display:flex;gap:5px;margin-top:9px}.p-actions button{font-size:10px;padding:8px;border-radius:10px;border:1px solid #dbe5d6;background:white;font-weight:800;color:#164936;flex:1}.p-actions button.add{background:#d6f47b;color:#173d2b;border:0}.p-headsearch{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #e2e9db;background:white;font:inherit}.p-source{text-decoration:underline;color:#245f4b}.p-muted{font-size:12px;color:#839185}.p-stores{display:flex;gap:7px;overflow:auto;padding:4px 0 10px}.p-stores button{white-space:nowrap}.p-linerow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e6eae2}.p-linerow img{width:48px;height:52px;object-fit:contain}.p-linerow .p-emoji{width:48px;text-align:center;font-size:28px}.p-total{padding:13px;border-radius:14px;background:#e5f4d5;color:#143d29;font-weight:800;margin:12px 0}.p-ribbon{font-size:10px;letter-spacing:.3px;color:#677d67}.p-itemoffer{display:flex;gap:10px;align-items:center;padding:10px;background:white;border:1px solid #e6eae0;border-radius:15px;margin-top:8px}.p-itemoffer img{width:45px;height:47px;object-fit:contain}.p-itemoffer .price{font-weight:800;color:#19523b}
 
 .bp-homepromo{background:#e9f4cf;border-radius:22px;margin:20px 0 8px;padding:18px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -104,12 +119,12 @@ const state={tab:'home',name:acc.name||'Alex',budget:pl.budget||400,adults:pl.ad
 try{Object.assign(state,JSON.parse(localStorage.getItem('bunplan-demo-state')||'{}'))}catch{};state.stores=STORES.filter(n=>state.stores.includes(n));if(!state.stores.length)state.stores=STORES.slice();
 if(!STORES.includes(state.store))state.store=state.stores[0];
 state.modal=null;state.tab='home';const storage=()=>{const v={...state,modal:null,detail:null};try{localStorage.setItem('bunplan-demo-state',JSON.stringify(v))}catch(e){}};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ron=n=>new Intl.NumberFormat('ro-RO',{maximumFractionDigits:2,minimumFractionDigits:2}).format(n);const logo=()=>`<div class="logo"><div class="mark">✳</div>bunplan<span style="font-size:10px;color:#729482;font-weight:700;letter-spacing:0">BETA</span></div>`;const cap=()=>`<div class="smallcaps">DEMONSTRAȚIE · PREȚURI FICTIVE</div>`;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ron=n=>new Intl.NumberFormat('ro-RO',{maximumFractionDigits:2,minimumFractionDigits:2}).format(n);const logo=()=>`<div class="logo" aria-label="BunPlan"><img class="bp-brand-symbol" src="brands/bunplan-icon.svg" alt=""/><span class="bp-brand-word"><strong>bun</strong><em>plan</em></span></div>`;const cap=()=>`<div class="smallcaps">DEMONSTRAȚIE · PREȚURI FICTIVE</div>`;
 function plan(){let types=state.meals===2?['Prânz','Cină']:['Mic dejun','Prânz','Cină'], p=[];for(let d=0;d<7;d++){p[d]=types.map((t,i)=>{let arr=recipes.filter(r=>r.type===t);if(state.diet==='Vegetarian')arr=arr.filter(r=>!('chicken' in r.ingredients));const faster=arr.filter(r=>r.mins<=state.time);if(faster.length)arr=faster;return arr[(d+(i===1?1:i===2?2:0))%arr.length]})}return p}
 function ingredients(){const sum={};for(const day of plan())for(const r of day)for(const [id,amount] of Object.entries(r.ingredients))sum[id]=(sum[id]||0)+amount*(state.adults+state.children*.65)/2;return sum}
 function cart(store){return Object.entries(ingredients()).map(([id,q])=>{const p=products[id],qty=Math.ceil(q/p[1]),price=Math.round(qty*p[2]*storeF[store]*100)/100;return {id,name:p[0],needed:q,pack:p[1],packs:qty,price}}).sort((a,b)=>a.name.localeCompare(b.name,'ro'))}
 function total(store){return cart(store).reduce((n,p)=>n+p.price,0)}function cheapest(){return state.stores.slice().sort((a,b)=>total(a)-total(b))[0]||'Lidl'}function rprice(r){return Object.entries(r.ingredients).reduce((a,[k,v])=>a+v/products[k][1]*products[k][2]*storeF[cheapest()],0)*(state.adults+state.children*.65)/2}
-const nav=[['home','⌂','Acasă'],['plan','▦','Planul'],['stores','▤','Magazine'],['list','☑','Lista'],['profile','☺','Profil']];const commonTop=()=>`<header class="top">${logo()}<button class="avatar" onclick="go('profile')">👩‍🍳</button></header>`;
+const nav=[['home','⌂','Acasă'],['plan','▦','Planul'],['stores','▤','Magazine'],['list','☑','Lista'],['profile','☺','Profil']];const commonTop=()=>`<header class="top">${logo()}<button class="avatar" aria-label="Profilul meu" onclick="go('profile')"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3-7 8-7s8 3 8 7"/></svg></button></header>`;
 function heading(x,y){return `<h1 class="title">${x}</h1><p class="sub">${y}</p>`}function recipeCard(r){return `<article class="recipe" onclick="detail(${r.id})"><div class="foodart ${r.category}">${r.emoji}<button aria-label="Favorite" class="heart" onclick="event.stopPropagation();fav(${r.id})">${state.favorites.includes(r.id)?'♥':'♡'}</button></div><div class="recipebody"><strong>${esc(r.name)}</strong><small>⏱ ${r.mins} min · ${esc(r.type)}</small><div class="row"><span class="price">~${ron(rprice(r))} lei</span><span class="tag">${esc(r.tag)}</span></div></div></article>`}
 function offers(){return REAL_PRODUCTS.filter(p=>state.stores.includes(p.store)&&p.oldPrice&&(!p.validTo||p.validTo>=new Date().toISOString().slice(0,10))).slice(0,4).map(p=>`<div class="p-itemoffer"><div>${p.image?`<img src="${esc(p.image)}" loading="lazy" onerror="this.style.display='none'"/>`:`<span style="font-size:30px">${p.emoji}</span>`}</div><div class="grow"><strong style="font-size:12px">${esc(p.name)}</strong><div class="p-muted">${esc(p.store)} · ${esc(p.amount)} · ${esc(p.kind)}</div><small>Valabil până la ${p.validTo}</small></div><div><div class="price">${ron(p.price)} lei</div><small><s>${ron(p.oldPrice)} lei</s></small></div></div>`).join('')+`<button class="link" onclick="go('catalog')">Vezi produse cu prețuri verificate →</button>`}
 function home(){let t=cheapest(),sum=total(t);return `${commonTop()}${heading(`Salut, ${esc(state.name.split(' ')[0])}! 👋`,'Săptămâna bună începe cu un plan simplu.')}<section class="hero"><div class="orb"></div><div class="orb2"></div><div class="smallcaps">BUGET SĂPTĂMÂNAL</div><div class="heroMoney">${state.budget} <small>lei</small></div><div class="row"><span style="color:#d8e8df;font-size:12px">Coș estimat la ${t}</span><span style="font-weight:800">~${ron(sum)} lei</span></div><div class="progress"><i style="width:${Math.min(100,sum/state.budget*100)}%"></i></div><div class="herofoot"><span>${sum<=state.budget?'✓ În bugetul ales':'⚠ Peste buget cu '+ron(sum-state.budget)+' lei'}</span><button class="btn lime sm" onclick="go('plan')">Vezi planul ↗</button></div></section><div class="row section"><h2 class="h2">Ce gătim bun?</h2><button class="link" onclick="go('recipes')">Toate rețetele →</button></div><div class="tabs">${['Toate','Rapid','Economic','Vegetarian'].map(f=>`<button class="chip ${state.filter===f?'selected':''}" onclick="filter('${f}')">${f}</button>`).join('')}</div><div class="recipes">${recipes.filter(r=>state.filter==='Toate'||(state.filter==='Rapid'?r.mins<=15:state.filter==='Economic'?r.tag==='Economic':r.tag==='Vegetarian'||!('chicken' in r.ingredients))).slice(0,4).map(recipeCard).join('')}</div><div class="row section"><h2 class="h2">Reduceri în vizor</h2><button class="link" onclick="go('offers')">Vezi toate →</button></div><div class="muted" style="margin-bottom:10px">Exemple de prezentare. Nu sunt oferte reale.</div>${offers()}<div class="dealbar"><div style="font-size:30px">🛒</div><div class="grow"><b>Unde ieși cel mai bine?</b><p>Compară coșul săptămânal în 2 magazine.</p></div><button class="btn sm" onclick="go('stores')">Compară</button></div>${cap()}`}
@@ -686,10 +701,27 @@ function bp35Calc(){
  return {store,rows,extras,verified:rows.filter(x=>x.type==='published').length,estimated:rows.filter(x=>x.type==='estimate').length,manual:rows.filter(x=>x.type==='manual').length,
  total:Math.round((subtotal+extraTotal)*100)/100,low:Math.max(0,Math.round((subtotal+extraTotal-uncertain*.3)*100)/100),high:Math.round((subtotal+extraTotal+uncertain*.3)*100)/100,uncertain};
 }
-function bp35ToggleBought(key,checked){const k=bp35Key();if(!bp35.bought[k])bp35.bought[k]={};bp35.bought[k][key]=!!checked;bp35Remember();draw()}
+function bp35ToggleBought(key,checked,input){
+ // Never rebuild the full WebView when ticking a shopping item.
+ // Rebuilding calls draw() -> window.scrollTo(0,0), which jumps the screen
+ // and can also lose focus / checkbox animation on Android.
+ const k=bp35Key();
+ if(!bp35.bought[k])bp35.bought[k]={};
+ bp35.bought[k][key]=!!checked;
+ bp35Remember();
+ const box=input && input.closest ? input.closest('.bp35-product') : null;
+ if(box) box.classList.toggle('bought',!!checked);
+ const heading=document.querySelector('.bp35-boughtheading span');
+ if(heading){
+   const total=document.querySelectorAll('.bp35-checklist .bp35-product input[type="checkbox"]').length;
+   const done=document.querySelectorAll('.bp35-checklist .bp35-product input[type="checkbox"]:checked').length;
+   heading.textContent=done+'/'+total+' bifate';
+   heading.setAttribute('aria-live','polite');
+ }
+}
 function bp35Marked(key){return !!(bp35.bought[bp35Key()]||{})[key]}
-function bp35BasketRows(calc){const ing=calc.rows.map(x=>{let label=bp35PriceStatus(x);const src=x.type==='published'&&x.verifiedProduct?.source?`<a class="bp35-src" href="${esc(x.verifiedProduct.source)}" target="_blank" rel="noopener">Vezi sursa ${calc.store} ↗</a>`:'';return `<label class="bp35-product ${bp35Marked('i:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('i:'+x.id)?'checked':''} onchange="bp35ToggleBought('i:${x.id}',this.checked)"/><span class="bp35-productinfo"><b>${esc(bpName(x.id))}</b><small>Necesar: ${Math.ceil(x.a.quantity)} ${bp35Unit(x.a)} · ${bp35Pack(x)}</small><small>${esc(label)} · ${ron(x.price)} lei ${x.loose?'per '+x.packageQty+' g':'/ ambalaj'}</small>${src}</span><span class="bp35-productprice">${x.type==='estimate'?'≈ ':''}${ron(x.cost)} lei${bp35Badge(x)}</span></label>`}).join('');
- const extra=calc.extras.length?`<h3 class="bp35-subhead">Produse adăugate separat din catalog</h3>${calc.extras.map(x=>`<label class="bp35-product ${bp35Marked('p:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('p:'+x.id)?'checked':''} onchange="bp35ToggleBought('p:${x.id}',this.checked)"/><span class="bp35-productinfo"><b>${esc(x.name)}</b><small>${x.qty} × ${esc(x.amount)} · selectat doar din ${calc.store}</small><small>Preț salvat; verifică valabilitatea ofertei înainte de cumpărare</small></span><span class="bp35-productprice">${ron(x.total)} lei</span></label>`).join('')}`:'';
+function bp35BasketRows(calc){const ing=calc.rows.map(x=>{let label=bp35PriceStatus(x);const src=x.type==='published'&&x.verifiedProduct?.source?`<a class="bp35-src" href="${esc(x.verifiedProduct.source)}" target="_blank" rel="noopener">Vezi sursa ${calc.store} ↗</a>`:'';return `<label class="bp35-product ${bp35Marked('i:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('i:'+x.id)?'checked':''} onchange="bp35ToggleBought('i:${x.id}',this.checked,this)"/><span class="bp35-productinfo"><b>${esc(bpName(x.id))}</b><small>Necesar: ${Math.ceil(x.a.quantity)} ${bp35Unit(x.a)} · ${bp35Pack(x)}</small><small>${esc(label)} · ${ron(x.price)} lei ${x.loose?'per '+x.packageQty+' g':'/ ambalaj'}</small>${src}</span><span class="bp35-productprice">${x.type==='estimate'?'≈ ':''}${ron(x.cost)} lei${bp35Badge(x)}</span></label>`}).join('');
+ const extra=calc.extras.length?`<h3 class="bp35-subhead">Produse adăugate separat din catalog</h3>${calc.extras.map(x=>`<label class="bp35-product ${bp35Marked('p:'+x.id)?'bought':''}"><input type="checkbox" ${bp35Marked('p:'+x.id)?'checked':''} onchange="bp35ToggleBought('p:${x.id}',this.checked,this)"/><span class="bp35-productinfo"><b>${esc(x.name)}</b><small>${x.qty} × ${esc(x.amount)} · selectat doar din ${calc.store}</small><small>Preț salvat; verifică valabilitatea ofertei înainte de cumpărare</small></span><span class="bp35-productprice">${ron(x.total)} lei</span></label>`).join('')}`:'';
  return ing+extra;
 }
 // Budget is always visible even if a rewarded ad (demo) has not yet been watched.
@@ -855,7 +887,7 @@ window.home=function(){
  '<section class="hero" style="min-height:210px"><div class="orb"></div><div class="smallcaps">MENIUL TĂU DE 7 ZILE</div><h1 style="font-size:29px;line-height:1.15;position:relative;max-width:310px;margin:15px 0;color:#fff">Mai puțin stres.<br>Mai multă organizare.</h1><div class="herofoot"><span>'+week+'</span><button class="btn lime sm" onclick="go(\'menu100\')">Planifică →</button></div></section>'+
  '<section class="storepanel"><div class="row"><div><div class="smallcaps">MAGAZIN SELECTAT</div><h2 class="h2" style="margin-top:8px">'+bpStoreBrand(bp35.store)+'</h2></div><button class="btn out sm" onclick="go(\'stores\')">Schimbă</button></div><p class="muted" style="margin-top:13px">Produsele și prețurile listei se folosesc numai pentru '+bp35.store+'.</p></section>'+
  '<section class="storepanel"><div class="smallcaps">BUGETUL SĂPTĂMÂNII</div><h2 class="heroMoney" style="font-size:31px;color:var(--forest)">'+amount+'</h2><p class="muted">'+count+' mese planificate · buget '+ron(state.budget)+' lei</p><button class="btn block" onclick="go(\'menu100\')">1. Construiește meniul</button><button class="btn out block" style="margin-top:10px" onclick="go(\'basket100\')">2. Vezi lista de cumpărături</button></section>'+
- '<section class="storepanel"><h2 class="h2">Cum funcționează</h2><p class="sub">Alegi Lidl sau Kaufland → adaugi rețete pe zile → primești ingredientele, cantitățile și un buget aproximativ.</p><button class="btn out block" onclick="go(\'library100\')">Explorează cele 100 de rețete</button><p class="brand-disclaimer">Prețurile marcate estimativ nu sunt prețuri oficiale. Disponibilitatea la raft poate varia.</p></section>';
+ '<section class="storepanel"><h2 class="h2">Cum funcționează</h2><p class="sub">Alegi Lidl sau Kaufland → adaugi rețete pe zile → primești ingredientele, cantitățile și un buget aproximativ.</p><button class="btn out block" onclick="go(\'library100\')">Explorează cele 1.100 de rețete</button><p class="brand-disclaimer">Prețurile marcate estimativ nu sunt prețuri oficiale. Disponibilitatea la raft poate varia.</p></section>';
 };
 window.storesScreen=function(){
  const items=['Lidl','Kaufland'].map(s=>
@@ -917,7 +949,11 @@ window.bpProfilePrivacy=function(){location.href='https://github.com/birisiu/Bun
 window.bpProfileLogout=function(){
  if(!confirm('Vrei să te deconectezi? Datele nesincronizate se pot pierde.'))return;
  if(nativeAuth)nativeAuth.logout();
+ // Keep only the fact that the first-run questionnaire was completed.
+ // Never retain another account's private profile or shopping data on logout.
+ const firstRunCompleted=(()=>{try{return !!JSON.parse(localStorage.getItem('bunplan_onboard_v2')||'null')?.completed;}catch(_){return false;}})();
  localStorage.clear();
+ if(firstRunCompleted)localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true}));
  location.replace('index.html');
 };
 window.bpProfileDelete=function(){
@@ -934,10 +970,576 @@ window.BunPlanCloudDone=function(action,result){
    else if(onboard&&onboard.completed){applyPrefs(onboard);window.bpProfileSave();}
    return;
  }
- if(action==='delete'&&result&&result.ok){localStorage.clear();}
+ if(action==='delete'){if(result&&result.ok){localStorage.clear();location.replace('index.html');}else{message('Ștergerea contului a eșuat: '+(result?.message||'Încearcă din nou.'));}return;}
  if(typeof prevHandler==='function')prevHandler(action,result);
 };
 if(nativeCloud)nativeCloud.loadProfile();
 if(state.tab==='home'||state.tab==='stores')draw();
 })();
-</script></body></html>
+</script>
+<script>
+/* BunPlan 4.6: Cloud recipe library. Old 100 recipes remain available offline.
+   New generated recipes are labelled as unreviewed; product pricing is not invented. */
+(function(){
+'use strict';
+const RECIPE_API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/recipes';
+const API_KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
+const CACHE='bunplan-cloud-recipes-v3';
+let cloud=[],loading=true,loadError='',visible=40;
+const previousLibrary=bpLibrary,previousDetail=bpDetail,previousOpen=bpOpen;
+function content(r){
+ return [r.title,r.category,...(r.tags||[]),...(r.ingredient_details||[]).map(i=>i.name||'')].join(' ').toLocaleLowerCase('ro');
+}
+function compatible(r){
+ return {id:r.legacy_key,title:r.title,category:r.category,servings:r.servings,
+ minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,
+ short_description:r.short_description||'',description:r.description||'',
+ photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',
+ ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
+ steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
+ unreviewed:r.source_status==='generated_unreviewed'};
+}
+function items(){
+ const old=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).map(r=>({...r,cloud:false}));
+ return old.concat(cloud.map(r=>({...r,cloud:true})));
+}
+function filtered(){
+ const q=(bp100.query||'').trim().toLocaleLowerCase('ro');
+ return items().filter(r=>(bp100.category==='Toate'||r.category===bp100.category)&&
+ (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
+ [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
+}
+function row(r){
+ const note=r.cloud?'Instrucțiuni detaliate · verifică ingredientele și alergenii':'Disponibil în planul săptămânal';
+ return '<button class="bp-recipecard" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
+ '<span class="bp-emoji">'+(BP100_EMOJI[r.category]||'🍲')+'</span>'+
+ '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
+}
+function fill(){
+ const results=document.getElementById('bpCloudResults');
+ if(!results)return;
+ const all=filtered();
+ results.innerHTML=all.slice(0,visible).map(row).join('')||'<div class="notice">Nu am găsit rețete pentru filtrele alese.</div>';
+ const cnt=document.getElementById('bpCloudCount');if(cnt)cnt.textContent=all.length+' rețete găsite';
+ const more=document.getElementById('bpCloudMore');if(more)more.style.display=visible<all.length?'block':'none';
+}
+window.bpCloudFilter=function(value){bp100.query=value;visible=40;bpSave();fill()};
+window.bpCloudCat=function(c){bp100.category=c;visible=40;bpSave();draw()};
+window.bpCloudMore=function(){visible+=40;fill()};
+window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
+bpLibrary=function(){
+ const categories=['Toate',...new Set(items().map(r=>r.category))];
+ const count=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).length+cloud.length;
+ return commonTop()+heading('Rețete de gătit','Pași detaliați, cantități și idei pentru familie.')+
+ '<div class="bp-notice"><b>'+count.toLocaleString('ro-RO')+' rețete disponibile</b> · '+BP100.length+' clasice și '+cloud.length+' variante noi din Supabase. '+
+ (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
+ ' Variantele noi necesită verificare culinară; prețurile nu sunt confirmate.</div>'+
+ '<input class="p-headsearch" aria-label="Caută rețete" placeholder="Caută rețete sau ingrediente…" value="'+esc(bp100.query||'')+'" oninput="bpCloudFilter(this.value)"/>'+
+ '<div class="bp-categories">'+categories.map(c=>'<button class="chip '+(bp100.category===c?'selected':'')+'" onclick="bpCloudCat('+JSON.stringify(c).replace(/"/g,'&quot;')+')">'+esc(c)+'</button>').join('')+'</div>'+
+ '<div class="row" style="margin:12px 0 18px"><b id="bpCloudCount"></b><button class="btn sm" onclick="go(\'menu100\')">Planul meu →</button></div>'+
+ '<div id="bpCloudResults"></div><button class="btn out block" id="bpCloudMore" style="margin:15px 0" onclick="bpCloudMore()">Încarcă alte rețete ↓</button>'+
+ '<div class="bp-notice">Rețetele noi pot fi consultate pas cu pas. Le poți adăuga în plan și în lista de cumpărături; prețurile lipsă rămân neestimate, nu sunt inventate.</div>';
+};
+const oldDraw=draw;
+draw=function(){
+ oldDraw();
+ if(state.tab==='library100')fill();
+};
+bpDetail=function(){
+ const r=cloud.find(x=>x.id===bp100.detail);
+ if(!r)return previousDetail();
+ return commonTop()+
+ '<button class="back" onclick="go(\'library100\')">← Înapoi la rețete</button>'+
+ '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ '<h1 class="title">'+esc(r.title)+'</h1>'+
+ (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
+ (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
+ '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
+ '<div class="bp-listingredients">'+r.ingredients.map(i=>'<div class="bp-ing"><div><strong>'+esc(i.name)+'</strong><small>'+Number(i.quantity)+' '+esc(i.unit)+'</small></div></div>').join('')+'</div>'+
+ '<h2 class="h2" style="margin:22px 0 12px">Cum se prepară, pas cu pas</h2><ol class="bp-steps">'+r.steps.map(st=>'<li>'+esc(st)+'</li>').join('')+'</ol>'+
+ '<div class="bp-notice">Această variantă este disponibilă pentru consultare. Nu are încă produse Lidl/Kaufland și prețuri asociate; nu calculăm un buget înșelător.</div>'+
+ '<button class="btn out block" onclick="go(\'library100\')">Înapoi la catalog</button>';
+};
+function redraw(){if(state.tab==='library100')draw();else if(state.tab==='detail100'&&bp100.detail?.startsWith('BP'))draw();}
+try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
+loading=true;redraw();
+// The published catalog includes the original 100, the 1,000 generated recipes
+// and all newly created admin recipes. Public RLS blocks unpublished content.
+function updateOriginalRows(rows){
+ const known=rows.filter(r=>/^R\d{3}$/.test(r.legacy_key));
+ if(!known.length)return; // Keep offline bundled originals if server is partial.
+ const published=new Set(known.map(r=>r.legacy_key));
+ for(let i=BP100.length-1;i>=0;i--){
+  const current=BP100[i];
+  if(/^R\d{3}$/.test(current.id)&&!published.has(current.id))BP100.splice(i,1);
+ }
+ for(const item of known){
+  const r=compatible(item);
+  let current=BP100.find(x=>x.id===r.id);
+  if(!current){current={id:r.id,ingredients:[],steps:[],tags:[]};BP100.push(current)}
+  Object.assign(current,{title:r.title,category:r.category,servings:r.servings,
+   minutes:r.minutes,steps:r.steps,tags:r.tags,allergens:r.allergens,
+   photo_url:r.photo_url,image_reviewed:r.image_reviewed,photo_credit:r.photo_credit||'',
+   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed});
+  if(r.ingredients.length&&window.bunplanNormalizeIngredient){
+   current.ingredients=r.ingredients.map(it=>{
+    const old=(current.ingredients||[]).find(prev=>prev.id===it.name);
+    return old?{...old,quantity:Number(it.quantity),unit:it.unit}:
+      window.bunplanNormalizeIngredient(it);
+   });
+  }
+ }
+}
+const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit';
+let refreshPromise=null;
+window.bunplanRefreshRecipes=function(){
+ if(refreshPromise)return refreshPromise;
+ loading=true;loadError='';redraw();
+ const url=RECIPE_API+'?select='+CATALOG_SELECT+
+  '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500&v='+Date.now();
+ refreshPromise=fetch(url,{cache:'no-store',headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}})
+  .then(async response=>{
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!Array.isArray(data)||data.length===0)throw Error('Catalog gol sau invalid');
+   updateOriginalRows(data);
+   cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
+   window.bunplanCloudLatest=cloud;
+   window.bunplanCloudRecipeUpdate?.(cloud);
+   try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
+   loading=false;loadError='';
+   if(['home','library100','detail100','menu100','basket100','profile'].includes(state.tab))draw();
+   return {ok:true,count:data.length,at:new Date().toISOString()};
+  })
+  .catch(error=>{
+   loading=false;loadError=error?.message||'conexiune indisponibilă';
+   if(['library100','detail100'].includes(state.tab))draw();
+   return {ok:false,message:loadError};
+  })
+  .finally(()=>{refreshPromise=null});
+ return refreshPromise;
+};
+window.bunplanRefreshRecipes();
+})();
+</script>
+
+<script>
+/* BunPlan 4.7 - cloud recipes are real planner inputs.
+ * Estimate != a published price; a catalog listing != local stock.
+ * Every weekly cart is retailer- and week-specific. */
+(function(){
+'use strict';
+const API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/';
+const KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
+const CACHE='bunplan-ingredient-price-refs-v1';
+const MANUAL='bunplan-manual-unknown-price-v1';
+let references=[],refMap=new Map(),slugStore=new Map(),cloud=[],pending=true;
+const names={};
+let manual={};
+try{manual=JSON.parse(localStorage.getItem(MANUAL)||'{}')||{}}catch(_){}
+const originalPick=bp35Pick,originalPriceStatus=bp35PriceStatus,originalBadge=bp35Badge;
+const originalBasket=bpBasket,originalMenu=bpMenu,originalHome=home;
+const originalDetail=bpDetail,originalCopy=bpCopy;
+const normalize=v=>String(v||'').trim().toLocaleLowerCase('ro-RO');
+const slugify=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+const storeKey=s=>s==='Kaufland'?'kaufland':'lidl';
+function reference(label,store){return refMap.get(normalize(label)+'|'+storeKey(store))}
+function saveManual(){try{localStorage.setItem(MANUAL,JSON.stringify(manual))}catch(_){}}
+function convert(ing){
+ const name=String(ing.name||'Ingredient');
+ const ref=reference(name,'Lidl')||reference(name,'Kaufland');
+ const id=ref?.ingredient_slug||'cloud_missing_'+slugify(name);
+ names[id]??=name;
+ const originalUnit=String(ing.unit||'g');
+ let unit=ref?.normalized_unit||originalUnit;
+ let quantity=Number(ing.quantity)||0;
+ if(ref?.ingredient_slug){
+   const multiplier=Number(ref.quantity_multiplier)||1;
+   if(originalUnit===unit || (originalUnit==='g'&&unit==='ml') ||(originalUnit==='ml'&&unit==='g')){
+     quantity*=multiplier;
+   }else if(originalUnit==='felii'&&unit==='g'){
+     quantity*=multiplier;
+   }else if(originalUnit==='buc'&&unit==='g'){
+     quantity*=multiplier;
+   }else if(originalUnit==='g'&&unit==='buc'){
+     quantity*=multiplier;
+   }else{
+     unit=originalUnit; // incompatible base measure -> never claim a priced pack
+   }
+ }
+ return {id,quantity:Math.round(quantity*1000)/1000,unit,source_name:name,source_quantity:Number(ing.quantity)||0,source_unit:originalUnit};
+}
+window.bunplanNormalizeIngredient=convert;
+function registerRecipes(){
+ for(let i=BP100.length-1;i>=0;i--)if(/^(BP\d{4}|ADM-)/.test(BP100[i].id))BP100.splice(i,1);
+ for(const r of cloud){
+  BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
+   minutes:Number(r.minutes)||0,variant_of:r.variant_of||null,steps:r.steps||[],tags:r.tags||[],
+   short_description:r.short_description||'',description:r.description||'',
+   photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',unreviewed:r.unreviewed,
+   ingredients:(r.ingredients||[]).map(convert),cloud:true});
+ }
+ if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
+}
+window.bunplanCloudRecipeUpdate=function(rows){cloud=Array.isArray(rows)?rows:[];registerRecipes()};
+if(Array.isArray(window.bunplanCloudLatest)){cloud=window.bunplanCloudLatest;registerRecipes()}
+function setRefs(rows){
+ if(!Array.isArray(rows))return;
+ references=rows;
+ refMap=new Map(rows.map(x=>[normalize(x.label)+'|'+x.store_id,x]));
+ slugStore=new Map(rows.filter(x=>x.ingredient_slug).map(x=>[x.ingredient_slug+'|'+x.store_id,x]));
+ pending=false;
+ registerRecipes();
+}
+try{const cached=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(cached))setRefs(cached)}catch(_){}
+let pricePromise=null;
+window.bunplanRefreshIngredientPrices=function(){
+ if(pricePromise)return pricePromise;
+ pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500&v='+Date.now(),
+  {cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}})
+  .then(async response=>{
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!Array.isArray(data)||data.length<250)throw Error('Maparea ingredientelor este incompletă');
+   setRefs(data);
+   try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(_){}
+   if(['basket100','menu100','detail100'].includes(state.tab))draw();
+   return {ok:true,count:data.length};
+  })
+  .catch(error=>{
+   pending=false;console.warn('BunPlan price references unavailable',error);
+   return {ok:false,message:error.message||'Indisponibil'};
+  }).finally(()=>{pricePromise=null});
+ return pricePromise;
+};
+window.bunplanRefreshIngredientPrices();
+// "Not priced" never counts as zero-cost food.
+bp35Pick=function(store,id,need){
+ const ref=slugStore.get(id+'|'+storeKey(store));
+ const quantity=Number(need.quantity)||0;
+ const baseUnit=typeof BP100_UNITS==='object'?BP100_UNITS[id]:undefined;
+ const manualKey=storeKey(store)+'|'+id+'|'+need.unit;
+ const custom=manual[manualKey];
+ if(custom&&Number(custom.price)>0&&Number(custom.pack)>0){
+  const count=Math.max(1,Math.ceil(quantity/Number(custom.pack)));
+  return {id,store,a:need,price:Number(custom.price),packageQty:Number(custom.pack),count,
+   cost:Math.round(count*Number(custom.price)*100)/100,type:'manual',name:names[id]||bpName(id)};
+ }
+ if(!baseUnit||baseUnit!==need.unit){
+  return {id,store,a:need,price:null,packageQty:null,count:0,cost:0,type:'missing',
+    name:names[id]||bpName(id)};
+ }
+ let found;
+ try{found=originalPick(store,id,need)}catch(e){
+  return {id,store,a:need,price:null,packageQty:null,count:0,cost:0,type:'missing',name:names[id]||bpName(id)};
+ }
+ // Estimates come from Supabase's labelled, UNVERIFIED budget model.
+ if(found.type==='estimate'&&ref&&Number(ref.estimated_price_ron)>0&&Number(ref.pack_quantity)>0&&ref.pack_unit===need.unit){
+  const count=Math.max(1,Math.ceil(quantity/Number(ref.pack_quantity)));
+  found={...found,price:Number(ref.estimated_price_ron),packageQty:Number(ref.pack_quantity),
+   count,cost:Math.round(count*Number(ref.estimated_price_ron)*100)/100,
+   estimateSource:'Supabase: '+String(ref.estimate_method||'model nevalidat')};
+ }
+ return found;
+};
+bp35PriceStatus=function(x){
+ if(x.type==='missing')return 'Preț indisponibil în catalog';
+ return x.type==='estimate'?'Estimare orientativă, neconfirmată':originalPriceStatus(x);
+};
+bp35Badge=function(x){
+ return x.type==='missing'?'<span class="bp35-badge estimate">Neestimat</span>':originalBadge(x);
+};
+const oldName=bpName;
+bpName=function(id){return names[id]||oldName(id)};
+bpTotals=function(){
+ const totals={};
+ for(const d of bp100.days){
+  for(const id of Object.values(d)){
+   const r=bpRecipe(id);if(!r)continue;
+   const factor=(Math.max(1,Number(state.adults)||1)+0.65*Math.max(0,Number(state.children)||0))/Math.max(1,Number(r.servings)||2);
+   for(const it of r.ingredients||[]){
+    const qty=Number(it.quantity)||0;
+    if(qty<=0)continue;
+    let key=it.id;
+    // Never silently discard a food from the shopping list when two recipes
+    // describe the same ingredient in incompatible units.
+    if(totals[key]&&totals[key].unit!==it.unit){
+      key='unit_'+slugify(it.unit)+'_'+it.id;
+      names[key]??=(it.source_name||bpName(it.id))+' ('+it.unit+')';
+    }
+    if(!totals[key])totals[key]={quantity:0,unit:it.unit};
+    totals[key].quantity+=qty*factor;
+   }
+  }
+ }
+ return totals;
+};
+const oldCalc=bp35Calc;
+bp35Calc=function(){
+ const result=oldCalc();
+ const missing=result.rows.filter(x=>x.type==='missing');
+ return {...result,missing:missing.length,incomplete:missing.length>0};
+};
+window.bpUnknownPrice=function(id,unit){
+ const store=storeKey(bp35.store);
+ const label=names[id]||bpName(id);
+ const raw=prompt('Prețul unui pachet de '+label+' la '+bp35.store+' (lei). Introdu manual doar dacă îl cunoști:');
+ if(raw===null)return;
+ const price=Number(String(raw).replace(',','.'));
+ if(!Number.isFinite(price)||price<=0){alert('Preț invalid.');return;}
+ const sz=prompt('Cantitatea acelui pachet în '+unit+' (ex. 500):');
+ if(sz===null)return;
+ const pack=Number(String(sz).replace(',','.'));
+ if(!Number.isFinite(pack)||pack<=0){alert('Cantitate invalidă.');return;}
+ manual[store+'|'+id+'|'+unit]={price,pack};
+ saveManual();draw();
+};
+window.bpBrowseProducts=async function(id){
+ const token=slugify(names[id]||id).split('_').filter(x=>x.length>2).slice(-1)[0]||slugify(id);
+ const store=storeKey(bp35.store);
+ const modal=document.createElement('div');
+ modal.className='modalback';
+ modal.id='bp-product-search-modal';
+ modal.innerHTML='<section class="modal" role="dialog" aria-modal="true">'+
+ '<button class="back" id="bp-catalog-close">✕ Închide</button>'+
+ '<h2>Produse posibile · '+esc(bp35.store)+'</h2>'+
+ '<p class="muted">Prețuri din catalog, nu confirmări de stoc. Gramajele lipsă nu sunt transformate în costuri exacte ale rețetei.</p>'+
+ '<div id="bp-catalog-results" class="notice">Se caută produse…</div></section>';
+ document.body.appendChild(modal);
+ modal.querySelector('#bp-catalog-close').onclick=()=>modal.remove();
+ modal.onclick=e=>{if(e.target===modal)modal.remove()};
+ try{
+  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id,source_kind'+
+   '&store_id=eq.'+store+'&name=ilike.*'+encodeURIComponent(token)+'*&order=amount_ron.asc&limit=16';
+  const response=await fetch(url,{headers:{apikey:KEY}});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const offers=await response.json();
+  if(!modal.isConnected)return;
+  modal.querySelector('#bp-catalog-results').innerHTML=offers.length?offers.map(p=>{
+   const link=(String(p.source_url||'').startsWith('https://')?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.source_url)+'">Sursa prețului ↗</a>':'');
+   return '<div class="offer" style="align-items:flex-start"><div class="grow"><strong>'+esc(p.name)+'</strong>'+
+   '<small>'+esc(p.captured_on||'')+' · '+(p.pack_amount&&p.pack_unit?esc(p.pack_amount+' '+p.pack_unit):'Ambalaj neprecizat')+' · '+(p.source_kind==='manual_user'?'Observație manuală, neconfirmată de retailer':'Preț consemnat din sursă')+'</small>'+
+   '<small>'+link+'</small></div><b class="price">'+ron(Number(p.amount_ron))+' lei</b></div>';
+  }).join(''):'<p>Nu există rezultate după acest cuvânt în catalogul încărcat. Nu înseamnă că magazinul nu vinde ingredientul.</p>';
+ }catch(err){if(modal.isConnected)modal.querySelector('#bp-catalog-results').textContent='Nu am putut verifica produsele de catalog: '+err.message}
+};
+bp35BasketRows=function(c){
+ // Three independent grid areas prevent the action button and price column
+ // from squeezing ingredient names to a single character per line.
+ function item(x,key,isExtra){
+  const bought=bp35Marked(key);
+  const name=isExtra?x.name:bpName(x.id);
+  const need=isExtra?x.qty+' × '+x.amount+' · '+bp35.store:
+   'Necesar: '+Math.ceil(x.a.quantity)+' '+bp35Unit(x.a)+
+   (x.type==='missing'?' · Fără preț estimat':' · '+bp35Pack(x));
+  const cost=isExtra?ron(x.total)+' lei':
+   x.type==='missing'?'Preț necunoscut':
+   (x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei';
+  const status=isExtra?'Produs adăugat din catalog · verifică prețul actual':
+   bp35PriceStatus(x);
+  const unit=!isExtra&&x.a?x.a.unit:'buc';
+  const chip=isExtra?'':bp35Badge(x);
+  const id=JSON.stringify(x.id).replace(/"/g,'&quot;');
+  const checkedKey=JSON.stringify(key).replace(/"/g,'&quot;');
+  return '<article class="bp35-product bp48-shopping-item '+(bought?'bought':'')+'">'+
+   '<label class="bp48-shopping-main" aria-label="Marchează '+esc(name)+' ca achiziționat">'+
+    '<input type="checkbox" '+(bought?'checked':'')+
+    ' onchange="bp35ToggleBought('+checkedKey+',this.checked,this)"/>'+
+    '<span class="bp35-productinfo bp48-shopping-info"><b>'+esc(name)+'</b>'+
+     '<small>'+esc(need)+'</small><small>'+esc(status)+'</small></span>'+
+   '</label>'+
+   '<div class="bp35-productprice bp48-shopping-price">'+
+    '<strong>'+esc(cost)+'</strong>'+chip+'</div>'+
+   (!isExtra?'<div class="bp48-shopping-actions">'+
+    '<button type="button" class="btn out sm" onclick="bpBrowseProducts('+id+')">Caută în catalog</button>'+
+    (x.type==='missing'?'<button type="button" class="btn out sm" onclick="bpUnknownPrice('+id+','+
+      JSON.stringify(unit).replace(/"/g,'&quot;')+')">Adaugă preț</button>':'')+
+   '</div>':'')+
+   '</article>';
+ }
+ return c.rows.map(x=>item(x,'i:'+x.id,false)).join('')+
+  (c.extras.length?'<h3 class="bp35-subhead">Produse adăugate din catalog</h3>'+
+    c.extras.map(x=>item(x,'p:'+x.id,true)).join(''):'');
+};
+bpBasket=function(){
+ const c=bp35Calc(),count=bpCountPlan(),budget=Number(state.budget)||0,unlocked=!!state.unlocks[bp35Key()];
+ const checked=[...c.rows.map(x=>'i:'+x.id),...c.extras.map(x=>'p:'+x.id)].filter(bp35Marked).length;
+ const note=c.incomplete?'Sunt '+c.missing+' ingrediente fără preț. Suma este doar un subtotal; bugetul final nu poate fi determinat.':
+ 'Subtotal estimativ pentru coș: verifică prețurile la raft.';
+ return commonTop()+heading('Lista de cumpărături','Cantități consolidate din toate mesele alese.')+
+ bp35Progress()+
+ '<div class="bp35-smallstore">Magazin: <b>'+esc(bp35.store)+'</b> · '+esc(bp35Pretty(bp35.week))+
+ ' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+' <button class="link" onclick="go(\'menu100\')">Modifică planul</button></div>'+
+ '<div class="bp35-summary"><small>'+(c.incomplete?'Subtotal cu prețuri, nu totalul coșului':'Coș orientativ')+' · '+esc(bp35.store)+'</small>'+
+ '<strong>'+(count?'≈ '+ron(c.total)+' lei':'Nu există mese în plan')+'</strong>'+
+ '<span>'+count+' mese · '+c.rows.length+' ingrediente · '+c.extras.length+' produse adăugate</span>'+
+ '<span>'+esc(note)+'</span>'+
+ '<span>'+(c.incomplete?'Buget săptămânal: '+ron(budget)+' lei · comparație indisponibilă':'Buget: '+ron(budget)+' lei · '+(budget>=c.total?'diferență estimată '+ron(budget-c.total)+' lei':'depășire estimată '+ron(c.total-budget)+' lei'))+'</span></div>'+
+ '<div class="bp35-warning">Prețuri: '+c.verified+' publicate, '+c.estimated+' estimări de model, '+c.manual+' introduse de utilizator, '+c.missing+' lipsă. <b>Un produs din catalog nu confirmă stocul într-un magazin fizic.</b></div>'+
+ (!count?'<button class="btn block" onclick="go(\'menu100\')">Alege prima rețetă →</button>':
+ (!unlocked?'<div class="bp-lock"><h3>Deblochează lista '+esc(bp35.store)+'</h3><p>Lista se deschide după confirmarea recompensei publicitare.</p><button class="btn block" onclick="bp35Unlock()">▶ Deblochează ingredientele</button></div>':
+ '<div class="bp35-boughtheading"><h2 class="h2">Produsele '+esc(bp35.store)+'</h2><span>'+checked+'/'+(c.rows.length+c.extras.length)+' bifate</span></div>'+
+ '<div class="bp35-checklist">'+bp35BasketRows(c)+'</div>'+
+ '<button class="btn block" style="margin-top:16px" onclick="bpCopy()">Copiază lista</button>'))+
+ '<div class="bp35-actions"><button class="btn block out" onclick="go(\'menu100\')">← Modifică meniul</button></div>';
+};
+bpMenu=function(){
+ const html=originalMenu();const c=bp35Calc();
+ return c.missing?html+'<div class="bp35-warning">Atenție: '+c.missing+' ingrediente nu au preț. Suma afișată este un subtotal orientativ, nu întregul coș.</div>':html;
+};
+home=function(){
+ const html=originalHome();const c=bp35Calc();
+ return c.missing?html+'<div class="bp35-warning">Buget incomplet: '+c.missing+' ingrediente fără preț. Totalul real nu este calculabil.</div>':html;
+};
+bpCopy=function(){
+ const c=bp35Calc();
+ if(!c.missing)return originalCopy();
+ const txt=['BunPlan · '+c.store+' · '+bp35Pretty(bp35.week),
+  'Subtotal, NU total final: '+ron(c.total)+' lei',
+  'Ingrediente fără preț: '+c.missing,
+  ...c.rows.map(x=>bpName(x.id)+' · '+Math.ceil(x.a.quantity)+' '+x.a.unit+' · '+(x.type==='missing'?'preț necunoscut':ron(x.cost)+' lei ('+bp35PriceStatus(x)+')')),
+  ...c.extras.map(x=>x.name+' · '+x.qty+' × '+x.amount+' · '+ron(x.total)+' lei'),
+  'Prețurile și disponibilitatea depind de magazin și dată.'].join('\n');
+ if(navigator.clipboard?.writeText)navigator.clipboard.writeText(txt).then(()=>alert('Lista a fost copiată.')).catch(()=>prompt('Copiază:',txt));
+ else prompt('Copiază:',txt);
+};
+bpDetail=function(){
+ const r=BP100.find(x=>x.id===bp100.detail);
+ if(!r||!r.cloud)return originalDetail();
+ const prices=bp35RecipePrice(r);
+ const missing=prices.rows.filter(x=>x.type==='missing').length;
+ return commonTop()+
+ '<button class="back" onclick="go(\'library100\')">← Rețete</button>'+
+ '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ '<h1 class="title">'+esc(r.title)+'</h1>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>'+Number(r.minutes)+' minute</span><span>'+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp35-warning">Rețetă generată automat. Verifică ingredientele, alergenii și timpii de gătire. '+(pending?'Se încarcă datele de preț.':'')+'</div>'+
+ '<div class="bp35-recipecost"><small>'+(missing?'Subtotal parțial · ':'Cost estimativ · ')+esc(bp35.store)+'</small>'+
+ '<b>'+(prices.rows.some(x=>x.type!=='missing')?'≈ '+ron(prices.total)+' lei':'Fără prețuri')+'</b>'+
+ '<span>'+missing+' ingrediente fără preț · '+prices.estimated+' estimări, '+prices.published+' prețuri publicate</span></div>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Ingrediente</h2>'+
+ '<div class="bp-listingredients">'+prices.rows.map((x,i)=>{
+ const orig=r.ingredients[i];const name=orig.source_name||bpName(orig.id);
+ return '<div class="bp-ing"><div><strong>'+esc(name)+'</strong><small>'+
+ Number(orig.source_quantity||orig.quantity)+' '+esc(orig.source_unit||orig.unit)+'</small>'+
+ '<small>'+esc(bp35PriceStatus(x))+'</small></div><div class="bp-ingright">'+
+ (x.type==='missing'?'Preț lipsă':(x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei')+
+ '</div></div>';
+ }).join('')+'</div>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Cum se prepară, pas cu pas</h2>'+
+ '<ol class="bp-steps">'+r.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>'+
+ '<h2 class="h2" style="margin:20px 0 11px">Adaugă în meniul săptămânal</h2>'+
+ '<div class="bp-selects"><select id="bpDay">'+BP_DAYS.map((d,i)=>'<option value="'+i+'" '+(bp100.day===i?'selected':'')+'>'+esc(d)+'</option>').join('')+'</select>'+
+ '<select id="bpMeal">'+BP_MEALS.map(m=>'<option>'+esc(m)+'</option>').join('')+'</select></div>'+
+ '<button class="btn block" onclick="bp35SaveMeal('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">＋ Adaugă în plan · '+esc(bp35.store)+'</button>'+
+ '<p class="brand-disclaimer">Lista finală combină cantitățile repetate. Prețurile de model nu sunt oferte confirmate și nu verifică stocurile locale.</p>';
+};
+})();
+</script>
+
+<style id="bunplan-4-8-shopping-polish">
+/* Product row layout: no flex shrink of ingredient text next to cost/actions */
+.bp35-checklist{min-width:0;overflow:hidden;border-radius:20px}
+.bp35-checklist .bp48-shopping-item{
+  box-sizing:border-box;display:grid!important;
+  grid-template-columns:minmax(0,1fr) max-content;
+  grid-template-areas:"main price" "actions actions";
+  gap:10px 12px;align-items:start;
+  width:100%;max-width:100%;min-width:0;
+  padding:16px clamp(12px,3.5vw,18px);
+  overflow-wrap:normal;word-break:normal;
+}
+.bp48-shopping-main{
+  grid-area:main;display:flex;align-items:flex-start;gap:12px;
+  min-width:0;max-width:100%;cursor:pointer;
+}
+.bp48-shopping-main input[type=checkbox]{
+  appearance:auto;flex:0 0 24px!important;width:24px!important;
+  height:24px!important;margin:1px 0 0;accent-color:#17664b;
+}
+.bp35-checklist .bp48-shopping-info{
+  flex:1 1 auto;min-width:0;max-width:100%;
+  overflow-wrap:break-word;word-break:normal;
+  text-align:left;text-decoration:none;
+}
+.bp48-shopping-info b{
+  display:block;font-size:clamp(14px,3.7vw,17px);
+  font-weight:800;line-height:1.34;white-space:normal;
+  overflow-wrap:break-word;word-break:normal;
+}
+.bp48-shopping-info small{
+  display:block;font-size:12px;line-height:1.45;
+  white-space:normal;overflow-wrap:break-word;word-break:normal;
+}
+.bp35-checklist .bp48-shopping-price{
+  grid-area:price;min-width:0;width:max-content;max-width:122px;
+  text-align:right;margin-left:auto;padding-top:1px;
+  white-space:normal;overflow-wrap:normal;word-break:normal;
+}
+.bp48-shopping-price strong{display:block;font-size:15px;line-height:1.35;white-space:normal}
+.bp48-shopping-price .bp35-badge{
+  margin:8px 0 0 auto;display:inline-block;max-width:100%;
+  white-space:normal;text-align:center;line-height:1.25;
+}
+.bp48-shopping-actions{
+  grid-area:actions;display:flex;align-items:center;flex-wrap:wrap;
+  gap:8px;min-width:0;padding-left:36px;
+}
+.bp48-shopping-actions .btn{
+  flex:0 1 auto;min-width:0;max-width:100%;
+  min-height:43px;padding:9px 14px;
+  line-height:1.3;white-space:normal;text-align:center;
+}
+.bp48-shopping-item.bought .bp48-shopping-info{text-decoration:none;opacity:.65}
+.bp48-shopping-item.bought .bp48-shopping-info b{text-decoration:line-through}
+.bp48-shopping-item.bought .bp48-shopping-price{opacity:.7}
+@media(max-width:380px){
+ .bp35-checklist .bp48-shopping-item{
+   grid-template-columns:minmax(0,1fr);
+   grid-template-areas:"main" "price" "actions";
+   gap:9px;
+ }
+ .bp35-checklist .bp48-shopping-price{
+   width:auto;max-width:100%;margin:0;padding-left:36px;
+   text-align:left;
+ }
+ .bp48-shopping-price .bp35-badge{margin:5px 0 0;display:inline-block}
+ .bp48-shopping-actions{padding-left:36px}
+}
+@media(min-width:381px) and (max-width:430px){
+ .bp48-shopping-main{gap:9px}
+ .bp35-checklist .bp48-shopping-item{gap:10px 7px}
+ .bp35-checklist .bp48-shopping-price{max-width:108px}
+ .bp48-shopping-actions{padding-left:33px}
+}
+/* Catalog modal remains scrollable on compact Android devices */
+#bp-product-search-modal{padding:12px;box-sizing:border-box}
+#bp-product-search-modal .modal{
+ box-sizing:border-box;width:min(100%,620px);max-height:min(84dvh,860px);
+ overflow-y:auto;overscroll-behavior:contain;
+ padding:22px 18px calc(22px + env(safe-area-inset-bottom));
+ border-radius:24px;
+}
+#bp-product-search-modal .offer{
+ min-width:0;display:flex;gap:12px;flex-wrap:wrap;
+ border-bottom:1px solid #e1e8de;padding:12px 0;
+}
+#bp-product-search-modal .offer .grow{min-width:0;flex:1 1 170px;overflow-wrap:break-word}
+#bp-product-search-modal .offer a{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){
+ .bp48-shopping-item,.bp48-shopping-main,.bp48-shopping-actions{transition:none!important}
+}
+</style>
+<link rel="stylesheet" href="brands/bunplan-ui.css"/>
+<script src="brands/bunplan-ui.js"></script>
+<link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
+<script src="brands/food-photos-generated.js"></script>
+<script src="brands/bunplan-photo-ui.js"></script>
+<script src="brands/bunplan-spending.js"></script>
+<link rel="stylesheet" href="brands/bunplan-admin-sync.css"/>
+<script src="brands/bunplan-admin-sync.js"></script>
+<link rel="stylesheet" href="brands/bunplan-tour-refresh.css"/>
+<script src="brands/bunplan-tour-refresh.js"></script>
+</body></html>

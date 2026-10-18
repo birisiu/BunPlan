@@ -1,0 +1,41 @@
+name: Verify Live BunPlan CRM HTTPS
+on:
+  push:
+    branches: [crm-live]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/verify-crm-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify public HTML and assets after Pages deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://birisiu.github.io/BunPlan/"
+          for attempt in 1 2 3 4 5 6 7 8; do
+            echo "Attempt $attempt to validate CRM"
+            curl -sSfL --max-time 18 -D /tmp/bp-headers "$BASE" -o /tmp/bp-home || true
+            if test -s /tmp/bp-home && grep -q '<title>BunPlan CRM' /tmp/bp-home && grep -qi 'content-type:.*text/html' /tmp/bp-headers; then
+              echo "Live HTML response is correctly served"
+              break
+            fi
+            if [ "$attempt" = 8 ]; then
+              echo "Live CRM HTML unavailable or MIME type incorrect"
+              head -30 /tmp/bp-headers || true
+              exit 1
+            fi
+            sleep 20
+          done
+          for file in admin.js crm.js admin.css crm.css bunplan-icon.svg; do
+            echo "Verifying $file"
+            curl -sSfL --max-time 20 "$BASE$file" -o "/tmp/$file"
+            test -s "/tmp/$file"
+          done
+          grep -q 'bunplan-admin-authenticated' /tmp/admin.js
+          grep -q 'bunplan_admin_user_directory' /tmp/crm.js
+          echo "BunPlan CRM LIVE HTTPS STATUS: PASS"

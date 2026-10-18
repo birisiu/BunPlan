@@ -1,6 +1,8 @@
 name: Test BunPlan Responsive Screens
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
   push:
     paths:
       - 'scripts/test-responsive.mjs'
@@ -20,8 +22,18 @@ jobs:
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install chromium
-      - name: Exercise onboarding and profile at different phone widths
+      - name: Exercise onboarding, profile and shopping list on different phones
         run: node scripts/test-responsive.mjs
+      - name: Test secure BunPlan content admin
+        run: node scripts/test-admin.mjs
+      - name: Test only ADMIN credential and private password recovery
+        run: node scripts/test-admin-exclusive-login.mjs
+      - name: Test guided first-use tour and fresh CRM synchronization
+        run: node scripts/test-tour-refresh.mjs
+      - name: Test complete BunPlan CRM operations
+        run: node scripts/test-crm.mjs
+      - name: Smoke-test the REAL published Supabase CRM website
+        run: node scripts/test-crm-public.mjs
       - name: Keep UI screenshots for review
         if: always()
         uses: actions/upload-artifact@v4
