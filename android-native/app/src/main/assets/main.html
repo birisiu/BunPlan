@@ -1173,14 +1173,13 @@ function convert(ing){
 }
 window.bunplanNormalizeIngredient=convert;
 function registerRecipes(){
- if(!cloud.length)return;
  for(let i=BP100.length-1;i>=0;i--)if(/^(BP\d{4}|ADM-)/.test(BP100[i].id))BP100.splice(i,1);
  for(const r of cloud){
   BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
    minutes:Number(r.minutes)||0,variant_of:r.variant_of||null,steps:r.steps||[],tags:r.tags||[],
    short_description:r.short_description||'',description:r.description||'',
    photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',unreviewed:r.unreviewed,
-   ingredients:(r.ingredients||[]).map(convert),cloud:true,unreviewed:true});
+   ingredients:(r.ingredients||[]).map(convert),cloud:true});
  }
  if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
 }
@@ -1195,12 +1194,27 @@ function setRefs(rows){
  registerRecipes();
 }
 try{const cached=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(cached))setRefs(cached)}catch(_){}
-fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500',
- {headers:{apikey:KEY,Accept:'application/json'}})
- .then(async r=>{if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();
-  if(!Array.isArray(data)||data.length<250)throw Error('Maparea ingredientelor este incompletă');
-  setRefs(data);try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(_){}
- }).catch(e=>{pending=false;console.warn('BunPlan price references unavailable',e);if(state.tab==='basket100'||state.tab==='detail100')draw()});
+let pricePromise=null;
+window.bunplanRefreshIngredientPrices=function(){
+ if(pricePromise)return pricePromise;
+ pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500&v='+Date.now(),
+  {cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}})
+  .then(async response=>{
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!Array.isArray(data)||data.length<250)throw Error('Maparea ingredientelor este incompletă');
+   setRefs(data);
+   try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(_){}
+   if(['basket100','menu100','detail100'].includes(state.tab))draw();
+   return {ok:true,count:data.length};
+  })
+  .catch(error=>{
+   pending=false;console.warn('BunPlan price references unavailable',error);
+   return {ok:false,message:error.message||'Indisponibil'};
+  }).finally(()=>{pricePromise=null});
+ return pricePromise;
+};
+window.bunplanRefreshIngredientPrices();
 // "Not priced" never counts as zero-cost food.
 bp35Pick=function(store,id,need){
  const ref=slugStore.get(id+'|'+storeKey(store));
