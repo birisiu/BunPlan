@@ -87,7 +87,7 @@ INGREDIENT_SEARCH = {
 "avocado":"avocado fruit","castraveti":"cucumbers","ardei":"bell peppers",
 "ulei":"olive oil bottle","ulei_masline":"olive oil","somon":"salmon fillet",
 "ton":"canned tuna","ciuperci":"mushrooms","conopida":"cauliflower",
-"nuci":"walnuts","afine":"blueberries","sare":"salt bowl","mozzarella":"mozzarella",
+"nuci":"walnuts","afine":"blueberries","sare":"salt bowl","mozzarella":"mozzarella","migdale":"almonds",
 "curcan":"turkey breast","vita":"raw beef steak","porc":"pork meat","mazare":"peas",
 "cascaval":"cheddar cheese","dovlecel":"zucchini","peste_alb":"white fish fillet",
 "paine":"wholemeal bread","lamiie":"lemons","lamaie":"fresh lemon",
@@ -151,7 +151,7 @@ def main():
     jobs += [('ingredients',k,v) for k,v in INGREDIENT_SEARCH.items()]
     jobs += [('originals',k,v) for k,v in ORIGINAL_SEARCH.items()]
     if os.getenv('BUNPLAN_PHOTO_SAMPLE','')=='1':
-        jobs=jobs[:5]+jobs[len(FAMILY_SEARCH):len(FAMILY_SEARCH)+5]+jobs[-10:-5]
+        jobs=jobs[:5]+jobs[len(FAMILY_SEARCH):len(FAMILY_SEARCH)+5]+jobs[-100:-95]
     manifest={'recipes':{},'ingredients':{},'originals':{},'notice':'Representative photos, not photographs of each exact recipe variation.',
               'credit':'Photographs: Wikimedia Commons. Individual credits under each image.'}
     errors=0
