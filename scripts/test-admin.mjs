@@ -18,13 +18,13 @@ async function mock(page,authorized=true){
   const ingredient={id:'22222222-2222-4222-8222-222222222222',slug:'ovaz',name:'Ovăz',
      base_unit:'g',image_url:null,image_reviewed:false};
   function builder(name){
-   let isHead=false;
+   let isHead=false,mutation=false;
    const b={
     select(_fields,opts={}){isHead=opts.head===true;return b;},
     order(){return b},range(){return b},eq(){return b},not(){return b},or(){return b},ilike(){return b},
-    update(fields){window.__lastSaved=fields;return b},
-    insert(fields){window.__lastSaved=fields;return b},
-    single(){return Promise.resolve({data:window.__lastSaved?{id:recipe.id}:(name==='recipes'?recipe:ingredient),error:null})},
+    update(fields){mutation=true;window.__lastSaved=fields;return b},
+    insert(fields){mutation=true;window.__lastSaved=fields;return b},
+    single(){return Promise.resolve({data:mutation?{id:recipe.id}:(name==='recipes'?recipe:ingredient),error:null})},
     then(resolve,reject){return Promise.resolve({data:isHead?null:[name==='recipes'?recipe:ingredient],count:1,error:null}).then(resolve,reject)}
    };
    return b;
