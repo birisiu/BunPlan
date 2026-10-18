@@ -27,7 +27,6 @@ function summary(k=key()){
   const confirmed=items.filter(x=>bought[x.id]&&hasPaid(k,x.id));
   const paidTotal=confirmed.reduce((sum,item)=>sum+Number(entry(k,item.id).amount),0);
   const approxPurchased=confirmed.filter(x=>!x.missing).reduce((sum,item)=>sum+item.approx,0);
-  const totalKnown=items.reduce((sum,x)=>sum+x.missing?0:0,0);
   const unfinished=count-confirmed.length;
   const remaining=items.filter(x=>!bought[x.id]);
   const remainingEstimate=remaining.reduce((sum,item)=>sum+(item.missing?0:item.approx),0);
@@ -138,7 +137,8 @@ bp35BasketRows=function(calculation){
  const make=item=>{
   const bought=bp35Marked(item.id),a=recentPrice(item.id,item);
   const photo=window.bpFoodProductPhoto?.(item.name);
-  const visual=photo?'<img class="bp50-product-image" loading="lazy" src="'+esc(photo.src)+'" alt="Fotografie reprezentativă: '+esc(item.name)+'" onerror="this.style.display=\'none\'"/>':
+  const visual=photo?'<img class="bp50-product-image" loading="lazy" src="'+esc(photo.src)+'" alt="Fotografie reprezentativă: '+esc(item.name)+'" onerror="this.style.display=\'none\'"/>'+
+   (photo.source?'<a class="bp50-photo-credit" target="_blank" rel="noopener noreferrer" href="'+esc(photo.source)+'" title="Foto: '+esc(photo.author||'Wikimedia Commons')+' · '+esc(photo.license||'licență liberă')+'">ⓘ</a>':''):
    '<span class="bp50-product-placeholder" aria-hidden="true">🛒</span>';
   const label='<label class="bp50-check-label"><input type="checkbox" '+(bought?'checked':'')+
    ' onchange="bp35ToggleBought('+JSON.stringify(item.id).replace(/"/g,'&quot;')+',this.checked,this)" aria-label="Cumpărat '+esc(item.name)+'"/></label>';
