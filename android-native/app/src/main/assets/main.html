@@ -1249,30 +1249,42 @@ window.bpBrowseProducts=async function(id){
  }catch(err){if(modal.isConnected)modal.querySelector('#bp-catalog-results').textContent='Nu am putut verifica produsele de catalog: '+err.message}
 };
 bp35BasketRows=function(c){
- function row(x,key){
+ // Three independent grid areas prevent the action button and price column
+ // from squeezing ingredient names to a single character per line.
+ function item(x,key,isExtra){
   const bought=bp35Marked(key);
-  const cost=x.type==='missing'?'Fără preț':(x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei';
-  const label=bpName(x.id);
-  const amount=x.a?Math.ceil(x.a.quantity)+' '+bp35Unit(x.a):x.qty+' × '+x.amount;
-  const extra=x.a?(x.type==='missing'?'Preț neacoperit în această versiune':bp35Pack(x)):'adăugat din catalog';
-  return '<div class="bp35-product '+(bought?'bought':'')+'">'+
-    '<label style="display:flex;gap:10px;align-items:center;min-width:0;flex:1">'+
-    '<input type="checkbox" '+(bought?'checked':'')+' onchange="bp35ToggleBought('+JSON.stringify(key).replace(/"/g,'&quot;')+',this.checked,this)"/>'+
-    '<span class="bp35-productinfo"><b>'+esc(label)+'</b><small>Necesar: '+esc(amount)+' · '+esc(extra)+'</small>'+
-    '<small>'+esc(bp35PriceStatus(x))+'</small></span></label>'+
-    '<span class="bp35-productprice">'+esc(cost)+bp35Badge(x)+'</span>'+
-    '<div style="flex-basis:100%;display:flex;gap:7px;flex-wrap:wrap;margin-top:7px">'+
-    '<button class="btn out sm" onclick="bpBrowseProducts('+JSON.stringify(x.id).replace(/"/g,'&quot;')+')">Caută în catalog</button>'+
-    (x.type==='missing'?'<button class="btn out sm" onclick="bpUnknownPrice('+JSON.stringify(x.id).replace(/"/g,'&quot;')+','+JSON.stringify(x.a.unit).replace(/"/g,'&quot;')+')">Introdu preț cunoscut</button>':'')+
-    '</div></div>';
+  const name=isExtra?x.name:bpName(x.id);
+  const need=isExtra?x.qty+' × '+x.amount+' · '+bp35.store:
+   'Necesar: '+Math.ceil(x.a.quantity)+' '+bp35Unit(x.a)+
+   (x.type==='missing'?' · Fără preț estimat':' · '+bp35Pack(x));
+  const cost=isExtra?ron(x.total)+' lei':
+   x.type==='missing'?'Preț necunoscut':
+   (x.type==='estimate'?'≈ ':'')+ron(x.cost)+' lei';
+  const status=isExtra?'Produs adăugat din catalog · verifică prețul actual':
+   bp35PriceStatus(x);
+  const unit=!isExtra&&x.a?x.a.unit:'buc';
+  const chip=isExtra?'':bp35Badge(x);
+  const id=JSON.stringify(x.id).replace(/"/g,'&quot;');
+  const checkedKey=JSON.stringify(key).replace(/"/g,'&quot;');
+  return '<article class="bp35-product bp48-shopping-item '+(bought?'bought':'')+'">'+
+   '<label class="bp48-shopping-main" aria-label="Marchează '+esc(name)+' ca achiziționat">'+
+    '<input type="checkbox" '+(bought?'checked':'')+
+    ' onchange="bp35ToggleBought('+checkedKey+',this.checked,this)"/>'+
+    '<span class="bp35-productinfo bp48-shopping-info"><b>'+esc(name)+'</b>'+
+     '<small>'+esc(need)+'</small><small>'+esc(status)+'</small></span>'+
+   '</label>'+
+   '<div class="bp35-productprice bp48-shopping-price">'+
+    '<strong>'+esc(cost)+'</strong>'+chip+'</div>'+
+   (!isExtra?'<div class="bp48-shopping-actions">'+
+    '<button type="button" class="btn out sm" onclick="bpBrowseProducts('+id+')">Caută în catalog</button>'+
+    (x.type==='missing'?'<button type="button" class="btn out sm" onclick="bpUnknownPrice('+id+','+
+      JSON.stringify(unit).replace(/"/g,'&quot;')+')">Adaugă preț</button>':'')+
+   '</div>':'')+
+   '</article>';
  }
- return c.rows.map(x=>row(x,'i:'+x.id)).join('')+
-  (c.extras.length?'<h3 class="bp35-subhead">Produse alese din catalog</h3>'+c.extras.map(x=>{
-   const bought=bp35Marked('p:'+x.id);
-   return '<label class="bp35-product '+(bought?'bought':'')+'"><input type="checkbox" '+(bought?'checked':'')+' onchange="bp35ToggleBought('+JSON.stringify('p:'+x.id).replace(/"/g,'&quot;')+',this.checked,this)"/>'+
-     '<span class="bp35-productinfo"><b>'+esc(x.name)+'</b><small>'+x.qty+' × '+esc(x.amount)+' · '+esc(bp35.store)+'</small></span>'+
-     '<span class="bp35-productprice">'+ron(x.total)+' lei</span></label>';
-  }).join(''):'');
+ return c.rows.map(x=>item(x,'i:'+x.id,false)).join('')+
+  (c.extras.length?'<h3 class="bp35-subhead">Produse adăugate din catalog</h3>'+
+    c.extras.map(x=>item(x,'p:'+x.id,true)).join(''):'');
 };
 bpBasket=function(){
  const c=bp35Calc(),count=bpCountPlan(),budget=Number(state.budget)||0,unlocked=!!state.unlocks[bp35Key()];
@@ -1349,4 +1361,98 @@ bpDetail=function(){
 };
 })();
 </script>
+
+<style id="bunplan-4-8-shopping-polish">
+/* Product row layout: no flex shrink of ingredient text next to cost/actions */
+.bp35-checklist{min-width:0;overflow:hidden;border-radius:20px}
+.bp35-checklist .bp48-shopping-item{
+  box-sizing:border-box;display:grid!important;
+  grid-template-columns:minmax(0,1fr) max-content;
+  grid-template-areas:"main price" "actions actions";
+  gap:10px 12px;align-items:start;
+  width:100%;max-width:100%;min-width:0;
+  padding:16px clamp(12px,3.5vw,18px);
+  overflow-wrap:normal;word-break:normal;
+}
+.bp48-shopping-main{
+  grid-area:main;display:flex;align-items:flex-start;gap:12px;
+  min-width:0;max-width:100%;cursor:pointer;
+}
+.bp48-shopping-main input[type=checkbox]{
+  appearance:auto;flex:0 0 24px!important;width:24px!important;
+  height:24px!important;margin:1px 0 0;accent-color:#17664b;
+}
+.bp35-checklist .bp48-shopping-info{
+  flex:1 1 auto;min-width:0;max-width:100%;
+  overflow-wrap:break-word;word-break:normal;
+  text-align:left;text-decoration:none;
+}
+.bp48-shopping-info b{
+  display:block;font-size:clamp(14px,3.7vw,17px);
+  font-weight:800;line-height:1.34;white-space:normal;
+  overflow-wrap:break-word;word-break:normal;
+}
+.bp48-shopping-info small{
+  display:block;font-size:12px;line-height:1.45;
+  white-space:normal;overflow-wrap:break-word;word-break:normal;
+}
+.bp35-checklist .bp48-shopping-price{
+  grid-area:price;min-width:0;width:max-content;max-width:122px;
+  text-align:right;margin-left:auto;padding-top:1px;
+  white-space:normal;overflow-wrap:normal;word-break:normal;
+}
+.bp48-shopping-price strong{display:block;font-size:15px;line-height:1.35;white-space:normal}
+.bp48-shopping-price .bp35-badge{
+  margin:8px 0 0 auto;display:inline-block;max-width:100%;
+  white-space:normal;text-align:center;line-height:1.25;
+}
+.bp48-shopping-actions{
+  grid-area:actions;display:flex;align-items:center;flex-wrap:wrap;
+  gap:8px;min-width:0;padding-left:36px;
+}
+.bp48-shopping-actions .btn{
+  flex:0 1 auto;min-width:0;max-width:100%;
+  min-height:43px;padding:9px 14px;
+  line-height:1.3;white-space:normal;text-align:center;
+}
+.bp48-shopping-item.bought .bp48-shopping-info{text-decoration:none;opacity:.65}
+.bp48-shopping-item.bought .bp48-shopping-info b{text-decoration:line-through}
+.bp48-shopping-item.bought .bp48-shopping-price{opacity:.7}
+@media(max-width:380px){
+ .bp35-checklist .bp48-shopping-item{
+   grid-template-columns:minmax(0,1fr);
+   grid-template-areas:"main" "price" "actions";
+   gap:9px;
+ }
+ .bp35-checklist .bp48-shopping-price{
+   width:auto;max-width:100%;margin:0;padding-left:36px;
+   text-align:left;
+ }
+ .bp48-shopping-price .bp35-badge{margin:5px 0 0;display:inline-block}
+ .bp48-shopping-actions{padding-left:36px}
+}
+@media(min-width:381px) and (max-width:430px){
+ .bp48-shopping-main{gap:9px}
+ .bp35-checklist .bp48-shopping-item{gap:10px 7px}
+ .bp35-checklist .bp48-shopping-price{max-width:108px}
+ .bp48-shopping-actions{padding-left:33px}
+}
+/* Catalog modal remains scrollable on compact Android devices */
+#bp-product-search-modal{padding:12px;box-sizing:border-box}
+#bp-product-search-modal .modal{
+ box-sizing:border-box;width:min(100%,620px);max-height:min(84dvh,860px);
+ overflow-y:auto;overscroll-behavior:contain;
+ padding:22px 18px calc(22px + env(safe-area-inset-bottom));
+ border-radius:24px;
+}
+#bp-product-search-modal .offer{
+ min-width:0;display:flex;gap:12px;flex-wrap:wrap;
+ border-bottom:1px solid #e1e8de;padding:12px 0;
+}
+#bp-product-search-modal .offer .grow{min-width:0;flex:1 1 170px;overflow-wrap:break-word}
+#bp-product-search-modal .offer a{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){
+ .bp48-shopping-item,.bp48-shopping-main,.bp48-shopping-actions{transition:none!important}
+}
+</style>
 </body></html>
