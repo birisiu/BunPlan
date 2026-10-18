@@ -1363,7 +1363,7 @@ window.bpBrowseProducts=async function(id){
  try{
   const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id,source_kind,image_url'+
    '&store_id=eq.'+store+'&name=ilike.*'+encodeURIComponent(token)+'*&order=amount_ron.asc&limit=16';
-  const response=await fetch(url,{headers:{apikey:KEY}});
+  const response=await fetch(url,{cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}});
   if(!response.ok)throw Error('HTTP '+response.status);
   const offers=await response.json();
   if(!modal.isConnected)return;
