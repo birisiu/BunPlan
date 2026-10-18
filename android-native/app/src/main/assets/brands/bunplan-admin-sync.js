@@ -31,15 +31,22 @@ function decorate(){
 }
 const oldDraw=draw;
 draw=function(){oldDraw();decorate()};
-fetch(url+'?select=key,value&public_visible=eq.true&limit=30',
-  {headers:{apikey:key,Accept:'application/json'}})
- .then(async r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()})
- .then(rows=>{
-  if(!Array.isArray(rows))return;
-  settings=Object.fromEntries(rows.map(x=>[x.key,x]));
-  window.BunPlanPublicSettings=settings;
-  decorate();
- }).catch(e=>console.warn('Public BunPlan settings unavailable',e));
+window.bunplanRefreshSettings=function(){
+ return fetch(url+'?select=key,value&public_visible=eq.true&limit=30&v='+Date.now(),
+  {cache:'no-store',headers:{apikey:key,Accept:'application/json','Cache-Control':'no-cache'}})
+  .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
+  .then(rows=>{
+    if(!Array.isArray(rows))throw Error('Date configurație invalide');
+    settings=Object.fromEntries(rows.map(x=>[x.key,x]));
+    window.BunPlanPublicSettings=settings;
+    decorate();
+    return {ok:true,count:rows.length};
+  }).catch(error=>{
+    console.warn('Public BunPlan settings unavailable',error);
+    return {ok:false,message:error.message||'Conexiune indisponibilă'};
+  });
+};
+window.bunplanRefreshSettings();
 const originalProfile=profileScreen;
 profileScreen=function(){
  return originalProfile()+
