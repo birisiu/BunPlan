@@ -1277,7 +1277,7 @@ window.bpBrowseProducts=async function(id){
  modal.querySelector('#bp-catalog-close').onclick=()=>modal.remove();
  modal.onclick=e=>{if(e.target===modal)modal.remove()};
  try{
-  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id'+
+  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id,source_kind'+
    '&store_id=eq.'+store+'&name=ilike.*'+encodeURIComponent(token)+'*&order=amount_ron.asc&limit=16';
   const response=await fetch(url,{headers:{apikey:KEY}});
   if(!response.ok)throw Error('HTTP '+response.status);
@@ -1286,7 +1286,7 @@ window.bpBrowseProducts=async function(id){
   modal.querySelector('#bp-catalog-results').innerHTML=offers.length?offers.map(p=>{
    const link=(String(p.source_url||'').startsWith('https://')?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.source_url)+'">Sursa prețului ↗</a>':'');
    return '<div class="offer" style="align-items:flex-start"><div class="grow"><strong>'+esc(p.name)+'</strong>'+
-   '<small>'+esc(p.captured_on||'')+' · '+(p.pack_amount&&p.pack_unit?esc(p.pack_amount+' '+p.pack_unit):'Ambalaj neprecizat')+'</small>'+
+   '<small>'+esc(p.captured_on||'')+' · '+(p.pack_amount&&p.pack_unit?esc(p.pack_amount+' '+p.pack_unit):'Ambalaj neprecizat')+' · '+(p.source_kind==='manual_user'?'Observație manuală, neconfirmată de retailer':'Preț consemnat din sursă')+'</small>'+
    '<small>'+link+'</small></div><b class="price">'+ron(Number(p.amount_ron))+' lei</b></div>';
   }).join(''):'<p>Nu există rezultate după acest cuvânt în catalogul încărcat. Nu înseamnă că magazinul nu vinde ingredientul.</p>';
  }catch(err){if(modal.isConnected)modal.querySelector('#bp-catalog-results').textContent='Nu am putut verifica produsele de catalog: '+err.message}
