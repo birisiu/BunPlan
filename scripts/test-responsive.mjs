@@ -91,6 +91,39 @@ try{
   await page.close();
  }
 
+
+ // Regression sweep: all major app screens must render without JS errors or
+ // horizontal overflow on common phone widths (including 320px).
+ for(const width of [320,360,390,430,768]){
+  const page=await browser.newPage({viewport:{width,height:760},deviceScaleFactor:1});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{
+    window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com';}};
+    window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
+    window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
+    localStorage.setItem('bunplan_onboard_v2',JSON.stringify({
+      completed:true,store:'Lidl',name:'QA',city:'București',budget:450,
+      adults:2,children:1,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
+  });
+  await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
+  for(const screen of ['home','stores','menu100','basket100','library100','profile']){
+    const state=await page.evaluate(tab=>{
+      go(tab);
+      return {tab:window.state?.tab||null,width:document.documentElement.scrollWidth,
+        vw:innerWidth,main:!!document.querySelector('main.scroll'),
+        menu:!!document.querySelector('nav.bottom'),
+        buttons:[...document.querySelectorAll('button')].length,
+        title:document.querySelector('h1')?.textContent?.slice(0,80)
+      };
+    },screen);
+    if(state.width>state.vw+2||!state.main||!state.menu||state.buttons<2||errors.length)
+      failures.push({test:'navigation-responsive-smoke',width,screen,state,errors:[...errors]});
+  }
+  await page.evaluate(()=>{bp100.detail='R001';go('detail100')});
+  const recipeDetails=await page.locator('.bp-steps li').count();
+  if(recipeDetails<2||errors.length)failures.push({test:'classic-recipe-steps',width,recipeDetails,errors});
+  await page.close();
+ }
  // Cloud catalog regression: 1000 records from Supabase + 100 classic recipes
  // should appear in the searchable app library without breaking recipe details.
  {
