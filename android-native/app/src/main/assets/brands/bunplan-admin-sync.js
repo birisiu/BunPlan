@@ -32,7 +32,7 @@ function decorate(){
 const oldDraw=draw;
 draw=function(){oldDraw();decorate()};
 window.bunplanRefreshSettings=function(){
- return fetch(url+'?select=key,value&public_visible=eq.true&limit=30&v='+Date.now(),
+ return fetch(url+'?select=key,value&public_visible=eq.true&limit=30',
   {cache:'no-store',headers:{apikey:key,Accept:'application/json','Cache-Control':'no-cache'}})
   .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
   .then(rows=>{

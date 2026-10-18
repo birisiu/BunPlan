@@ -127,11 +127,22 @@ public final class BunPlanAuth {
             }catch(Exception ex){error("recover",ex);}
         });
     }
+    /**
+     * Use the encrypted refresh token as the durable session indicator.
+     * Access JWTs expire after about an hour, but an intact refresh token
+     * remains eligible for rotation. Never erase it on a transient outage.
+     */
+    public boolean hasStoredSession(){
+        JSONObject stored=vault.read();
+        return stored!=null
+            && !stored.optString("refresh_token","").isEmpty()
+            && !stored.optString("access_token","").isEmpty();
+    }
     public class Bridge {
         @JavascriptInterface public void login(String e,String p){perform("login",e,p,null);}
         @JavascriptInterface public void signup(String e,String p,String name){perform("signup",e,p,name);}
         @JavascriptInterface public void recover(String e){BunPlanAuth.this.recover(e);}
-        @JavascriptInterface public boolean hasSession(){return !vault.token().isEmpty();}
+        @JavascriptInterface public boolean hasSession(){return hasStoredSession();}
         @JavascriptInterface public String currentEmail(){return vault.email();}
         @JavascriptInterface public void logout(){
             String token=vault.token();

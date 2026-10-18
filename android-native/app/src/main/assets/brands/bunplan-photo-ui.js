@@ -38,7 +38,7 @@ function photoForIngredient(name){
 window.bpFoodProductPhoto=photoForIngredient;
 window.bpFoodRecipePhoto=photoForRecipe;
 window.bunplanRefreshIngredientPhotos=function(){
- return fetch('https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/ingredients?select=slug,name,image_url,image_reviewed&limit=500&v='+Date.now(),
+ return fetch('https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/ingredients?select=slug,name,image_url,image_reviewed&limit=500',
   {cache:'no-store',headers:{apikey:'sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z','Cache-Control':'no-cache'}})
   .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
   .then(rows=>{

@@ -59,3 +59,13 @@
  .bp56-pull-indicator{transition:none}
  .bp56-pull-indicator.refreshing .bp56-pull-wheel{animation:none}
 }
+
+/* 5.7: refresh must be discoverable even when the user does not know the swipe gesture. */
+.bp57-refresh-button{
+  display:grid;place-items:center;flex:none;width:39px;height:39px;padding:0;
+  border:1px solid #cde4cf;background:#eaf7e3;color:#104432;
+  border-radius:13px;font-size:26px;font-weight:900;line-height:1;
+}
+.bp57-refresh-button:active{transform:scale(.95)}
+.bp57-refresh-button:focus-visible{outline:2px solid #39885c;outline-offset:3px}
+@media(max-width:345px){.bp57-refresh-button{width:34px;height:34px;font-size:23px}}

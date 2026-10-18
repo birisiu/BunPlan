@@ -24,6 +24,8 @@ jobs:
           npx playwright install chromium
       - name: Exercise onboarding, profile and shopping list on different phones
         run: node scripts/test-responsive.mjs
+      - name: Verify LIVE Supabase image delivery and session routing
+        run: node scripts/test-real-cms-photos-session.mjs
       - name: Test secure BunPlan content admin
         run: node scripts/test-admin.mjs
       - name: Test only ADMIN credential and private password recovery

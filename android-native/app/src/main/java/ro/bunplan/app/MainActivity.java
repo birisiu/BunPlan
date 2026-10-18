@@ -150,7 +150,11 @@ public class MainActivity extends Activity {
         getWindow().setNavigationBarColor(android.graphics.Color.rgb(255, 255, 255));
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         setContentView(root);
-        web.loadUrl(localOrigin+"/assets/index.html");
+        // Open the logged-in app directly whenever the Android Keystore still
+        // contains a valid-looking persisted session. An onboarding/localStorage
+        // flag must never force an existing user back to the login page.
+        final boolean returningUser=auth.hasStoredSession();
+        web.loadUrl(localOrigin+"/assets/"+(returningUser?"main.html":"index.html"));
         if(getIntent()!=null && getIntent().getData()!=null){
             web.postDelayed(()->{if(googleBrowser!=null)googleBrowser.handleIntent(getIntent());},350);
         }

@@ -1016,10 +1016,21 @@ function filtered(){
  (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
  [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
 }
+function approvedRecipePhoto(r){
+ const value=r?.photo_url;
+ return r?.image_reviewed===true && typeof value==='string' && /^https:\/\//i.test(value)?value:null;
+}
 function row(r){
  const note=r.cloud?'Instrucțiuni detaliate · verifică ingredientele și alergenii':'Disponibil în planul săptămânal';
- return '<button class="bp-recipecard" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
- '<span class="bp-emoji">'+(BP100_EMOJI[r.category]||'🍲')+'</span>'+
+ const photo=approvedRecipePhoto(r);
+ const emoji=BP100_EMOJI[r.category]||'🍲';
+ // Render the CMS-approved image directly in the card. The previous implementation
+ // tried to recover recipe IDs by parsing onclick HTML after rendering and silently
+ // lost images if the DOM/mutation observer did not run in the right order.
+ const image=photo?'<img class="bp50-recipe-photo" loading="lazy" decoding="async" src="'+esc(photo)+'" alt="'+esc(r.title)+
+  '" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'has-photo\')">':'';
+ return '<button class="bp-recipecard" data-bp-photo="'+(photo?'1':'')+'" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
+ '<span class="bp-emoji'+(photo?' has-photo':'')+'">'+emoji+image+'</span>'+
  '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
 }
 function fill(){
@@ -1061,7 +1072,9 @@ bpDetail=function(){
  if(!r)return previousDetail();
  return commonTop()+
  '<button class="back" onclick="go(\'library100\')">← Înapoi la rețete</button>'+
- '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ (approvedRecipePhoto(r)?'<figure id="bp50-recipe-detail-photo" class="bp50-recipe-detail-image"><img src="'+esc(approvedRecipePhoto(r))+
+  '" alt="'+esc(r.title)+'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>':
+  '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>')+
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
  (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
@@ -1118,7 +1131,7 @@ window.bunplanRefreshRecipes=function(){
   for(let offset=0;offset<10000;offset+=pageSize){
    const url=RECIPE_API+'?select='+CATALOG_SELECT+
     '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit='+pageSize+
-    '&offset='+offset+'&v='+Date.now();
+    '&offset='+offset+'';
    const response=await fetch(url,{
     cache:'no-store',
     headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}
@@ -1234,7 +1247,7 @@ try{const cached=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArra
 let pricePromise=null;
 window.bunplanRefreshIngredientPrices=function(){
  if(pricePromise)return pricePromise;
- pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500&v='+Date.now(),
+ pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500',
   {cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}})
   .then(async response=>{
    if(!response.ok)throw Error('HTTP '+response.status);
@@ -1348,15 +1361,18 @@ window.bpBrowseProducts=async function(id){
  modal.querySelector('#bp-catalog-close').onclick=()=>modal.remove();
  modal.onclick=e=>{if(e.target===modal)modal.remove()};
  try{
-  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id,source_kind'+
+  const url=API+'bunplan_store_catalog_prices?select=name,amount_ron,captured_on,source_url,pack_amount,pack_unit,store_id,source_kind,image_url'+
    '&store_id=eq.'+store+'&name=ilike.*'+encodeURIComponent(token)+'*&order=amount_ron.asc&limit=16';
-  const response=await fetch(url,{headers:{apikey:KEY}});
+  const response=await fetch(url,{cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}});
   if(!response.ok)throw Error('HTTP '+response.status);
   const offers=await response.json();
   if(!modal.isConnected)return;
   modal.querySelector('#bp-catalog-results').innerHTML=offers.length?offers.map(p=>{
    const link=(String(p.source_url||'').startsWith('https://')?'<a target="_blank" rel="noopener noreferrer" href="'+esc(p.source_url)+'">Sursa prețului ↗</a>':'');
-   return '<div class="offer" style="align-items:flex-start"><div class="grow"><strong>'+esc(p.name)+'</strong>'+
+   const photo=(typeof p.image_url==='string'&&/^https:\/\//i.test(p.image_url))?
+    '<img src="'+esc(p.image_url)+'" width="62" height="62" loading="lazy" decoding="async" alt="'+esc(p.name)+
+    '" style="width:62px;height:62px;object-fit:cover;border-radius:12px;flex:none" onerror="this.style.display=\'none\'">':'';
+   return '<div class="offer" style="align-items:flex-start">'+photo+'<div class="grow"><strong>'+esc(p.name)+'</strong>'+
    '<small>'+esc(p.captured_on||'')+' · '+(p.pack_amount&&p.pack_unit?esc(p.pack_amount+' '+p.pack_unit):'Ambalaj neprecizat')+' · '+(p.source_kind==='manual_user'?'Observație manuală, neconfirmată de retailer':'Preț consemnat din sursă')+'</small>'+
    '<small>'+link+'</small></div><b class="price">'+ron(Number(p.amount_ron))+' lei</b></div>';
   }).join(''):'<p>Nu există rezultate după acest cuvânt în catalogul încărcat. Nu înseamnă că magazinul nu vinde ingredientul.</p>';

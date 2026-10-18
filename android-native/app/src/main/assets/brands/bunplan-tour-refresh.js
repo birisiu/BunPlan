@@ -81,6 +81,19 @@ async function syncAll(){
  }
 }
 window.bp54RefreshAll=syncAll;
+function installRefreshButton(){
+ const top=$('main.scroll .top');
+ if(!top||top.querySelector('.bp57-refresh-button'))return;
+ const button=document.createElement('button');
+ button.className='bp57-refresh-button';
+ button.type='button';
+ button.title='Actualizează din BunPlan CRM';
+ button.setAttribute('aria-label','Actualizează rețetele, fotografiile și prețurile');
+ button.textContent='↻';
+ button.onclick=()=>syncAll();
+ const avatar=top.querySelector('button.avatar');
+ top.insertBefore(button,avatar||null);
+}
 function installProfileTutorial(){
  if(state.tab==='profile'&&!document.getElementById('bp54-tutorial-restart')){
   const main=$('main.scroll');
@@ -88,10 +101,12 @@ function installProfileTutorial(){
    const block=document.createElement('section');
    block.id='bp54-tutorial-restart';block.className='bp54-tutorial-restart';
    block.innerHTML='<h2>Ghidul BunPlan</h2>'+
-    '<p>Poți redeschide tutorialul oricând. Pentru a actualiza aplicația, trage ecranul în jos de sus.</p>'+
-    '<button class="btn out block" type="button" id="bp54-start-tour">Vezi din nou tutorialul</button>';
+    '<p>Poți redeschide tutorialul oricând și poți actualiza rețetele din CRM.</p>'+
+    '<button class="btn out block" type="button" id="bp54-start-tour">Vezi din nou tutorialul</button>'+
+    '<button class="btn block" type="button" id="bp57-refresh-profile">↻ Actualizează din CRM</button>';
    main.appendChild(block);
    block.querySelector('#bp54-start-tour').onclick=()=>window.bp54TourStart(true);
+   block.querySelector('#bp57-refresh-profile').onclick=syncAll;
   }
  }
 }
@@ -170,6 +185,7 @@ function renderTour(){
 const previousDraw=draw;
 draw=function(){
  previousDraw();
+ installRefreshButton();
  installProfileTutorial();
  if(active){
   requestAnimationFrame(()=>focusRectangle(document.querySelector(steps[index].target)));
@@ -241,6 +257,7 @@ document.addEventListener('visibilitychange',()=>{
 window.addEventListener('online',()=>{
  if(eligible()&&Date.now()-seenAt>60000){seenAt=Date.now();syncAll()}
 });
+installRefreshButton();
 installProfileTutorial();
 if(localStorage.getItem(TOUR_KEY)!=='1'&&eligible()&&
  window.bunplanCMSGet?.('tour','enabled',true)!==false){
