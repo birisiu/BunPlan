@@ -86,16 +86,16 @@ try{
  await page.locator('#crm-product-form button.primary').click();
  await page.locator('[data-section="settings"]').click();
  await page.locator('.crm-setting-form textarea[name=value]').first().fill('{"enabled":true,"message":"Anunț BunPlan"}');
- await page.locator('.crm-setting-form button').first().click();
  // confirmation is mocked directly for the e2e UI. The DB still enforces RLS.
  page.once('dialog',dialog=>dialog.accept());
+ await page.locator('.crm-setting-form button').first().click();
  await page.locator('[data-section="prices"]').click();
  await page.locator('#crm-price-product-search').fill('Ovăz');
  await page.waitForSelector('#crm-price-choices [data-pick]',{timeout:7000});
  await page.locator('#crm-price-choices [data-pick]').first().click();
  await page.locator('#crm-price-amount').fill('7.99');
- await page.locator('#crm-price-form button').click();
  page.once('dialog',dialog=>dialog.accept());
+ await page.locator('#crm-price-form button').click();
  const changes=await page.evaluate(()=>window.__crmWrites);
  for(const name of ['bunplan_crm_notes','products','bunplan_app_settings','product_prices']){
   if(!changes.some(x=>x.name===name))failures.push({test:'crm-mutation',name,changes});
