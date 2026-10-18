@@ -30,6 +30,29 @@ button:focus-visible,input:focus-visible{outline:3px solid #9fce76;outline-offse
 @media(max-width:360px){.choice{font-size:12px;padding:11px 5px}.panel{padding:16px}.shell{padding:calc(14px + env(safe-area-inset-top)) 12px calc(23px + env(safe-area-inset-bottom))}.heading{font-size:27px}.choice.store img{width:34px;height:34px}}
 @media(min-width:700px){.shell{justify-content:center}.panel{margin-top:30px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><style id="bp49-onboarding-brand">
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+:root{--forest:#0F3D2E;--muted:#748276;--line:#E5ECE2;--lime:#D8F5A7}
+body{background:#FBFDF6;color:#102F24;font-family:Nunito,system-ui,sans-serif}
+.shell{max-width:520px}
+.brand{font-size:28px;font-weight:900;gap:10px;letter-spacing:-1px}
+.brand strong{color:#0F3D2E;font-weight:900}.brand em{color:#6CB46F;font-style:normal;font-weight:900}
+.brand-icon{width:55px;height:55px;border-radius:17px;background:transparent;object-fit:contain}
+.panel{border-radius:27px;box-shadow:0 12px 36px rgba(15,61,46,.06);border-color:#E5ECE2}
+.heading{font-weight:900;letter-spacing:-.8px}
+.illustration{background:radial-gradient(ellipse at 85% 20%,#E9F5D0 0 19%,transparent 19%),
+ radial-gradient(ellipse at 15% 95%,#CDE8B5 0 18%,transparent 19%),
+ #FBFDF6;color:#0F3D2E;min-height:285px;text-align:center;align-items:center;justify-content:center;
+ border:1px solid #E7EEE6;border-radius:26px}
+.illustration strong{font-size:27px;line-height:1.2;letter-spacing:-.6px;max-width:300px}
+.illustration small{font-size:12px;color:#667C69;max-width:300px}
+.welcome-brand-icon{width:132px;height:132px;object-fit:contain;margin-bottom:8px;filter:drop-shadow(0 10px 10px rgba(15,61,46,.06))}
+.choice{border-radius:15px}.choice.selected{background:#EAF8DA;border-color:#6CB46F}
+.action{background:#0F3D2E;border-radius:17px;font-weight:900}
+.action.alt{background:#F1F6E9}.action.google{border-radius:17px}
+.progress i{background:#6CB46F}
+.note{background:#EAF8DA;color:#456247}
+@media(max-width:360px){.illustration{min-height:245px}.welcome-brand-icon{width:108px;height:108px}}
 </style></head><body><main class="shell" id="root" aria-live="polite"></main>
 <script>
 (function(){
@@ -41,11 +64,11 @@ try{const t=JSON.parse(localStorage.getItem(KEY)||'null');if(t&&typeof t==='obje
 const bridge=window.BunPlanAuth;
 function persist(){localStorage.setItem(KEY,JSON.stringify(w));}
 function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
-function brand(){return '<header class="brand"><span class="brand-icon">✓</span><span>BunPlan</span></header>'}
+function brand(){return '<header class="brand" aria-label="BunPlan"><img class="brand-icon" src="brands/bunplan-icon.svg" alt="Logo BunPlan"/><span><strong>bun</strong><em>plan</em></span></header>'}
 function opt(label,key,value){let selected=w[key]===value;return '<button class="choice '+(selected?'selected':'')+'" onclick="bpChange('+esc(JSON.stringify(key))+','+esc(JSON.stringify(value))+')">'+esc(label)+'</button>'}
 function multi(label,value){let selected=w.exclusions.includes(value);return '<button class="choice '+(selected?'selected':'')+'" onclick="bpExclude('+esc(JSON.stringify(value))+')">'+esc(label)+'</button>'}
 function storeCard(name){return '<button class="choice store '+(w.store===name?'selected':'')+'" onclick="bpChange(\'store\',\''+name+'\')"><img src="'+LOGOS[name]+'" alt="Logo '+name+'"/><span>'+name+'</span><span style="margin-left:auto">'+(w.store===name?'✓':'→')+'</span></button>'}
-function welcome(){return '<div>'+brand()+'</div><div class="illustration"><strong>Mese bune.<br>Buget sub control.</strong><small>100 de rețete • Lidl și Kaufland • 7 zile organizate</small></div><h1 class="heading">Planifică simplu.<br>Cumpără inteligent.</h1><p class="sub">Răspunde la câteva întrebări și îți pregătim un plan pe măsura familiei tale. Creezi contul la final, nu la început.</p><div class="flexgap"></div><button class="action" onclick="bpStart()">Începem →</button><button class="smallaction" onclick="bpAuth(&quot;login&quot;)">Am deja cont</button><p class="logofoot">Magazinele sunt mărci independente. BunPlan nu este o aplicație oficială Lidl sau Kaufland.</p>'}
+function welcome(){return '<div>'+brand()+'</div><div class="illustration"><img class="welcome-brand-icon" src="brands/bunplan-icon.svg" alt=""/><strong>Mese bune.<br>Buget sub control.</strong><small>1.100 de rețete • Lidl și Kaufland • 7 zile organizate</small></div><h1 class="heading">Planifică simplu.<br>Cumpără inteligent.</h1><p class="sub">Răspunde la câteva întrebări și îți pregătim un plan pe măsura familiei tale. Creezi contul la final, nu la început.</p><div class="flexgap"></div><button class="action" onclick="bpStart()">Începem →</button><button class="smallaction" onclick="bpAuth(&quot;login&quot;)">Am deja cont</button><p class="logofoot">Magazinele sunt mărci independente. BunPlan nu este o aplicație oficială Lidl sau Kaufland.</p>'}
 const titles=['Ce buget ai pentru cumpărături?','Pentru câte persoane gătești?','Cum preferi să mănânci?','Cât de des gătești?','Unde faci cumpărăturile?'];
 function stepFields(){
  switch(w.step){
