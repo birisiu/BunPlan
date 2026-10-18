@@ -6,6 +6,9 @@
 const PROJECT_URL='https://aedyviqoelgbbrrtwayu.supabase.co';
 const KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
 const db=window.supabase?.createClient(PROJECT_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const ADMIN_USERNAME='ADMIN';
+const RECOVERY_EMAIL='ibirisiu@gmail.com';
+let recoveryMode=false;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=url=>{try{const u=new URL(url);return u.protocol==='https:'?u.href:''}catch{return ''}};
@@ -14,13 +17,25 @@ let tSearch;
 function flash(s,ok=false){$('flash').textContent=s||'';$('flash').className='message'+(ok?' ok':'')}
 function loginMessage(s){$('login-message').textContent=s||''}
 function updateScreen(authenticated){
- session.loggedIn=authenticated;$('login').classList.toggle('hidden',authenticated);
- $('workspace').classList.toggle('hidden',!authenticated);
+ session.loggedIn=authenticated;
+ $('login').classList.toggle('hidden',authenticated||recoveryMode);
+ $('workspace').classList.toggle('hidden',!authenticated||recoveryMode);
+ $('password-setup').classList.toggle('hidden',!recoveryMode);
+}
+function showRecovery(){
+ recoveryMode=true;updateScreen(false);
+ $('password-message').textContent='';
+}
+function randomIndex(max){
+ const lim=Math.floor(0x100000000/max)*max;
+ let n;do{n=crypto.getRandomValues(new Uint32Array(1))[0]}while(n>=lim);
+ return n%max;
 }
 async function authenticate(){
  if(!db){loginMessage('Biblioteca Supabase nu s-a încărcat. Reîncarcă pagina.');return}
  const {data:{session:authSession}}=await db.auth.getSession();
  if(!authSession){updateScreen(false);return}
+ if(recoveryMode){updateScreen(false);return}
  const {data:allowed,error}=await db.rpc('is_bunplan_admin');
  if(error||allowed!==true){
   updateScreen(false);await db.auth.signOut();
@@ -29,26 +44,95 @@ async function authenticate(){
  $('admin-email').textContent=authSession.user.email||'Administrator';
  updateScreen(true);document.dispatchEvent(new CustomEvent('bunplan-admin-authenticated'));await loadDashboard();
 }
-$('login-google').onclick=async()=>{
- if(!db){loginMessage('Supabase indisponibil');return}
- const button=$('login-google');button.disabled=true;loginMessage('Se deschide autentificarea Google…');
+$('login-reset-request').onclick=async()=>{
+ if(!db){loginMessage('Supabase indisponibil.');return}
+ const btn=$('login-reset-request');btn.disabled=true;
+ loginMessage('Se trimite linkul securizat către adresa de recuperare a contului ADMIN…');
  try{
-  const {error}=await db.auth.signInWithOAuth({
-   provider:'google',
-   options:{redirectTo:window.location.origin+window.location.pathname}
+  const {error}=await db.auth.resetPasswordForEmail(RECOVERY_EMAIL,{
+   redirectTo:window.location.origin+window.location.pathname
   });
   if(error)throw error;
- }catch(error){loginMessage('Google Login: '+error.message);button.disabled=false}
+  loginMessage('Dacă adresa este configurată în Supabase, vei primi un e-mail cu linkul pentru setarea parolei. Verifică și Spam.');
+ }catch(e){loginMessage('Nu s-a putut trimite linkul: '+e.message)}
+ finally{btn.disabled=false}
 };
 $('login-form').addEventListener('submit',async e=>{
- e.preventDefault();const btn=e.submitter;btn.disabled=true;loginMessage('Se verifică accesul…');
+ e.preventDefault();
+ const btn=e.submitter,username=$('login-email').value.trim().toUpperCase();
+ if(username!==ADMIN_USERNAME){loginMessage('Acest CRM acceptă exclusiv utilizatorul ADMIN.');return}
+ btn.disabled=true;loginMessage('Se verifică autentificarea ADMIN…');
  try{
   if(!db)throw Error('Supabase indisponibil.');
-  const {error}=await db.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});
-  if(error)throw error;loginMessage('');await authenticate();
- }catch(error){loginMessage(error.message||'Autentificare nereușită.')}
- finally{btn.disabled=false;}
+  const {error}=await db.auth.signInWithPassword({email:RECOVERY_EMAIL,password:$('login-password').value});
+  if(error)throw error;
+  loginMessage('');await authenticate();
+ }catch(error){loginMessage('Autentificarea nu a reușit. Verifică parola sau folosește recuperarea.')}
+ finally{btn.disabled=false}
 });
+const WORDS=['menta','stejar','albastru','astru','ramura','luna','cedru','piper','castan','izvor',
+ 'trandafir','carte','salcie','umbra','coral','munte','iris','nisip','curcubeu','zori',
+ 'lampas','prun','tulipan','drum','balcon','toamna','cireasa','lavanda','trandafir','stanca',
+ 'soare','noroc','viitor','liniste','roata','gradina','castel','brad','racheta','visin',
+ 'punte','nuc','steag','taina','lac','boboc','liliac','pajiste','pictura','mare',
+ 'cafea','aurora','avion','carabus','faleza','inghetata','briza','motan','frunza','vers',
+ 'puntea','vioara','vis','fluture','apa','tigrul','pasare','lemn','piatra','privire',
+ 'mesteacan','ramasag','cobalt','smochina','coasta','capsuna','antena','margareta',
+ 'cometa','zmeura','proaspata','mica','panda','ploaie','candela','curaj','tobogan',
+ 'voiaj','picatura','perla','clopot','zmeu','radu','stejarul','teatru','pod','poveste',
+ 'bulgare','rond','prundis','harta','dulap','palarie','marmura','radacina','bulevard',
+ 'verde','campie','aripa','calator','nufar','orhidee','vapor','melodie','caiet',
+ 'atmosfera','aluna','tartina','salba','planeta','agava','limonada','cascada','mister',
+ 'amulet','cais','safir','miez','tempo','delfin','padure','roinita','bucurie',
+ 'caramel','izolat','pahar','molid','pelican','carte','toamna','mac','caramida','iarba',
+ 'jurnal','cort','furtuna','horizon','azur','mica','aromat','tandrete','alun',
+ 'saturn','prieten','scoica','panza','castor','marinar','flamura','violet','optim',
+ 'barca','pian','vultur','zambet','lupin','plop','mugur','stejar','arta',
+ 'baston','rafala','vant','violet','nor','feriga','padurar','arcada','migdal',
+ 'mar','tramvai','luminis','linte','alpin','nectar','anason','desert','razvan',
+ 'pajura','fier','lira','haina','romanta','imaginatie','papadie','rodie',
+ 'almanah','somn','povarnis','vioara','lotus','carte','petal','arhanghel',
+ 'tigru','maree','malin','apricot','radio','caprioara','maslin','perete',
+ 'atlas','oceane','gradinar','lumanare','floare','flori','peisaj','marmota',
+ 'foc','balena','rasarit','venin','aprilie','glorie','visator','cupa',
+ 'crom','ventilator','desen','cusatura','indigo','motor','miracol','gand',
+ 'bunic','sambure','vulcan','ulcior','sclipire','sanatos','magnet','silaba',
+ 'funie','saculet','carnet','izbanda','aroma','auriu','pepene','zenit','liniar',
+ 'cocos','glazura','sunet','palma','orizont','grad'];
+$('password-suggest').onclick=()=>{
+ const words=[];for(let i=0;i<7;i++)words.push(WORDS[randomIndex(WORDS.length)]);
+ const digits=String(randomIndex(10000)).padStart(4,'0');
+ const pass=words.join('-')+'!'+digits;
+ $('password-new').value=pass;$('password-confirm').value=pass;
+ $('password-new').type='text';$('password-confirm').type='text';
+ $('password-message').textContent='Parolă generată local. Noteaz-o într-un manager de parole sau într-un loc securizat, apoi apasă Salvează.';
+};
+$('password-setup-form').onsubmit=async e=>{
+ e.preventDefault();
+ const one=$('password-new').value,two=$('password-confirm').value;
+ if(one!==two||one.length<16){$('password-message').textContent='Parolele trebuie să fie identice și să conțină minimum 16 caractere.';return}
+ const btn=e.submitter;btn.disabled=true;
+ $('password-message').textContent='Se actualizează parola…';
+ try{
+  const {error}=await db.auth.updateUser({password:one});
+  if(error)throw error;
+  await db.auth.signOut();
+  recoveryMode=false;history.replaceState(null,'',location.origin+location.pathname);
+  $('password-new').value='';$('password-confirm').value='';
+  $('password-new').type='password';$('password-confirm').type='password';
+  updateScreen(false);
+  loginMessage('Parola ADMIN a fost setată. Autentifică-te cu ADMIN și noua parolă.');
+ }catch(error){$('password-message').textContent='Nu s-a putut salva parola: '+error.message}
+ finally{btn.disabled=false}
+};
+if(db){
+ db.auth.onAuthStateChange((event)=>{
+  if(event==='PASSWORD_RECOVERY')showRecovery();
+ });
+ if(location.hash.includes('type=recovery')||new URLSearchParams(location.search).get('type')==='recovery'){
+  showRecovery();
+ }
+}
 $('logout').onclick=async()=>{await db.auth.signOut();updateScreen(false);loginMessage('Deconectat.')};
 function section(name){
  session.section=name;for(const s of document.querySelectorAll('.panel-section'))s.classList.toggle('hidden',s.id!==name);
