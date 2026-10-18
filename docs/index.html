@@ -15,11 +15,29 @@
   <div class="login-card">
    <div class="app-logo"><img class="logo-box" src="bunplan-icon.svg" alt="BunPlan"><div><strong>bun<span>plan</span></strong><small>ADMIN · EDITOR DE CONȚINUT</small></div></div>
    <h1>Tot BunPlan, într-un singur loc.</h1><p>Gestionează rețetele, fotografiile, utilizatorii, cataloagele Lidl/Kaufland, prețurile și sesizările.</p>
-   <form id="login-form"><label>E-mail administrator<input type="email" id="login-email" autocomplete="username" required placeholder="email@exemplu.ro"></label>
-    <label>Parolă<input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••"></label>
-    <button class="primary" type="submit">Autentificare</button>
-   </form><div class="crm-login-alternatives"><button type="button" id="login-google" class="light crm-google-signin">Continuă cu Google</button><p>Folosește același cont Google sau parola contului BunPlan.</p></div><div id="login-message" class="message" role="alert"></div>
-   <small>Acces doar pentru conturile aprobate în Supabase. Nu există înregistrare liberă.</small>
+   <form id="login-form" autocomplete="on">
+    <label>Username administrator<input type="text" id="login-email" autocomplete="username" required placeholder="ADMIN" autocapitalize="characters" spellcheck="false" value="ADMIN"></label>
+    <label>Parolă<input type="password" id="login-password" autocomplete="current-password" required placeholder="Parola contului ADMIN"></label>
+    <button class="primary" type="submit">Intră în BunPlan CRM</button>
+   </form>
+   <div class="crm-login-alternatives"><button type="button" id="login-reset-request" class="light crm-google-signin">Setează / recuperează parola ADMIN</button><p>Doar contul ADMIN are acces. Linkul de setare a parolei se trimite la adresa de recuperare verificată.</p></div>
+   <div id="login-message" class="message" role="alert"></div>
+   <small>Un singur administrator autorizat. Nu există înregistrare liberă sau autentificare Google în CRM.</small>
+  </div>
+ </section>
+ <section id="password-setup" class="login-shell hidden">
+  <div class="login-card">
+    <div class="app-logo"><img class="logo-box" src="bunplan-icon.svg" alt="BunPlan"><div><strong>bun<span>plan</span></strong><small>SECURITATE · ADMIN</small></div></div>
+    <h1>Setează parola ADMIN</h1>
+    <p>Folosește o parolă unică, lungă, pe care să o poți ține minte. Nu o trimite nimănui și nu o introduce în conversații.</p>
+    <form id="password-setup-form">
+      <label>Parolă nouă (minimum 16 caractere)<input id="password-new" type="password" autocomplete="new-password" minlength="16" required></label>
+      <label>Confirmă parola<input id="password-confirm" type="password" autocomplete="new-password" minlength="16" required></label>
+      <button class="light" type="button" id="password-suggest">Generează o parolă memorabilă pe acest dispozitiv</button>
+      <button class="primary" type="submit">Salvează parola ADMIN</button>
+    </form>
+    <div id="password-message" class="message" role="status"></div>
+    <small>Parola este trimisă criptat prin HTTPS direct la Supabase Auth. Nu se salvează în codul BunPlan.</small>
   </div>
  </section>
  <div id="workspace" class="workspace hidden">
