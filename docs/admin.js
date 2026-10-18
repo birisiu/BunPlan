@@ -126,9 +126,11 @@ $('password-setup-form').onsubmit=async e=>{
  finally{btn.disabled=false}
 };
 if(db){
- db.auth.onAuthStateChange((event)=>{
-  if(event==='PASSWORD_RECOVERY')showRecovery();
- });
+ if(typeof db.auth.onAuthStateChange==='function'){
+  db.auth.onAuthStateChange((event)=>{
+   if(event==='PASSWORD_RECOVERY')showRecovery();
+  });
+ }
  if(location.hash.includes('type=recovery')||new URLSearchParams(location.search).get('type')==='recovery'){
   showRecovery();
  }
