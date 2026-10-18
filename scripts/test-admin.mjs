@@ -7,7 +7,7 @@ const server=spawn('python3',['-m','http.server',String(port),'--bind','127.0.0.
 await pause(600);
 const failures=[];const browser=await chromium.launch({headless:true});
 async function mock(page,authorized=true){
- await page.route('**/supabase.min.js',route=>route.fulfill({status:200,body:'',contentType:'application/javascript'}));
+ await page.route('https://cdn.jsdelivr.net/**',route=>route.fulfill({status:200,body:'',contentType:'application/javascript'}));
  await page.addInitScript(value=>{
   let signedIn=false;
   const recipe={id:'11111111-1111-4111-8111-111111111111',legacy_key:'BP0001',title:'Terci de ovăz cu mere',
