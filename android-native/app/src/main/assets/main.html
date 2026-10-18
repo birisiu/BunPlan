@@ -984,7 +984,7 @@ if(state.tab==='home'||state.tab==='stores')draw();
 'use strict';
 const RECIPE_API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/recipes';
 const API_KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
-const CACHE='bunplan-cloud-recipes-v1';
+const CACHE='bunplan-cloud-recipes-v3';
 let cloud=[],loading=true,loadError='',visible=40;
 const previousLibrary=bpLibrary,previousDetail=bpDetail,previousOpen=bpOpen;
 function content(r){
@@ -992,7 +992,10 @@ function content(r){
 }
 function compatible(r){
  return {id:r.legacy_key,title:r.title,category:r.category,servings:r.servings,
- minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
+ minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,
+ short_description:r.short_description||'',description:r.description||'',
+ photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,
+ ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
  steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
  unreviewed:r.source_status==='generated_unreviewed'};
 }
@@ -1058,13 +1061,43 @@ bpDetail=function(){
  '<button class="btn out block" onclick="go(\'library100\')">Înapoi la catalog</button>';
 };
 function redraw(){if(state.tab==='library100')draw();else if(state.tab==='detail100'&&bp100.detail?.startsWith('BP'))draw();}
-try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
+try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
 loading=true;redraw();
-fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of&legacy_key=like.BP%25&order=legacy_key.asc&limit=1000',
+// The published catalog includes the original 100, the 1,000 generated recipes
+// and all newly created admin recipes. Public RLS blocks unpublished content.
+function updateOriginalRows(rows){
+ const known=rows.filter(r=>/^R\\d{3}$/.test(r.legacy_key));
+ if(!known.length)return; // Keep offline bundled originals if server is partial.
+ const published=new Set(known.map(r=>r.legacy_key));
+ for(let i=BP100.length-1;i>=0;i--){
+  const current=BP100[i];
+  if(/^R\\d{3}$/.test(current.id)&&!published.has(current.id))BP100.splice(i,1);
+ }
+ for(const item of known){
+  const r=compatible(item);
+  let current=BP100.find(x=>x.id===r.id);
+  if(!current){current={id:r.id,ingredients:[],steps:[],tags:[]};BP100.push(current)}
+  Object.assign(current,{title:r.title,category:r.category,servings:r.servings,
+   minutes:r.minutes,steps:r.steps,tags:r.tags,allergens:r.allergens,
+   photo_url:r.photo_url,image_reviewed:r.image_reviewed,
+   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed});
+  if(r.ingredients.length&&window.bunplanNormalizeIngredient){
+   current.ingredients=r.ingredients.map(it=>{
+    const old=(current.ingredients||[]).find(prev=>prev.id===it.name);
+    return old?{...old,quantity:Number(it.quantity),unit:it.unit}:
+      window.bunplanNormalizeIngredient(it);
+   });
+  }
+ }
+}
+fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500',
  {headers:{apikey:API_KEY,Accept:'application/json'}})
  .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
-  if(!Array.isArray(data)||data.length!==1000)throw Error('Biblioteca returnează '+(Array.isArray(data)?data.length:'date invalide')+' din 1.000');
-  cloud=data.map(compatible);window.bunplanCloudLatest=cloud;window.bunplanCloudRecipeUpdate?.(cloud);try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(e){}
+  if(!Array.isArray(data))throw Error('Date invalide din catalogul Supabase');
+  updateOriginalRows(data);
+  cloud=data.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
+  window.bunplanCloudLatest=cloud;window.bunplanCloudRecipeUpdate?.(cloud);
+  try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
   loadError='';loading=false;redraw();
  }).catch(error=>{loading=false;loadError=error.message||'conexiune indisponibilă';redraw();});
 })();
@@ -1116,12 +1149,15 @@ function convert(ing){
  }
  return {id,quantity:Math.round(quantity*1000)/1000,unit,source_name:name,source_quantity:Number(ing.quantity)||0,source_unit:originalUnit};
 }
+window.bunplanNormalizeIngredient=convert;
 function registerRecipes(){
  if(!cloud.length)return;
- for(let i=BP100.length-1;i>=0;i--)if(/^BP\d{4}$/.test(BP100[i].id))BP100.splice(i,1);
+ for(let i=BP100.length-1;i>=0;i--)if(/^(BP\d{4}|ADM-)/.test(BP100[i].id))BP100.splice(i,1);
  for(const r of cloud){
   BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
    minutes:Number(r.minutes)||0,variant_of:r.variant_of||null,steps:r.steps||[],tags:r.tags||[],
+   short_description:r.short_description||'',description:r.description||'',
+   photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,unreviewed:r.unreviewed,
    ingredients:(r.ingredients||[]).map(convert),cloud:true,unreviewed:true});
  }
  if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
