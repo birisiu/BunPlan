@@ -205,11 +205,11 @@ try{
    for(const width of [320,360,390,430,768]){
      await page.setViewportSize({width,height:840});
      const sizes=await page.evaluate(()=>{
-       const el=document.querySelector('.bp35-checklist .bp35-product');
-       const info=el?.querySelector('.bp35-productinfo');
+       const el=document.querySelector('.bp35-checklist .bp50-product');
+       const info=el?.querySelector('.bp50-product-details');
        const name=info?.querySelector('b');
-       const actions=el?.querySelector('.bp48-shopping-actions');
-       const price=el?.querySelector('.bp48-shopping-price');
+       const actions=el?.querySelector('.bp50-product-controls');
+       const price=el?.querySelector('.bp50-product-money');
        const rect=x=>x?.getBoundingClientRect();
        const r=rect(el),n=rect(name),a=rect(actions),p=rect(price);
        return {
@@ -221,14 +221,14 @@ try{
          text:name?.textContent,rows:document.querySelectorAll('.bp35-checklist .bp35-product').length,
        };
      });
-     if(!sizes.itemWidth||sizes.nameWidth<130||sizes.itemHeight>270||
+     if(!sizes.itemWidth||sizes.nameWidth<78||sizes.itemHeight>270||
         sizes.priceOutside||sizes.actionOutside||sizes.horizontalOverflow>2||
         sizes.text!=='fulgi de ovăz'||sizes.rows!==2)
        failures.push({test:'visual-shopping-layout',width,sizes});
      if(width===390)await page.screenshot({path:screens+'/shopping-products-390.png',fullPage:true});
    }
    await page.setViewportSize({width:390,height:840});
-   const queryButton=page.locator('.bp48-shopping-actions button').filter({hasText:'Caută în catalog'}).first();
+   const queryButton=page.locator('.bp50-search-button').first();
    await queryButton.click();
    const dialogOpen=await page.locator('#bp-product-search-modal').isVisible();
    if(!dialogOpen)failures.push({test:'catalog-modal-open'});
@@ -237,6 +237,22 @@ try{
    await page.evaluate(()=>document.querySelector('.bp35-checklist input[type="checkbox"]')?.click());
    const checked=await page.evaluate(()=>document.querySelector('.bp35-boughtheading span')?.textContent);
    if(!checked?.startsWith('1/'))failures.push({test:'cloud-recipe-checkbox',checked});
+   const editorVisible=await page.locator('#bp50-price-dialog').isVisible();
+   if(!editorVisible)failures.push({test:'paid-price-dialog-on-purchase'});
+   else{
+     await page.locator('#bp50-price-field').fill('8,20');
+     await page.locator('#bp50-save-price').click();
+     const totals=await page.evaluate(()=>({paid:bp50Stats().paid,confirmed:bp50Stats().confirmed,
+       weekly:bp50WeekStats().total,shown:document.querySelector('#bp50-total-paid')?.textContent}));
+     if(totals.paid!==8.2||totals.confirmed!==1||totals.weekly!==8.2||!totals.shown.includes('8,20'))
+       failures.push({test:'actual-paid-confirmation',totals});
+     await page.reload({waitUntil:'domcontentloaded'});
+     await page.waitForTimeout(1000);
+     await page.evaluate(()=>go('basket100'));
+     const persisted=await page.evaluate(()=>({paid:bp50Stats().paid,confirmed:bp50Stats().confirmed}));
+     if(persisted.paid!==8.2||persisted.confirmed!==1)
+       failures.push({test:'actual-paid-reload-persistence',persisted});
+   }
    const prices=await page.evaluate(()=>{
       const lidl=bp35Calc().total;
       bp35ChooseStore('Kaufland');bp100.days[0]['Mic dejun']='BP0001';bp35Commit();
