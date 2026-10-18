@@ -3,9 +3,9 @@
 */
 (() => {
 'use strict';
-const URL='https://aedyviqoelgbbrrtwayu.supabase.co';
+const PROJECT_URL='https://aedyviqoelgbbrrtwayu.supabase.co';
 const KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
-const db=window.supabase?.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+const db=window.supabase?.createClient(PROJECT_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=url=>{try{const u=new URL(url);return u.protocol==='https:'?u.href:''}catch{return ''}};
