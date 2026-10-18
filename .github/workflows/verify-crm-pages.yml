@@ -1,0 +1,33 @@
+name: Verify BunPlan CRM Site
+on:
+  push:
+    branches: [crm-live]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'admin/**'
+      - 'docs/**'
+      - 'scripts/test-crm-pages-ready.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install project dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Prepare browser
+        run: npx playwright install --with-deps chromium
+      - name: Verify CRM layout and static assets
+        run: node scripts/test-crm-pages-ready.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bunplan-crm-pages-preview
+          path: builds/ui-preview/bunplan-crm-publish-ready.png
+          if-no-files-found: ignore
