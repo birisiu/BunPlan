@@ -147,7 +147,7 @@ try{
      legacy_key:'BP'+String(i+1).padStart(4,'0'),title:i===0?'Terci de ovăz cu mere':'Rețeta cloud '+(i+1),
      category:'Mic dejun',servings:2,minutes_to_prepare:18,
      instructions:['Spală ingredientele.','Prepară la foc mic.','Servește.'],
-     ingredient_details:i===0?[{name:'fulgi de ovăz',quantity:100,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],source_status:'generated_unreviewed'
+     ingredient_details:i===0?[{name:'fulgi de ovăz',quantity:100,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],photo_url:i===0?'https://example.test/admin-approved-recipe.webp':'https://example.test/wrong-photo.webp',image_reviewed:i===0,short_description:i===0?'Descriere editată în admin':'',source_status:'generated_unreviewed'
    }));
    await page.route('**/rest/v1/recipes**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(cloud)}));
    const refs=Array.from({length:165},(_,i)=>i===0?'fulgi de ovăz':i===1?'migdale':'ingredient_mock_'+i).flatMap(label=>
@@ -171,6 +171,14 @@ try{
    await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
    await page.evaluate(()=>go('library100'));
    await page.waitForFunction(()=>document.body.textContent.includes('1.100 rețete disponibile'),null,{timeout:15000});
+   const approved=await page.evaluate(()=>{
+     const r=BP100.find(x=>x.id==='BP0001'),other=BP100.find(x=>x.id==='BP0002');
+     return {photo:!!bpFoodRecipePhoto(r),unapproved:bpFoodRecipePhoto(other)===null,
+       description:r?.short_description,duplicate:BP100.filter(x=>x.id==='BP0001').length};
+   });
+   if(!approved.photo||!approved.unapproved||approved.duplicate!==1||
+       approved.description!=='Descriere editată în admin')
+      failures.push({test:'admin-approved-photos-live-catalog',approved});
    const gallery=await page.evaluate(()=>({
       count:document.querySelectorAll('nav.bottom .nav').length,
       grid:getComputedStyle(document.querySelector('#bpCloudResults')).gridTemplateColumns,
