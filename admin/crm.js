@@ -159,16 +159,27 @@ async function editProduct(id){
  '<label>Cod extern<input readonly value="'+E(p.external_id)+'"></label>'+
  '<label>Cantitate ambalaj<input type="number" min=".001" step="any" name="pack_amount" value="'+E(p.pack_amount??'')+'"></label>'+
  '<label>Unitate ambalaj<input name="pack_unit" value="'+E(p.pack_unit||'')+'"></label>'+
- '<label class="wide">URL fotografie produs (HTTPS)<input type="url" name="image_url" placeholder="https://…" value="'+E(p.image_url||'')+'"></label>'+
+ '<label class="wide">URL fotografie produs (HTTPS)<input type="url" name="image_url" placeholder="https://…" value="'+E(p.image_url||'')+'"></label>'+ 
+ '<label class="wide">Sau încarcă o fotografie proprie (JPG/PNG/WebP, maximum 5 MB)<input type="file" name="image_file" accept="image/jpeg,image/png,image/webp"></label>'+
  '<label class="crm-toggle wide"><input type="checkbox" name="active" '+(p.active?'checked':'')+'> Produs activ</label>'+
  '<div class="wide crm-section-actions"><button class="primary">Salvează produsul</button></div></form>';
  $('crm-product-form').onsubmit=async e=>{
  e.preventDefault();const f=new FormData(e.target);
  const amount=f.get('pack_amount')?Number(f.get('pack_amount')):null;
- const url=String(f.get('image_url')||'').trim();
+ let url=String(f.get('image_url')||'').trim();
  if(url&&!url.startsWith('https://')){alert('Fotografia trebuie să aibă adresă HTTPS.');return}
  if(amount!==null&&(!Number.isFinite(amount)||amount<=0)){alert('Cantitate invalidă');return}
  try{
+ const file=f.get('image_file');
+ if(file&&file.size>0){
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024)
+    throw Error('Fotografia trebuie să fie JPG/PNG/WebP de maximum 5 MB');
+  const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
+  const path='products/'+crypto.randomUUID()+'.'+ext;
+  const up=await db.storage.from('bunplan-media').upload(path,file,{upsert:false,contentType:file.type});
+  if(up.error)throw up.error;
+  url=db.storage.from('bunplan-media').getPublicUrl(path).data.publicUrl;
+ }
  await respond(db.from('products').update({
    name:String(f.get('name')).trim(),category:String(f.get('category')||'').trim()||null,
    pack_amount:amount,pack_unit:String(f.get('pack_unit')||'').trim()||null,
