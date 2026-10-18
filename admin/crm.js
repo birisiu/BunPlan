@@ -5,7 +5,7 @@
 (() => {
 'use strict';
 const db=window.supabase.createClient('https://aedyviqoelgbbrrtwayu.supabase.co',
- 'sb_publishable_pLh8mKkq396TyM518A_N_q7fm0Z',
+ 'sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z',
  {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
 const $=id=>document.getElementById(id);
 const E=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
