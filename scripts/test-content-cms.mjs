@@ -23,7 +23,11 @@ try{
     let head=false,update=null,record=null;
     return Object.assign({
       select(_fields,opts={}){head=!!opts.head;return this},
-      order(){return this},eq(_key,_value){record=_value;return this},
+      order(){return this},eq(_key,_value){
+        record=_value;
+        if(update&&window.__cmsUpdates.length)window.__cmsUpdates[window.__cmsUpdates.length-1].record=_value;
+        return this
+      },
       update(payload){update=payload;window.__cmsUpdates.push({name,record,payload});return this},
       single(){return Promise.resolve({error:null,data:name==='bunplan_content_sections'?
        {...content.find(x=>x.section_key===record),...update,updated_at:new Date().toISOString()}:{id:'updated'}})},
