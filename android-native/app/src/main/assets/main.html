@@ -992,7 +992,7 @@ function content(r){
 }
 function compatible(r){
  return {id:r.legacy_key,title:r.title,category:r.category,servings:r.servings,
- minutes:r.minutes_to_prepare,ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
+ minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
  steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
  unreviewed:r.source_status==='generated_unreviewed'};
 }
@@ -1060,7 +1060,7 @@ bpDetail=function(){
 function redraw(){if(state.tab==='library100')draw();else if(state.tab==='detail100'&&bp100.detail?.startsWith('BP'))draw();}
 try{const saved=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArray(saved)&&saved.length){cloud=saved.map(compatible);window.bunplanCloudLatest=cloud;}}catch(e){}
 loading=true;redraw();
-fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status&legacy_key=like.BP%25&order=legacy_key.asc&limit=1000',
+fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of&legacy_key=like.BP%25&order=legacy_key.asc&limit=1000',
  {headers:{apikey:API_KEY,Accept:'application/json'}})
  .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
   if(!Array.isArray(data)||data.length!==1000)throw Error('Biblioteca returnează '+(Array.isArray(data)?data.length:'date invalide')+' din 1.000');
@@ -1121,7 +1121,7 @@ function registerRecipes(){
  for(let i=BP100.length-1;i>=0;i--)if(/^BP\d{4}$/.test(BP100[i].id))BP100.splice(i,1);
  for(const r of cloud){
   BP100.push({id:r.id,title:r.title,category:r.category,servings:Number(r.servings)||2,
-   minutes:Number(r.minutes)||0,steps:r.steps||[],tags:r.tags||[],
+   minutes:Number(r.minutes)||0,variant_of:r.variant_of||null,steps:r.steps||[],tags:r.tags||[],
    ingredients:(r.ingredients||[]).map(convert),cloud:true,unreviewed:true});
  }
  if(state.tab==='library100'||state.tab==='detail100'||state.tab==='menu100'||state.tab==='basket100')draw();
@@ -1462,4 +1462,8 @@ bpDetail=function(){
 </style>
 <link rel="stylesheet" href="brands/bunplan-ui.css"/>
 <script src="brands/bunplan-ui.js"></script>
+<link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
+<script src="brands/food-photos-generated.js"></script>
+<script src="brands/bunplan-photo-ui.js"></script>
+<script src="brands/bunplan-spending.js"></script>
 </body></html>
