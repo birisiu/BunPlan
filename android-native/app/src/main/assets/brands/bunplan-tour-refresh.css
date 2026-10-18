@@ -1,10 +1,4 @@
 /* BunPlan 5.4 — first-use walkthrough + one-tap Supabase sync */
-.bp54-refresh-button{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;
-  border:1px solid #deeadb;background:#f0f8e8;color:#17523c;font-size:25px;font-weight:900;
-  border-radius:15px;cursor:pointer;line-height:1;transition:transform .18s}
-.bp54-refresh-button:active{transform:scale(.96)}.bp54-refresh-button:disabled{opacity:.6}
-.bp54-refresh-button.spinning{animation:bp54-spin .8s linear infinite}
-@keyframes bp54-spin{to{transform:rotate(360deg)}}
 #bp54-sync-note{position:fixed;z-index:2405;top:calc(12px + env(safe-area-inset-top,0px));
  left:50%;transform:translateX(-50%) translateY(-30px);width:max-content;max-width:calc(100vw - 30px);
  box-sizing:border-box;background:#103e2e;color:white;border-radius:17px;padding:12px 17px;
@@ -45,4 +39,23 @@
  .bp54-tour-dialog h2{font-size:20px}.bp54-tour-dialog p{font-size:12px}
  .bp54-tour-buttons button{padding:8px 9px;font-size:11px}
  .bp54-refresh-button{width:38px;height:38px;flex-basis:38px}}
-@media(prefers-reduced-motion:reduce){.bp54-refresh-button,#bp54-sync-note{transition:none!important}}
+@media(prefers-reduced-motion:reduce){#bp54-sync-note{transition:none!important}}
+
+/* Pull-down refresh: no button, just a subtle drag indicator */
+.bp56-pull-indicator{position:fixed;z-index:2700;left:50%;top:calc(env(safe-area-inset-top, 0px) + 14px);
+ transform:translate(-50%, calc(-120px + var(--pull-distance,0px)));
+ opacity:0;pointer-events:none;display:flex;align-items:center;gap:10px;
+ box-sizing:border-box;width:max-content;max-width:min(calc(100vw - 36px),360px);
+ background:#0f4030;color:#f7fff0;border:1px solid rgba(216,245,167,.45);
+ border-radius:99px;padding:10px 17px;box-shadow:0 12px 32px rgba(8,53,35,.19);
+ font-size:12px;font-weight:900;letter-spacing:.1px;transition:opacity .18s ease;}
+.bp56-pull-indicator.active{opacity:1;}
+.bp56-pull-wheel{font-size:22px;line-height:1;display:inline-block;
+ transform:rotate(var(--pull-rotation,0deg));color:#d8f5a7}
+.bp56-pull-indicator.ready{background:#1a6949}
+.bp56-pull-indicator.refreshing .bp56-pull-wheel{animation:bp56-rotate .95s linear infinite}
+@keyframes bp56-rotate{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+ .bp56-pull-indicator{transition:none}
+ .bp56-pull-indicator.refreshing .bp56-pull-wheel{animation:none}
+}
