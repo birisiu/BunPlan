@@ -115,7 +115,7 @@ function paint(){
 window.bunplanCMSPaint=paint;
 function perform(){
  if(request)return request;
- const url=API+'?select=section_key,content,updated_at&published=eq.true&order=section_key&limit=100&v='+Date.now();
+ const url=API+'?select=section_key,content,updated_at&published=eq.true&order=section_key&limit=100';
  request=fetch(url,{cache:'no-store',
   headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}})
  .then(async response=>{
