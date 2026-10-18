@@ -14,6 +14,8 @@ import os
 import re
 import sys
 import time
+import threading
+from urllib.error import HTTPError
 import unicodedata
 from pathlib import Path
 from urllib.parse import urlencode
@@ -25,6 +27,8 @@ IMAGE_DIR = DEST / "photos"
 IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 API = "https://commons.wikimedia.org/w/api.php"
 UA = "BunPlan/5.0 (https://github.com/birisiu/BunPlan; open-license photo attribution)"
+API_GATE=threading.Lock()
+API_LAST=[0.0]
 FAMILY_SEARCH = {
 "Ardei umpluți":"stuffed peppers food",
 "Bol rece":"healthy grain bowl salad",
@@ -100,11 +104,23 @@ def slug(s):
     s = unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode('ascii')
     return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
 def get_bytes(url, max_bytes=1_700_000):
+    # Commons API can throttle bursty clients. Globally pace search calls.
+    if url.startswith(API):
+        with API_GATE:
+            diff=time.monotonic()-API_LAST[0]
+            if diff < .42: time.sleep(.42-diff)
+            API_LAST[0]=time.monotonic()
     req=Request(url,headers={'User-Agent':UA,'Accept':'application/json,image/*;q=0.9,*/*;q=0.4'})
-    with urlopen(req,timeout=15) as response:
-        if int(response.headers.get('Content-Length') or 0)>max_bytes:
-            raise RuntimeError('oversized photo')
-        return response.read(max_bytes+1)
+    for attempt in range(3):
+        try:
+            with urlopen(req,timeout=18) as response:
+                if int(response.headers.get('Content-Length') or 0)>max_bytes:
+                    raise RuntimeError('oversized photo')
+                return response.read(max_bytes+1)
+        except HTTPError as e:
+            if e.code not in (429,500,502,503,504) or attempt==2:raise
+            time.sleep(1.5*(attempt+1))
+    raise RuntimeError('unavailable image')
 def image_candidates(query):
     params={
       'action':'query','generator':'search','gsrsearch':'filetype:bitmap '+query,
