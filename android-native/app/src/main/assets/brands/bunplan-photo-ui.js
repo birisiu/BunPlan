@@ -38,7 +38,46 @@ function photoForRecipe(recipe){
   else if(/pui/.test(title))m='Piept de pui la tigaie';
   else if(/terci/.test(title))m='Terci de ovăz cald';
  }
- return M.recipes?.[m]||null;
+ if(M.recipes?.[m])return M.recipes[m];
+ // Classic dishes often have an English/alternative title.
+ // Fall back to an appropriate dish family, never to arbitrary stock photos.
+ const c=normalize(recipe.category);
+ const groups=[
+  [/overnight|ovaz peste noapte/,'Ovăz peste noapte'],
+  [/iaurt|yogurt/,'Budincă de chia'],
+  [/omlet|oua|ou fiert|frittata/,'Omletă pufoasă'],
+  [/sandvis|toast|bruschete/,'Toast integral'],
+  [/clatite|pancak|biscuit/,'Clătite de ovăz'],
+  [/mamali|polenta/,'Pilaf'],
+  [/muscaca|lasagna/,'Gratin de legume'],
+  [/ardei umplut/,'Ardei umpluți'],
+  [/peste|somon|pastrav|sardine/,'File de pește la cuptor'],
+  [/crevet/,'Creveți sotați'],
+  [/risotto/,'Risotto'],
+  [/pila[fv]|orez/,'Pilaf'],
+  [/paste|spaghet|macaroan/,'Paste'],
+  [/salata/,'Salată consistentă'],
+  [/pui|ostropel|snitel/,'Piept de pui la tigaie'],
+  [/porc|cotlet/,'Cotlet de porc la tigaie'],
+  [/vita|chili|chiftel/,'Chifteluțe de vită la cuptor'],
+  [/tocan|fasole/,'Tocană vegetariană'],
+  [/briose|banana bread|chec/,'Brioșe fragede']
+ ];
+ for(const [rx,family] of groups){
+  if(rx.test(title)&&M.recipes?.[family])return M.recipes[family];
+ }
+ const byCategory={
+  'mic dejun':['Terci de ovăz cald','Clătite de ovăz','Omletă pufoasă'],
+  'supe si ciorbe':['Ciorbă de legume','Supă cremă'],
+  'pui si curcan':['Piept de pui la tigaie','Curry de pui'],
+  'carne':['Tocăniță de vită','Cotlet de porc la tigaie'],
+  'vegetarian':['Legume la cuptor','Salată consistentă'],
+  'paste si orez':['Paste','Risotto'],
+  'peste si fructe de mare':['File de pește la cuptor','Pește la tigaie'],
+  'cina si salate':['Salată consistentă','Legume la cuptor'],
+  'desert si gustari':['Brioșe fragede','Crumble la cuptor']
+ };
+ return (byCategory[c]||[]).map(k=>M.recipes?.[k]).find(Boolean)||null;
 }
 function photoForIngredient(name){
  const slug=normalize(name).replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
