@@ -50,7 +50,7 @@ try{
   await mock(page,true);
   await page.goto(base+'/admin/index.html',{waitUntil:'domcontentloaded'});
   if(await page.locator('#workspace').isVisible())failures.push({width,test:'unauthenticated-admin-visible'});
-  await page.locator('#login-email').fill('admin@example.com');
+  await page.locator('#login-email').fill('ADMIN');
   await page.locator('#login-password').fill('not-a-real-password');
   await page.locator('#login-form button').click();
   await page.waitForSelector('#workspace:not(.hidden)',{timeout:7000});
@@ -80,7 +80,7 @@ try{
  const page=await browser.newPage({viewport:{width:390,height:780}});
  await mock(page,false);
  await page.goto(base+'/admin/index.html',{waitUntil:'domcontentloaded'});
- await page.locator('#login-email').fill('normal@example.com');
+ await page.locator('#login-email').fill('ADMIN');
  await page.locator('#login-password').fill('not-a-real-password');
  await page.locator('#login-form button').click();
  await page.getByText('Acest cont nu are rol de administrator.').waitFor({state:'visible',timeout:7000}).catch(()=>{});
