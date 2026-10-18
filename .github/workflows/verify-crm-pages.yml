@@ -25,6 +25,30 @@ jobs:
         run: npx playwright install chromium
       - name: Verify CRM layout and static assets
         run: node scripts/test-crm-pages-ready.mjs
+      - name: Verify public GitHub Pages site actually serves HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://birisiu.github.io/BunPlan/"
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -L -sS --max-time 20 -D /tmp/headers -o /tmp/index.html -w '%{http_code}' "$BASE" || true)
+            echo "Live attempt $i: HTTP $code"
+            if [ "$code" = 200 ] && grep -q 'BunPlan CRM' /tmp/index.html && grep -qi 'content-type:.*text/html' /tmp/headers; then
+              echo "BunPlan CRM: live HTML OK"
+              break
+            fi
+            if [ "$i" = 6 ]; then
+              echo "BunPlan CRM still unavailable on GitHub Pages"
+              cat /tmp/headers || true
+              exit 1
+            fi
+            sleep 15
+          done
+          for name in admin.js crm.js admin.css crm.css bunplan-icon.svg; do
+            curl -fsSL --max-time 20 "$BASE$name" -o "/tmp/$name"
+            test -s "/tmp/$name"
+          done
+          echo "All public CRM assets OK"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
