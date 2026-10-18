@@ -12,6 +12,7 @@ const categories={
  navigation:{name:'Navigare',icon:'🧭',detail:'Numele taburilor și textele de orientare'},
  shopping:{name:'Cumpărături',icon:'🛒',detail:'Cheltuieli, etichete și avertismente'},
  profile:{name:'Profil',icon:'👤',detail:'Preferințe, feedback și tutorial'},
+ onboarding:{name:'Prima utilizare / Cont',icon:'✨',detail:'Mesaje de bun venit, chestionar, opțiuni și autentificare'},
  tour:{name:'Tutorial de utilizare',icon:'📖',detail:'Etape, mesaje și activarea tutorialului'},
  retailers:{name:'Lidl / Kaufland',icon:'🏬',detail:'Magazine și mesaje despre stocuri'},
 };
