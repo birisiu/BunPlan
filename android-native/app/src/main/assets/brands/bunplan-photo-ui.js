@@ -37,20 +37,26 @@ function photoForIngredient(name){
 }
 window.bpFoodProductPhoto=photoForIngredient;
 window.bpFoodRecipePhoto=photoForRecipe;
-fetch('https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/ingredients?select=slug,name,image_url,image_reviewed&limit=500',
- {headers:{apikey:'sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z'}})
- .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
- .then(data=>{
-   approvedIngredients.clear();
-   for(const row of data){
-    if(row.image_reviewed===true&&/^https:\/\//i.test(row.image_url||'')){
-      const value={src:row.image_url};
-      approvedIngredients.set(normalize(row.name),value);
-      approvedIngredients.set(normalize(row.slug),value);
+window.bunplanRefreshIngredientPhotos=function(){
+ return fetch('https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/ingredients?select=slug,name,image_url,image_reviewed&limit=500&v='+Date.now(),
+  {cache:'no-store',headers:{apikey:'sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z','Cache-Control':'no-cache'}})
+  .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})
+  .then(rows=>{
+    if(!Array.isArray(rows))throw Error('Date ingrediente invalide');
+    approvedIngredients.clear();
+    for(const row of rows){
+      if(row.image_reviewed===true&&/^https:\/\//i.test(row.image_url||'')){
+        const photo={src:row.image_url};
+        approvedIngredients.set(normalize(row.name),photo);
+        approvedIngredients.set(normalize(row.slug),photo);
+      }
     }
-   }
-   if(state.tab==='basket100')draw();
- }).catch(error=>console.warn('BunPlan: ingredient photo sync unavailable',error));
+    if(state.tab==='basket100')draw();
+    return {ok:true,count:rows.length};
+  })
+  .catch(error=>({ok:false,message:error.message||'Indisponibil'}));
+};
+window.bunplanRefreshIngredientPhotos();
 function imageTag(photo,alt,cls){
  if(!photo)return '';
  return '<img class="'+cls+'" loading="lazy" decoding="async" src="'+esc(photo.src)+'" alt="'+esc(alt)+
