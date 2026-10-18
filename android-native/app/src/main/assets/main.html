@@ -1092,16 +1092,36 @@ function updateOriginalRows(rows){
   }
  }
 }
-fetch(RECIPE_API+'?select=legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500',
- {headers:{apikey:API_KEY,Accept:'application/json'}})
- .then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
-  if(!Array.isArray(data))throw Error('Date invalide din catalogul Supabase');
-  updateOriginalRows(data);
-  cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
-  window.bunplanCloudLatest=cloud;window.bunplanCloudRecipeUpdate?.(cloud);
-  try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
-  loadError='';loading=false;redraw();
- }).catch(error=>{loading=false;loadError=error.message||'conexiune indisponibilă';redraw();});
+const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit';
+let refreshPromise=null;
+window.bunplanRefreshRecipes=function(){
+ if(refreshPromise)return refreshPromise;
+ loading=true;loadError='';redraw();
+ const url=RECIPE_API+'?select='+CATALOG_SELECT+
+  '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500&v='+Date.now();
+ refreshPromise=fetch(url,{cache:'no-store',headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}})
+  .then(async response=>{
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!Array.isArray(data)||data.length===0)throw Error('Catalog gol sau invalid');
+   updateOriginalRows(data);
+   cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
+   window.bunplanCloudLatest=cloud;
+   window.bunplanCloudRecipeUpdate?.(cloud);
+   try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
+   loading=false;loadError='';
+   if(['home','library100','detail100','menu100','basket100','profile'].includes(state.tab))draw();
+   return {ok:true,count:data.length,at:new Date().toISOString()};
+  })
+  .catch(error=>{
+   loading=false;loadError=error?.message||'conexiune indisponibilă';
+   if(['library100','detail100'].includes(state.tab))draw();
+   return {ok:false,message:loadError};
+  })
+  .finally(()=>{refreshPromise=null});
+ return refreshPromise;
+};
+window.bunplanRefreshRecipes();
 })();
 </script>
 
