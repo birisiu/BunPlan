@@ -26,6 +26,8 @@ jobs:
         run: node scripts/test-responsive.mjs
       - name: Test secure BunPlan content admin
         run: node scripts/test-admin.mjs
+      - name: Test complete BunPlan CRM operations
+        run: node scripts/test-crm.mjs
       - name: Keep UI screenshots for review
         if: always()
         uses: actions/upload-artifact@v4
