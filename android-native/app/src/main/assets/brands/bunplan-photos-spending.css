@@ -91,3 +91,8 @@
 }
 @media(min-width:410px){.bp35-checklist .bp50-product{grid-template-columns:30px 75px minmax(0,1fr) 48px}
  .bp50-product-photo{width:75px;height:75px}.bp50-product-details b{font-size:14px}}
+
+.bp50-product-photo{position:relative}
+.bp50-photo-credit{position:absolute;right:2px;bottom:2px;display:grid;place-items:center;
+ width:19px;height:19px;background:#fffffff0;color:#235843;border-radius:50%;
+ font-size:12px;text-decoration:none;font-weight:900;box-shadow:0 1px 4px #0002}
