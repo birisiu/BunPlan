@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BunPlan Admin · Biblioteca culinară</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="admin.js" defer></script>
+<link rel="stylesheet" href="crm.css"><script src="crm.js" defer></script>
+</head><body>
+<div id="app">
+ <section id="login" class="login-shell">
+  <div class="login-card">
+   <div class="app-logo"><span class="logo-box">✓</span><div><strong>bun<span>plan</span></strong><small>ADMIN · EDITOR DE CONȚINUT</small></div></div>
+   <h1>Administrare BunPlan</h1><p>Editează rețetele și fotografiile care apar în aplicație, fără să reconstruiești APK-ul.</p>
+   <form id="login-form"><label>E-mail administrator<input type="email" id="login-email" autocomplete="username" required placeholder="email@exemplu.ro"></label>
+    <label>Parolă<input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••"></label>
+    <button class="primary" type="submit">Autentificare</button>
+   </form><div class="crm-login-alternatives"><button type="button" id="login-google" class="light crm-google-signin">Continuă cu Google</button><p>Folosește același cont Google sau parola contului BunPlan.</p></div><div id="login-message" class="message" role="alert"></div>
+   <small>Acces doar pentru conturile aprobate în Supabase. Nu există înregistrare liberă.</small>
+  </div>
+ </section>
+ <div id="workspace" class="workspace hidden">
+  <aside class="sidebar">
+    <div class="app-logo"><span class="logo-box">✓</span><div><strong>bun<span>plan</span></strong><small>CONTENT STUDIO</small></div></div>
+    <nav aria-label="Secțiuni admin">
+     <button data-section="dashboard" class="tab active">▦ <span>Dashboard</span></button>
+     <button data-section="recipes" class="tab">🍽 <span>Rețete</span></button>
+     <button data-section="ingredients" class="tab">🥕 <span>Ingrediente</span></button>
+     <div class="nav-divider">OPERARE</div>
+     <button data-section="users" class="tab">👥 <span>Utilizatori / CRM</span></button>
+     <button data-section="plans" class="tab">📅 <span>Meniuri și liste</span></button>
+     <button data-section="products" class="tab">🛒 <span>Produse</span></button>
+     <button data-section="prices" class="tab">💰 <span>Prețuri</span></button>
+     <button data-section="stores" class="tab">🏬 <span>Magazine și importuri</span></button>
+     <button data-section="feedback" class="tab">💬 <span>Sesizări</span></button>
+     <div class="nav-divider">SISTEM</div>
+     <button data-section="settings" class="tab">⚙️ <span>Setări aplicație</span></button>
+     <button data-section="audit" class="tab">🕒 <span>Istoric modificări</span></button>
+    </nav>
+    <div class="sidebar-foot"><small id="admin-email"></small><button id="logout" class="light">Deconectare ↗</button></div>
+  </aside>
+  <main class="main">
+   <header class="topbar"><div><span class="eyebrow">BUNPLAN CONTENT STUDIO</span><h1 id="page-title">Dashboard</h1></div>
+    <span id="connection-state" class="connection">Conectat</span></header>
+   <div id="flash" class="message" role="status"></div>
+   <section id="dashboard" class="panel-section">
+    <div class="stats" id="stats"><div class="stat"><small>Rețete</small><strong>—</strong></div></div>
+    <div class="panel"><h2>Calitatea imaginilor</h2>
+     <p>Fotografiile din vechiul sistem automat sunt considerate <strong>neconfirmate</strong>. BunPlan afișează un simbol neutru până când încarci sau aprobi manual o fotografie.</p>
+     <button class="primary" id="review-photos">Verifică rețetele fără imagini →</button>
+    </div>
+    <div class="panel"><h2>Flux de publicare</h2><p>1. Caută o rețetă · 2. Corectează pașii și ingredientele · 3. Încarcă o fotografie exactă · 4. Marcheaz-o ca verificată · 5. Publică.</p></div>
+   </section>
+   <section id="recipes" class="panel-section hidden">
+    <div class="toolbar"><input type="search" id="recipe-search" placeholder="Caută rețetă după nume…" aria-label="Caută rețetă">
+     <select id="recipe-filter" aria-label="Filtru rețete"><option value="all">Toate</option><option value="no-photo">Fără fotografie verificată</option><option value="draft">Nepublicate</option><option value="review">De verificat</option></select>
+     <button class="primary" id="new-recipe">+ Rețetă nouă</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Rețetă</th><th>Categorie</th><th>Imagine</th><th>Publicare</th><th></th></tr></thead><tbody id="recipe-table"></tbody></table></div>
+    <div class="pager"><span id="recipe-count"></span><div><button class="light" id="recipe-prev">← Înapoi</button><button class="light" id="recipe-next">Înainte →</button></div></div>
+   </section>
+   <section id="ingredients" class="panel-section hidden">
+    <div class="toolbar"><input type="search" id="ingredient-search" placeholder="Caută ingrediente…" aria-label="Caută ingrediente">
+     <button class="primary" id="new-ingredient">+ Ingredient nou</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Ingredient</th><th>Unitate</th><th>Imagine</th><th></th></tr></thead><tbody id="ingredient-table"></tbody></table></div>
+    <div class="pager"><span id="ingredient-count"></span><div><button class="light" id="ingredient-prev">← Înapoi</button><button class="light" id="ingredient-next">Înainte →</button></div></div>
+   </section>
+
+   <section id="users" class="panel-section hidden">
+    <p class="section-caption">Conturi, preferințe, activitate și notițe CRM. Datele de autentificare sensibile nu sunt disponibile aici.</p>
+    <div class="toolbar"><input id="crm-search" type="search" placeholder="Caută după e-mail sau nume…" aria-label="Caută utilizator"><button class="light" id="crm-reload">Reîncarcă</button></div>
+    <div class="crm-columns"><div class="table-wrap"><table><thead><tr><th>Utilizator</th><th>Magazin</th><th>Planuri</th><th>Acțiuni</th></tr></thead><tbody id="crm-user-list"></tbody></table><div class="pager" id="crm-pager"></div></div>
+    <div class="panel crm-details" id="crm-user-detail"><h2>Fișa utilizatorului</h2><p>Selectează o persoană pentru a vedea activitatea și a înregistra notițe.</p></div></div>
+   </section>
+   <section id="plans" class="panel-section hidden">
+    <p class="section-caption">Planificări create de utilizatori, în regim numai-citire.</p>
+    <div class="toolbar"><select id="crm-plan-store"><option value="">Toate magazinele</option><option value="lidl">Lidl</option><option value="kaufland">Kaufland</option></select><button class="light" id="crm-plans-reload">Reîncarcă</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Săptămână</th><th>Magazin</th><th>Buget</th><th>Utilizator</th><th></th></tr></thead><tbody id="crm-plans-list"></tbody></table></div><div class="pager" id="crm-plans-pager"></div>
+    <div id="crm-plan-detail" class="panel hidden"></div>
+   </section>
+   <section id="products" class="panel-section hidden">
+    <p class="section-caption">Gestionează denumirile, categoriile, ambalajele, fotografiile și starea produselor din catalog.</p>
+    <div class="toolbar"><input id="crm-product-search" type="search" placeholder="Caută produs…" aria-label="Caută produse"><select id="crm-product-store"><option value="">Toate</option><option value="lidl">Lidl</option><option value="kaufland">Kaufland</option></select><button class="light" id="crm-product-refresh">Reîncarcă</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Produs</th><th>Magazin</th><th>Ambalaj</th><th>Activ</th><th></th></tr></thead><tbody id="crm-products-list"></tbody></table></div><div class="pager" id="crm-products-pager"></div>
+    <div class="panel hidden" id="crm-product-editor"></div>
+   </section>
+   <section id="prices" class="panel-section hidden">
+    <p class="section-caption">Introdu prețuri observate și ajustări estimative. Valorile introduse manual nu devin automat oferte oficiale.</p>
+    <div class="crm-columns">
+    <div class="panel"><h2>Preț produs</h2><form id="crm-price-form" class="crm-form">
+     <label>Magazin<select id="crm-price-store"><option value="lidl">Lidl</option><option value="kaufland">Kaufland</option></select></label>
+     <label>Produs<input id="crm-price-product-search" type="search" placeholder="Caută denumirea produsului…" autocomplete="off"></label><div id="crm-price-choices" class="choice-list"></div>
+     <div id="crm-price-selected" class="hint">Nu ai selectat un produs.</div>
+     <label>Preț pe ambalaj (lei)<input id="crm-price-amount" inputmode="decimal" type="number" min=".01" max="99999" step=".01" required></label>
+     <label>Data observației<input type="date" id="crm-price-date" required></label>
+     <label>Sursa / notițe<input id="crm-price-note" placeholder="Ex.: verificat la raft în magazin"></label>
+     <button class="primary" type="submit">Înregistrează prețul manual</button>
+    </form></div>
+    <div class="panel"><h2>Estimări pe ingrediente</h2><div class="toolbar"><select id="crm-estimate-store"><option value="lidl">Lidl</option><option value="kaufland">Kaufland</option></select><input id="crm-estimate-search" type="search" placeholder="Caută ingredient…"></div>
+    <div class="table-wrap"><table><thead><tr><th>Ingredient</th><th>Ambalaj</th><th>Estimare</th><th></th></tr></thead><tbody id="crm-estimate-list"></tbody></table></div></div></div>
+    <div id="crm-price-history" class="panel"></div>
+   </section>
+   <section id="stores" class="panel-section hidden"><div class="panel"><h2>Magazine și puncte de lucru</h2><div id="crm-store-list"></div></div><div class="panel"><h2>Istoric importuri</h2><div id="crm-imports"></div></div></section>
+   <section id="feedback" class="panel-section hidden"><p class="section-caption">Mesajele primite prin canalul de feedback al aplicației și starea soluționării.</p>
+    <div class="toolbar"><select id="crm-feedback-filter"><option value="">Toate</option><option value="open">Deschise</option><option value="in_progress">În lucru</option><option value="resolved">Rezolvate</option><option value="closed">Închise</option></select><button class="light" id="crm-feedback-refresh">Reîncarcă</button></div>
+    <div id="crm-feedback-list"></div>
+   </section>
+   <section id="settings" class="panel-section hidden"><p class="section-caption">Setările publice sunt sincronizate cu aplicația BunPlan la conectare. Modificările tehnice Google Login / AdMob se fac separat, cu teste și versiune nouă când este necesar.</p>
+    <div id="crm-settings-list"></div></section>
+   <section id="audit" class="panel-section hidden"><p class="section-caption">Istoricul operațiilor administrative, fără parole sau tokenuri.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Modul</th><th>Acțiune</th><th>Identificator</th></tr></thead><tbody id="crm-audit-list"></tbody></table></div></section>
+  </main>
+ </div>
+ <div id="editor-backdrop" class="editor-backdrop hidden">
+  <div class="editor" role="dialog" aria-modal="true" aria-labelledby="editor-heading">
+   <div class="editor-top"><div><span class="eyebrow" id="editor-type"></span><h2 id="editor-heading">Editează rețeta</h2></div><button id="editor-close" class="icon-button" aria-label="Închide">✕</button></div>
+   <form id="edit-form">
+    <div id="edit-fields"></div>
+    <div class="editor-actions"><button type="button" class="light" id="editor-cancel">Anulează</button><button type="submit" class="primary" id="editor-save">Salvează modificările</button></div>
+   </form>
+  </div>
+ </div>
+</div></body></html>
