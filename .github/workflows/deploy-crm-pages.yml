@@ -4,6 +4,11 @@ on:
     branches:
       - 'fix/5.3-crm-public-render'
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'admin/**'
+      - '.github/workflows/deploy-crm-pages.yml'
 permissions:
   contents: read
   pages: write
