@@ -1,0 +1,93 @@
+/* BunPlan 5.0: photo-first recipe discovery + actual checkout totals */
+#bpCloudResults .bp-emoji.has-photo{
+ position:relative;padding:0;overflow:hidden;display:block;background:#eaf1e3;
+ font-size:0;isolation:isolate;
+}
+.bp50-recipe-photo,.bp50-home-photo{
+ position:absolute;inset:0;width:100%;height:100%;
+ object-fit:cover;object-position:center;display:block;
+}
+#bpCloudResults .bp-emoji.has-photo .bp50-recipe-photo{width:100%;height:100%}
+.bp-brand-food.has-photo{font-size:0;position:relative;isolation:isolate;overflow:hidden}
+.bp50-recipe-detail-image{padding:0;margin:14px 0 19px;overflow:hidden;
+ border-radius:22px;background:#eaf3e5;border:1px solid #e0e9dc}
+.bp50-recipe-detail-image img{display:block;width:100%;height:clamp(185px,48vw,290px);object-fit:cover}
+.bp50-recipe-detail-image figcaption{font-size:10px;color:#61776a;line-height:1.5;padding:9px 12px}
+.bp50-recipe-detail-image figcaption a{color:#285b42;text-decoration:underline}
+.bp50-spend-panel{background:#eaf8d9;border-radius:23px;padding:17px;margin:14px 0 18px;
+ border:1px solid #dceecb;box-sizing:border-box}
+.bp50-spend-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:13px}
+.bp50-spend-head h2{font-size:18px;margin:0;font-weight:900;letter-spacing:-.35px}
+.bp50-spend-head>span{font-size:11px;color:#457154;font-weight:900;white-space:nowrap}
+.bp50-spend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.bp50-stat{background:#fff;border-radius:17px;padding:12px 10px;min-width:0}
+.bp50-stat.paid{background:#d6f1b8}
+.bp50-stat:nth-child(3){grid-column:1/-1}
+.bp50-stat small{display:block;color:#687f6b;line-height:1.35;font-size:11px}
+.bp50-stat strong{display:block;color:#0f3d2e;font-size:clamp(18px,4.3vw,24px);
+ margin-top:7px;font-variant-numeric:tabular-nums;overflow-wrap:break-word}
+.bp50-progress{margin:16px 1px 6px;height:10px;background:#d3e0ce;border-radius:25px;overflow:hidden}
+.bp50-progress>span{display:block;height:100%;background:#0f6445;border-radius:25px;transition:width .18s}
+.bp50-progress-caption{display:flex;justify-content:space-between;gap:7px;font-size:11px;color:#385746}
+.bp50-price-caveat{font-size:11px;color:#47644b;margin:13px 0 5px;line-height:1.4}
+.bp50-both-stores{margin:11px 0 0;padding:12px 11px;background:#fff;border-radius:17px;display:grid;gap:5px}
+.bp50-both-stores>span{font-size:11px;color:#69786c}
+.bp50-both-stores>strong{font-size:22px;color:#0f3d2e;font-variant-numeric:tabular-nums}
+.bp50-both-stores>small{color:#617369;font-size:11px}
+.bp50-spend-panel~.bp35-summary{display:none}
+.bp35-checklist .bp50-product{
+ width:100%;max-width:100%;min-width:0;box-sizing:border-box;display:grid!important;
+ grid-template-columns:25px 61px minmax(0,1fr) 45px;
+ grid-template-areas:"check photo details edit" "check photo money edit" "check photo extra extra";
+ align-items:center;column-gap:9px;row-gap:7px;margin:0 0 9px;
+ background:#fff;border:1px solid #e8eee7;border-radius:19px;padding:11px 10px;
+ white-space:normal;overflow-wrap:break-word;word-break:normal;box-shadow:0 6px 16px #0f3d2e09;
+}
+.bp50-check-label{grid-area:check;align-self:start;padding-top:15px;display:flex;justify-content:center}
+.bp50-check-label input[type=checkbox]{height:21px;width:21px;accent-color:#0f6445;cursor:pointer}
+.bp50-product-photo{grid-area:photo;width:61px;height:61px;align-self:start;border-radius:13px;
+ background:#eaf2e7;overflow:hidden;display:grid;place-items:center}
+.bp50-product-image{width:100%;height:100%;object-fit:cover;display:block}
+.bp50-product-placeholder{font-size:28px}
+.bp50-product-details{grid-area:details;min-width:0;display:flex;flex-direction:column;gap:4px;align-self:start}
+.bp50-product-details b{font-size:13px;font-weight:900;line-height:1.3;overflow-wrap:break-word;word-break:normal}
+.bp50-product-details small{font-size:11px;color:#748478;line-height:1.33;white-space:normal}
+.bp50-product-money{grid-area:money;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:flex-end}
+.bp50-product-money>span{font-size:11px;color:#66796b;line-height:1.4}
+.bp50-product-money b{font-weight:700}
+.bp50-product-money strong{font-weight:900;color:#0f3d2e}
+.bp50-price-value.confirmed{color:#166443}
+.bp50-product-controls{grid-area:edit;align-self:start;display:flex;flex-direction:column;
+ gap:8px;align-items:flex-end}
+.bp50-edit-button{display:grid;place-items:center;width:40px;height:40px;flex:0 0 40px;
+ padding:0;border:0;border-radius:50%;color:#123e2e;background:#f3f6f2;font-size:23px}
+.bp50-product .bp50-search-button{grid-area:extra;border:0;text-align:left;padding:0;
+ background:none;color:#417154;font-size:10px;line-height:1.35;max-width:110px;
+ white-space:normal}
+.bp50-product:has(.bp50-search-button){grid-template-areas:"check photo details edit" "check photo money edit" "check photo extra edit"}
+.bp50-product.bought{opacity:1}
+.bp50-product.bought .bp50-product-details b{opacity:.68;text-decoration:line-through}
+.bp50-editor-backdrop{position:fixed;z-index:3002;inset:0;background:#031c12a3;
+ display:flex;align-items:end;justify-content:center;padding:10px;box-sizing:border-box}
+.bp50-editor{position:relative;width:min(100%,500px);box-sizing:border-box;background:#fff;border-radius:27px;
+ padding:25px 20px calc(25px + env(safe-area-inset-bottom,0px));
+ box-shadow:0 -12px 45px #0003;display:flex;flex-direction:column;gap:11px}
+.bp50-editor-close{position:absolute;top:14px;right:14px;background:#f1f5ef;width:34px;height:34px;
+ border:0;border-radius:50%;font-size:16px}
+.bp50-eyebrow{color:#52965e;letter-spacing:1.3px;font-size:10px;font-weight:900}
+.bp50-editor h2{margin:0;color:#103e2d;font-size:23px;font-weight:900;line-height:1.25;padding-right:35px}
+.bp50-editor p{font-size:13px;color:#647666;line-height:1.5;margin:0}
+.bp50-editor label{font-weight:900;font-size:13px}
+.bp50-editor input{height:56px;border:1px solid #b9d3bb;background:#f8fdf5;color:#0f3d2e;
+ border-radius:15px;font-size:25px;font-weight:900;padding:8px 13px;outline-offset:2px}
+.bp50-editor small{font-size:11px;color:#738375;line-height:1.45}
+.bp50-editor-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:7px}
+.bp50-editor-actions button{width:100%;min-width:0;padding:12px 6px}
+@media(max-width:350px){
+ .bp35-checklist .bp50-product{grid-template-columns:23px 49px minmax(0,1fr) 39px;gap:7px;padding:10px 7px}
+ .bp50-product-photo{width:49px;height:49px}.bp50-edit-button{width:36px;height:36px;font-size:20px}
+ .bp50-product-details b{font-size:12px}.bp50-product-money{gap:5px 9px}
+ .bp50-product-money>span{font-size:10px}
+}
+@media(min-width:410px){.bp35-checklist .bp50-product{grid-template-columns:30px 75px minmax(0,1fr) 48px}
+ .bp50-product-photo{width:75px;height:75px}.bp50-product-details b{font-size:14px}}
