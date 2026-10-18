@@ -1131,7 +1131,7 @@ window.bunplanRefreshRecipes=function(){
   for(let offset=0;offset<10000;offset+=pageSize){
    const url=RECIPE_API+'?select='+CATALOG_SELECT+
     '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit='+pageSize+
-    '&offset='+offset+'&v='+Date.now();
+    '&offset='+offset+'';
    const response=await fetch(url,{
     cache:'no-store',
     headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}
@@ -1247,7 +1247,7 @@ try{const cached=JSON.parse(localStorage.getItem(CACHE)||'null');if(Array.isArra
 let pricePromise=null;
 window.bunplanRefreshIngredientPrices=function(){
  if(pricePromise)return pricePromise;
- pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500&v='+Date.now(),
+ pricePromise=fetch(API+'bunplan_recipe_ingredient_pricing?select=*&limit=500',
   {cache:'no-store',headers:{apikey:KEY,Accept:'application/json','Cache-Control':'no-cache'}})
   .then(async response=>{
    if(!response.ok)throw Error('HTTP '+response.status);
