@@ -35,8 +35,12 @@ home=function(){
  const dates=Array.from({length:7},(_,i)=>bp35Date(bp35.week,i));
  const week=dates[0].toLocaleDateString('ro-RO',{day:'numeric',month:'short'})+' – '+dates[6].toLocaleDateString('ro-RO',{day:'numeric',month:'short'});
  const dayPlanned=Object.values(bp100.days[today]||{}).map(recipe).filter(Boolean);
- const todayPick=dayPlanned[0]||BP100.find(x=>x.id==='R001')||BP100[0];
- const fallback=BP100.find(r=>r.id!==todayPick?.id && r.category==='Vegetarian')||BP100.find(r=>r.id!==todayPick?.id);
+ const featuredIds=window.bunplanCMSGet?.('home','featured_recipe_ids',[])||[];
+ const featured=Array.isArray(featuredIds)?featuredIds.map(recipe).filter(Boolean):[];
+ const todayPick=dayPlanned[0]||featured[0]||BP100.find(x=>x.id==='R001')||BP100[0];
+ const fallback=featured.find(r=>r.id!==todayPick?.id)||
+   BP100.find(r=>r.id!==todayPick?.id && r.category==='Vegetarian')||
+   BP100.find(r=>r.id!==todayPick?.id);
  const percent=counted?Math.max(0,Math.min(100,Math.round(money/budget*100))):0;
  const greeting='Bună, '+esc(compactName(state.name))+'! 👋';
  return commonTop()+'<div class="bp-brand-home">'+
