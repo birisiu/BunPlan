@@ -170,7 +170,12 @@ try{
      instructions:['Spală ingredientele.','Prepară la foc mic.','Servește.'],
      ingredient_details:i===0?[{name:'fulgi de ovăz',quantity:100,unit:'g'},{name:'migdale',quantity:20,unit:'g'}]:[{name:'mere',quantity:150,unit:'g'}],tags:['vegetarian'],allergens:[],photo_url:i===0?'https://example.test/admin-approved-recipe.webp':'https://example.test/wrong-photo.webp',image_reviewed:i===0,short_description:i===0?'Descriere editată în admin':'',source_status:'generated_unreviewed'
    }));
-   await page.route('**/rest/v1/recipes**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(cloud)}));
+   await page.route('**/rest/v1/recipes**',route=>{
+    const url=new URL(route.request().url());
+    const offset=Number(url.searchParams.get('offset')||0),limit=Number(url.searchParams.get('limit')||250);
+    return route.fulfill({status:200,contentType:'application/json',
+      body:JSON.stringify(cloud.slice(offset,offset+Math.min(limit,250)))});
+   });
    const refs=Array.from({length:165},(_,i)=>i===0?'fulgi de ovăz':i===1?'migdale':'ingredient_mock_'+i).flatMap(label=>
      ['lidl','kaufland'].map(store_id=>({
        label,store_id,ingredient_slug:label==='fulgi de ovăz'?'ovaz':null,
