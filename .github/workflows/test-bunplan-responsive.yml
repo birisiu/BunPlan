@@ -28,6 +28,8 @@ jobs:
         run: node scripts/test-admin.mjs
       - name: Test complete BunPlan CRM operations
         run: node scripts/test-crm.mjs
+      - name: Smoke-test the REAL published Supabase CRM website
+        run: node scripts/test-crm-public.mjs
       - name: Keep UI screenshots for review
         if: always()
         uses: actions/upload-artifact@v4
