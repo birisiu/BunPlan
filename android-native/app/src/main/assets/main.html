@@ -1000,7 +1000,7 @@ function compatible(r){
  unreviewed:r.source_status==='generated_unreviewed'};
 }
 function items(){
- const old=BP100.filter(r=>!/^BP\d{4}$/.test(r.id)).map(r=>({...r,cloud:false}));
+ const old=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).map(r=>({...r,cloud:false}));
  return old.concat(cloud.map(r=>({...r,cloud:true})));
 }
 function filtered(){
@@ -1029,7 +1029,7 @@ window.bpCloudMore=function(){visible+=40;fill()};
 window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
 bpLibrary=function(){
  const categories=['Toate',...new Set(items().map(r=>r.category))];
- const count=BP100.filter(r=>!/^BP\d{4}$/.test(r.id)).length+cloud.length;
+ const count=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).length+cloud.length;
  return commonTop()+heading('Rețete de gătit','Pași detaliați, cantități și idei pentru familie.')+
  '<div class="bp-notice"><b>'+count.toLocaleString('ro-RO')+' rețete disponibile</b> · '+BP100.length+' clasice și '+cloud.length+' variante noi din Supabase. '+
  (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
@@ -1052,6 +1052,8 @@ bpDetail=function(){
  '<button class="back" onclick="go(\'library100\')">← Înapoi la rețete</button>'+
  '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
  '<h1 class="title">'+esc(r.title)+'</h1>'+
+ (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
+ (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
  '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span></div>'+
  '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
  '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
