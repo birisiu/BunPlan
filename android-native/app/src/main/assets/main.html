@@ -1016,10 +1016,21 @@ function filtered(){
  (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
  [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
 }
+function approvedRecipePhoto(r){
+ const value=r?.photo_url;
+ return r?.image_reviewed===true && typeof value==='string' && /^https:\/\//i.test(value)?value:null;
+}
 function row(r){
  const note=r.cloud?'Instrucțiuni detaliate · verifică ingredientele și alergenii':'Disponibil în planul săptămânal';
- return '<button class="bp-recipecard" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
- '<span class="bp-emoji">'+(BP100_EMOJI[r.category]||'🍲')+'</span>'+
+ const photo=approvedRecipePhoto(r);
+ const emoji=BP100_EMOJI[r.category]||'🍲';
+ // Render the CMS-approved image directly in the card. The previous implementation
+ // tried to recover recipe IDs by parsing onclick HTML after rendering and silently
+ // lost images if the DOM/mutation observer did not run in the right order.
+ const image=photo?'<img class="bp50-recipe-photo" loading="lazy" decoding="async" src="'+esc(photo)+'" alt="'+esc(r.title)+
+  '" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'has-photo\')">':'';
+ return '<button class="bp-recipecard" data-bp-photo="'+(photo?'1':'')+'" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
+ '<span class="bp-emoji'+(photo?' has-photo':'')+'">'+emoji+image+'</span>'+
  '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
 }
 function fill(){
@@ -1061,7 +1072,9 @@ bpDetail=function(){
  if(!r)return previousDetail();
  return commonTop()+
  '<button class="back" onclick="go(\'library100\')">← Înapoi la rețete</button>'+
- '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>'+
+ (approvedRecipePhoto(r)?'<figure id="bp50-recipe-detail-photo" class="bp50-recipe-detail-image"><img src="'+esc(approvedRecipePhoto(r))+
+  '" alt="'+esc(r.title)+'" onerror="this.closest(\'figure\').style.display=\'none\'"></figure>':
+  '<div class="bp-heroicon">'+(BP100_EMOJI[r.category]||'🍲')+'</div>')+
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
  (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
