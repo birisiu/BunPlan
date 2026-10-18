@@ -27,7 +27,7 @@ async function authenticate(){
   loginMessage('Acest cont nu are rol de administrator. Solicitați acordarea accesului de către proprietarul proiectului.');return;
  }
  $('admin-email').textContent=authSession.user.email||'Administrator';
- updateScreen(true);await loadDashboard();
+ updateScreen(true);document.dispatchEvent(new CustomEvent('bunplan-admin-authenticated'));await loadDashboard();
 }
 $('login-form').addEventListener('submit',async e=>{
  e.preventDefault();const btn=e.submitter;btn.disabled=true;loginMessage('Se verifică accesul…');
@@ -42,8 +42,9 @@ $('logout').onclick=async()=>{await db.auth.signOut();updateScreen(false);loginM
 function section(name){
  session.section=name;for(const s of document.querySelectorAll('.panel-section'))s.classList.toggle('hidden',s.id!==name);
  for(const b of document.querySelectorAll('.tab'))b.classList.toggle('active',b.dataset.section===name);
- $('page-title').textContent={dashboard:'Dashboard',recipes:'Biblioteca de rețete',ingredients:'Ingrediente'}[name];
+ $('page-title').textContent={dashboard:'Dashboard',recipes:'Biblioteca de rețete',ingredients:'Ingrediente',users:'Utilizatori / CRM',plans:'Meniuri și liste',products:'Produse',prices:'Prețuri',stores:'Magazine și importuri',feedback:'Sesizări',settings:'Setări aplicație',audit:'Istoric modificări'}[name]||'BunPlan CRM';
  flash('');if(name==='dashboard')loadDashboard();if(name==='recipes')loadRecipes();if(name==='ingredients')loadIngredients();
+ document.dispatchEvent(new CustomEvent('bunplan-admin-section',{detail:{name}}));
 }
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>section(b.dataset.section));
 $('review-photos').onclick=()=>{$('recipe-filter').value='no-photo';session.recipes.filter='no-photo';session.recipes.page=0;section('recipes')};
