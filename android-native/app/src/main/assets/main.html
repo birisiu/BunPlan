@@ -1190,9 +1190,14 @@ bpTotals=function(){
    for(const it of r.ingredients||[]){
     const qty=Number(it.quantity)||0;
     if(qty<=0)continue;
-    const key=it.id;
+    let key=it.id;
+    // Never silently discard a food from the shopping list when two recipes
+    // describe the same ingredient in incompatible units.
+    if(totals[key]&&totals[key].unit!==it.unit){
+      key='unit_'+slugify(it.unit)+'_'+it.id;
+      names[key]??=(it.source_name||bpName(it.id))+' ('+it.unit+')';
+    }
     if(!totals[key])totals[key]={quantity:0,unit:it.unit};
-    if(totals[key].unit!==it.unit){continue;} // disallow adding incompatible units
     totals[key].quantity+=qty*factor;
    }
   }
