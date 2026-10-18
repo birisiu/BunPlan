@@ -22,6 +22,7 @@ const aliases={
 };
 function photoForRecipe(recipe){
  if(!recipe)return null;
+ if(recipe.id&&M.originals?.[recipe.id])return M.originals[recipe.id];
  const key=recipe.variant_of;
  if(key&&M.recipes?.[key])return M.recipes[key];
  const title=normalize(recipe.title),names=familyList.sort((a,b)=>b.length-a.length);
