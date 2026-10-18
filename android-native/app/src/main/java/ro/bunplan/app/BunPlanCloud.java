@@ -131,11 +131,30 @@ public class BunPlanCloud {
     callback(action,result);
   });
  }
+
+ private void submitFeedback(String category,String message){
+  pool.execute(()->{
+   JSONObject result=new JSONObject();
+   try{
+    if(message==null||message.trim().length()<2||message.length()>4000)
+      throw new Exception("Mesajul trebuie să aibă între 2 și 4000 caractere");
+    if(!("bug".equals(category)||"suggestion".equals(category)||"question".equals(category)||"other".equals(category)))
+      throw new Exception("Categorie invalidă");
+    String body=http("/rest/v1/rpc/bunplan_submit_feedback",
+      new JSONObject().put("p_category",category).put("p_message",message.trim()),freshSessionToken());
+    result.put("ok",true).put("data",new JSONObject(body));
+   }catch(Exception e){
+    try{result.put("ok",false).put("message",e.getMessage());}catch(Exception ignored){}
+   }
+   callback("feedback",result);
+  });
+ }
  public class Bridge {
   @JavascriptInterface public void saveWeek(String store,String week,double budget,String days){call("save",store,week,budget,days);}
   @JavascriptInterface public void loadWeek(String store,String week){call("load",store,week,0,"[]");}
   @JavascriptInterface public void saveProfile(String json){profileRequest("profile-save",json);}
   @JavascriptInterface public void loadProfile(){profileRequest("profile-load","{}");}
+  @JavascriptInterface public void sendFeedback(String category,String message){submitFeedback(category,message);}
   @JavascriptInterface public void deleteAccount(String typed){
    activity.runOnUiThread(()->{
      if(!"ȘTERGE".equals(typed)){
