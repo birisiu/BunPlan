@@ -34,6 +34,7 @@ try{
     window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'test@example.com';}};
     window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
     window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
+    localStorage.setItem('bunplan_app_tour_v54_finished','1');
     localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,step:4,store:'Lidl',name:'Tester',city:'București',budget:450,adults:2,children:1,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
   });
   await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
@@ -54,7 +55,8 @@ try{
    window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com';}};
    window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
    window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
-   localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',name:'Tester',city:'București',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
+   localStorage.setItem('bunplan_app_tour_v54_finished','1');
+    localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',name:'Tester',city:'București',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
   });
   await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
   await page.evaluate(()=>{
@@ -101,6 +103,7 @@ try{
     window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com';}};
     window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
     window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
+    localStorage.setItem('bunplan_app_tour_v54_finished','1');
     localStorage.setItem('bunplan_onboard_v2',JSON.stringify({
       completed:true,store:'Lidl',name:'QA',city:'București',budget:450,
       adults:2,children:1,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
@@ -184,7 +187,8 @@ try{
      window.BunPlanAuth={hasSession(){return true;},currentEmail(){return 'qa@example.com'}};
      window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){}};
      window.BunPlanAds={getStatus(){},showRewardedInterstitial(){}};
-     localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',city:'București',name:'Tester',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
+     localStorage.setItem('bunplan_app_tour_v54_finished','1');
+    localStorage.setItem('bunplan_onboard_v2',JSON.stringify({completed:true,store:'Lidl',city:'București',name:'Tester',budget:450,adults:2,children:0,diet:'Echilibrat',meals:3,time:30,exclusions:[]}));
    });
    await page.goto(base+'/main.html',{waitUntil:'domcontentloaded'});
    await page.evaluate(()=>go('library100'));

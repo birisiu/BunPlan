@@ -1,0 +1,48 @@
+/* BunPlan 5.4 — first-use walkthrough + one-tap Supabase sync */
+.bp54-refresh-button{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;
+  border:1px solid #deeadb;background:#f0f8e8;color:#17523c;font-size:25px;font-weight:900;
+  border-radius:15px;cursor:pointer;line-height:1;transition:transform .18s}
+.bp54-refresh-button:active{transform:scale(.96)}.bp54-refresh-button:disabled{opacity:.6}
+.bp54-refresh-button.spinning{animation:bp54-spin .8s linear infinite}
+@keyframes bp54-spin{to{transform:rotate(360deg)}}
+#bp54-sync-note{position:fixed;z-index:2405;top:calc(12px + env(safe-area-inset-top,0px));
+ left:50%;transform:translateX(-50%) translateY(-30px);width:max-content;max-width:calc(100vw - 30px);
+ box-sizing:border-box;background:#103e2e;color:white;border-radius:17px;padding:12px 17px;
+ font-size:12px;font-weight:900;text-align:center;opacity:0;pointer-events:none;
+ box-shadow:0 10px 30px #0a281b30;transition:opacity .2s,transform .2s}
+#bp54-sync-note.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+.bp54-tutorial-restart{margin:17px 0 5px;padding:18px;border-radius:22px;background:#eaf6e1;border:1px solid #d8e9d0}
+.bp54-tutorial-restart h2{font-size:17px;font-weight:900;margin:0 0 7px;color:#134631}
+.bp54-tutorial-restart p{font-size:12px;color:#53715d;line-height:1.55}
+.bp54-tutorial-restart .btn{margin-top:9px}
+.bp54-tour-layer{position:fixed;inset:0;z-index:3300;pointer-events:none}
+.bp54-tour-spot{position:fixed;display:none;border-radius:18px;
+ box-shadow:0 0 0 120vmax rgba(5,24,18,.69),0 0 0 3px #D8F5A7;
+ border:2px solid #d8f5a7;pointer-events:none;z-index:0}
+.bp54-tour-dialog{pointer-events:auto;position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));
+ left:50%;transform:translateX(-50%);box-sizing:border-box;width:min(calc(100vw - 26px),475px);
+ max-height:min(66dvh,520px);overflow:auto;background:#fff;border:1px solid #e1eada;
+ border-radius:26px;padding:18px 19px 19px;box-shadow:0 20px 60px rgba(0,0,0,.25);
+ z-index:2}
+.bp54-tour-progress{display:flex;align-items:center;justify-content:space-between;gap:12px;
+ color:#4b8256;text-transform:uppercase;letter-spacing:1.2px;font-size:10px;font-weight:900}
+.bp54-tour-icon{display:grid;place-items:center;width:52px;height:52px;margin-top:15px;
+ font-size:28px;background:#e8f7d8;border-radius:18px}
+.bp54-tour-dialog h2{color:#0f3d2e;font-size:clamp(20px,5vw,25px);line-height:1.2;
+ font-weight:900;margin:13px 0 7px;letter-spacing:-.4px}
+.bp54-tour-dialog p{color:#58705f;font-size:13px;line-height:1.5;margin:0 0 15px}
+.bp54-tour-dots{display:flex;gap:5px;align-items:center;margin-bottom:17px}
+.bp54-tour-dots span{height:5px;width:16px;border-radius:8px;background:#dfebd6}
+.bp54-tour-dots span.active{width:28px;background:#317654}
+.bp54-tour-buttons{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.bp54-tour-buttons button{min-height:43px;border:0;border-radius:13px;
+ font-size:12px;font-weight:900;padding:10px 12px;cursor:pointer}
+.bp54-tour-skip{background:transparent;color:#718271;margin-right:auto}
+.bp54-tour-back{background:#eff4eb;color:#285641}
+.bp54-tour-next{background:#103e2e;color:#fff}
+@media(max-width:345px){.bp54-tour-dialog{padding:14px}.bp54-tour-progress{font-size:9px}
+ .bp54-tour-icon{margin-top:10px;width:43px;height:43px;font-size:24px}
+ .bp54-tour-dialog h2{font-size:20px}.bp54-tour-dialog p{font-size:12px}
+ .bp54-tour-buttons button{padding:8px 9px;font-size:11px}
+ .bp54-refresh-button{width:38px;height:38px;flex-basis:38px}}
+@media(prefers-reduced-motion:reduce){.bp54-refresh-button,#bp54-sync-note{transition:none!important}}
