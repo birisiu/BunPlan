@@ -5,7 +5,7 @@
 'use strict';
 const PROJECT_URL='https://aedyviqoelgbbrrtwayu.supabase.co';
 const KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
-const db=window.supabase?.createClient(PROJECT_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+const db=window.supabase?.createClient(PROJECT_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=url=>{try{const u=new URL(url);return u.protocol==='https:'?u.href:''}catch{return ''}};
@@ -29,6 +29,17 @@ async function authenticate(){
  $('admin-email').textContent=authSession.user.email||'Administrator';
  updateScreen(true);document.dispatchEvent(new CustomEvent('bunplan-admin-authenticated'));await loadDashboard();
 }
+$('login-google').onclick=async()=>{
+ if(!db){loginMessage('Supabase indisponibil');return}
+ const button=$('login-google');button.disabled=true;loginMessage('Se deschide autentificarea Google…');
+ try{
+  const {error}=await db.auth.signInWithOAuth({
+   provider:'google',
+   options:{redirectTo:'https://aedyviqoelgbbrrtwayu.supabase.co/functions/v1/bunplan-admin'}
+  });
+  if(error)throw error;
+ }catch(error){loginMessage('Google Login: '+error.message);button.disabled=false}
+};
 $('login-form').addEventListener('submit',async e=>{
  e.preventDefault();const btn=e.submitter;btn.disabled=true;loginMessage('Se verifică accesul…');
  try{
