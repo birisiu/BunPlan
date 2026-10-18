@@ -2,7 +2,7 @@ plugins { id 'com.android.application' }
 android {
     namespace 'ro.bunplan.app'
     compileSdk 36
-    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 36; resValue 'string','google_web_client_id',(System.getenv('BUNPLAN_GOOGLE_WEB_CLIENT_ID') ?: '732451774042-5ipkd9h085t9erioc8n6b087e93efnpb.apps.googleusercontent.com'); versionCode 48; versionName '4.8-shopping-polish-test' }
+    defaultConfig { applicationId 'ro.bunplan.app'; minSdk 24; targetSdk 36; resValue 'string','google_web_client_id',(System.getenv('BUNPLAN_GOOGLE_WEB_CLIENT_ID') ?: '732451774042-5ipkd9h085t9erioc8n6b087e93efnpb.apps.googleusercontent.com'); versionCode 49; versionName '4.9-brand-redesign-test' }
     buildTypes { debug { applicationIdSuffix '.ux43test'; minifyEnabled false }; release { minifyEnabled false } }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
