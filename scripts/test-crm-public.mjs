@@ -29,12 +29,13 @@ try{
   logo:document.querySelector('.login-card .logo-box')?.naturalWidth||0,
   styles:getComputedStyle(document.body).backgroundColor,
   modules:document.querySelectorAll('[data-section]').length,
-  jsLoaded:typeof document.querySelector('#login-google')?.onclick==='function',
+  jsLoaded:typeof document.querySelector('#login-reset-request')?.onclick==='function',
+  username:document.querySelector('#login-email')?.value,
   overflow:document.documentElement.scrollWidth-innerWidth
  }));
  console.log('LIVE CRM BROWSER',JSON.stringify({http:r?.status(),...state,errors}));
  if(r?.status()!==200||!state.login||!state.logo||state.modules<10||
-    !state.jsLoaded||state.overflow>3||errors.length)failed=true;
+    !state.jsLoaded||state.username!=='ADMIN'||state.overflow>3||errors.length)failed=true;
 }catch(e){console.error('Live CRM failed',String(e));failed=true;}
 await browser.close();
 if(failed)process.exitCode=1;
