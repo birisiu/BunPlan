@@ -35,7 +35,7 @@ $('login-google').onclick=async()=>{
  try{
   const {error}=await db.auth.signInWithOAuth({
    provider:'google',
-   options:{redirectTo:'https://aedyviqoelgbbrrtwayu.supabase.co/functions/v1/bunplan-admin'}
+   options:{redirectTo:window.location.origin+window.location.pathname}
   });
   if(error)throw error;
  }catch(error){loginMessage('Google Login: '+error.message);button.disabled=false}
