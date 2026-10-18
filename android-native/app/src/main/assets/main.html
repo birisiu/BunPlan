@@ -992,6 +992,7 @@ const RECIPE_API='https://aedyviqoelgbbrrtwayu.supabase.co/rest/v1/recipes';
 const API_KEY='sb_publishable_pLh8mKxNWKkq396TyM518A_N_q7fm0Z';
 const CACHE='bunplan-cloud-recipes-v3';
 let cloud=[],loading=true,loadError='',visible=40;
+window.bunplanCatalogCount=0;
 const previousLibrary=bpLibrary,previousDetail=bpDetail,previousOpen=bpOpen;
 function content(r){
  return [r.title,r.category,...(r.tags||[]),...(r.ingredient_details||[]).map(i=>i.name||'')].join(' ').toLocaleLowerCase('ro');
@@ -1034,7 +1035,11 @@ window.bpCloudCat=function(c){bp100.category=c;visible=40;bpSave();draw()};
 window.bpCloudMore=function(){visible+=40;fill()};
 window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
 bpLibrary=function(){
- const categories=['Toate',...new Set(items().map(r=>r.category))];
+ const cmsCategories=window.bunplanCMSGet?.('recipes','categories',[])||[];
+ const categories=['Toate',...new Set([
+  ...(Array.isArray(cmsCategories)?cmsCategories:[]).filter(x=>x!=='Toate'&&typeof x==='string'),
+  ...items().map(r=>r.category)
+ ])];
  const count=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).length+cloud.length;
  return commonTop()+heading('Rețete de gătit','Pași detaliați, cantități și idei pentru familie.')+
  '<div class="bp-notice"><b>'+count.toLocaleString('ro-RO')+' rețete disponibile</b> · '+BP100.length+' clasice și '+cloud.length+' variante noi din Supabase. '+
@@ -1138,6 +1143,7 @@ window.bunplanRefreshRecipes=function(){
    updateOriginalRows(data);
    cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
    window.bunplanCloudLatest=cloud;
+   window.bunplanCatalogCount=data.length;
    window.bunplanCloudRecipeUpdate?.(cloud);
    try{localStorage.setItem(CACHE,JSON.stringify(data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key))))}catch(e){}
    loading=false;loadError='';
