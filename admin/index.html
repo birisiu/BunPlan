@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="admin.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="admin.js" defer></script>
-<link rel="stylesheet" href="crm.css"><script src="crm.js" defer></script>
+<link rel="stylesheet" href="crm.css"><script src="crm.js" defer></script><link rel="stylesheet" href="content.css"><script src="content.js" defer></script>
 </head><body>
 <div id="app">
  <section id="login" class="login-shell">
@@ -55,6 +55,7 @@
      <button data-section="stores" class="tab">🏬 <span>Magazine și importuri</span></button>
      <button data-section="feedback" class="tab">💬 <span>Sesizări</span></button>
      <div class="nav-divider">SISTEM</div>
+     <button data-section="content" class="tab">✎ <span>Conținut aplicație</span></button>
      <button data-section="settings" class="tab">⚙️ <span>Setări aplicație</span></button>
      <button data-section="audit" class="tab">🕒 <span>Istoric modificări</span></button>
     </nav>
@@ -124,6 +125,14 @@
    <section id="feedback" class="panel-section hidden"><p class="section-caption">Mesajele primite prin canalul de feedback al aplicației și starea soluționării.</p>
     <div class="toolbar"><select id="crm-feedback-filter"><option value="">Toate</option><option value="open">Deschise</option><option value="in_progress">În lucru</option><option value="resolved">Rezolvate</option><option value="closed">Închise</option></select><button class="light" id="crm-feedback-refresh">Reîncarcă</button></div>
     <div id="crm-feedback-list"></div>
+   </section>
+   <section id="content" class="panel-section hidden">
+    <p class="section-caption">Textele, meniul, pagina Acasă, tutorialul și conținutul vizibil în BunPlan sunt administrate aici. Salvezi în Supabase, utilizatorii trag ecranul în jos și văd noua versiune. Codul Android și componentele native nu se schimbă prin CRM.</p>
+    <div class="crm-sysnotice">Rețetele, fotografiile, ingredientele, produsele și prețurile se gestionează din modulele lor dedicate. Aici editezi conținutul și configurația interfeței, fără APK nou.</div>
+    <div class="crm-columns bp56-cms-columns">
+     <div id="bp56-content-categories" class="bp56-cms-menu" aria-label="Secțiuni de conținut"></div>
+     <div id="bp56-content-editor" class="panel bp56-cms-editor"><h2>Alege o secțiune</h2><p>Selectează un modul din stânga pentru editarea textelor și a opțiunilor.</p></div>
+    </div>
    </section>
    <section id="settings" class="panel-section hidden"><p class="section-caption">Setările publice sunt sincronizate cu aplicația BunPlan la conectare. Modificările tehnice Google Login / AdMob se fac separat, cu teste și versiune nouă când este necesar.</p>
     <div id="crm-settings-list"></div></section>
