@@ -9,6 +9,14 @@ const failures=[],browser=await chromium.launch({headless:true});
 let productTitle='Terci cu mere';
 const settings=[{key:'maintenance_banner',value:{enabled:false,message:''}},
  {key:'shopping_notice',value:{enabled:true,message:'Prețuri orientative'}}];
+const cms=[
+ {section_key:'home',content:{subtitle:'Salut din Supabase'}},
+ {section_key:'recipes',content:{title:'Rețete de gătit'}},
+ {section_key:'navigation',content:{home:'Acasă',recipes:'Rețete',shopping:'Lista',profile:'Profil'}},
+ {section_key:'shopping',content:{paid_title:'Cheltuielile săptămânii'}},
+ {section_key:'profile',content:{title:'Profilul meu'}},
+ {section_key:'retailers',content:{supported_stores:['Lidl','Kaufland']}}
+];
 const recipe=()=>[{legacy_key:'BP0001',title:productTitle,category:'Mic dejun',
  servings:2,minutes_to_prepare:20,variant_of:'Terci de ovăz cald',
  instructions:['Pune ovăzul în oală.','Amestecă și gătește 10 minute.'],
@@ -26,7 +34,8 @@ function priceRefs(){
 const routeHandler=route=>{
  const u=route.request().url();
  const payload=u.includes('/recipes?')?recipe():u.includes('bunplan_recipe_ingredient_pricing')?priceRefs():
- u.includes('/ingredients?')?[]:u.includes('bunplan_app_settings')?settings:[];
+ u.includes('/ingredients?')?[]:u.includes('bunplan_app_settings')?settings:
+ u.includes('/bunplan_content_sections?')?cms:[];
  return route.fulfill({status:200,contentType:'application/json',
   headers:{'Access-Control-Allow-Origin':'*','Cache-Control':'no-store'},body:JSON.stringify(payload)});
 };
@@ -54,9 +63,10 @@ try{
   }
   const after=await page.evaluate(()=>({done:localStorage.getItem('bunplan_app_tour_v54_finished'),
    overlay:!!document.querySelector('#bp54-tour-layer'),
-   syncButton:!!document.querySelector('.bp54-refresh-button'),
+   pullGesture:!!document.querySelector('#bp56-pull-indicator'),
+   refreshButtonGone:!document.querySelector('.bp54-refresh-button'),
    overflow:document.documentElement.scrollWidth-innerWidth}));
-  if(after.done!=='1'||after.overlay||!after.syncButton||after.overflow>2)
+  if(after.done!=='1'||after.overlay||!after.pullGesture||!after.refreshButtonGone||after.overflow>2)
    failures.push({width,test:'finish-first-tour',after});
   await page.evaluate(()=>go('profile'));
   await page.locator('#bp54-start-tour').click();
@@ -67,15 +77,28 @@ try{
   if(width===390){
    productTitle='Terci îmbunătățit de administrator';
    settings[0].value={enabled:true,message:'Anunț nou din CRM'};
-   const result=await page.evaluate(()=>bp54RefreshAll());
+   // Mimic the native touch gesture instead of clicking any refresh control.
+   cms[0].content.subtitle='Actualizat prin CMS';
+   const result=await page.evaluate(async()=>{
+     const touch=(type,y)=>document.dispatchEvent(new TouchEvent(type,{
+       bubbles:true,cancelable:true,touches:type==='touchend'?[]:[new Touch({identifier:1,target:document.body,clientX:150,clientY:y})],
+       changedTouches:[new Touch({identifier:1,target:document.body,clientX:150,clientY:y})],
+       targetTouches:type==='touchend'?[]:[new Touch({identifier:1,target:document.body,clientX:150,clientY:y})]
+     }));
+     go('home');window.scrollTo(0,0);
+     touch('touchstart',80);touch('touchmove',195);touch('touchend',195);
+     await new Promise(resolve=>setTimeout(resolve,250));
+     return window.bunplanLastSync?{ok:window.bunplanLastSync.results.every(x=>x.ok)}:{ok:false};
+   });
    const fresh=await page.evaluate(()=>({
     title:BP100.find(x=>x.id==='BP0001')?.title,
     at:window.bunplanLastSync?.at,settings:window.BunPlanPublicSettings?.maintenance_banner?.value?.message,
     notice:document.body.textContent.includes('Anunț nou din CRM'),
+    copiedText:document.body.textContent.includes('Actualizat prin CMS'),
     planPreserved:Array.isArray(bp100.days)
    }));
    if(!result.ok||fresh.title!==productTitle||!fresh.at||
-      fresh.settings!=='Anunț nou din CRM'||!fresh.notice||!fresh.planPreserved)
+      fresh.settings!=='Anunț nou din CRM'||!fresh.notice||!fresh.copiedText||!fresh.planPreserved)
     failures.push({width,test:'crm-live-refresh',result,fresh});
   }
   if(errors.length)failures.push({width,test:'javascript-errors',errors});
