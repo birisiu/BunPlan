@@ -133,6 +133,24 @@ try{
         if(state.width>state.vw+2||!state.main||!state.menu||state.buttons<2||errors.length)
       failures.push({test:'navigation-responsive-smoke',width,screen,state,errors:[...errors]});
   }
+  if(width===390){
+    const feedback=await page.evaluate(()=>{
+      go('profile');
+      window.BunPlanCloud.sendFeedback=(category,message)=>{
+        window.__bpFeedbackSent={category,message};
+        window.BunPlanCloudDone('feedback',{ok:true,data:{id:'test-feedback'}});
+      };
+      bp52FeedbackOpen();
+      document.getElementById('bp52-feedback-category').value='bug';
+      document.getElementById('bp52-feedback-message').value='Butonul de cumpărături nu răspunde.';
+      bp52SendFeedback();
+      return {sent:window.__bpFeedbackSent,
+       success:document.getElementById('bp52-feedback-status')?.textContent};
+    });
+    if(feedback.sent?.category!=='bug'||!feedback.success?.includes('înregistrat'))
+      failures.push({test:'mobile-feedback-to-crm-bridge',feedback});
+    await page.evaluate(()=>bp52FeedbackClose());
+  }
   await page.evaluate(()=>{bp100.detail='R001';go('detail100')});
   const recipeDetails=await page.locator('.bp-steps li').count();
   if(recipeDetails<2||errors.length)failures.push({test:'classic-recipe-steps',width,recipeDetails,errors});
