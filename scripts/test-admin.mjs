@@ -61,7 +61,7 @@ try{
   if(title!=='Terci de ovăz cu mere'||ingredient!==1)failures.push({width,test:'recipe-editor-load',title,ingredient});
   await page.locator('textarea[name="short_description"]').fill('Descriere editată manual în admin.');
   await page.locator('#editor-save').click();
-  await page.waitForSelector('#editor-backdrop.hidden',{timeout:7000});
+  await page.waitForSelector('#editor-backdrop',{state:'hidden',timeout:7000});
   const saved=await page.evaluate(()=>window.__lastSaved);
   if(saved?.short_description!=='Descriere editată manual în admin.'||saved?.image_reviewed!==false)
     failures.push({width,test:'recipe-save-payload',saved});
@@ -69,7 +69,7 @@ try{
   await page.locator('[data-edit-ingredient]').first().click();
   await page.locator('input[name="name"]').fill('Ovăz integral');
   await page.locator('#editor-save').click();
-  await page.waitForSelector('#editor-backdrop.hidden',{timeout:7000});
+  await page.waitForSelector('#editor-backdrop',{state:'hidden',timeout:7000});
   const savedIngredient=await page.evaluate(()=>window.__lastSaved);
   if(savedIngredient.name!=='Ovăz integral')failures.push({width,test:'ingredient-save',savedIngredient});
   const horizontal=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
