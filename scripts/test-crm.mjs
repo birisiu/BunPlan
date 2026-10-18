@@ -1,6 +1,7 @@
 import {chromium} from 'playwright';
 import {spawn} from 'node:child_process';
 import {setTimeout as sleep} from 'node:timers/promises';
+import {mkdirSync} from 'node:fs';
 const port=8896,root='http://127.0.0.1:'+port;
 const server=spawn('python3',['-m','http.server',String(port),'--bind','127.0.0.1'],{stdio:'ignore'});
 await sleep(650);
@@ -96,6 +97,19 @@ try{
  await page.locator('#crm-price-amount').fill('7.99');
  page.once('dialog',dialog=>dialog.accept());
  await page.locator('#crm-price-form button').click();
+ await page.setViewportSize({width:390,height:850});
+ for(const section of ['dashboard','users','recipes','products','prices','settings']){
+  await page.locator('[data-section="'+section+'"]').click();
+  await page.waitForTimeout(90);
+  const data=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth-innerWidth,active:document.querySelector('.panel-section:not(.hidden)')?.id}));
+  if(data.overflow>3||data.active!==section)failures.push({test:'crm-mobile-navigation',section,data});
+ }
+ mkdirSync('builds/ui-preview',{recursive:true});
+ await page.locator('[data-section="dashboard"]').click();
+ await page.screenshot({path:'builds/ui-preview/bunplan-crm-dashboard-mobile.png',fullPage:true});
+ await page.setViewportSize({width:1280,height:900});
+ await page.locator('[data-section="users"]').click();
+ await page.screenshot({path:'builds/ui-preview/bunplan-crm-users-desktop.png',fullPage:true});
  const changes=await page.evaluate(()=>window.__crmWrites);
  for(const name of ['bunplan_crm_notes','products','bunplan_app_settings','product_prices']){
   if(!changes.some(x=>x.name===name))failures.push({test:'crm-mutation',name,changes});
