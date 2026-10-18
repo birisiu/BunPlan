@@ -1,0 +1,141 @@
+/* BunPlan 4.9 — unified app branding inspired by approved visual direction.
+   Design tokens */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+:root{
+ --forest:#0F3D2E;--green:#2E7D4F;--sage:#6CB46F;
+ --lime:#D8F5A7;--cream:#FBFDF6;--ink:#102F24;--muted:#748276;
+ --border:#E5ECE2;--card:#fff;--bp-shadow:0 12px 32px rgba(15,61,46,.065);
+}
+html,body{background:var(--cream);font-family:Nunito,"DM Sans",system-ui,sans-serif;color:var(--ink);overflow-x:hidden}
+.app{background:var(--cream);max-width:520px;box-shadow:0 0 40px #0f3d2e0b}
+.scroll{padding:calc(17px + env(safe-area-inset-top,0px)) clamp(14px,4vw,24px) calc(108px + env(safe-area-inset-bottom,0px));min-width:0}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:22px;min-height:51px}
+.logo{display:flex;align-items:center;gap:9px;min-width:0;font-family:Nunito,system-ui,sans-serif;font-size:27px;font-weight:900;letter-spacing:-1.15px}
+.bp-brand-symbol{width:47px;height:47px;object-fit:contain;flex:0 0 47px;border-radius:15px}
+.bp-brand-word{white-space:nowrap;line-height:1}
+.bp-brand-word strong{color:var(--forest);font-weight:900}
+.bp-brand-word em{color:var(--sage);font-style:normal;font-weight:900}
+.avatar{margin-left:auto;width:46px;height:46px;background:#fff;color:var(--forest);
+ border:1px solid var(--border);box-shadow:0 3px 13px #0f3d2e0d;
+ border-radius:16px;display:grid;place-items:center;font-size:22px}
+.avatar svg{width:24px;height:24px;stroke:currentColor}
+.title{font-family:Nunito,system-ui,sans-serif;font-size:clamp(26px,6.9vw,33px);font-weight:900;line-height:1.16;letter-spacing:-.85px;margin:5px 0 7px}
+.h2{font-family:Nunito,system-ui,sans-serif;letter-spacing:-.35px;font-weight:900}
+.sub{font-size:13px;line-height:1.52;margin-bottom:18px;color:var(--muted)}
+.smallcaps{color:#718579;font-weight:900;letter-spacing:1.35px}
+.btn{background:var(--forest);color:#fff;font-weight:900;border-radius:17px;min-height:44px}
+.btn.lime{background:var(--lime);color:var(--forest)}
+.btn.out{border-color:#DCE7DE;color:var(--forest)}
+.btn:active{transform:scale(.988)}
+.storepanel,.profile-block,.profile-hero,.bp35-choice,.bp35-week,.bp35-budget,.bp35-summary,
+.bp35-basket,.bp35-product,.bp35-warning,.bp-notice,.bp-meal,.bp35-cardopt,.bp35-recipecost{
+ border-radius:22px;
+}
+.storepanel,.profile-block,.profile-hero,.bp35-choice,.bp35-week,.bp35-budget{
+ border:1px solid var(--border);background:var(--card);box-shadow:var(--bp-shadow);
+}
+.bp-brand-home{display:flex;flex-direction:column;gap:18px}
+.bp-brand-greeting{margin-bottom:2px}
+.bp-brand-greeting h1{font-size:clamp(25px,6.6vw,33px);line-height:1.17;font-weight:900;letter-spacing:-.6px;margin:0}
+.bp-brand-greeting p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.bp-weekline{background:#fff;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;
+ padding:8px 6px;border:1px solid #E5ECE2;border-radius:22px}
+.bp-weekline button{border:0;border-radius:15px;background:transparent;color:#758377;min-width:0;
+ display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 2px 8px;font-size:10px;font-weight:800}
+.bp-weekline button span{font-size:16px;font-weight:900}
+.bp-weekline button.active{background:var(--lime);color:var(--forest)}
+.bp-brand-sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.bp-brand-sectionhead h2{font-size:19px;font-weight:900;margin:0}
+.bp-brand-sectionhead button{border:0;background:transparent;color:var(--green);font-size:12px;font-weight:900}
+.bp-brand-feature{display:flex;gap:12px;align-items:stretch;border:1px solid var(--border);
+ border-radius:21px;background:white;padding:10px;box-shadow:var(--bp-shadow);min-width:0}
+.bp-brand-food{width:117px;flex:0 0 117px;min-height:116px;border-radius:16px;
+ background:radial-gradient(circle at 66% 29%,#FFE9AD 0 15%,transparent 16%),
+ radial-gradient(circle at 24% 78%,#75B87A 0 13%,transparent 14%),
+ linear-gradient(130deg,#E7F6D7,#DCE9BC);display:grid;place-items:center;font-size:60px}
+.bp-brand-food.small{width:85px;flex-basis:85px;min-height:84px;font-size:42px}
+.bp-brand-featuretext{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.bp-brand-featuretext .muted{font-size:11px;line-height:1.35}
+.bp-brand-featuretext b{font-size:15px;line-height:1.35;overflow-wrap:break-word}
+.bp-brand-featuretext button{align-self:start;border:0;background:#E9F6DC;color:var(--forest);
+ border-radius:11px;padding:7px 12px;font-weight:900;font-size:11px}
+.bp-brand-budget{border:1px solid #E9EEE5;background:white;border-radius:23px;
+ padding:17px;box-shadow:var(--bp-shadow)}
+.bp-brand-budget-grid{display:flex;align-items:center;gap:17px;margin:14px 0}
+.bp-brand-ring{width:116px;height:116px;flex:0 0 116px;border-radius:50%;display:grid;place-items:center;
+ background:conic-gradient(var(--sage) 0 var(--bp-progress),#ECF2E7 var(--bp-progress) 100%)}
+.bp-brand-ringinner{background:white;width:88px;height:88px;border-radius:50%;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:17px;font-weight:900}
+.bp-brand-ringinner small{font-size:11px;color:var(--muted);font-weight:700}
+.bp-brand-budgetcopy{min-width:0;flex:1}
+.bp-brand-budgetcopy strong{font-size:19px;display:block}
+.bp-brand-budgetcopy small{color:var(--muted);font-size:12px;line-height:1.5;display:block}
+.bp-brand-budget .btn{width:100%;margin-top:9px}
+.bp-brand-catalogpromo{display:flex;align-items:center;gap:11px;padding:13px 14px;
+ border-radius:19px;background:#EAF8DA;border:1px solid #DEEDC8}
+.bp-brand-catalogpromo span:first-child{font-size:24px}
+.bp-brand-catalogpromo div{flex:1;min-width:0}
+.bp-brand-catalogpromo b{font-size:12px;display:block}
+.bp-brand-catalogpromo small{font-size:11px;color:#687E66;display:block}
+.bp-brand-catalogpromo button{color:var(--forest);border:0;background:transparent;font-weight:900;font-size:20px}
+.bp-brand-retailer{display:flex;align-items:center;gap:10px;background:#fff;
+ border:1px solid var(--border);border-radius:18px;padding:11px 14px}
+.bp-brand-retailer .storebrand img{height:30px;width:30px}
+.bp-brand-retailer .storebrand-name{font-size:13px}
+.bp-brand-retailer button{margin-left:auto;border:0;background:#F0F5EC;color:var(--forest);
+ padding:8px 12px;border-radius:12px;font-weight:900;font-size:12px}
+.bp-brand-disclaimer{font-size:11px;line-height:1.5;color:#798778;padding:0 3px 8px}
+/* Recipes: clean 2-column image-first tiles, even with 1,100 database entries */
+#bpCloudResults{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}
+#bpCloudResults .bp-recipecard{min-width:0;width:100%;display:flex;flex-direction:column;align-items:stretch;
+ text-align:left;padding:0;border:1px solid #E8EEE6;border-radius:20px;background:#fff;
+ overflow:hidden;box-shadow:var(--bp-shadow);position:relative;gap:0}
+#bpCloudResults .bp-emoji{width:100%;min-height:115px;border-radius:0;
+ background:radial-gradient(circle at 22% 32%,#F8DE90 0 13%,transparent 14%),
+ radial-gradient(circle at 75% 68%,#9ACD7E 0 19%,transparent 20%),
+ linear-gradient(125deg,#D8EFCC,#F1EED6);
+ display:grid;place-items:center;font-size:55px;flex:0 0 120px}
+#bpCloudResults .bp-recipecard:nth-child(4n+2) .bp-emoji{background:radial-gradient(circle at 68% 34%,#EEC78D 0 19%,transparent 20%),linear-gradient(125deg,#E1EDCC,#CBDDAB)}
+#bpCloudResults .bp-recipecard:nth-child(4n+3) .bp-emoji{background:radial-gradient(circle at 25% 62%,#F8D3A8 0 20%,transparent 21%),linear-gradient(125deg,#D8EABF,#F5F1E2)}
+#bpCloudResults .bp-recipecard:nth-child(4n+4) .bp-emoji{background:radial-gradient(circle at 69% 33%,#A9CD86 0 22%,transparent 23%),linear-gradient(125deg,#F2E7CE,#D7EACA)}
+#bpCloudResults .bp-rcbody{display:flex;flex-direction:column;gap:5px;padding:11px 12px 12px;min-height:111px}
+#bpCloudResults .bp-rcbody b{font-size:13px;line-height:1.34;font-weight:900;letter-spacing:-.1px;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#bpCloudResults .bp-rcbody small{color:#728376;font-size:10px;line-height:1.35;display:block;
+ overflow-wrap:break-word}
+#bpCloudResults .bp-rcbody small:last-child{color:var(--green);font-weight:800}
+#bpCloudResults .bp-chevron{position:absolute;right:9px;top:9px;border-radius:50%;
+ width:29px;height:29px;background:#FFFFFFEE;display:grid;place-items:center;color:var(--forest);
+ font-size:19px;line-height:1}
+.bp-categories{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;padding:4px 0 9px}
+.bp-categories::-webkit-scrollbar{display:none}
+.bp-categories .chip{white-space:nowrap;flex:0 0 auto;border-radius:14px}
+.p-headsearch{border-radius:15px;background:#fff;min-height:50px;font-size:16px}
+.bp35-product,.bp48-shopping-item{border:1px solid #E8EEE8;box-shadow:none}
+.bp35-summary,.bp35-budget{background:#fff;box-shadow:var(--bp-shadow)}
+.bp35-boughtheading .h2{font-size:20px}
+.bp35-productinfo b{font-weight:900}
+.bp35-checklist .bp48-shopping-item{border-radius:17px;margin:0 0 10px}
+.bp35-checklist{background:transparent;box-shadow:none}
+.bp35-productprice{font-variant-numeric:tabular-nums}
+.profile-hero{padding:18px;box-shadow:var(--bp-shadow)}
+.profile-avatar{background:var(--lime);color:var(--forest)}
+.profile-block{padding:19px;box-shadow:var(--bp-shadow)}
+/* Explicit four-section bottom navigation */
+.bottom{max-width:520px;padding:9px 8px calc(10px + env(safe-area-inset-bottom,0px));
+ background:rgba(255,255,255,.98);border-top:1px solid #E7EEE6;box-shadow:0 -8px 24px #0f3d2e0b}
+.bottom .nav{flex:1;min-width:0;max-width:118px;gap:4px;font-size:10px;font-weight:800;padding:4px 2px 1px}
+.bottom .nav .ni{height:28px;display:grid;place-items:center;padding:2px 14px;border-radius:16px;box-sizing:content-box}
+.bottom .nav .ni svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.bottom .nav.active{color:var(--forest)}
+.bottom .nav.active .ni{background:var(--lime)}
+@media(max-width:359px){
+ .bp-brand-ring{width:100px;height:100px;flex-basis:100px}.bp-brand-ringinner{width:76px;height:76px}
+ .bp-brand-food{width:94px;flex-basis:94px;font-size:49px}
+ #bpCloudResults{gap:9px}
+ #bpCloudResults .bp-emoji{min-height:98px;flex-basis:98px}
+ #bpCloudResults .bp-rcbody{padding:9px;min-height:117px}
+ .bp-brand-budget-grid{gap:10px}
+}
+@media(min-width:520px){.bp-brand-food{width:150px;flex-basis:150px}}
+@media(prefers-reduced-motion:reduce){.btn:active{transform:none}}
