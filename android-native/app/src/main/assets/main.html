@@ -1069,7 +1069,8 @@ loading=true;redraw();
 // and all newly created admin recipes. Public RLS blocks unpublished content.
 function updateOriginalRows(rows){
  const known=rows.filter(r=>/^R\d{3}$/.test(r.legacy_key));
- if(!known.length)return; // Keep offline bundled originals if server is partial.
+ // The server is authoritative after all pages have arrived. An unpublished
+ // original must disappear from the public list, even when none are published.
  const published=new Set(known.map(r=>r.legacy_key));
  for(let i=BP100.length-1;i>=0;i--){
   const current=BP100[i];
@@ -1097,13 +1098,37 @@ let refreshPromise=null;
 window.bunplanRefreshRecipes=function(){
  if(refreshPromise)return refreshPromise;
  loading=true;loadError='';redraw();
- const url=RECIPE_API+'?select='+CATALOG_SELECT+
-  '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit=1500&v='+Date.now();
- refreshPromise=fetch(url,{cache:'no-store',headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}})
-  .then(async response=>{
-   if(!response.ok)throw Error('HTTP '+response.status);
-   const data=await response.json();
-   if(!Array.isArray(data)||data.length===0)throw Error('Catalog gol sau invalid');
+ const loadAllPublished=async()=>{
+  const pageSize=250;
+  const records=[];
+  // Supabase installations often limit one REST response to 1,000 rows.
+  // Fetch small, explicit pages until the LAST short page, including
+  // admin-created and the 100 original recipe records.
+  for(let offset=0;offset<10000;offset+=pageSize){
+   const url=RECIPE_API+'?select='+CATALOG_SELECT+
+    '&published=eq.true&legacy_key=not.is.null&order=legacy_key.asc&limit='+pageSize+
+    '&offset='+offset+'&v='+Date.now();
+   const response=await fetch(url,{
+    cache:'no-store',
+    headers:{apikey:API_KEY,Accept:'application/json','Cache-Control':'no-cache'}
+   });
+   if(!response.ok)throw Error('Catalog: HTTP '+response.status+' la pagina '+(1+offset/pageSize));
+   const page=await response.json();
+   if(!Array.isArray(page))throw Error('Răspuns invalid pentru rețete');
+   records.push(...page);
+   if(page.length<pageSize)return records;
+  }
+  throw Error('Limita de 10.000 de rețete a fost atinsă; mărește paginarea.');
+ };
+ refreshPromise=loadAllPublished()
+  .then(async data=>{
+   if(!Array.isArray(data))throw Error('Catalog invalid');
+   const ids=new Set();
+   for(const recipe of data){
+    if(!recipe.legacy_key||ids.has(recipe.legacy_key))
+     throw Error('Identificator de rețetă duplicat ori lipsă în catalog');
+    ids.add(recipe.legacy_key);
+   }
    updateOriginalRows(data);
    cloud=data.filter(r=>/^(BP\d{4}|ADM-)/.test(r.legacy_key)).map(compatible);
    window.bunplanCloudLatest=cloud;
