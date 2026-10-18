@@ -32,6 +32,8 @@ jobs:
         run: node scripts/test-tour-refresh.mjs
       - name: Test complete BunPlan CRM operations
         run: node scripts/test-crm.mjs
+      - name: Test backend content CMS editing
+        run: node scripts/test-content-cms.mjs
       - name: Smoke-test the REAL published Supabase CRM website
         run: node scripts/test-crm-public.mjs
       - name: Keep UI screenshots for review
