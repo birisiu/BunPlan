@@ -1,0 +1,28 @@
+/* CRM 5.5 content editor */
+.bp56-cms-columns{grid-template-columns:minmax(225px,.73fr) minmax(0,1.5fr);gap:16px}
+.bp56-cms-menu{display:grid;gap:8px;align-content:start}
+.bp56-cms-section{display:flex;gap:12px;align-items:center;width:100%;border:1px solid #e4eadf;
+ background:white;text-align:left;color:#183e2e;padding:14px;border-radius:16px;transition:.15s}
+.bp56-cms-section.active{background:#e9f7dc;border-color:#a0d879}
+.bp56-cms-section>span:nth-child(2){flex:1;min-width:0}
+.bp56-cms-section strong{font-size:13px;display:block}
+.bp56-cms-section small{color:#6a7f6c;font-size:10px;line-height:1.4;display:block;margin-top:3px}
+.bp56-cms-menu-icon{font-size:25px;flex:0 0 38px;width:38px;height:38px;
+ background:#eff6e9;border-radius:12px;display:grid;place-items:center}
+.bp56-cms-status{font-size:15px;color:#478d47}
+.bp56-cms-editor{min-width:0}
+.bp56-cms-head{display:flex;gap:13px;align-items:center;border-bottom:1px solid #e7efe4;padding-bottom:16px;margin-bottom:20px}
+.bp56-cms-head h2{margin:2px 0;font-size:20px}.bp56-cms-head p{margin:3px 0;color:#66806c;font-size:11px}
+.bp56-cms-field{display:grid;gap:5px;margin-bottom:8px;text-transform:none}
+.bp56-cms-field strong{font-size:12px;font-weight:900;text-transform:none}
+.bp56-cms-field small{font-size:10px;color:#8a9689;font-weight:500}
+.bp56-cms-field input,.bp56-cms-field textarea{width:100%;background:#fbfdf8;font-size:13px;font-weight:600;min-width:0}
+.bp56-cms-field textarea{line-height:1.5;min-height:70px}
+.bp56-cms-switch{display:flex;gap:11px;align-items:center;font-size:12px;font-weight:900;
+ padding:10px;background:#f2f8ed;border-radius:12px}
+.bp56-cms-switch input{width:18px;height:18px;flex:0 0 18px;accent-color:#1d6946}
+.bp56-cms-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #e7efe4;padding-top:16px;flex-wrap:wrap}
+.bp56-cms-actions span{font-size:11px;color:#7b837b;max-width:300px}
+.bp56-cms-actions span.saved{color:#1b7642}
+@media(max-width:970px){.bp56-cms-columns{grid-template-columns:1fr}.bp56-cms-menu{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:630px){.bp56-cms-menu{grid-template-columns:1fr}.bp56-cms-section{padding:10px 12px}.bp56-cms-menu-icon{font-size:22px;width:34px;height:34px}}

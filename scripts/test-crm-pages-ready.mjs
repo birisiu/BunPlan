@@ -4,7 +4,7 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 import { setTimeout as wait } from 'node:timers/promises';
-const site='docs';const same=['index.html','admin.css','admin.js','crm.css','crm.js','bunplan-icon.svg'];
+const site='docs';const same=['index.html','admin.css','admin.js','crm.css','crm.js','content.css','content.js','bunplan-icon.svg'];
 for(const file of same){
  const expected=fs.readFileSync(path.join('admin',file),'utf8');
  const actual=fs.readFileSync(path.join(site,file),'utf8');

@@ -139,7 +139,7 @@ $('logout').onclick=async()=>{await db.auth.signOut();updateScreen(false);loginM
 function section(name){
  session.section=name;for(const s of document.querySelectorAll('.panel-section'))s.classList.toggle('hidden',s.id!==name);
  for(const b of document.querySelectorAll('.tab'))b.classList.toggle('active',b.dataset.section===name);
- $('page-title').textContent={dashboard:'Dashboard',recipes:'Biblioteca de rețete',ingredients:'Ingrediente',users:'Utilizatori / CRM',plans:'Meniuri și liste',products:'Produse',prices:'Prețuri',stores:'Magazine și importuri',feedback:'Sesizări',settings:'Setări aplicație',audit:'Istoric modificări'}[name]||'BunPlan CRM';
+ $('page-title').textContent={dashboard:'Dashboard',recipes:'Biblioteca de rețete',ingredients:'Ingrediente',users:'Utilizatori / CRM',plans:'Meniuri și liste',products:'Produse',prices:'Prețuri',stores:'Magazine și importuri',feedback:'Sesizări',content:'Conținut aplicație',settings:'Setări aplicație',audit:'Istoric modificări'}[name]||'BunPlan CRM';
  flash('');if(name==='dashboard')loadDashboard();if(name==='recipes')loadRecipes();if(name==='ingredients')loadIngredients();
  document.dispatchEvent(new CustomEvent('bunplan-admin-section',{detail:{name}}));
 }
