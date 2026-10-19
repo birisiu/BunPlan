@@ -34,6 +34,8 @@ jobs:
         run: node scripts/test-diet-nutrition.mjs
       - name: Check estimated kcal and navigation restoration
         run: node scripts/test-estimated-kcal-navigation.mjs
+      - name: Check saved cooking recipes and AdMob banner wiring
+        run: node scripts/test-saved-cooking.mjs
       - name: Test guided first-use tour and fresh CRM synchronization
         run: node scripts/test-tour-refresh.mjs
       - name: Test complete BunPlan CRM operations
