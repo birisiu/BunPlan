@@ -1022,9 +1022,65 @@ function nutritionMatch(r){
  }
  return true;
 }
+/* Indicative kcal derived from recognizable recipe ingredients and amounts.
+   An estimate is shown only when all ingredients have known units and matches;
+   unknown entries stay unknown rather than silently adding zero. */
+const KCAL_100G=[
+ [/ulei|untura|untură/,884],[/unt(?!ură)|margarina/,717],
+ [/orez|paste|faina|făină|ovaz|ovăz|cuscus|bulgur|quinoa/,360],
+ [/zahar|zahăr|miere/,390],[/nuci|migdale|arahide|seminte|semințe/,585],
+ [/branza|brânză|cascaval|cașcaval|parmezan|telemea/,300],
+ [/iaurt|lapte|chefir/,65],[/oua|ouă|ou\b/,143],
+ [/piept de pui|pui|curcan/,145],[/vita|vită|porc/,210],
+ [/somon/,208],[/ton|peste|pește|cod/,105],
+ [/linte|naut|năut|fasole|mazare|mazăre/,115],
+ [/cartof/,80],[/avocado/,160],[/banana|banană/,89],
+ [/mar|măr|mere|para|pară|portocal/,55],
+ [/rosie|roșie|rosii|roșii|ardei|morcov|ceapa|ceapă|dovlecel|broccoli|conopida|conopidă|spanac|ciuperci|varza|varză|castravete/,30],
+ [/apa|apă/,0]
+];
+function estimatedKcal(r){
+ const ingredients=Array.isArray(r.ingredients)?r.ingredients:[];
+ if(!ingredients.length)return null;
+ let total=0;
+ for(const it of ingredients){
+  const name=String(it.name||it.id||'').toLocaleLowerCase('ro');
+  const match=KCAL_100G.find(([pattern])=>pattern.test(name));
+  const unit=String(it.unit||'').toLocaleLowerCase('ro').trim();
+  const qty=Number(it.quantity);
+  if(!match||!Number.isFinite(qty)||qty<=0)return null;
+  let grams;
+  if(['g','gr','gram','grame','ml'].includes(unit))grams=qty;
+  else if(unit==='kg'||unit==='l')grams=qty*1000;
+  else if(['buc','buc.','bucati','bucăți'].includes(unit)){
+   if(/oua|ouă|ou\b/.test(name))grams=qty*55;
+   else if(/banana|banană/.test(name))grams=qty*120;
+   else if(/mar|măr|mere/.test(name))grams=qty*160;
+   else if(/ceapa|ceapă/.test(name))grams=qty*110;
+   else if(/cartof/.test(name))grams=qty*160;
+   else if(/morcov/.test(name))grams=qty*75;
+   else if(/ardei/.test(name))grams=qty*140;
+   else return null;
+  }else return null;
+  total+=grams*match[1]/100;
+ }
+ return Math.round(total);
+}
+function nutritionValue(r){
+ const servings=Number(r.servings)||2;
+ const exact=r.kcal_per_recipe;
+ if(exact!==null&&exact!==undefined&&Number.isFinite(Number(exact)))
+  return {total:Math.round(Number(exact)),servings,estimated:false};
+ const estimate=estimatedKcal(r);
+ return estimate===null?null:{total:estimate,servings,estimated:true};
+}
 function nutritionLabel(r){
- const n=r.kcal_per_recipe,servings=Number(r.servings);
- return n!==null&&Number.isFinite(n)&&servings>0?Math.round(n/servings)+' kcal/porție':'Kcal necunoscute';
+ const info=nutritionValue(r);
+ return info?(info.estimated?'≈ ':'')+Math.round(info.total/info.servings)+' kcal/porție'+(info.estimated?' (estimativ)':''):'Kcal necunoscute';
+}
+function nutritionRecipeLabel(r){
+ const info=nutritionValue(r);
+ return info?(info.estimated?'≈ ':'')+info.total+' kcal/rețetă'+(info.estimated?' (estimativ)':''):'Kcal/rețetă necunoscute';
 }
 function filtered(){
  const q=(bp100.query||'').trim().toLocaleLowerCase('ro');
@@ -1610,6 +1666,39 @@ bpDetail=function(){
  .bp48-shopping-item,.bp48-shopping-main,.bp48-shopping-actions{transition:none!important}
 }
 </style>
+<script>
+/* Keep each screen's position independently and restore on navigation back.
+   A stored scroll is applied after rendering and once again when layout settles. */
+(function(){
+'use strict';
+const positions=Object.create(null);
+let current=state.tab;
+function key(tab){return String(tab||'home')}
+function save(){positions[key(current)]=window.scrollY||document.scrollingElement?.scrollTop||0}
+const originalGo=go;
+go=function(tab){
+ save();
+ const target=({recipes:'library100',plan:'menu100',list:'basket100',stores:'menu100',offers:'basket100',catalog:'basket100'})[tab]||tab;
+ current=target;
+ originalGo(tab);
+ const wanted=positions[key(target)]||0;
+ const apply=()=>window.scrollTo(0,Math.min(wanted,Math.max(0,(document.scrollingElement?.scrollHeight||0)-innerHeight)));
+ apply();requestAnimationFrame(apply);
+};
+const oldDraw=draw;
+draw=function(){
+ const tab=state.tab;
+ const same=tab===current;
+ const old=window.scrollY||document.scrollingElement?.scrollTop||0;
+ oldDraw();
+ current=tab;
+ if(same){
+  const restore=()=>window.scrollTo(0,Math.min(old,Math.max(0,(document.scrollingElement?.scrollHeight||0)-innerHeight)));
+  restore();requestAnimationFrame(restore);
+ }
+};
+})();
+</script>
 <link rel="stylesheet" href="brands/bunplan-ui.css"/>
 <script src="brands/bunplan-ui.js"></script>
 <link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
