@@ -1730,20 +1730,6 @@ function updateBanner(){
   window.BunPlanAds?.showCookingBanner?.(106);
  else window.BunPlanAds?.hideCookingBanner?.();
 }
-// Capture navigation before other screen-level handlers. Never leave an Android
-// AdView overlay active when navigating out of a cooking recipe.
-document.addEventListener('click',event=>{
- const button=event.target.closest?.('nav.bottom button.nav');
- if(!button||!['savedCooking','savedCookingDetail'].includes(state.tab))return;
- const id=nav.find(([tab])=>button.getAttribute('onclick')?.includes(JSON.stringify(tab))||
- button.getAttribute('onclick')?.includes("'"+tab+"'"))?.[0];
- if(!id)return;
- event.preventDefault();event.stopImmediatePropagation();
- window.BunPlanAds?.hideCookingBanner?.();
- if(id==='savedCooking'){state.tab=id;storage();draw();return}
- // Use the normal draw wrapper, not a stale oldDraw reference.
- state.tab=id;state.detail=null;state.modal=null;storage();draw();
-},true);
 function recipesForWeek(){
  const days=bp100.days||[];
  const ids=[...new Set(days.flatMap(day=>Object.values(day||{})).filter(Boolean))];
@@ -1768,7 +1754,7 @@ go=function(tab){
  }
  if(['home','library100','basket100','profile','menu100','detail100'].includes(tab)){
   window.BunPlanAds?.hideCookingBanner?.();
-  state.tab=tab;state.detail=null;state.modal=null;storage();draw();
+  originalGo(tab);
  }else originalGo(tab);
  window.BunPlanAds?.hideCookingBanner?.();
 };
@@ -1785,7 +1771,7 @@ draw=function(){
      '<div class="bp-ing"><strong>'+esc(it.name||bpName(it.id))+'</strong> · '+Number(it.quantity||0)+' '+esc(it.unit||'')+'</div>').join('')+'</div>'+
    '<h2 class="h2">Mod de preparare</h2><ol class="bp-steps">'+(r.steps||[]).map(st=>'<li>'+esc(String(st))+'</li>').join('')+'</ol>':
    commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Înapoi</button><p>Rețeta nu este disponibilă.</p>';
-  const bottom=nav.map(([id,ic,label])=>'<button class="nav '+(id==='savedCooking'?'active':'')+'" onclick="go('+JSON.stringify(id)+')"><span class="ni">'+ic+'</span>'+label+'</button>').join('');
+  const bottom=nav.map(([id,ic,label])=>'<button type="button" class="nav '+(id==='savedCooking'?'active':'')+'" data-bp-nav="'+id+'"><span class="ni">'+ic+'</span>'+label+'</button>').join('');
   document.getElementById('app').innerHTML='<main class="scroll">'+content+'</main><nav class="bottom">'+bottom+'</nav>';
   requestAnimationFrame(updateBanner);
   return;
@@ -1805,4 +1791,5 @@ draw=function(){
 <script src="brands/bunplan-content-cms.js"></script>
 <link rel="stylesheet" href="brands/bunplan-tour-refresh.css"/>
 <script src="brands/bunplan-tour-refresh.js"></script>
+<script src="brands/bunplan-nav-router.js"></script>
 </body></html>
