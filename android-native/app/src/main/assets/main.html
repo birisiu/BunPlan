@@ -1012,7 +1012,7 @@ function items(){
  const old=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).map(r=>({...r,cloud:false}));
  return old.concat(cloud.map(r=>({...r,cloud:true})));
 }
-let nutritionFilter='all';
+let nutritionFilter=state.diet==='Vegetarian'?'vegetarian':state.diet==='Bogat în proteine'?'high-protein':'all';
 function nutritionMatch(r){
  const tags=(r.tags||[]).map(x=>String(x).toLocaleLowerCase('ro'));
  if(nutritionFilter==='vegetarian')return tags.includes('vegetarian');
