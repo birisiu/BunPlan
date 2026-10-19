@@ -1716,6 +1716,14 @@ draw=function(){
 nav.splice(4,0,['savedCooking','🍳','De gătit']);
 const originalGo=go,originalDraw=draw;
 let prior='savedCooking',opened=null;
+function updateBanner(){
+ const slot=document.querySelector('.bp62-cooking-ad');
+ if(slot&&window.BunPlanAds?.showCookingBanner){
+  const rect=slot.getBoundingClientRect();
+  window.BunPlanAds.showCookingBanner(rect.top+10);
+ }else window.BunPlanAds?.hideCookingBanner?.();
+}
+window.addEventListener('scroll',()=>{if(state.tab==='savedCookingDetail')updateBanner()},{passive:true});
 function recipesForWeek(){
  const days=bp100.days||[];
  const ids=[...new Set(days.flatMap(day=>Object.values(day||{})).filter(Boolean))];
@@ -1735,13 +1743,14 @@ go=function(tab){
   state.tab=tab;storage();draw();return;
  }
  originalGo(tab);
+ window.BunPlanAds?.hideCookingBanner?.();
 };
 draw=function(){
  if(state.tab==='savedCooking'||state.tab==='savedCookingDetail'){
   const r=opened&&(bpRecipe(opened)||window.bunplanCloudLatest?.find(x=>x.id===opened));
   const content=state.tab==='savedCooking'?list():r?
    commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Rețetele mele</button>'+
-   '<div class="bp62-cooking-ad" aria-label="Spațiu publicitar">Spațiu rezervat pentru banner AdMob</div>'+
+   '<div class="bp62-cooking-ad" aria-label="Spațiu publicitar">Publicitate · AdMob</div>'+
    '<h1 class="title">'+esc(r.title)+'</h1>'+
    '<p class="sub">'+esc(r.category)+' · '+Number(r.servings||2)+' porții</p>'+
    '<h2 class="h2">Ingrediente</h2><div class="bp-listingredients">'+(r.ingredients||[]).map(it=>
@@ -1750,6 +1759,7 @@ draw=function(){
    commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Înapoi</button><p>Rețeta nu este disponibilă.</p>';
   const bottom=nav.map(([id,ic,label])=>'<button class="nav '+(id==='savedCooking'?'active':'')+'" onclick="go('+JSON.stringify(id)+')"><span class="ni">'+ic+'</span>'+label+'</button>').join('');
   document.getElementById('app').innerHTML='<main class="scroll">'+content+'</main><nav class="bottom">'+bottom+'</nav>';
+  requestAnimationFrame(updateBanner);
   return;
  }
  originalDraw();
