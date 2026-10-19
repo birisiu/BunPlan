@@ -261,7 +261,27 @@ public class MainActivity extends Activity {
             invokeJs("bunPlanOnAdEarned",key);
         });
     }
-    public class JsBridge {
+    private void showCookingBanner(double y){
+        if(rootView==null || web==null || consent==null || !consent.canRequestAds())return;
+        if(cookingBanner==null){
+            cookingBanner=new com.google.android.gms.ads.AdView(this);
+            cookingBanner.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
+            cookingBanner.setAdUnitId(TEST_BANNER_UNIT);
+            android.widget.FrameLayout.LayoutParams p=new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.Gravity.TOP|android.view.Gravity.CENTER_HORIZONTAL);
+            rootView.addView(cookingBanner,p);
+            cookingBanner.loadAd(new AdRequest.Builder().build());
+        }
+        android.widget.FrameLayout.LayoutParams p=(android.widget.FrameLayout.LayoutParams)cookingBanner.getLayoutParams();
+        p.topMargin=Math.max(0,(int)(y*getResources().getDisplayMetrics().density)+rootView.getPaddingTop());
+        cookingBanner.setLayoutParams(p);
+        cookingBanner.setVisibility(y>=0&&y<web.getHeight()/getResources().getDisplayMetrics().density?View.VISIBLE:View.GONE);
+    }
+    public class JsBridge { 
+        @JavascriptInterface public void showCookingBanner(double y){runOnUiThread(()->showCookingBanner(y));}
+        @JavascriptInterface public void hideCookingBanner(){runOnUiThread(()->{if(cookingBanner!=null)cookingBanner.setVisibility(View.GONE);});}
         @JavascriptInterface public void showRewardedInterstitial(String key) {
             runOnUiThread(()->requestAd(key));
         }
