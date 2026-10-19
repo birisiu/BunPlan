@@ -1702,7 +1702,7 @@ draw=function(){
 <style>
 .bp62-saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;margin:10px 0;border:1px solid #dcebd7;border-radius:18px;background:white;color:#164a34}
 .bp62-saved-card{display:block}.bp62-card-open{border:0;background:transparent;display:flex;align-items:center;gap:12px;width:100%;text-align:left;color:inherit;padding:0}.bp62-card-open span:nth-child(2){flex:1}.bp62-card-actions{display:flex;gap:10px;margin-top:12px}.bp62-card-actions button{border:1px solid #cddfd0;background:#eef6e8;border-radius:10px;padding:9px 13px;color:#174a35;font-weight:700}.bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
-.bp62-cooking-ad{min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
+.bp62-cooking-ad{height:72px;min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
 .bottom{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .bottom .nav{min-width:0;padding-left:2px;padding-right:2px}.bottom .nav .ni{font-size:19px}
 .bottom .nav{font-size:10px}
@@ -1726,13 +1726,24 @@ let swipeX=null;
 document.addEventListener('touchstart',e=>{const card=e.target.closest?.('[data-cooking-recipe]');swipeX=card&&e.touches.length===1?{x:e.touches[0].clientX,id:card.getAttribute('data-cooking-recipe')}:null},{passive:true});
 document.addEventListener('touchend',e=>{if(!swipeX||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-swipeX.x;if(Math.abs(dx)>75){bp63Mark(swipeX.id,dx>0?'done':'archived');e.preventDefault()}swipeX=null},{passive:false});
 function updateBanner(){
- const slot=document.querySelector('.bp62-cooking-ad');
- if(slot&&window.BunPlanAds?.showCookingBanner){
-  const rect=slot.getBoundingClientRect();
-  window.BunPlanAds.showCookingBanner(rect.top+10);
- }else window.BunPlanAds?.hideCookingBanner?.();
+ if(state.tab==='savedCookingDetail'&&document.querySelector('.bp62-cooking-ad'))
+  window.BunPlanAds?.showCookingBanner?.(106);
+ else window.BunPlanAds?.hideCookingBanner?.();
 }
-window.addEventListener('scroll',()=>{if(state.tab==='savedCookingDetail')updateBanner()},{passive:true});
+// Capture navigation before other screen-level handlers. Never leave an Android
+// AdView overlay active when navigating out of a cooking recipe.
+document.addEventListener('click',event=>{
+ const button=event.target.closest?.('nav.bottom button.nav');
+ if(!button||!['savedCooking','savedCookingDetail'].includes(state.tab))return;
+ const id=nav.find(([tab])=>button.getAttribute('onclick')?.includes(JSON.stringify(tab))||
+ button.getAttribute('onclick')?.includes("'"+tab+"'"))?.[0];
+ if(!id)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ window.BunPlanAds?.hideCookingBanner?.();
+ if(id==='savedCooking'){state.tab=id;storage();draw();return}
+ // Use the normal draw wrapper, not a stale oldDraw reference.
+ state.tab=id;state.detail=null;state.modal=null;storage();draw();
+},true);
 function recipesForWeek(){
  const days=bp100.days||[];
  const ids=[...new Set(days.flatMap(day=>Object.values(day||{})).filter(Boolean))];
@@ -1756,13 +1767,15 @@ go=function(tab){
   state.tab=tab;storage();draw();return;
  }
  if(['home','library100','basket100','profile','menu100','detail100'].includes(tab)){
-  state.tab=tab;state.detail=null;state.modal=null;storage();originalDraw();
+  window.BunPlanAds?.hideCookingBanner?.();
+  state.tab=tab;state.detail=null;state.modal=null;storage();draw();
  }else originalGo(tab);
  window.BunPlanAds?.hideCookingBanner?.();
 };
 draw=function(){
  if(state.tab==='savedCooking'||state.tab==='savedCookingDetail'){
   const r=opened&&(bpRecipe(opened)||window.bunplanCloudLatest?.find(x=>x.id===opened));
+  window.BunPlanAds?.hideCookingBanner?.();
   const content=state.tab==='savedCooking'?list():r?
    commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Rețetele mele</button>'+
    '<div class="bp62-cooking-ad" aria-label="Spațiu publicitar">Publicitate · AdMob</div>'+
