@@ -16,4 +16,8 @@ assert.match(html,/window\.bp63Restore=function/);
 assert.match(html,/data-cooking-recipe/);
 assert.match(java,/@JavascriptInterface public void showCookingBanner/);
 assert.match(java,/@JavascriptInterface public void hideCookingBanner/);
+assert.match(html,/showCookingBanner\?\.\(106\)/);
+assert.match(html,/addEventListener\('click',event=>/);
+assert.match(html,/stopImmediatePropagation\(\)/);
+assert.match(html,/state\.tab=id;state\.detail=null;state\.modal=null;storage\(\);draw\(\)/);
 console.log('PASS saved cooking section and consent-aware native test banner wiring');
