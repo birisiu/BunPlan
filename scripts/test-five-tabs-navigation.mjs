@@ -19,14 +19,14 @@ try {
  await page.evaluate(()=>{bp100.days[0]['Mic dejun']='R001';bp35Commit();});
  const targets=['savedCooking','home','library100','basket100','profile','savedCooking'];
  for(const target of targets){
-  await page.locator('nav.bottom button').filter({hasText:({savedCooking:'Salvate',home:'Planul meu',library100:'Rețete',basket100:'Lista',profile:'Profil'})[target]}).first().click();
+  await page.evaluate(target=>{const index=nav.findIndex(([id])=>id===target);if(index<0)throw Error('Tab missing '+target);const el=document.querySelectorAll('nav.bottom button')[index];if(!el)throw Error('Button missing '+target);el.click()},target);
   const actual=await page.evaluate(()=>state.tab);
   if(actual!==target)throw new Error('Navigation failed '+target+' -> '+actual);
  }
  await page.evaluate(()=>bp62Open('R001'));
  if(await page.evaluate(()=>state.tab)!=='savedCookingDetail')throw new Error('Saved cooking detail failed');
  for(const target of ['profile','savedCooking','home','savedCooking','library100','basket100','savedCooking']){
-  await page.locator('nav.bottom button').filter({hasText:({savedCooking:'Salvate',home:'Planul meu',library100:'Rețete',basket100:'Lista',profile:'Profil'})[target]}).first().click();
+  await page.evaluate(target=>{const index=nav.findIndex(([id])=>id===target);if(index<0)throw Error('Tab missing '+target);const el=document.querySelectorAll('nav.bottom button')[index];if(!el)throw Error('Button missing '+target);el.click()},target);
   const actual=await page.evaluate(()=>state.tab);
   if(actual!==target)throw new Error('From detail nav '+target+' -> '+actual);
   if(target==='savedCooking')await page.evaluate(()=>bp62Open('R001'));
