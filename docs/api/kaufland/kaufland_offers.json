@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-10-18T13:35:41+00:00",
-    "product_count": 140,
+    "checked_at": "2026-10-19T16:38:59+00:00",
+    "product_count": 137,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -2171,23 +2171,6 @@
       "original_offer_id": "20261014000000.20883929.RO.3400.0000056711"
     },
     {
-      "id": "kaufland-8f857ca6d9a51557db6d",
-      "store": "Kaufland",
-      "name": "Avocado ready-to-eat\n2 buc",
-      "size": "2 bucăţi",
-      "category": "Legume, fructe, flori",
-      "price_ron": 9.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/8717428050365_RO_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-10-14",
-      "valid_to": "2026-10-20",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261014000000.00044273.RO.3400.0000058525"
-    },
-    {
       "id": "kaufland-40a7fcceeb56100f1143",
       "store": "Kaufland",
       "name": "Brassica 12 cm",
@@ -2271,40 +2254,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261014000000.09700390.RO.3400.0000058525"
-    },
-    {
-      "id": "kaufland-78335346019ef2a4e76c",
-      "store": "Kaufland",
-      "name": "Lămâi kg\nNerec.consumul cojii",
-      "size": "kg",
-      "category": "Legume, fructe, flori",
-      "price_ron": 5.49,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2830100000000_RO_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-10-14",
-      "valid_to": "2026-10-20",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261014000000.09700022.RO.3400.0000056711"
-    },
-    {
-      "id": "kaufland-f39843f7e0589762efe1",
-      "store": "Kaufland",
-      "name": "Struguri negri",
-      "size": "kg",
-      "category": "Legume, fructe, flori",
-      "price_ron": 5.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2832140000000_RO_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-10-14",
-      "valid_to": "2026-10-20",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261014000000.09700090.RO.3400.0000058524"
     },
     {
       "id": "kaufland-65217bf675daca203725",
