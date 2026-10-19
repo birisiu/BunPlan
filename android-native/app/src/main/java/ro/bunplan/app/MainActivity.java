@@ -280,7 +280,7 @@ public class MainActivity extends Activity {
         cookingBanner.setVisibility(y>=0&&y<web.getHeight()/getResources().getDisplayMetrics().density?View.VISIBLE:View.GONE);
     }
     public class JsBridge { 
-        @JavascriptInterface public void showCookingBanner(double y){runOnUiThread(()->showCookingBanner(y));}
+        @JavascriptInterface public void showCookingBanner(double y){runOnUiThread(()->MainActivity.this.showCookingBanner(y));}
         @JavascriptInterface public void hideCookingBanner(){runOnUiThread(()->{if(cookingBanner!=null)cookingBanner.setVisibility(View.GONE);});}
         @JavascriptInterface public void showRewardedInterstitial(String key) {
             runOnUiThread(()->requestAd(key));
