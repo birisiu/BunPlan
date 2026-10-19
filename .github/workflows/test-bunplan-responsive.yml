@@ -36,6 +36,8 @@ jobs:
         run: node scripts/test-estimated-kcal-navigation.mjs
       - name: Check saved cooking recipes and AdMob banner wiring
         run: node scripts/test-saved-cooking.mjs
+      - name: Click all five tabs from saved cooking detail
+        run: node scripts/test-five-tabs-navigation.mjs
       - name: Test guided first-use tour and fresh CRM synchronization
         run: node scripts/test-tour-refresh.mjs
       - name: Test complete BunPlan CRM operations
