@@ -1699,6 +1699,63 @@ draw=function(){
 };
 })();
 </script>
+<style>
+.bp62-saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;margin:10px 0;border:1px solid #dcebd7;border-radius:18px;background:white;color:#164a34}
+.bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
+.bp62-cooking-ad{min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
+.bottom{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.bottom .nav{min-width:0;padding-left:2px;padding-right:2px}.bottom .nav .ni{font-size:19px}
+.bottom .nav{font-size:10px}
+@media(max-width:350px){.bottom .nav{font-size:9px}}
+</style>
+<script>
+/* 6.2 Cooking shelf: week plan -> dedicated saved recipes section.
+   The AdMob position remains reserved until native banner SDK is wired. */
+(function(){
+'use strict';
+nav.splice(4,0,['savedCooking','🍳','De gătit']);
+const originalGo=go,originalDraw=draw;
+let prior='savedCooking',opened=null;
+function recipesForWeek(){
+ const days=bp100.days||[];
+ const ids=[...new Set(days.flatMap(day=>Object.values(day||{})).filter(Boolean))];
+ return ids.map(id=>({id,r:bpRecipe(id)||window.bunplanCloudLatest?.find(x=>x.id===id)})).filter(x=>x.r);
+}
+function list(){
+ const data=recipesForWeek();
+ return commonTop()+heading('Rețetele mele de gătit','Din meniul planificat pentru săptămâna selectată.')+
+ '<p class="bp-notice">'+esc(bp35.store)+' · '+esc(bp35Pretty(bp35.week))+' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+
+ ' · '+data.length+' rețete distincte</p>'+
+ (data.length?data.map(({id,r})=>'<button class="bp62-saved-card" onclick="bp62Open('+JSON.stringify(id).replace(/"/g,'&quot;')+')"><span style="font-size:27px">🍲</span><span><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||r.minutes_to_prepare||0)+' min</small></span><span style="margin-left:auto">›</span></button>').join(''):
+ '<div class="bp-notice">Nu ai selectat încă rețete pentru această săptămână. Alege preparatele în Planul săptămânii.</div><button class="btn block" onclick="go(\'menu100\')">Planifică mesele →</button>');
+}
+window.bp62Open=function(id){opened=id;prior='savedCooking';go('savedCookingDetail')};
+go=function(tab){
+ if(tab==='savedCooking'||tab==='savedCookingDetail'){
+  state.tab=tab;storage();draw();return;
+ }
+ originalGo(tab);
+};
+draw=function(){
+ if(state.tab==='savedCooking'||state.tab==='savedCookingDetail'){
+  const r=opened&&(bpRecipe(opened)||window.bunplanCloudLatest?.find(x=>x.id===opened));
+  const content=state.tab==='savedCooking'?list():r?
+   commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Rețetele mele</button>'+
+   '<div class="bp62-cooking-ad" aria-label="Spațiu publicitar">Spațiu rezervat pentru banner AdMob</div>'+
+   '<h1 class="title">'+esc(r.title)+'</h1>'+
+   '<p class="sub">'+esc(r.category)+' · '+Number(r.servings||2)+' porții</p>'+
+   '<h2 class="h2">Ingrediente</h2><div class="bp-listingredients">'+(r.ingredients||[]).map(it=>
+     '<div class="bp-ing"><strong>'+esc(it.name||bpName(it.id))+'</strong> · '+Number(it.quantity||0)+' '+esc(it.unit||'')+'</div>').join('')+'</div>'+
+   '<h2 class="h2">Mod de preparare</h2><ol class="bp-steps">'+(r.steps||[]).map(st=>'<li>'+esc(String(st))+'</li>').join('')+'</ol>':
+   commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Înapoi</button><p>Rețeta nu este disponibilă.</p>';
+  const bottom=nav.map(([id,ic,label])=>'<button class="nav '+(id==='savedCooking'?'active':'')+'" onclick="go('+JSON.stringify(id)+')"><span class="ni">'+ic+'</span>'+label+'</button>').join('');
+  document.getElementById('app').innerHTML='<main class="scroll">'+content+'</main><nav class="bottom">'+bottom+'</nav>';
+  return;
+ }
+ originalDraw();
+};
+})();
+</script>
 <link rel="stylesheet" href="brands/bunplan-ui.css"/>
 <script src="brands/bunplan-ui.js"></script>
 <link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
