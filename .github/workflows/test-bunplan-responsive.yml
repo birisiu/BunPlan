@@ -6,6 +6,8 @@ on:
   push:
     paths:
       - 'scripts/test-responsive.mjs'
+      - 'scripts/test-five-tabs-navigation.mjs'
+      - 'android-native/app/src/main/assets/brands/bunplan-nav-router.js'
       - '.github/workflows/test-bunplan-responsive.yml'
 permissions:
   contents: read
