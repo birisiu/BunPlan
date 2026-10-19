@@ -1701,7 +1701,7 @@ draw=function(){
 </script>
 <style>
 .bp62-saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;margin:10px 0;border:1px solid #dcebd7;border-radius:18px;background:white;color:#164a34}
-.bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
+.bp62-saved-card{display:block}.bp62-card-open{border:0;background:transparent;display:flex;align-items:center;gap:12px;width:100%;text-align:left;color:inherit;padding:0}.bp62-card-open span:nth-child(2){flex:1}.bp62-card-actions{display:flex;gap:10px;margin-top:12px}.bp62-card-actions button{border:1px solid #cddfd0;background:#eef6e8;border-radius:10px;padding:9px 13px;color:#174a35;font-weight:700}.bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
 .bp62-cooking-ad{min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
 .bottom{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .bottom .nav{min-width:0;padding-left:2px;padding-right:2px}.bottom .nav .ni{font-size:19px}
@@ -1716,6 +1716,15 @@ draw=function(){
 // Branded bottom nav registers savedCooking in bunplan-ui.js.
 const originalGo=go,originalDraw=draw;
 let prior='savedCooking',opened=null;
+const ACTION_KEY='bunplan_cooking_actions_v1';
+let statuses={};try{statuses=JSON.parse(localStorage.getItem(ACTION_KEY)||'{}')||{}}catch(e){}
+function actionKey(id){return bp35Key()+'|'+id}
+function persist(){try{localStorage.setItem(ACTION_KEY,JSON.stringify(statuses))}catch(e){}}
+window.bp63Mark=function(id,status){statuses[actionKey(id)]=status;persist();draw()};
+window.bp63Restore=function(id){delete statuses[actionKey(id)];persist();draw()};
+let swipeX=null;
+document.addEventListener('touchstart',e=>{const card=e.target.closest?.('[data-cooking-recipe]');swipeX=card&&e.touches.length===1?{x:e.touches[0].clientX,id:card.getAttribute('data-cooking-recipe')}:null},{passive:true});
+document.addEventListener('touchend',e=>{if(!swipeX||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-swipeX.x;if(Math.abs(dx)>75){bp63Mark(swipeX.id,dx>0?'done':'archived');e.preventDefault()}swipeX=null},{passive:false});
 function updateBanner(){
  const slot=document.querySelector('.bp62-cooking-ad');
  if(slot&&window.BunPlanAds?.showCookingBanner){
@@ -1730,19 +1739,25 @@ function recipesForWeek(){
  return ids.map(id=>({id,r:bpRecipe(id)||window.bunplanCloudLatest?.find(x=>x.id===id)})).filter(x=>x.r);
 }
 function list(){
- const data=recipesForWeek();
- return commonTop()+heading('Rețetele mele de gătit','Din meniul planificat pentru săptămâna selectată.')+
- '<p class="bp-notice">'+esc(bp35.store)+' · '+esc(bp35Pretty(bp35.week))+' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+
- ' · '+data.length+' rețete distincte</p>'+
- (data.length?data.map(({id,r})=>'<button class="bp62-saved-card" onclick="bp62Open('+JSON.stringify(id).replace(/"/g,'&quot;')+')"><span style="font-size:27px">🍲</span><span><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||r.minutes_to_prepare||0)+' min</small></span><span style="margin-left:auto">›</span></button>').join(''):
- '<div class="bp-notice">Nu ai selectat încă rețete pentru această săptămână. Alege preparatele în Planul săptămânii.</div><button class="btn block" onclick="go(\'menu100\')">Planifică mesele →</button>');
+ const data=recipesForWeek();const active=data.filter(x=>!statuses[actionKey(x.id)]),finished=data.filter(x=>statuses[actionKey(x.id)]);
+ const makeCard=({id,r})=>'<article class="bp62-saved-card" data-cooking-recipe="'+esc(id)+'">'+
+ '<button class="bp62-card-open" onclick="bp62Open('+JSON.stringify(id).replace(/"/g,'&quot;')+')"><span style="font-size:26px">🍲</span><span><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' min</small></span><span>›</span></button>'+
+ '<div class="bp62-card-actions">'+(statuses[actionKey(id)]?'<button onclick="bp63Restore('+JSON.stringify(id).replace(/"/g,'&quot;')+')">↩ Restaurează</button>':
+ '<button onclick="bp63Mark('+JSON.stringify(id).replace(/"/g,'&quot;')+',\'done\')">✓ Gătită</button><button onclick="bp63Mark('+JSON.stringify(id).replace(/"/g,'&quot;')+',\'archived\')">Arhivează</button>')+'</div></article>';
+ return commonTop()+heading('Rețetele mele de gătit','Din meniul săptămânii. Glisează dreapta = gătită, stânga = arhivează.')+
+ '<p class="bp-notice">'+esc(bp35.store)+' · '+esc(bp35Pretty(bp35.week))+' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+'</p>'+
+ (active.length?active.map(makeCard).join(''):'<p class="bp-notice">Nu ai rețete active. Alege-le din meniul săptămânal.</p>')+
+ (finished.length?'<h2 class="h2">Gătite și arhivate</h2>'+finished.map(makeCard).join(''):'')+
+ (!data.length?'<button class="btn block" onclick="go(\'menu100\')">Planifică mesele →</button>':'');
 }
 window.bp62Open=function(id){opened=id;prior='savedCooking';go('savedCookingDetail')};
 go=function(tab){
  if(tab==='savedCooking'||tab==='savedCookingDetail'){
   state.tab=tab;storage();draw();return;
  }
- originalGo(tab);
+ if(['home','library100','basket100','profile','menu100','detail100'].includes(tab)){
+  state.tab=tab;state.detail=null;state.modal=null;storage();originalDraw();
+ }else originalGo(tab);
  window.BunPlanAds?.hideCookingBanner?.();
 };
 draw=function(){
