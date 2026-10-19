@@ -1703,7 +1703,7 @@ draw=function(){
 .bp62-saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;margin:10px 0;border:1px solid #dcebd7;border-radius:18px;background:white;color:#164a34}
 .bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
 .bp62-cooking-ad{min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
-.bottom{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.bottom{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .bottom .nav{min-width:0;padding-left:2px;padding-right:2px}.bottom .nav .ni{font-size:19px}
 .bottom .nav{font-size:10px}
 @media(max-width:350px){.bottom .nav{font-size:9px}}
@@ -1713,7 +1713,7 @@ draw=function(){
    The AdMob position remains reserved until native banner SDK is wired. */
 (function(){
 'use strict';
-nav.splice(4,0,['savedCooking','🍳','De gătit']);
+// Branded bottom nav registers savedCooking in bunplan-ui.js.
 const originalGo=go,originalDraw=draw;
 let prior='savedCooking',opened=null;
 function updateBanner(){
