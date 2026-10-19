@@ -1077,6 +1077,7 @@ bpLibrary=function(){
  (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
  ' Variantele noi necesită verificare culinară; prețurile nu sunt confirmate.</div>'+
  '<input class="p-headsearch" aria-label="Caută rețete" placeholder="Caută rețete sau ingrediente…" value="'+esc(bp100.query||'')+'" oninput="bpCloudFilter(this.value)"/>'+
+ '<div class="bp-notice">Vegetarian = etichetă din catalog. Bogat în proteine = cel puțin 25 g proteine/porție, doar la rețete cu valori verificate. Rețetele fără date nutriționale nu sunt clasificate automat.</div>'+ 
  '<div class="bp-categories" aria-label="Filtrare nutrițională">'+
  [['all','Toate dietele'],['vegetarian','Vegetarian 🥬'],['high-protein','Bogat în proteine 💪']].map(([key,label])=>
  '<button class="chip '+(nutritionFilter===key?'selected':'')+'" onclick="bpNutritionFilter(\''+key+'\')">'+label+'</button>').join('')+'</div>'+
@@ -1101,7 +1102,7 @@ bpDetail=function(){
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
  (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
- '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span><span>'+nutritionLabel(r)+'</span></div>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span><span>'+nutritionLabel(r)+'</span><span>'+(r.kcal_per_recipe!==null&&Number.isFinite(r.kcal_per_recipe)?Math.round(r.kcal_per_recipe)+' kcal/rețetă':'Kcal/rețetă necunoscute')+'</span></div>'+
  '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
  '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
  '<div class="bp-listingredients">'+r.ingredients.map(i=>'<div class="bp-ing"><div><strong>'+esc(i.name)+'</strong><small>'+Number(i.quantity)+' '+esc(i.unit)+'</small></div></div>').join('')+'</div>'+
