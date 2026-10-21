@@ -100,6 +100,7 @@ lidl-15c243720bd7fe8516,Solevita Suc de mere,1l,Bauturi,8.99,RON,Lidl,,unknown,h
 lidl-37f7ad7b2c76121717,Solevita Suc de mere 100%,1l,Bauturi,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-906818f1c92755bd1a,Solevita Suc de mere bio 100%,1l,Bauturi,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b4b6c3e4bc4a3974c6,Solevita Suc de portocale 100%,1l,Bauturi,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-827ccefb8a635795d1,Solevita Suc de portocale bio 100%,1l,Bauturi,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-239df3abe7b64275a2,Solevita Suc de portocale RFA,1l,Bauturi,14.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5388b2791d854188b5,Solevita Suc de rosii 100%,1l,Bauturi,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-81e5d0be683369572d,Solevita Suc fresh multifruct,1l,Bauturi,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -143,7 +144,6 @@ lidl-3c444502abf61118c7,Milbona Branza topita triunghiuri 50%,400g,Branzeturi,15
 lidl-4b8f82b07a04e16086,Milbona Branzica proaspata,200g,Branzeturi,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-27c9d414c69490926c,Milbona Camembert in panada,350g,Branzeturi,20.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2a4f69e714448d8e2f,Milbona Cascaval afumat,730g,Branzeturi,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-27bb474915d35dc7b5,Milbona Cascaval de vaca,750g,Branzeturi,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-380a142abcf5d5ff06,Milbona Cascaval ras,200g,Branzeturi,10.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-3dbed11f07ea551bb8,Milbona Cheddar High Pro feliat,160g,Branzeturi,13.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-bea0bb9f29cf6dd70a,Milbona Emmental,400g,Branzeturi,18.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -244,13 +244,13 @@ lidl-a7d7db7e614eeb5aa0,"- Cotlet de porc fara os, feliat",400g,Carne si peste,1
 lidl-b9b4ea754c641ec5cb,"- Cotlet porc fara os, feliat",per kg,Carne si peste,31.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-bf428631b2a595b0d8,- Creveti prefierti 40/60,200g,Carne si peste,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1fc9ce57daec4a5c6a,- Cuburi din pulpa de porc,600g,Carne si peste,16.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-350f40008bfea6b7a5,- File de somon cu piele 4x125g,500g,Carne si peste,62.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f6be9cad14f8bd8c57,- Fleica de porc,per kg,Carne si peste,24.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0451f6588a6e484283,- Gaturi de pui,per kg,Carne si peste,5.09,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0aa5b3a3b2c60d64de,- Hamburger vita,500g,Carne si peste,16.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-13d2ee95fb773ec19a,- Irish Angus Burger,260g,Carne si peste,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-32407eda814229f90b,- Mici de porc,1kg,Carne si peste,17.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a505c929ebf1e9563d,- Mici porc-vita,1kg,Carne si peste,19.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-c7299894dc6afe43b4,- Mici vita-porc,1kg,Carne si peste,24.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6e043213e577dd8cd4,- Mukawa Sushi Set,326g,Carne si peste,26.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8c5a4a1c651103fa1b,- Muschiulet din piept de curcan,per kg,Carne si peste,65.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-76b9e07d88aa3374ba,- Muschiulet din piept de pui,per kg,Carne si peste,23.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -271,6 +271,8 @@ lidl-2a608ea0808841ded2,- Piept pui dezosat si fara piele,650g,Carne si peste,21
 lidl-31f18d57c14650e806,"- Piept pui dezosat,fara piele,feliat",per kg,Carne si peste,34.5,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-4bdfc72d30a8da33d1,- Pui grill,per kg,Carne si peste,13.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0ef0af8f346875214b,- Pui grill (hranit cu porumb),per kg,Carne si peste,23.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-606cb21f9b5b819c62,- Pui Grill crescut fara antibiotice,per kg,Carne si peste,19.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-65f612cca922da4eff,- Pulpa de porc feliata pentru snitel,per kg,Carne si peste,29.5,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0359f14145004f3bac,- Pulpa porc fara os,per kg,Carne si peste,19.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c3c828de05b04312ba,- Pulpe de pui dezosate,per kg,Carne si peste,23.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-9b89639b097e7a8897,- Pulpe de pui inferioare fara antibi,per kg,Carne si peste,19.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -285,21 +287,25 @@ lidl-978cf2eb798ce79325,- Scaricica de porc natur/marinata,per kg,Carne si peste
 lidl-56afa1978cf93f556d,- Spata de porc fara os,per kg,Carne si peste,18.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e12c577825e53f93a7,"- Spinari, spate si gaturi de pui",per kg,Carne si peste,4.85,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7465eaebc20f1748e8,"- Spinari, Spate si gaturi fara antib",per kg,Carne si peste,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-92cce424dfd56c8b07,"- Spinari, spate,gaturi de pui_porumb",per kg,Carne si peste,10.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-92cce424dfd56c8b07,"- Spinari, spate,gaturi de pui_porumb",per kg,Carne si peste,10.5,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0303e0621796c26814,- Vrabioara manzat (Sirloin Steak),per kg,Carne si peste,116.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-778d470bbd728555f4,Camara noastra Salata cu icre de stiuca Tulcea IGP,100g,Carne si peste,16.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-4ad5c6f62d0f423ac5,Camara noastra Sorici/Urechi porc parlit,150g,Carne si peste,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1e65606003ecc4ff38,Chef Select Cheeseburger vita,320g,Carne si peste,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a82bd2779586e2e465,Deluxe Vrabioara de vita Argentina.,per kg,Carne si peste,169.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-eda7e747c03cb347ae,FRESH FISH TODAY Biban de mare eviscerat,per kg,Carne si peste,59.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-8e92fa54d81581fff5,FRESH FISH TODAY Dorada proaspata eviscerata,per kg,Carne si peste,57.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-d93b148e961a9e2d1f,FRESH FISH TODAY Pastrav curcubeu proaspat eviscerat,per kg,Carne si peste,42.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2abb245475b2f6c122,Grillmeister File de somon cu condiment SK5,250g,Carne si peste,32.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a8034d22807c9afde0,La Provincia Pui Vegetarian,per kg,Carne si peste,30.9,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6031ac3aba49628e9d,My Sushi Prestige Mix,227g,Carne si peste,22.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-fb25199bf7e61ad2f0,My Sushi Sushi Maki Snack,185g,Carne si peste,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a06e3485b62ff5eea4,Nautica File de pastrav afumat,125g,Carne si peste,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-de009de9a446449435,"Nautica File somon norvegian,afumat la cald",125g,Carne si peste,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-cfc5f94176617545b4,Nautica Hering marinat cu leg. ATG 500g,900g,Carne si peste,15.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b300de66079fa192c3,Nautica Somon afumat la rece,200g,Carne si peste,25.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e0b1502e74be1064a9,Pikok Carne de porc cu ciolan,300g,Carne si peste,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-86c7d9a25a9788ee1a,Sushi philadelphia,241g,Carne si peste,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-792c813d69c5cd4bb4,Deluxe Ceai de fructe sort.,"15x2,5g",Ceai,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-91cd952ab4b42729f9,Fares Ceai SK1,40g,Ceai,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f7d8081292913ff716,Lord Nelson Ceai de fructe,40g,Ceai,6.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -322,7 +328,6 @@ lidl-ee514446feb713b49a,Combino Taitei chinezesti,100g,Cereale,3.59,RON,Lidl,,un
 lidl-6b6013b521a4645ef3,Combino Taitei Chow Mein,250g,Cereale,5.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-952de564e441351b3a,Combino Taitei Cuiburi cu 4 oua,200g,Cereale,3.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8efc61b9c29037ec2b,Crownfield Bilute de ciocolata,500g,Cereale,8.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-b8011eef1c1baae962,Crownfield Bio Knuspermüsli SK1,375g,Cereale,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b66f3c793cceda5e17,Crownfield Cereale pernute,500g,Cereale,11.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c828695ad029d16a0d,Crownfield Fulgi crocanti cu gust de scortisoa,250g,Cereale,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7672f720ea02313c08,Crownfield Fulgi de cereale aroma Cookie,500g,Cereale,9.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -345,7 +350,6 @@ lidl-360fca3b341c852932,Deluxe Tagliatelle Deluxe,500g,Cereale,12.89,RON,Lidl,,u
 lidl-1e686063746b9152de,Dr. Oetker Drojdie,7g,Cereale,1.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-9571c100c9c0331225,Furnicuta Susan,200g,Cereale,4.35,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-08e97f73000b076a55,Golden Sun Orez Basmati,1kg,Cereale,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-04324c32dbd527de55,Hora Malai Extra,1kg,Cereale,3.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-17af6a4080144274a6,Italiamo Risotto,175g,Cereale,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c9a33798ddbadc401d,Naturiva Chia,250g,Cereale,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-33a97fba0e64c26e87,Nestlé Cereale Nesquik,650g,Cereale,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1041,7 +1045,6 @@ lidl-b196ce3a3360a0dcf9,"Pilos Lapte proaspat 1,5% ESL",1l,Lactate,4.39,RON,Lidl
 lidl-349d108e7c212f121f,"Pilos Lapte proaspat 3,5%","1,5l",Lactate,9.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-eff3955e3db466f1c9,"Pilos Lapte UHT 3,5%",1l,Lactate,5.55,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-68f473040d8b66865f,"Pilos Sana 3,5 %",400g,Lactate,2.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-99a879d39c4ebe6eec,"Pilos Sana 3,5%",1000g,Lactate,6.09,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-49d45ab98105233141,"Pilos Sana Bio 3,6% grasime",330ml,Lactate,3.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-387d93c053accb5e76,"Pilos Sana light 0,9%",400g,Lactate,2.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-db68852dba27695ac1,Pilos Smantana 12% 1kg,1kg,Lactate,10.39,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1077,10 +1080,10 @@ lidl-bac805b2080eb3ef6b,Ardei iute kg,per kg,Legume si Fructe,9.99,RON,Lidl,,unk
 lidl-ab573912eea0dbe3ce,Ardei rosu Palermo,500g,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-4d647891ec5436acd5,Avocado buc,1buc,Legume si Fructe,3.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-cd2d1290b25f7e2955,Avocado Hass,1buc,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-88ccae25a620b755aa,Avocado Hass plasa,700g,Legume si Fructe,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-88ccae25a620b755aa,Avocado Hass plasa,700g,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-014e76ed127dbc426c,Avocado Ready to Eat 2 buc,2buc,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dd41c60f662c2a4567,Baby banane,per kg,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-bf512ed5d67892d4d0,Baby spanac,100g,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-bf512ed5d67892d4d0,Baby spanac,100g,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-06d0aa3207efba156a,Banane,per kg,Legume si Fructe,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-592334b8c6c9e40d95,Banane Dole,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-60860923ca47831b21,Bio ardei capia rosu,180g,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1108,7 +1111,7 @@ lidl-66f080899ef2e7f40f,Broccoli,500g,Legume si Fructe,6.99,RON,Lidl,,unknown,ht
 lidl-e6170f750ebc8bb831,Busuioc in ghiveci,1buc,Legume si Fructe,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b1e7f02884d5431d95,Caise deshidratate 200g,200g,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7f5806642c9fd6ff7b,Caise kg,per kg,Legume si Fructe,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-db1ba125468c154823,Capsune romanesti 250g,250g,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-db1ba125468c154823,Capsune romanesti 250g,250g,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-764b989894fe64fd71,Cartofi albi,per kg,Legume si Fructe,2.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b31347890fc7ba06f7,Cartofi albi 2.5 kg,"2,5kg",Legume si Fructe,5.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-4ac53673f3259409f4,Cartofi albi 5kg,5kg,Legume si Fructe,11.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1123,11 +1126,10 @@ lidl-38bd53d84f5a26409b,Castane,per kg,Legume si Fructe,39.99,RON,Lidl,,unknown,
 lidl-5691db61b457113863,Castraveti Cornison,per kg,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2f35606c9a9b1564c8,Castraveti cornison 3Kg,3kg,Legume si Fructe,12.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-fe591c4ef015e554d1,Castraveti Fabio buc,1buc,Legume si Fructe,3.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-4e67062a5e044e9435,Ceapa alba kg,per kg,Legume si Fructe,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b242f4fae18d18cddd,Ceapa de apa,per kg,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5888e82160cd625fd3,Ceapa galbena,per kg,Legume si Fructe,2.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-83b35cf50e359e1cb3,Ceapa galbena 5 kg,5kg,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-19cf61e53531dace00,Ceapa galbena plasa 2kg,2kg,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-19cf61e53531dace00,Ceapa galbena plasa 2kg,2kg,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c770acf92ed26e1df2,Ceapa rosie,per kg,Legume si Fructe,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5d5f32e1003dbf3dbe,Ceapa rosie legatura,1buc,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-27d3bf09deaf936288,Ceapa verde,1buc,Legume si Fructe,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1149,26 +1151,26 @@ lidl-cec37ee3b34ba910e5,Galbiori 300g,300g,Legume si Fructe,19.99,RON,Lidl,,unkn
 lidl-f9413b95ca4d399a8e,Ghimbir,per kg,Legume si Fructe,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-fc5bd516c1800ffe8c,Gogonele,per kg,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0f85009a7e9ec1552f,Gogonele 5 kg,5kg,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-584d3af69823011be6,Gogosari kg,per kg,Legume si Fructe,9.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-584d3af69823011be6,Gogosari kg,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5ab85de6a12ffcf828,Grepfrut rosu,per kg,Legume si Fructe,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-ca3f27fa8966bc296d,Gulii,1buc,Legume si Fructe,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-ff1f3823f0ca182f51,Gutui,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-852d5f3c8af9693d85,Hrean 200g,200g,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a9944ed1238d81fb40,Kaki / Sharon,1kg,Legume si Fructe,19.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-8b6cee714e3ffd59e1,Kaki/Sharon buc,1buc,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-8b6cee714e3ffd59e1,Kaki/Sharon buc,1buc,Legume si Fructe,4.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2269db1b8db95d3674,Kiwi buc,1buc,Legume si Fructe,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b752d1a6d4007bc19a,Kiwi caserola,1kg,Legume si Fructe,18.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-9ffd6937bee3f1d5ce,Kiwi Gold,1buc,Legume si Fructe,3.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-46cf997fffb65843bc,Lamai,per kg,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-46cf997fffb65843bc,Lamai,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f547ed7abdb78d0fdb,Lamai netratate dupa recoltare,500g,Legume si Fructe,9.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-d06a5eeb945b0ee760,Lamai plasa 500g,500g,Legume si Fructe,4.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-01752844d6c069d45d,Legume pt. supa 1kg,1kg,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-30cdfc6e0fa32d3a93,Leustean in ghiveci,1buc,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-480aab14e17f7418f7,Limes buc,1buc,Legume si Fructe,1.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-480aab14e17f7418f7,Limes buc,1buc,Legume si Fructe,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-022e824c14f87e8298,Loboda,1buc,Legume si Fructe,2.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-713f93f6f037d5c4c4,Mandarine,per kg,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-a1782eeaa5b7a0b880,"Mandarine 1,5 kg","1,5kg",Legume si Fructe,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3042101e2c84c5ae12,Mandarine plasa 1kg,1kg,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-a1782eeaa5b7a0b880,"Mandarine 1,5 kg","1,5kg",Legume si Fructe,13.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-3042101e2c84c5ae12,Mandarine plasa 1kg,1kg,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-2e3777af1f269f4a82,Mango,1buc,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-eedf536e9839fbaa4c,Mango Ready to eat,2buc,Legume si Fructe,16.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-85e8b5576d39d032d3,Marar legatura,1buc,Legume si Fructe,1.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1184,7 +1186,7 @@ lidl-7291afb1c9ac097cdc,Mere rosii Samboa,per kg,Legume si Fructe,14.99,RON,Lidl
 lidl-23092909c356376fba,Mere rosii Sweet Tango 4 buc.,4buc,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-39aa634b4e3491877f,Mini castraveti 250g,250g,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-621bf7da890350fbec,Mini pepene verde kg,per kg,Legume si Fructe,13.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-c2b004b18ff51a2cbf,Morcovi,per kg,Legume si Fructe,2.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-c2b004b18ff51a2cbf,Morcovi,per kg,Legume si Fructe,3.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-fe65eb7803499620cd,Morcovi punga 1kg,1kg,Legume si Fructe,4.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b0bc01b06cc3d85bd3,Nectarine,1kg,Legume si Fructe,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6b0dee5478504dd0cb,Nectarine,per kg,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1194,11 +1196,11 @@ lidl-e049eaf2af20d37d38,Patrunjel legatura,1buc,Legume si Fructe,1.49,RON,Lidl,,
 lidl-c6b4c3ef3bd0e8ea30,Patrunjel radacina 350g,350g,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-28a11f016fe6907a4b,Pepene galben Honey Dew,per kg,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c7f7f9cd58ea302a07,"Pere 1,5kg",1.5kg,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3900bafc9d919a3a0b,Pere ambalate,1kg,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-46b13ff995373f452f,Pere kg,per kg,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-3900bafc9d919a3a0b,Pere ambalate,1kg,Legume si Fructe,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-46b13ff995373f452f,Pere kg,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-568981be499cc99fbe,Pere rosii,per kg,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-d251573ff3eb79e673,Piersici,1kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-bde918a131e0d17a5d,Piersici,per kg,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-bde918a131e0d17a5d,Piersici,per kg,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7fad3894551d89a065,Piersici 700g,700g,Legume si Fructe,13.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0dffe65dcd2558422a,Piersici plate,per kg,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-85a10392e4e86686a9,Pomelo,per kg,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1208,7 +1210,7 @@ lidl-c62fccbbdac71aec14,Porumb de fiert,2buc,Legume si Fructe,14.99,RON,Lidl,,un
 lidl-66cb1134b44e5c857b,Porumb fiert 400g,400g,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-3973dc5ef4b213cb78,Praz 500g,500g,Legume si Fructe,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-3933b6cd4046301790,Prune,per kg,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-da038c6fe3fb69ea4a,Ridichi negre,per kg,Legume si Fructe,3.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-da038c6fe3fb69ea4a,Ridichi negre,per kg,Legume si Fructe,2.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-dc609f24e3d38589eb,Ridichi rosii legatura,1buc,Legume si Fructe,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-eaf28c4793b7db4daa,Ridichi rosii punga 300g,300g,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a791b986f0ad2c2860,Rodii,1buc,Legume si Fructe,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1219,7 +1221,7 @@ lidl-6d31280341f770be58,Rosii cherry mix,250g,Legume si Fructe,9.99,RON,Lidl,,un
 lidl-abbd1b05859701e828,Rosii cherry prunisoare 250g,250g,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1eead35ef47b35a325,Rosii cherry prunisoare RO,250g,Legume si Fructe,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0317c5ce5a8c37aa57,Rosii cherry rotunde romanesti,250g,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3483e62e179a14c83f,Rosii cocktail RO,500g,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-3483e62e179a14c83f,Rosii cocktail RO,500g,Legume si Fructe,15.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-4f7413c93b2c5c44c3,Rosii prunisoare cu ciorchine 300g,300g,Legume si Fructe,14.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-754a5ac9bd16fcedff,Rosii Roma 1 kg,1kg,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-7014b4b7591c867a23,Rosii Roma 750g,750g,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1237,12 +1239,12 @@ lidl-18aee1a3457c283e93,Smochine,1buc,Legume si Fructe,1.99,RON,Lidl,,unknown,ht
 lidl-44ef22065fd7ebd340,Smochine,4buc,Legume si Fructe,6.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-36bc0bd89fae654da2,Smochine deshid. 400g,per kg,Legume si Fructe,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1bf1df4b0de6e9c7d6,Smochine deshidratate,400g,Legume si Fructe,27.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-3e57c04ea9e798a6d5,Snack ardei dulci fara seminte 250g,250g,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-5b1edfdcc852709f5b,Spanac,500g,Legume si Fructe,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-3e57c04ea9e798a6d5,Snack ardei dulci fara seminte 250g,250g,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-5b1edfdcc852709f5b,Spanac,500g,Legume si Fructe,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5811d40f9082c99215,Struguri albi cu samburi,per kg,Legume si Fructe,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b0ccf0eff41b169de3,Struguri albi f.samburi,400g,Legume si Fructe,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1c5d8b5d8ed2c8e6a7,Struguri albi fara samburi,500g,Legume si Fructe,5.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-dbee05612c510e489c,Struguri negri,per kg,Legume si Fructe,8.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-dbee05612c510e489c,Struguri negri,per kg,Legume si Fructe,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8192f934656945975a,Struguri negri/roze fara samburi,500g,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-28ae61698ee5954950,Struguri roze cu samburi,per kg,Legume si Fructe,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6c9bd906bcb6c6a08b,Telina,per kg,Legume si Fructe,4.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1306,7 +1308,6 @@ lidl-49479136bb6945dd02,Chef Select Aripioare de pui SK1,350g,Mezeluri,13.49,RON
 lidl-a2b6780cbc53ba9ba1,Chef Select Cheeseburger porc,320g,Mezeluri,11.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-07d92aabd35860903f,Chef Select Cordon Bleu din piept de pui,500g,Mezeluri,17.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0b2a9d587c0d139880,Chef Select Kebab pui cu sos de usturoi,450g,Mezeluri,17.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-e242fd3e085210059c,Chef Select Pui Shanghai,200g,Mezeluri,10.15,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1781d45662f25fb830,Cristim Salam Sasesc,350g,Mezeluri,17.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-39c27e59556b6c2d40,Cristim Salam sasesc feliat,100g,Mezeluri,5.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a4fd2b0405261a7549,Deluxe Carnati de vita si porc,80g,Mezeluri,7.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1436,6 +1437,7 @@ lidl-3fc6a0c88d7b076284,- 10 Oua L Sol,10buc,Oua,14.79,RON,Lidl,,unknown,https:/
 lidl-7246d32737fcd8a9b3,- 10 Oua M Sol,10buc,Oua,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-fa1ca6f2e31e53afb1,- 24 Oua de prepelita,24buc,Oua,8.29,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-6fb6c3cc4c2a0a3ac9,- 30 Oua M Sol,30buc,Oua,29.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-78be842f279bb70e65,- 6 Oua XL de la gaini cresc. la sol,6buc,Oua,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-eefcd4f11cf3e644a7,- Oua marimea S cod 2,30buc,Oua,27.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b1cac1f656426d0a62,- Bagheta cu usturoi,165g,Paine si patiserie,3.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-920d3a5708a3748439,- Bagheta frantuzeasca,300g,Paine si patiserie,1.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1546,6 +1548,7 @@ lidl-f753161437e41395af,Tastino Salam de biscuiti,150g,Paine si patiserie,2.59,R
 lidl-9629bbb468d1084f8f,Tastino Sandwich Toast,375g,Paine si patiserie,5.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e3d9a3d6d853765b96,Tastino Toast clasic,600g,Paine si patiserie,3.75,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-c1375e6e0b36a8f917,Tastino Toast integral,600g,Paine si patiserie,3.75,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-1ccc7957fbe5b3423b,Trei Brutari Paine Boiereasca,700g,Paine si patiserie,9.59,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-5200a2134f8a31d48e,Trigon cu mar,105g,Paine si patiserie,2.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-e0f8cfe5ad75a3ff2b,Vel Pitar Paine intermediara,600g,Paine si patiserie,7.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-657d84ee4329e045c6,Vel Pitar Vel Pitar Paine Domneasca Neagra,1kg,Paine si patiserie,11.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1594,7 +1597,6 @@ lidl-36826436cf94c12247,Chef Select Desert Savarina,300g,Proaspete,9.99,RON,Lidl
 lidl-e59957a6a9f44bb766,Chef Select Desert sort. 6 Ecler vanilie/ness,260g,Proaspete,10.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-137057efaf040533c9,Chef Select Dessert Creme de la Creme/Cremsnit,300g,Proaspete,9.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-ba5ca435571f30670a,Chef Select Ecler cu caramel sarat,260g,Proaspete,12.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-87923b3750d2a1e243,Chef Select Ecler frisca,2x110g,Proaspete,11.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-8dfdac4f72e07dde0e,Chef Select Fasole batuta,250g,Proaspete,5.89,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-a6e486080e502cbd15,Chef Select Foi fine de placinta cu sare de Him,400g,Proaspete,5.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-d3b7c84d714c78d50c,Chef Select Hummus cu topping SK,250g,Proaspete,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1612,7 +1614,6 @@ lidl-980094722a2ad26815,Chef Select Salata cu piept de pui si legume,250g,Proasp
 lidl-101c2b49aa0fa0523c,Chef Select Salata de carne,400g,Proaspete,8.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-339685e9a4e585d63a,Chef Select Salata de paste SK1,"200g,220g",Proaspete,9.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0788324c2a34af0190,Chef Select Salata de vinete,250g,Proaspete,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
-lidl-b7ae7eb3a7040573ae,Chef Select Salata Ready to Eat Idilio/Vitale,185g,Proaspete,12.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-1b2c80db5259d3078e,Chef Select Salate culinare Boeuf SK14,250g,Proaspete,6.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0d2805415684f9c03c,Chef Select Selectie de masline grecesti,150g,Proaspete,9.15,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-530865cea885d4aa1a,Chef Select Selectie de masline SK6,150g,Proaspete,10.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
@@ -1620,6 +1621,7 @@ lidl-ec36e9ead530d082e3,Chef Select Specialitate cu ardei umpluti,150g,Proaspete
 lidl-5dbf5a6c773ca1bd75,Chef Select to go Sandwich bagheta,170g,Proaspete,7.69,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0e28ad5ba0d7644f55,Chef Select to go Sandwich triunghi sort. 3,"170g,190g,200g",Proaspete,6.79,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-0af6ae35922fcaee97,Chef Select Tort ciocolata si vanilie,1000g,Proaspete,46.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
+lidl-fad03285f88e761676,Chef Select Tort cu crema si fructe de padure,1000g,Proaspete,46.99,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-b8af37fc158897038b,Chef Select Tortelloni sort.,500g,Proaspete,11.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-f49a989a9f8c089849,Chef Select Wrap cu piept de pui,230g,Proaspete,7.49,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
 lidl-077b457ccea6bcfd4b,Danone Activia Mix Mic Dejun 163g,163g,Proaspete,5.19,RON,Lidl,,unknown,https://www.lidl.ro/explore/assets/webPriceData/ro/preturiZilniceLidl.xlsb,False
