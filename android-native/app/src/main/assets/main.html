@@ -143,7 +143,7 @@ function go(tab){
  state.tab=redirects[tab]||tab;
  state.detail=null;state.modal=null;storage();draw()
 }function detail(id){state.detail=id;state.prevTab=state.tab;state.tab='detail';storage();draw()}function closeDetail(){go(state.prevTab||'home')}function fav(id){state.favorites=state.favorites.includes(id)?state.favorites.filter(n=>n!==id):[...state.favorites,id];storage();draw()}function filter(f){state.filter=f;storage();draw()}function chooseDay(d){state.day=d;storage();draw()}function openList(s){state.store=s;go('list')}function selectStore(s){state.store=s;storage();draw()}function unlock(s){state.modal=s;draw()}function closeModal(){state.modal=null;draw()}function confirmDemo(){state.unlocks[state.modal]=true;state.store=state.modal;state.modal=null;state.tab='list';storage();draw()}function toggleCheck(s,k){state.checked[s+':'+k]=!state.checked[s+':'+k];storage();draw()}function resetCheck(s){Object.keys(state.checked).filter(k=>k.startsWith(s+':')).forEach(k=>delete state.checked[k]);storage();draw()}function shareList(s){let l=`BunPlan · Lista ${s}\n${cart(s).map(p=>'- '+p.name+' · '+p.packs+' pachete').join('\n')}\nPrețuri demonstrative`;if(navigator.clipboard?.writeText)navigator.clipboard.writeText(l).then(()=>alert('Lista a fost copiată.')).catch(()=>window.prompt('Copiază lista:',l));else window.prompt('Copiază lista:',l)}function favOnly(v){state.showOnlyFav=v;storage();draw()}function refreshRecipes(){let q=state.search.toLowerCase().trim();let arr=recipes.filter(r=>r.name.toLowerCase().includes(q)||r.type.toLowerCase().includes(q));if(state.showOnlyFav)arr=arr.filter(r=>state.favorites.includes(r.id));document.getElementById('recipeResults').innerHTML=arr.map(recipeCard).join('')||'<div class="empty">Nicio rețetă găsită.</div>';storage()}function setBudget(n){state.budget=+n;storage();draw()}function setAdults(n){state.adults=n;storage();draw()}function setChildren(n){state.children=n;storage();draw()}function setDiet(n){state.diet=n;storage();draw()}function toggleShop(n){if(state.stores.includes(n)&&state.stores.length===1)return;state.stores=state.stores.includes(n)?state.stores.filter(s=>s!==n):[...state.stores,n];if(!state.stores.includes(state.store))state.store=state.stores[0];storage();draw()}function resetDemo(){if(confirm('Resetezi profilul și listele demo?')){try{localStorage.removeItem('bunplan-demo-state')}catch(e){};location.reload()}}
-function draw(){let content=state.tab==='catalog'?catalogScreen():state.tab==='home'?home():state.tab==='plan'?planScreen():state.tab==='stores'?storesScreen():state.tab==='list'?listScreen():state.tab==='profile'?profileScreen():state.tab==='offers'?offersScreen():state.tab==='recipes'?recipeScreen():detailScreen();let bottom=nav.map(([id,ic,l])=>`<button class="nav ${state.tab===id?'active':''}" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('');document.getElementById('app').innerHTML=`<main class="scroll">${content}</main><nav class="bottom">${bottom}</nav>${modal()}`;window.scrollTo(0,0)}
+function draw(){let content=state.tab==='catalog'?catalogScreen():state.tab==='home'?home():state.tab==='plan'?planScreen():state.tab==='stores'?storesScreen():state.tab==='list'?listScreen():state.tab==='profile'?profileScreen():state.tab==='offers'?offersScreen():state.tab==='recipes'?recipeScreen():detailScreen();let bottom=nav.map(([id,ic,l])=>`<button class="nav ${state.tab===id?'active':''}" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('');document.getElementById('app').innerHTML=`<main class="scroll">${content}</main><nav class="bottom">${bottom}</nav>${modal()}`;if(!window.__bunplanKeepScroll)window.scrollTo(0,0)}
 // Catalog observat 17.10.2026; prețurile NU sunt live și NU sunt baza calculului coșului demo.
 const REAL_PRODUCTS=[{"id":"lidl-potato","store":"Lidl","name":"Cartofi albi","brand":"Piața Lidl","amount":"1 kg","price":1.49,"currency":"RON","source":"https://www.lidl.ro/c/oferte-de-sambata/","image":"","kind":"promoție","validFrom":"2026-10-17","validTo":"2026-10-18","oldPrice":1.99,"category":"Legume","note":"","emoji":"🥔","checkedAt":"2026-10-17"},{"id":"lidl-apple","store":"Lidl","name":"Mere Golden","brand":"Piața Lidl","amount":"1 kg","price":3.49,"currency":"RON","source":"https://www.lidl.ro/c/oferte-de-sambata/","image":"","kind":"promoție","validFrom":"2026-10-17","validTo":"2026-10-18","oldPrice":4.99,"category":"Fructe","note":"","emoji":"🍎","checkedAt":"2026-10-17"},{"id":"lidl-moz","store":"Lidl","name":"Mozzarella Classic","brand":"Milbona","amount":"125 g","price":3.29,"currency":"RON","source":"https://www.lidl.ro/p/milbona-mozzarella-classic/p11006425","image":"https://media1.test-aankoop.be/images/9CF4A2B0F5CC6050086A11AA7D9FE8DAF3984F10/w600-c4/Mozzarellas-MILBONA-LIDL-MOZZARELLA.JPG","kind":"Lidl Plus","validFrom":"2026-10-15","validTo":"2026-10-18","oldPrice":4.49,"category":"Lactate","note":"Fotografie de ambalaj orientativă, nu garantăm aceeași grafică în România.","emoji":"🧀","checkedAt":"2026-10-17"},{"id":"lidl-emm","store":"Lidl","name":"Emmental","brand":"Milbona","amount":"400 g","price":10.89,"currency":"RON","source":"https://www.lidl.ro/h/lactate-branzeturi-si-oua/h10095761","image":"","kind":"promoție","validFrom":"2026-10-17","validTo":"2026-10-18","oldPrice":18.29,"category":"Lactate","note":"","emoji":"🧀","checkedAt":"2026-10-17"}];
 state.catalogStore='Toate'; state.catalogQuery='';state.catalogSelected=state.catalogSelected||{};
@@ -214,7 +214,7 @@ home=function(){
  return `${commonTop()}${heading(`Salut, ${esc(state.name.split(' ')[0])}! 👋`,'Organizăm mâncarea de acasă, fără risipă și fără surprize.')}<section class="hero" style="min-height:210px"><div class="orb"></div><div class="smallcaps">BUGETUL TĂU SĂPTĂMÂNAL</div><div class="heroMoney">${state.budget} <small>lei</small></div><div class="row" style="color:#d5e9dc;font-size:12px"><span>${bpCountPlan()} mese în planul tău</span><b>100 de rețete</b></div><div class="herofoot"><span>Lista include și estimări marcate, pentru un buget orientativ</span><button class="btn lime sm" onclick="go('menu100')">Meniul meu →</button></div></section><div class="bp-homepromo"><div><b>🍲 Biblioteca BunPlan</b><span>100 de rețete cu cantități și instrucțiuni de preparare.</span></div><button class="btn sm lime" onclick="go('library100')">Explorează →</button></div><div class="row section"><h2 class="h2">Rețete pentru tine</h2><button class="link" onclick="go('library100')">Vezi toate →</button></div>${highlights.map(bpRecipeCard).join('')}<div class="row section"><h2 class="h2">Prețuri publicate și estimate</h2><button class="link" onclick="go('catalog')">Catalog →</button></div><p class="muted" style="font-size:12px;line-height:1.5">Produse reale cu surse; ofertele pot expira. Datele Lidl se sincronizează automat la pornire; celelalte magazine păstrează prețurile istorice. Stocul local nu este verificat.</p>${active.map(p=>`<div class="bp-ing"><div><strong>${esc(p.name)}</strong><small>${esc(p.store)} · ${esc(p.amount)}${p.membershipRequired?' · card necesar':''}</small></div><div class="bp-ingright"><a href="${esc(p.source)}" target="_blank" rel="noopener"><b>${ron(p.price)} lei</b><small>Sursă ↗</small></a></div></div>`).join('')||'<div class="notice">Nu sunt oferte active în sursele salvate.</div>'}<button class="btn block" style="margin-top:18px" onclick="go('basket100')">🛒 Lista pentru meniul meu →</button><div class="bp-notice">BunPlan 3.2 este un prototip Android: Lidl se poate sincroniza prin catalog public, iar reclamele sunt simulate. Prețurile Kaufland și Lidl se sincronizează separat; stocul local nu este cunoscut.</div>`;
 };
 const bpOldDraw=draw;
-draw=function(){if(!['library100','detail100','menu100','basket100'].includes(state.tab)){bpOldDraw();return;}let content=state.tab==='library100'?bpLibrary():state.tab==='detail100'?bpDetail():state.tab==='menu100'?bpMenu():bpBasket();let bottom=nav.map(([id,ic,l])=>`<button class="nav ${state.tab===id?'active':''}" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('');document.getElementById('app').innerHTML=`<main class="scroll">${content}</main><nav class="bottom">${bottom}</nav>`;window.scrollTo(0,0)};
+draw=function(){if(!['library100','detail100','menu100','basket100'].includes(state.tab)){bpOldDraw();return;}let content=state.tab==='library100'?bpLibrary():state.tab==='detail100'?bpDetail():state.tab==='menu100'?bpMenu():bpBasket();let bottom=nav.map(([id,ic,l])=>`<button class="nav ${state.tab===id?'active':''}" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('');document.getElementById('app').innerHTML=`<main class="scroll">${content}</main><nav class="bottom">${bottom}</nav>`;if(!window.__bunplanKeepScroll)window.scrollTo(0,0)};
 
 
 // BunPlan 3.2: public Lidl permanent-assortment JSON feed; daily updates via GitHub Actions.
@@ -336,7 +336,7 @@ const bp31Home=home;home=function(){return bp31Home()+`<section class="catalogli
 const bp31Catalog=catalogScreen;catalogScreen=function(){return bp31Catalog()+`<div class="bp-notice"><b>Lidl, separat de prețurile istorice</b><br>${esc(lidlStatus())}<br><button class="btn lime sm" onclick="go('lidlLive')">Deschide catalogul Lidl</button></div>`};
 const bp31Draw=draw;draw=function(){if(state.tab==='lidlLive'){
  document.getElementById('app').innerHTML=`<main class="scroll">${lidlPage()}</main><nav class="bottom">${nav.map(([id,ic,l])=>`<button class="nav" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('')}</nav>`;
- window.scrollTo(0,0);return;} bp31Draw();};
+ if(!window.__bunplanKeepScroll)window.scrollTo(0,0);return;} bp31Draw();};
 // Restore a previously imported feed while waiting for connection; then request latest in foreground.
 try{let cached=localStorage.getItem('bunplan-lidl-feed-cache');if(cached)lidlApply(JSON.parse(cached));}catch(e){}
 setTimeout(()=>lidlSync(false),800);
@@ -421,7 +421,7 @@ storesScreen=function(){return `${commonTop()}${heading('Magazinele tale','Momen
 const home33=home;home=function(){return home33()+`<section class="cataloglink"><div class="smallcaps" style="color:#d9f47b">NOU · KAUFLAND</div><h3>Ofertele săptămânii</h3><p>${esc(kauStatus())}</p><button class="btn lime sm" onclick="go('kauflandLive')">Vezi ofertele →</button></section>`;};
 const draw33=draw;draw=function(){if(state.tab==='kauflandLive'){
  document.getElementById('app').innerHTML=`<main class="scroll">${kauPage()}</main><nav class="bottom">${nav.map(([id,ic,l])=>`<button class="nav" onclick="go('${id}')"><span class="ni">${ic}</span>${l}</button>`).join('')}</nav>`;
- window.scrollTo(0,0);return;
+ if(!window.__bunplanKeepScroll)window.scrollTo(0,0);return;
 }draw33();};
 if(!STORES.includes(bp100.store))bp100.store='Lidl';
 try{let saved=localStorage.getItem('bunplan-kaufland-feed-cache');if(saved)kauApply(JSON.parse(saved));}catch(e){}
@@ -709,7 +709,7 @@ function bp35Calc(){
 }
 function bp35ToggleBought(key,checked,input){
  // Never rebuild the full WebView when ticking a shopping item.
- // Rebuilding calls draw() -> window.scrollTo(0,0), which jumps the screen
+ // Rebuilding calls draw() -> if(!window.__bunplanKeepScroll)window.scrollTo(0,0), which jumps the screen
  // and can also lose focus / checkbox animation on Android.
  const k=bp35Key();
  if(!bp35.bought[k])bp35.bought[k]={};
@@ -1585,6 +1585,51 @@ bpDetail=function(){
  .bp48-shopping-item,.bp48-shopping-main,.bp48-shopping-actions{transition:none!important}
 }
 </style>
+<script>
+/* 5.9: keep the viewport anchored when redrawing the same screen, including
+   plan adjustments, favorites, spending inputs and shopping checkmarks. */
+(function(){
+'use strict';
+let lastTab=state.tab;
+const originalDraw=draw;
+draw=function(){
+ const currentTab=state.tab;
+ const sameScreen=currentTab===lastTab;
+ const oldY=window.scrollY||document.scrollingElement?.scrollTop||0;
+ const scrollContainer=document.scrollingElement||document.documentElement;
+ const oldHeight=Math.max(1,scrollContainer.scrollHeight);
+ window.__bunplanKeepScroll=sameScreen;
+ try{originalDraw();}
+ finally{window.__bunplanKeepScroll=false;lastTab=currentTab;}
+ if(sameScreen&&oldY>0){
+  // Restore immediately and again after asynchronous layout/image measurement.
+  const restore=()=>{
+   const maxY=Math.max(0,(document.scrollingElement?.scrollHeight||0)-innerHeight);
+   window.scrollTo(0,Math.min(oldY,maxY));
+  };
+  restore();requestAnimationFrame(restore);
+ }
+};
+/* Always open at the actual local calendar week, even if the last visit
+   was a historical/future week. Only switch again when the week rolls over. */
+let observedMonday=bp35Monday(new Date());
+if(bp35.week!==observedMonday){
+ bp35Commit();bp35.week=observedMonday;bp35LoadPlan();draw();
+}
+function syncCalendarWeek(){
+ const monday=bp35Monday(new Date());
+ if(monday===observedMonday)return;
+ observedMonday=monday;
+ bp35Commit();
+ bp35.week=monday;
+ bp35LoadPlan();
+ if(['menu100','basket100'].includes(state.tab))draw();
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncCalendarWeek()});
+window.addEventListener('focus',syncCalendarWeek);
+setInterval(syncCalendarWeek,60000);
+})();
+</script>
 <link rel="stylesheet" href="brands/bunplan-ui.css"/>
 <script src="brands/bunplan-ui.js"></script>
 <link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
