@@ -1,0 +1,11 @@
+import {readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const s=readFileSync('android-native/app/src/main/assets/main.html','utf8');
+assert.match(s,/function estimatedKcal\(r\)/);
+assert.match(s,/function nutritionRecipeLabel\(r\)/);
+assert.match(s,/\(estimativ\)/);
+assert.match(s,/const positions=Object.create\(null\)/);
+assert.match(s,/positions\[key\(current\)\]/);
+assert.match(s,/requestAnimationFrame\(apply\)/);
+assert.match(s,/requestAnimationFrame\(restore\)/);
+console.log('PASS: conservative kcal estimates and per-tab scroll restoration hooks');
