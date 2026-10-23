@@ -1,0 +1,31 @@
+name: BunPlan current promotions
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 6 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: bunplan-promotions
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python scripts/promotions_daily.py
+      - name: Publish offers
+        run: |
+          git config user.name bunplan-bot
+          git config user.email bunplan-bot@users.noreply.github.com
+          git add docs/api/promotions/current.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh dated retailer promotions"
+            git pull --rebase
+            git push
+          fi
