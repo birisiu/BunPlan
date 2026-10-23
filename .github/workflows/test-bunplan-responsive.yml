@@ -6,6 +6,8 @@ on:
   push:
     paths:
       - 'scripts/test-responsive.mjs'
+      - 'scripts/test-five-tabs-navigation.mjs'
+      - 'android-native/app/src/main/assets/brands/bunplan-nav-router.js'
       - '.github/workflows/test-bunplan-responsive.yml'
 permissions:
   contents: read
@@ -30,6 +32,16 @@ jobs:
         run: node scripts/test-admin.mjs
       - name: Test only ADMIN credential and private password recovery
         run: node scripts/test-admin-exclusive-login.mjs
+      - name: Verify nutrition fields and dietary filters
+        run: node scripts/test-diet-nutrition.mjs
+      - name: Check estimated kcal and navigation restoration
+        run: node scripts/test-estimated-kcal-navigation.mjs
+      - name: Check saved cooking recipes and AdMob banner wiring
+        run: node scripts/test-saved-cooking.mjs
+      - name: Check promotion validity and daily refresh
+        run: node scripts/test-promotions.mjs
+      - name: Click all five tabs from saved cooking detail
+        run: node scripts/test-five-tabs-navigation.mjs
       - name: Test guided first-use tour and fresh CRM synchronization
         run: node scripts/test-tour-refresh.mjs
       - name: Test complete BunPlan CRM operations

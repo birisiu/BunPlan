@@ -164,7 +164,7 @@ async function loadDashboard(){
   $('stats').innerHTML=cards.map(([title,n])=>'<div class="stat"><small>'+esc(title)+'</small><strong>'+Number(n||0).toLocaleString('ro-RO')+'</strong></div>').join('');
  }catch(e){flash('Eroare la statistici: '+e.message)}
 }
-const recipeCols='id,legacy_key,title,short_description,description,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,photo_url,photo_credit,image_reviewed,published,source_status,updated_at';
+const recipeCols='id,legacy_key,title,short_description,description,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,photo_url,photo_credit,image_reviewed,published,source_status,updated_at,kcal_per_recipe,protein_g_per_recipe,nutrition_source';
 async function loadRecipes(){
  const p=session.recipes;flash('');
  try{
@@ -247,6 +247,9 @@ async function openRecipe(id){
    label('category','Categorie',row?.category||'Prânz','required')+
    label('servings','Porții',row?.servings||2,'type="number" min="1" max="40" required')+
    label('minutes_to_prepare','Timp total (minute)',row?.minutes_to_prepare||30,'type="number" min="1" max="600" required')+
+   label('kcal_per_recipe','Kcal pentru întreaga rețetă (dacă sunt verificate)',row?.kcal_per_recipe??'','type="number" min="0" max="100000" step="0.1"')+
+   label('protein_g_per_recipe','Proteine g pentru întreaga rețetă (dacă sunt verificate)',row?.protein_g_per_recipe??'','type="number" min="0" max="10000" step="0.1"')+
+   label('nutrition_source','Sursa valorilor nutriționale',row?.nutrition_source||'','maxlength="300"')+
    area('short_description','Descriere scurtă',row?.short_description||'',3)+
    area('description','Descriere completă',row?.description||'',4)+
    area('steps','Instrucțiuni pas cu pas (un pas pe rând)',(row?.instructions||[]).join('\n'),7)+
@@ -335,8 +338,12 @@ $('edit-form').addEventListener('submit',async e=>{
     tags:String(f.get('tags')||'').split(',').map(x=>x.trim()).filter(Boolean),
     allergens:String(f.get('allergens')||'').split(',').map(x=>x.trim()).filter(Boolean),
     published:f.has('published'),source_status:'reviewed',
-    photo_credit:String(f.get('photo_credit')||'').trim()
+    photo_credit:String(f.get('photo_credit')||'').trim(),
+    kcal_per_recipe:String(f.get('kcal_per_recipe')||'').trim()?Number(f.get('kcal_per_recipe')):null,
+    protein_g_per_recipe:String(f.get('protein_g_per_recipe')||'').trim()?Number(f.get('protein_g_per_recipe')):null,
+    nutrition_source:String(f.get('nutrition_source')||'').trim()||null
    };
+   if([fields.kcal_per_recipe,fields.protein_g_per_recipe].some(x=>x!==null&&(!Number.isFinite(x)||x<0)))throw Error('Valori nutriționale invalide.');
    if(!fields.title||!fields.category)throw Error('Titlul și categoria sunt obligatorii.');
    if(fields.servings<1||fields.servings>40||fields.minutes_to_prepare<1||fields.minutes_to_prepare>600)
       throw Error('Porțiile sau minutele sunt în afara intervalului.');

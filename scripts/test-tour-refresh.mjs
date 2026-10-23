@@ -44,6 +44,8 @@ try{
   const page=await browser.newPage({viewport:{width,height:860}});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/rest/v1/**',routeHandler);
+  // Keep the synchronization test deterministic: promotions are a separate external feed.
+  await page.route('**/api/promotions/current.json*',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({schema_version:1,stores:{}})}));
   await page.addInitScript(()=>{
    window.BunPlanAuth={hasSession:()=>true,currentEmail:()=> 'tester@example.com'};
    window.BunPlanCloud={loadProfile(){},saveProfile(){},saveWeek(){},loadWeek(){},sendFeedback(){}};
