@@ -62,6 +62,7 @@ async function syncAll(){
  try{
   const tasks=[
    ['rețete',window.bunplanRefreshRecipes],
+   ['promoții',window.bunplanRefreshPromotions],
    ['prețuri',window.bunplanRefreshIngredientPrices],
    ['fotografii',window.bunplanRefreshIngredientPhotos],
    ['setări',window.bunplanRefreshSettings],

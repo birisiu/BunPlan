@@ -47,6 +47,7 @@ home=function(){
  const greeting='Bună, '+esc(compactName(state.name))+'! 👋';
  return commonTop()+'<div class="bp-brand-home">'+
  '<header class="bp-brand-greeting"><h1>'+greeting+'</h1><p>Hai să planificăm o săptămână mai bună!</p></header>'+
+ (window.bunplanPromotionsHTML?.()||'')+
  '<div class="bp-weekline" aria-label="Zilele săptămânii">'+
  dates.map((d,i)=>'<button type="button" class="'+(i===today?'active':'')+'" onclick="bpDay('+i+');go(\'menu100\')" aria-label="'+
  esc(BP_DAYS[i]+' '+d.getDate())+'">'+shortDay(i)+'<span>'+d.getDate()+'</span></button>').join('')+'</div>'+
