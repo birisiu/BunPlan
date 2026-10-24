@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-23T19:37:10.723795+00:00",
+  "generated_at": "2026-10-24T10:52:57.944310+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-10-23T19:37:10.723795+00:00",
+      "checked_at": "2026-10-24T10:52:57.944310+00:00",
       "products": [
         {
           "id": "lidl-11151167",
@@ -30,6 +30,21 @@
           "image_url": "https://www.lidl.ro/assets/gcp44db17bee4be496b8a2e3baee4358a9d.png",
           "source_url": "https://www.lidl.ro/p/avocado-hass/p11150914",
           "valid_from": "2026-10-22",
+          "valid_to": "2026-10-25",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11029883",
+          "store": "Lidl",
+          "name": "Mango",
+          "price_ron": 4.49,
+          "currency": "RON",
+          "size": "per buc.",
+          "image_url": "https://www.lidl.ro/assets/gcp33da608b8252405aa74498343bbe0d99.png",
+          "source_url": "https://www.lidl.ro/p/mango/p11029883",
+          "valid_from": "2026-10-24",
           "valid_to": "2026-10-25",
           "membership_required": false,
           "kind": "Ofertă în magazin",
@@ -263,7 +278,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-10-23T19:37:10.723795+00:00",
+      "checked_at": "2026-10-24T10:52:57.944310+00:00",
       "products": [
         {
           "id": "kaufland-66be6f67bd4bd9d88155",
@@ -1245,7 +1260,7 @@
           "category": "Carne, mezeluri",
           "price_ron": 10.99,
           "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00150844_P",
+          "image_url": null,
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-10-21",
           "valid_to": "2026-10-27",
