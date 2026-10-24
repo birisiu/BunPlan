@@ -1,7 +1,7 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-10-23T14:28:03+00:00",
+    "checked_at": "2026-10-24T13:36:56+00:00",
     "product_count": 151,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
@@ -937,7 +937,7 @@
       "category": "Carne, mezeluri",
       "price_ron": 10.99,
       "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00150844_P",
+      "image_url": null,
       "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
       "valid_from": "2026-10-21",
       "valid_to": "2026-10-27",
