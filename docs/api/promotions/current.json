@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-24T10:52:57.944310+00:00",
+  "generated_at": "2026-10-25T11:19:00.112366+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-10-24T10:52:57.944310+00:00",
+      "checked_at": "2026-10-25T11:19:00.112366+00:00",
       "products": [
         {
           "id": "lidl-11151167",
@@ -278,7 +278,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-10-24T10:52:57.944310+00:00",
+      "checked_at": "2026-10-25T11:19:00.112366+00:00",
       "products": [
         {
           "id": "kaufland-66be6f67bd4bd9d88155",
@@ -1260,7 +1260,7 @@
           "category": "Carne, mezeluri",
           "price_ron": 10.99,
           "currency": "RON",
-          "image_url": null,
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00150844_P",
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-10-21",
           "valid_to": "2026-10-27",
