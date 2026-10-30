@@ -1002,6 +1002,8 @@ function compatible(r){
  minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,
  short_description:r.short_description||'',description:r.description||'',
  photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',
+ kcal_per_recipe:Number.isFinite(Number(r.kcal_per_recipe))&&r.kcal_per_recipe!==null?Number(r.kcal_per_recipe):null,
+ protein_g_per_recipe:Number.isFinite(Number(r.protein_g_per_recipe))&&r.protein_g_per_recipe!==null?Number(r.protein_g_per_recipe):null,
  ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
  steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
  unreviewed:r.source_status==='generated_unreviewed'};
@@ -1010,9 +1012,79 @@ function items(){
  const old=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).map(r=>({...r,cloud:false}));
  return old.concat(cloud.map(r=>({...r,cloud:true})));
 }
+let nutritionFilter=state.diet==='Vegetarian'?'vegetarian':state.diet==='Bogat în proteine'?'high-protein':'all';
+function nutritionMatch(r){
+ const tags=(r.tags||[]).map(x=>String(x).toLocaleLowerCase('ro'));
+ if(nutritionFilter==='vegetarian')return tags.includes('vegetarian');
+ if(nutritionFilter==='high-protein'){
+  const protein=r.protein_g_per_recipe, servings=Number(r.servings);
+  return Number.isFinite(protein)&&protein!==null&&servings>0&&protein/servings>=25;
+ }
+ return true;
+}
+/* Indicative kcal derived from recognizable recipe ingredients and amounts.
+   An estimate is shown only when all ingredients have known units and matches;
+   unknown entries stay unknown rather than silently adding zero. */
+const KCAL_100G=[
+ [/ulei|untura|untură/,884],[/unt(?!ură)|margarina/,717],
+ [/orez|paste|faina|făină|ovaz|ovăz|cuscus|bulgur|quinoa/,360],
+ [/zahar|zahăr|miere/,390],[/nuci|migdale|arahide|seminte|semințe/,585],
+ [/branza|brânză|cascaval|cașcaval|parmezan|telemea/,300],
+ [/iaurt|lapte|chefir/,65],[/oua|ouă|ou\b/,143],
+ [/piept de pui|pui|curcan/,145],[/vita|vită|porc/,210],
+ [/somon/,208],[/ton|peste|pește|cod/,105],
+ [/linte|naut|năut|fasole|mazare|mazăre/,115],
+ [/cartof/,80],[/avocado/,160],[/banana|banană/,89],
+ [/mar|măr|mere|para|pară|portocal/,55],
+ [/rosie|roșie|rosii|roșii|ardei|morcov|ceapa|ceapă|dovlecel|broccoli|conopida|conopidă|spanac|ciuperci|varza|varză|castravete/,30],
+ [/apa|apă/,0]
+];
+function estimatedKcal(r){
+ const ingredients=Array.isArray(r.ingredients)?r.ingredients:[];
+ if(!ingredients.length)return null;
+ let total=0;
+ for(const it of ingredients){
+  const name=String(it.name||it.id||'').toLocaleLowerCase('ro');
+  const match=KCAL_100G.find(([pattern])=>pattern.test(name));
+  const unit=String(it.unit||'').toLocaleLowerCase('ro').trim();
+  const qty=Number(it.quantity);
+  if(!match||!Number.isFinite(qty)||qty<=0)return null;
+  let grams;
+  if(['g','gr','gram','grame','ml'].includes(unit))grams=qty;
+  else if(unit==='kg'||unit==='l')grams=qty*1000;
+  else if(['buc','buc.','bucati','bucăți'].includes(unit)){
+   if(/oua|ouă|ou\b/.test(name))grams=qty*55;
+   else if(/banana|banană/.test(name))grams=qty*120;
+   else if(/mar|măr|mere/.test(name))grams=qty*160;
+   else if(/ceapa|ceapă/.test(name))grams=qty*110;
+   else if(/cartof/.test(name))grams=qty*160;
+   else if(/morcov/.test(name))grams=qty*75;
+   else if(/ardei/.test(name))grams=qty*140;
+   else return null;
+  }else return null;
+  total+=grams*match[1]/100;
+ }
+ return Math.round(total);
+}
+function nutritionValue(r){
+ const servings=Number(r.servings)||2;
+ const exact=r.kcal_per_recipe;
+ if(exact!==null&&exact!==undefined&&Number.isFinite(Number(exact)))
+  return {total:Math.round(Number(exact)),servings,estimated:false};
+ const estimate=estimatedKcal(r);
+ return estimate===null?null:{total:estimate,servings,estimated:true};
+}
+function nutritionLabel(r){
+ const info=nutritionValue(r);
+ return info?(info.estimated?'≈ ':'')+Math.round(info.total/info.servings)+' kcal/porție'+(info.estimated?' (estimativ)':''):'Kcal necunoscute';
+}
+function nutritionRecipeLabel(r){
+ const info=nutritionValue(r);
+ return info?(info.estimated?'≈ ':'')+info.total+' kcal/rețetă'+(info.estimated?' (estimativ)':''):'Kcal/rețetă necunoscute';
+}
 function filtered(){
  const q=(bp100.query||'').trim().toLocaleLowerCase('ro');
- return items().filter(r=>(bp100.category==='Toate'||r.category===bp100.category)&&
+ return items().filter(r=>nutritionMatch(r)&&(bp100.category==='Toate'||r.category===bp100.category)&&
  (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
  [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
 }
@@ -1031,7 +1103,7 @@ function row(r){
   '" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'has-photo\')">':'';
  return '<button class="bp-recipecard" data-bp-photo="'+(photo?'1':'')+'" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
  '<span class="bp-emoji'+(photo?' has-photo':'')+'">'+emoji+image+'</span>'+
- '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
+ '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+nutritionLabel(r)+(r.protein_g_per_recipe!==null&&Number(r.servings)>0?' · '+Math.round(r.protein_g_per_recipe/r.servings)+' g proteine/porție':'')+'</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
 }
 function fill(){
  const results=document.getElementById('bpCloudResults');
@@ -1044,6 +1116,10 @@ function fill(){
 window.bpCloudFilter=function(value){bp100.query=value;visible=40;bpSave();fill()};
 window.bpCloudCat=function(c){bp100.category=c;visible=40;bpSave();draw()};
 window.bpCloudMore=function(){visible+=40;fill()};
+window.bpNutritionFilter=function(value){
+ nutritionFilter=['all','vegetarian','high-protein'].includes(value)?value:'all';
+ visible=40;draw();
+};
 window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
 bpLibrary=function(){
  const cmsCategories=window.bunplanCMSGet?.('recipes','categories',[])||[];
@@ -1057,6 +1133,10 @@ bpLibrary=function(){
  (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
  ' Variantele noi necesită verificare culinară; prețurile nu sunt confirmate.</div>'+
  '<input class="p-headsearch" aria-label="Caută rețete" placeholder="Caută rețete sau ingrediente…" value="'+esc(bp100.query||'')+'" oninput="bpCloudFilter(this.value)"/>'+
+ '<div class="bp-notice">Vegetarian = etichetă din catalog. Bogat în proteine = cel puțin 25 g proteine/porție, doar la rețete cu valori verificate. Rețetele fără date nutriționale nu sunt clasificate automat.</div>'+ 
+ '<div class="bp-categories" aria-label="Filtrare nutrițională">'+
+ [['all','Toate dietele'],['vegetarian','Vegetarian 🥬'],['high-protein','Bogat în proteine 💪']].map(([key,label])=>
+ '<button class="chip '+(nutritionFilter===key?'selected':'')+'" onclick="bpNutritionFilter(\''+key+'\')">'+label+'</button>').join('')+'</div>'+
  '<div class="bp-categories">'+categories.map(c=>'<button class="chip '+(bp100.category===c?'selected':'')+'" onclick="bpCloudCat('+JSON.stringify(c).replace(/"/g,'&quot;')+')">'+esc(c)+'</button>').join('')+'</div>'+
  '<div class="row" style="margin:12px 0 18px"><b id="bpCloudCount"></b><button class="btn sm" onclick="go(\'menu100\')">Planul meu →</button></div>'+
  '<div id="bpCloudResults"></div><button class="btn out block" id="bpCloudMore" style="margin:15px 0" onclick="bpCloudMore()">Încarcă alte rețete ↓</button>'+
@@ -1078,7 +1158,7 @@ bpDetail=function(){
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
  (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
- '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span><span>'+nutritionLabel(r)+'</span><span>'+(r.kcal_per_recipe!==null&&Number.isFinite(r.kcal_per_recipe)?Math.round(r.kcal_per_recipe)+' kcal/rețetă':'Kcal/rețetă necunoscute')+'</span></div>'+
  '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
  '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
  '<div class="bp-listingredients">'+r.ingredients.map(i=>'<div class="bp-ing"><div><strong>'+esc(i.name)+'</strong><small>'+Number(i.quantity)+' '+esc(i.unit)+'</small></div></div>').join('')+'</div>'+
@@ -1107,7 +1187,8 @@ function updateOriginalRows(rows){
   Object.assign(current,{title:r.title,category:r.category,servings:r.servings,
    minutes:r.minutes,steps:r.steps,tags:r.tags,allergens:r.allergens,
    photo_url:r.photo_url,image_reviewed:r.image_reviewed,photo_credit:r.photo_credit||'',
-   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed});
+   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed,
+   kcal_per_recipe:r.kcal_per_recipe,protein_g_per_recipe:r.protein_g_per_recipe});
   if(r.ingredients.length&&window.bunplanNormalizeIngredient){
    current.ingredients=r.ingredients.map(it=>{
     const old=(current.ingredients||[]).find(prev=>prev.id===it.name);
@@ -1117,7 +1198,7 @@ function updateOriginalRows(rows){
   }
  }
 }
-const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit';
+const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit,kcal_per_recipe,protein_g_per_recipe';
 let refreshPromise=null;
 window.bunplanRefreshRecipes=function(){
  if(refreshPromise)return refreshPromise;
@@ -1585,6 +1666,134 @@ bpDetail=function(){
  .bp48-shopping-item,.bp48-shopping-main,.bp48-shopping-actions{transition:none!important}
 }
 </style>
+<script>
+/* Keep each screen's position independently and restore on navigation back.
+   A stored scroll is applied after rendering and once again when layout settles. */
+(function(){
+'use strict';
+const positions=Object.create(null);
+let current=state.tab;
+function key(tab){return String(tab||'home')}
+function save(){positions[key(current)]=window.scrollY||document.scrollingElement?.scrollTop||0}
+const originalGo=go;
+go=function(tab){
+ save();
+ const target=({recipes:'library100',plan:'menu100',list:'basket100',stores:'menu100',offers:'basket100',catalog:'basket100'})[tab]||tab;
+ current=target;
+ originalGo(tab);
+ const wanted=positions[key(target)]||0;
+ const apply=()=>window.scrollTo(0,Math.min(wanted,Math.max(0,(document.scrollingElement?.scrollHeight||0)-innerHeight)));
+ apply();requestAnimationFrame(apply);
+};
+const oldDraw=draw;
+draw=function(){
+ const tab=state.tab;
+ const same=tab===current;
+ const old=window.scrollY||document.scrollingElement?.scrollTop||0;
+ oldDraw();
+ current=tab;
+ if(same){
+  const restore=()=>window.scrollTo(0,Math.min(old,Math.max(0,(document.scrollingElement?.scrollHeight||0)-innerHeight)));
+  restore();requestAnimationFrame(restore);
+ }
+};
+})();
+</script>
+<style>
+.bp62-saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;margin:10px 0;border:1px solid #dcebd7;border-radius:18px;background:white;color:#164a34}
+.bp62-saved-card{display:block}.bp62-card-open{border:0;background:transparent;display:flex;align-items:center;gap:12px;width:100%;text-align:left;color:inherit;padding:0}.bp62-card-open span:nth-child(2){flex:1}.bp62-card-actions{display:flex;gap:10px;margin-top:12px}.bp62-card-actions button{border:1px solid #cddfd0;background:#eef6e8;border-radius:10px;padding:9px 13px;color:#174a35;font-weight:700}.bp62-saved-card b{display:block;font-size:15px}.bp62-saved-card small{display:block;margin-top:5px;color:#647968}
+.bp62-cooking-ad{height:72px;min-height:72px;margin:12px 0 19px;border:1px dashed #cddbd0;border-radius:14px;display:grid;place-items:center;color:#718378;font-size:11px}
+.bottom{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.bottom .nav{min-width:0;padding-left:2px;padding-right:2px}.bottom .nav .ni{font-size:19px}
+.bottom .nav{font-size:10px}
+@media(max-width:350px){.bottom .nav{font-size:9px}}
+</style>
+<script>
+/* 6.2 Cooking shelf: week plan -> dedicated saved recipes section.
+   The AdMob position remains reserved until native banner SDK is wired. */
+(function(){
+'use strict';
+// Branded bottom nav registers savedCooking in bunplan-ui.js.
+const originalGo=go,originalDraw=draw;
+let prior='savedCooking',opened=null;
+const ACTION_KEY='bunplan_cooking_actions_v1';
+let statuses={};try{statuses=JSON.parse(localStorage.getItem(ACTION_KEY)||'{}')||{}}catch(e){}
+function actionKey(id){return bp35Key()+'|'+id}
+function persist(){try{localStorage.setItem(ACTION_KEY,JSON.stringify(statuses))}catch(e){}}
+window.bp63Mark=function(id,status){statuses[actionKey(id)]=status;persist();draw()};
+window.bp63Restore=function(id){delete statuses[actionKey(id)];persist();draw()};
+let swipeX=null;
+document.addEventListener('touchstart',e=>{const card=e.target.closest?.('[data-cooking-recipe]');swipeX=card&&e.touches.length===1?{x:e.touches[0].clientX,id:card.getAttribute('data-cooking-recipe')}:null},{passive:true});
+document.addEventListener('touchend',e=>{if(!swipeX||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-swipeX.x;if(Math.abs(dx)>75){bp63Mark(swipeX.id,dx>0?'done':'archived');e.preventDefault()}swipeX=null},{passive:false});
+function updateBanner(){
+ if(state.tab==='savedCookingDetail'&&document.querySelector('.bp62-cooking-ad'))
+  window.BunPlanAds?.showCookingBanner?.(106);
+ else window.BunPlanAds?.hideCookingBanner?.();
+}
+// Capture navigation before other screen-level handlers. Never leave an Android
+// AdView overlay active when navigating out of a cooking recipe.
+document.addEventListener('click',event=>{
+ const button=event.target.closest?.('nav.bottom button.nav');
+ if(!button||!['savedCooking','savedCookingDetail'].includes(state.tab))return;
+ const id=nav.find(([tab])=>button.getAttribute('onclick')?.includes(JSON.stringify(tab))||
+ button.getAttribute('onclick')?.includes("'"+tab+"'"))?.[0];
+ if(!id)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ window.BunPlanAds?.hideCookingBanner?.();
+ if(id==='savedCooking'){state.tab=id;storage();draw();return}
+ // Use the normal draw wrapper, not a stale oldDraw reference.
+ state.tab=id;state.detail=null;state.modal=null;storage();draw();
+},true);
+function recipesForWeek(){
+ const days=bp100.days||[];
+ const ids=[...new Set(days.flatMap(day=>Object.values(day||{})).filter(Boolean))];
+ return ids.map(id=>({id,r:bpRecipe(id)||window.bunplanCloudLatest?.find(x=>x.id===id)})).filter(x=>x.r);
+}
+function list(){
+ const data=recipesForWeek();const active=data.filter(x=>!statuses[actionKey(x.id)]),finished=data.filter(x=>statuses[actionKey(x.id)]);
+ const makeCard=({id,r})=>'<article class="bp62-saved-card" data-cooking-recipe="'+esc(id)+'">'+
+ '<button class="bp62-card-open" onclick="bp62Open('+JSON.stringify(id).replace(/"/g,'&quot;')+')"><span style="font-size:26px">🍲</span><span><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' min</small></span><span>›</span></button>'+
+ '<div class="bp62-card-actions">'+(statuses[actionKey(id)]?'<button onclick="bp63Restore('+JSON.stringify(id).replace(/"/g,'&quot;')+')">↩ Restaurează</button>':
+ '<button onclick="bp63Mark('+JSON.stringify(id).replace(/"/g,'&quot;')+',\'done\')">✓ Gătită</button><button onclick="bp63Mark('+JSON.stringify(id).replace(/"/g,'&quot;')+',\'archived\')">Arhivează</button>')+'</div></article>';
+ return commonTop()+heading('Rețetele mele de gătit','Din meniul săptămânii. Glisează dreapta = gătită, stânga = arhivează.')+
+ '<p class="bp-notice">'+esc(bp35.store)+' · '+esc(bp35Pretty(bp35.week))+' – '+esc(bp35Pretty(bp35ISO(bp35Date(bp35.week,6))))+'</p>'+
+ (active.length?active.map(makeCard).join(''):'<p class="bp-notice">Nu ai rețete active. Alege-le din meniul săptămânal.</p>')+
+ (finished.length?'<h2 class="h2">Gătite și arhivate</h2>'+finished.map(makeCard).join(''):'')+
+ (!data.length?'<button class="btn block" onclick="go(\'menu100\')">Planifică mesele →</button>':'');
+}
+window.bp62Open=function(id){opened=id;prior='savedCooking';go('savedCookingDetail')};
+go=function(tab){
+ if(tab==='savedCooking'||tab==='savedCookingDetail'){
+  state.tab=tab;storage();draw();return;
+ }
+ if(['home','library100','basket100','profile','menu100','detail100'].includes(tab)){
+  window.BunPlanAds?.hideCookingBanner?.();
+  state.tab=tab;state.detail=null;state.modal=null;storage();draw();
+ }else originalGo(tab);
+ window.BunPlanAds?.hideCookingBanner?.();
+};
+draw=function(){
+ if(state.tab==='savedCooking'||state.tab==='savedCookingDetail'){
+  const r=opened&&(bpRecipe(opened)||window.bunplanCloudLatest?.find(x=>x.id===opened));
+  window.BunPlanAds?.hideCookingBanner?.();
+  const content=state.tab==='savedCooking'?list():r?
+   commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Rețetele mele</button>'+
+   '<div class="bp62-cooking-ad" aria-label="Spațiu publicitar">Publicitate · AdMob</div>'+
+   '<h1 class="title">'+esc(r.title)+'</h1>'+
+   '<p class="sub">'+esc(r.category)+' · '+Number(r.servings||2)+' porții</p>'+
+   '<h2 class="h2">Ingrediente</h2><div class="bp-listingredients">'+(r.ingredients||[]).map(it=>
+     '<div class="bp-ing"><strong>'+esc(it.name||bpName(it.id))+'</strong> · '+Number(it.quantity||0)+' '+esc(it.unit||'')+'</div>').join('')+'</div>'+
+   '<h2 class="h2">Mod de preparare</h2><ol class="bp-steps">'+(r.steps||[]).map(st=>'<li>'+esc(String(st))+'</li>').join('')+'</ol>':
+   commonTop()+'<button class="back" onclick="go(\'savedCooking\')">← Înapoi</button><p>Rețeta nu este disponibilă.</p>';
+  const bottom=nav.map(([id,ic,label])=>'<button class="nav '+(id==='savedCooking'?'active':'')+'" onclick="go('+JSON.stringify(id)+')"><span class="ni">'+ic+'</span>'+label+'</button>').join('');
+  document.getElementById('app').innerHTML='<main class="scroll">'+content+'</main><nav class="bottom">'+bottom+'</nav>';
+  requestAnimationFrame(updateBanner);
+  return;
+ }
+ originalDraw();
+};
+})();
+</script>
 <link rel="stylesheet" href="brands/bunplan-ui.css"/>
 <script src="brands/bunplan-ui.js"></script>
 <link rel="stylesheet" href="brands/bunplan-photos-spending.css"/>
