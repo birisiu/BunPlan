@@ -6,6 +6,7 @@ const icons={
  house:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
  food:'<path d="M4 3v7m3-7v7M4 6h3M5.5 10v11M15 3v18M15 3c6 3 7 8 0 11"/>',
  list:'<path d="M7 3h11a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h7m-7 5h7m-7 5h7M3 8h1M3 13h1M3 18h1"/>',
+ chef:'<path d="M6 13a4 4 0 0 1-1-7 5 5 0 0 1 9-2 4 4 0 1 1 4 7v5H6z"/><path d="M6 20h12M8 16v4m8-4v4"/>',
  person:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3-7 8-7s8 3 8 7"/>'
 };
 const svg=key=>'<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">'+icons[key]+'</svg>';
@@ -13,6 +14,7 @@ nav.splice(0,nav.length,
  ['home',svg('house'),'Planul meu'],
  ['library100',svg('food'),'Rețete'],
  ['basket100',svg('list'),'Lista'],
+ ['savedCooking',svg('chef'),'Salvate'],
  ['profile',svg('person'),'Profil']
 );
 function recipe(id){return BP100.find(x=>x.id===id)}
