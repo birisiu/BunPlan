@@ -1002,6 +1002,8 @@ function compatible(r){
  minutes:r.minutes_to_prepare,variant_of:r.variant_of||null,
  short_description:r.short_description||'',description:r.description||'',
  photo_url:r.photo_url||null,image_reviewed:r.image_reviewed===true,photo_credit:r.photo_credit||'',
+ kcal_per_recipe:Number.isFinite(Number(r.kcal_per_recipe))&&r.kcal_per_recipe!==null?Number(r.kcal_per_recipe):null,
+ protein_g_per_recipe:Number.isFinite(Number(r.protein_g_per_recipe))&&r.protein_g_per_recipe!==null?Number(r.protein_g_per_recipe):null,
  ingredients:Array.isArray(r.ingredient_details)?r.ingredient_details:[],
  steps:Array.isArray(r.instructions)?r.instructions:[],tags:Array.isArray(r.tags)?r.tags:[],allergens:Array.isArray(r.allergens)?r.allergens:[],
  unreviewed:r.source_status==='generated_unreviewed'};
@@ -1010,9 +1012,23 @@ function items(){
  const old=BP100.filter(r=>! /^(BP\d{4}|ADM-)/.test(r.id)).map(r=>({...r,cloud:false}));
  return old.concat(cloud.map(r=>({...r,cloud:true})));
 }
+let nutritionFilter=state.diet==='Vegetarian'?'vegetarian':state.diet==='Bogat în proteine'?'high-protein':'all';
+function nutritionMatch(r){
+ const tags=(r.tags||[]).map(x=>String(x).toLocaleLowerCase('ro'));
+ if(nutritionFilter==='vegetarian')return tags.includes('vegetarian');
+ if(nutritionFilter==='high-protein'){
+  const protein=r.protein_g_per_recipe, servings=Number(r.servings);
+  return Number.isFinite(protein)&&protein!==null&&servings>0&&protein/servings>=25;
+ }
+ return true;
+}
+function nutritionLabel(r){
+ const n=r.kcal_per_recipe,servings=Number(r.servings);
+ return n!==null&&Number.isFinite(n)&&servings>0?Math.round(n/servings)+' kcal/porție':'Kcal necunoscute';
+}
 function filtered(){
  const q=(bp100.query||'').trim().toLocaleLowerCase('ro');
- return items().filter(r=>(bp100.category==='Toate'||r.category===bp100.category)&&
+ return items().filter(r=>nutritionMatch(r)&&(bp100.category==='Toate'||r.category===bp100.category)&&
  (!q|| (r.cloud?content({title:r.title,category:r.category,tags:r.tags,ingredient_details:r.ingredients}):
  [r.title,r.category,...r.tags,...r.ingredients.map(i=>bpName(i.id))].join(' ').toLocaleLowerCase('ro')).includes(q)));
 }
@@ -1031,7 +1047,7 @@ function row(r){
   '" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'has-photo\')">':'';
  return '<button class="bp-recipecard" data-bp-photo="'+(photo?'1':'')+'" onclick="bpCloudOpen('+JSON.stringify(r.id).replace(/"/g,'&quot;')+')">'+
  '<span class="bp-emoji'+(photo?' has-photo':'')+'">'+emoji+image+'</span>'+
- '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
+ '<span class="bp-rcbody"><b>'+esc(r.title)+'</b><small>'+esc(r.category)+' · '+Number(r.minutes||0)+' minute · '+Number(r.servings||2)+' porții</small><small>'+nutritionLabel(r)+(r.protein_g_per_recipe!==null&&Number(r.servings)>0?' · '+Math.round(r.protein_g_per_recipe/r.servings)+' g proteine/porție':'')+'</small><small>'+esc(note)+'</small></span><span class="bp-chevron">›</span></button>';
 }
 function fill(){
  const results=document.getElementById('bpCloudResults');
@@ -1044,6 +1060,10 @@ function fill(){
 window.bpCloudFilter=function(value){bp100.query=value;visible=40;bpSave();fill()};
 window.bpCloudCat=function(c){bp100.category=c;visible=40;bpSave();draw()};
 window.bpCloudMore=function(){visible+=40;fill()};
+window.bpNutritionFilter=function(value){
+ nutritionFilter=['all','vegetarian','high-protein'].includes(value)?value:'all';
+ visible=40;draw();
+};
 window.bpCloudOpen=function(id){bp100.detail=id;bpSave();go('detail100')};
 bpLibrary=function(){
  const cmsCategories=window.bunplanCMSGet?.('recipes','categories',[])||[];
@@ -1057,6 +1077,10 @@ bpLibrary=function(){
  (loading?'Se sincronizează biblioteca…':loadError?'Actualizarea online nu a reușit: '+esc(loadError):'Biblioteca este sincronizată.')+
  ' Variantele noi necesită verificare culinară; prețurile nu sunt confirmate.</div>'+
  '<input class="p-headsearch" aria-label="Caută rețete" placeholder="Caută rețete sau ingrediente…" value="'+esc(bp100.query||'')+'" oninput="bpCloudFilter(this.value)"/>'+
+ '<div class="bp-notice">Vegetarian = etichetă din catalog. Bogat în proteine = cel puțin 25 g proteine/porție, doar la rețete cu valori verificate. Rețetele fără date nutriționale nu sunt clasificate automat.</div>'+ 
+ '<div class="bp-categories" aria-label="Filtrare nutrițională">'+
+ [['all','Toate dietele'],['vegetarian','Vegetarian 🥬'],['high-protein','Bogat în proteine 💪']].map(([key,label])=>
+ '<button class="chip '+(nutritionFilter===key?'selected':'')+'" onclick="bpNutritionFilter(\''+key+'\')">'+label+'</button>').join('')+'</div>'+
  '<div class="bp-categories">'+categories.map(c=>'<button class="chip '+(bp100.category===c?'selected':'')+'" onclick="bpCloudCat('+JSON.stringify(c).replace(/"/g,'&quot;')+')">'+esc(c)+'</button>').join('')+'</div>'+
  '<div class="row" style="margin:12px 0 18px"><b id="bpCloudCount"></b><button class="btn sm" onclick="go(\'menu100\')">Planul meu →</button></div>'+
  '<div id="bpCloudResults"></div><button class="btn out block" id="bpCloudMore" style="margin:15px 0" onclick="bpCloudMore()">Încarcă alte rețete ↓</button>'+
@@ -1078,7 +1102,7 @@ bpDetail=function(){
  '<h1 class="title">'+esc(r.title)+'</h1>'+
  (r.short_description?'<p class="bp-sub">'+esc(r.short_description)+'</p>':'')+
  (r.description?'<p class="bp-sub">'+esc(r.description)+'</p>':'')+
- '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span></div>'+
+ '<div class="bp-meta"><span>'+esc(r.category)+'</span><span>⏱ '+Number(r.minutes)+' minute</span><span>🍽 '+Number(r.servings)+' porții</span><span>'+nutritionLabel(r)+'</span><span>'+(r.kcal_per_recipe!==null&&Number.isFinite(r.kcal_per_recipe)?Math.round(r.kcal_per_recipe)+' kcal/rețetă':'Kcal/rețetă necunoscute')+'</span></div>'+
  '<div class="bp-notice">Rețetă generată automat, încă neverificată editorial. Verifică alergenii, temperatura internă a preparatelor și etichetele produselor.</div>'+
  '<h2 class="h2" style="margin:22px 0 12px">Ingrediente · '+Number(r.servings)+' porții</h2>'+
  '<div class="bp-listingredients">'+r.ingredients.map(i=>'<div class="bp-ing"><div><strong>'+esc(i.name)+'</strong><small>'+Number(i.quantity)+' '+esc(i.unit)+'</small></div></div>').join('')+'</div>'+
@@ -1107,7 +1131,8 @@ function updateOriginalRows(rows){
   Object.assign(current,{title:r.title,category:r.category,servings:r.servings,
    minutes:r.minutes,steps:r.steps,tags:r.tags,allergens:r.allergens,
    photo_url:r.photo_url,image_reviewed:r.image_reviewed,photo_credit:r.photo_credit||'',
-   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed});
+   short_description:r.short_description,description:r.description,unreviewed:r.unreviewed,
+   kcal_per_recipe:r.kcal_per_recipe,protein_g_per_recipe:r.protein_g_per_recipe});
   if(r.ingredients.length&&window.bunplanNormalizeIngredient){
    current.ingredients=r.ingredients.map(it=>{
     const old=(current.ingredients||[]).find(prev=>prev.id===it.name);
@@ -1117,7 +1142,7 @@ function updateOriginalRows(rows){
   }
  }
 }
-const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit';
+const CATALOG_SELECT='legacy_key,title,category,servings,minutes_to_prepare,instructions,ingredient_details,tags,allergens,source_status,variant_of,photo_url,image_reviewed,short_description,description,photo_credit,kcal_per_recipe,protein_g_per_recipe';
 let refreshPromise=null;
 window.bunplanRefreshRecipes=function(){
  if(refreshPromise)return refreshPromise;
