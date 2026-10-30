@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T12:54:52.272065+00:00",
+  "generated_at": "2026-10-30T12:47:42.307605+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-10-29T12:54:52.272065+00:00",
+      "checked_at": "2026-10-30T12:47:42.307605+00:00",
       "products": [
         {
           "id": "lidl-11029746",
@@ -593,12 +593,12 @@
         {
           "id": "lidl-11573470",
           "store": "Lidl",
-          "name": "FRISCHE PORTION Pipote și inimi de pui",
+          "name": "- Pipote și inimi de pui",
           "price_ron": 6.49,
           "currency": "RON",
           "size": "500 g",
           "image_url": "https://www.lidl.ro/assets/gcpa8082e98847b4ad794e05c807ccb3f46.png",
-          "source_url": "https://www.lidl.ro/p/frische-portion-pipote-si-inimi-de-pui/p11573470",
+          "source_url": "https://www.lidl.ro/p/pipote-si-inimi-de-pui/p11573470",
           "valid_from": "2026-10-29",
           "valid_to": "2026-11-01",
           "membership_required": false,
@@ -923,7 +923,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-10-29T12:54:52.272065+00:00",
+      "checked_at": "2026-10-30T12:47:42.307605+00:00",
       "products": [
         {
           "id": "kaufland-0d70d43cb137a4297ad7",
