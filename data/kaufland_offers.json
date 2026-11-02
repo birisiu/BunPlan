@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-01T16:25:22+00:00",
-    "product_count": 140,
+    "checked_at": "2026-11-02T19:48:05+00:00",
+    "product_count": 138,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -1780,23 +1780,6 @@
       "original_offer_id": "20261028000000.09700260.RO.3400.0000059214"
     },
     {
-      "id": "kaufland-6630dd19cad8b1aa11c4",
-      "store": "Kaufland",
-      "name": "Clementine kg\na nu se consuma coaja",
-      "size": "kg",
-      "category": "Legume, fructe, flori",
-      "price_ron": 8.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2831090000000_RO_P-1",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-10-28",
-      "valid_to": "2026-11-03",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261028000000.09700107.RO.3400.0000058203"
-    },
-    {
       "id": "kaufland-676a3d942f84b48d788f",
       "store": "Kaufland",
       "name": "Crin",
@@ -1931,23 +1914,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261028000000.09901536.RO.3400.0000058203"
-    },
-    {
-      "id": "kaufland-7335a98fc94628661009",
-      "store": "Kaufland",
-      "name": "Salată Eisberg calitatea I\nbuc",
-      "size": "buc",
-      "category": "Legume, fructe, flori",
-      "price_ron": 5.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/6422821000023_RO_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-10-28",
-      "valid_to": "2026-11-03",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261028000000.09700160.RO.3400.0000059204"
     },
     {
       "id": "kaufland-bec7a906843638fbcd60",
