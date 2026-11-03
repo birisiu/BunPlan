@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T15:41:15.583817+00:00",
+  "generated_at": "2026-11-03T14:04:44.634237+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-02T15:41:15.583817+00:00",
+      "checked_at": "2026-11-03T14:04:44.634237+00:00",
       "products": [
         {
           "id": "lidl-11151153",
@@ -23,7 +23,7 @@
         {
           "id": "lidl-11001445",
           "store": "Lidl",
-          "name": "MILBONA Mozzarella rasă",
+          "name": "Milbona Mozzarella rasă",
           "price_ron": 19.99,
           "currency": "RON",
           "size": "500 g",
@@ -173,7 +173,7 @@
         {
           "id": "lidl-11260124",
           "store": "Lidl",
-          "name": "Pâinea Campionilor",
+          "name": "- Pâinea Campionilor",
           "price_ron": 3.99,
           "currency": "RON",
           "size": "700 g",
@@ -188,7 +188,7 @@
         {
           "id": "lidl-11252671",
           "store": "Lidl",
-          "name": "Foitaj cu Pizza",
+          "name": "- Foitaj cu Pizza",
           "price_ron": 1.89,
           "currency": "RON",
           "size": "90 g",
@@ -263,7 +263,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-02T15:41:15.583817+00:00",
+      "checked_at": "2026-11-03T14:04:44.634237+00:00",
       "products": [
         {
           "id": "kaufland-0d70d43cb137a4297ad7",
