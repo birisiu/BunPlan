@@ -1,7 +1,7 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-06T16:56:33+00:00",
+    "checked_at": "2026-11-07T15:55:41+00:00",
     "product_count": 132,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
@@ -1600,7 +1600,7 @@
       "category": "Lactate, ouă",
       "price_ron": 6.79,
       "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/20853013_P",
+      "image_url": null,
       "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
       "valid_from": "2026-11-04",
       "valid_to": "2026-11-10",
@@ -1933,6 +1933,23 @@
       "original_offer_id": "20261104000000.00063097.RO.3400.0000059599"
     },
     {
+      "id": "kaufland-c200b542c2c2f5393636",
+      "store": "Kaufland",
+      "name": "Struguri negri",
+      "size": "kg",
+      "category": "Legume, fructe, flori",
+      "price_ron": 5.99,
+      "currency": "RON",
+      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2832140000000_RO_P",
+      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+      "valid_from": "2026-11-07",
+      "valid_to": "2026-11-08",
+      "kind": "ofertă săptămânală",
+      "membership_required": false,
+      "stock_status": "unknown",
+      "original_offer_id": "20261107000000.09700090.RO.3400.0000059938"
+    },
+    {
       "id": "kaufland-8429749b9c3c6be3fd29",
       "store": "Kaufland",
       "name": "Captain Iglo Batoane de peşte",
@@ -1965,23 +1982,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261104000000.20346656.RO.3400.0000057978"
-    },
-    {
-      "id": "kaufland-7a44985b7d21b5505147",
-      "store": "Kaufland",
-      "name": "Defish Sardină în ulei\n125g",
-      "size": "125g",
-      "category": "Pește",
-      "price_ron": 6.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00155039_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-04",
-      "valid_to": "2026-11-10",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261104000000.00155039.RO.3400.0000057978"
     },
     {
       "id": "kaufland-e77b4e9413618e328a0b",
