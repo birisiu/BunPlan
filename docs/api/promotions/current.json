@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T14:11:16.481013+00:00",
+  "generated_at": "2026-11-07T12:54:07.718785+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-06T14:11:16.481013+00:00",
+      "checked_at": "2026-11-07T12:54:07.718785+00:00",
       "products": [
         {
           "id": "lidl-11029885",
@@ -15,6 +15,21 @@
           "image_url": "https://www.lidl.ro/assets/gcp57483f2ffde54f15961ffdbeca68721d.png",
           "source_url": "https://www.lidl.ro/p/salata-verde/p11029885",
           "valid_from": "2026-11-05",
+          "valid_to": "2026-11-08",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11029883",
+          "store": "Lidl",
+          "name": "Mango",
+          "price_ron": 4.99,
+          "currency": "RON",
+          "size": "per buc.",
+          "image_url": "https://www.lidl.ro/assets/gcp33da608b8252405aa74498343bbe0d99.png",
+          "source_url": "https://www.lidl.ro/p/mango/p11029883",
+          "valid_from": "2026-11-07",
           "valid_to": "2026-11-08",
           "membership_required": false,
           "kind": "Ofertă în magazin",
@@ -91,6 +106,36 @@
           "source_url": "https://www.lidl.ro/p/favorina-prajitura-stollen/p11041148",
           "valid_from": "2026-11-05",
           "valid_to": "2026-12-24",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11598471",
+          "store": "Lidl",
+          "name": "Carne tocată porc",
+          "price_ron": 13.99,
+          "currency": "RON",
+          "size": "1 kg",
+          "image_url": "https://www.lidl.ro/assets/gcp4838b5c67fd64a37b05d556bdac5d8c4.png",
+          "source_url": "https://www.lidl.ro/p/carne-tocata-porc/p11598471",
+          "valid_from": "2026-11-07",
+          "valid_to": "2026-11-08",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11598825",
+          "store": "Lidl",
+          "name": "Chef Select Tort cremos",
+          "price_ron": 29.99,
+          "currency": "RON",
+          "size": "1 kg",
+          "image_url": "https://www.lidl.ro/assets/gcp8d1dae8b959c45c5ae11992b123502b2.png",
+          "source_url": "https://www.lidl.ro/p/chef-select-tort-cremos/p11598825",
+          "valid_from": "2026-11-07",
+          "valid_to": "2026-11-08",
           "membership_required": false,
           "kind": "Ofertă în magazin",
           "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
@@ -278,7 +323,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-06T14:11:16.481013+00:00",
+      "checked_at": "2026-11-07T12:54:07.718785+00:00",
       "products": [
         {
           "id": "kaufland-cd9098ea828d0e3b5f6d",
@@ -2315,6 +2360,24 @@
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
+          "id": "kaufland-c200b542c2c2f5393636",
+          "store": "Kaufland",
+          "name": "Struguri negri",
+          "size": "kg",
+          "category": "Legume, fructe, flori",
+          "price_ron": 5.99,
+          "currency": "RON",
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2832140000000_RO_P",
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-07",
+          "valid_to": "2026-11-08",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261107000000.09700090.RO.3400.0000059938",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
           "id": "kaufland-8429749b9c3c6be3fd29",
           "store": "Kaufland",
           "name": "Captain Iglo Batoane de peşte",
@@ -2348,24 +2411,6 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261104000000.20346656.RO.3400.0000057978",
-          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
-        },
-        {
-          "id": "kaufland-7a44985b7d21b5505147",
-          "store": "Kaufland",
-          "name": "Defish Sardină în ulei\n125g",
-          "size": "125g",
-          "category": "Pește",
-          "price_ron": 6.99,
-          "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00155039_P",
-          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-          "valid_from": "2026-11-04",
-          "valid_to": "2026-11-10",
-          "kind": "ofertă săptămânală",
-          "membership_required": false,
-          "stock_status": "unknown",
-          "original_offer_id": "20261104000000.00155039.RO.3400.0000057978",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
