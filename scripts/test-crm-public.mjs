@@ -1,6 +1,6 @@
 import {chromium} from 'playwright';
 const root='https://birisiu.github.io/BunPlan/';
-const assets=['','admin.css','crm.css','admin.js','crm.js','bunplan-icon.svg'];
+const assets=['','admin.css','crm.css','content.css','admin.js','crm.js','content.js','bunplan-icon.svg'];
 let failed=false;
 for(const filename of assets){
  const url=root+filename;
@@ -29,12 +29,13 @@ try{
   logo:document.querySelector('.login-card .logo-box')?.naturalWidth||0,
   styles:getComputedStyle(document.body).backgroundColor,
   modules:document.querySelectorAll('[data-section]').length,
+  contentModule:!!document.querySelector('[data-section=content]'),
   jsLoaded:typeof document.querySelector('#login-reset-request')?.onclick==='function',
   username:document.querySelector('#login-email')?.value,
   overflow:document.documentElement.scrollWidth-innerWidth
  }));
  console.log('LIVE CRM BROWSER',JSON.stringify({http:r?.status(),...state,errors}));
- if(r?.status()!==200||!state.login||!state.logo||state.modules<10||
+ if(r?.status()!==200||!state.login||!state.logo||state.modules<11||!state.contentModule||
     !state.jsLoaded||state.username!=='ADMIN'||state.overflow>3||errors.length)failed=true;
 }catch(e){console.error('Live CRM failed',String(e));failed=true;}
 await browser.close();
