@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T15:05:44.973133+00:00",
+  "generated_at": "2026-11-13T14:29:35.245921+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-12T15:05:44.973133+00:00",
+      "checked_at": "2026-11-13T14:29:35.245921+00:00",
       "products": [
         {
           "id": "lidl-11263885",
@@ -98,7 +98,7 @@
         {
           "id": "lidl-11602165",
           "store": "Lidl",
-          "name": "Camara noastra Salam ardelenesc feliat",
+          "name": "Cămara noastră Salam ardelenesc feliat",
           "price_ron": 6.99,
           "currency": "RON",
           "size": "150 g",
@@ -338,7 +338,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-12T15:05:44.973133+00:00",
+      "checked_at": "2026-11-13T14:29:35.245921+00:00",
       "products": [
         {
           "id": "kaufland-6bdfc96e943c9bc760e0",
@@ -3578,24 +3578,6 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261111000000.09902611.RO.3400.0000058037",
-          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
-        },
-        {
-          "id": "kaufland-f3129e713f7e8a14a698",
-          "store": "Kaufland",
-          "name": "Ţelină rădăcină calitatea I\nkg",
-          "size": "kg",
-          "category": "Legume, fructe, flori",
-          "price_ron": 3.99,
-          "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2833230000000_RO_P-2",
-          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-          "valid_from": "2026-11-11",
-          "valid_to": "2026-11-17",
-          "kind": "ofertă săptămânală",
-          "membership_required": false,
-          "stock_status": "unknown",
-          "original_offer_id": "20261111000000.09700145.RO.3400.0000059870",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
