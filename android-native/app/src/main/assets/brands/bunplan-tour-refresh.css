@@ -69,3 +69,16 @@
 .bp57-refresh-button:active{transform:scale(.95)}
 .bp57-refresh-button:focus-visible{outline:2px solid #39885c;outline-offset:3px}
 @media(max-width:345px){.bp57-refresh-button{width:34px;height:34px;font-size:23px}}
+
+/* 5.8: keep the refresh spinner visible above the page while async sync is running.
+   The resting pull state has a -120px transform; 'active' alone does not reveal it. */
+.bp56-pull-indicator.refreshing{
+ transform:translate(-50%,0);
+ opacity:1;
+}
+.bp56-pull-indicator.refreshing .bp56-pull-wheel{
+ animation:bp56-rotate .95s linear infinite;
+}
+@media(prefers-reduced-motion:reduce){
+ .bp56-pull-indicator.refreshing .bp56-pull-wheel{animation:none}
+}
