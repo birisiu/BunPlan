@@ -36,6 +36,8 @@ jobs:
         run: node scripts/test-crm.mjs
       - name: Test backend content CMS editing
         run: node scripts/test-content-cms.mjs
+      - name: Verify live Supabase published content and anonymous admin restrictions
+        run: node scripts/test-live-supabase-rls.mjs
       - name: Smoke-test the REAL published Supabase CRM website
         run: node scripts/test-crm-public.mjs
       - name: Keep UI screenshots for review
