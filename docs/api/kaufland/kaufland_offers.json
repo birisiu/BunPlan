@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-12T17:45:17+00:00",
-    "product_count": 185,
+    "checked_at": "2026-11-13T17:23:24+00:00",
+    "product_count": 184,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -3070,23 +3070,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261111000000.09902611.RO.3400.0000058037"
-    },
-    {
-      "id": "kaufland-f3129e713f7e8a14a698",
-      "store": "Kaufland",
-      "name": "Ţelină rădăcină calitatea I\nkg",
-      "size": "kg",
-      "category": "Legume, fructe, flori",
-      "price_ron": 3.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2833230000000_RO_P-2",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-11",
-      "valid_to": "2026-11-17",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261111000000.09700145.RO.3400.0000059870"
     },
     {
       "id": "kaufland-2a9798a606ba302d41aa",
