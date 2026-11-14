@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T14:29:35.245921+00:00",
+  "generated_at": "2026-11-14T13:26:02.645598+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-13T14:29:35.245921+00:00",
+      "checked_at": "2026-11-14T13:26:02.645598+00:00",
       "products": [
         {
           "id": "lidl-11263885",
@@ -45,6 +45,21 @@
           "image_url": "https://www.lidl.ro/assets/gcp2a101dc073ec4a74972b3013dd84e69b.png",
           "source_url": "https://www.lidl.ro/p/ardei-gras-mix/p11151119",
           "valid_from": "2026-11-12",
+          "valid_to": "2026-11-15",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11214527",
+          "store": "Lidl",
+          "name": "Avocado",
+          "price_ron": 3.49,
+          "currency": "RON",
+          "size": "per buc.",
+          "image_url": "https://www.lidl.ro/assets/gcpb2bebcd3d5e34ec58d692e700a9a455c.png",
+          "source_url": "https://www.lidl.ro/p/avocado/p11214527",
+          "valid_from": "2026-11-14",
           "valid_to": "2026-11-15",
           "membership_required": false,
           "kind": "Ofertă în magazin",
@@ -135,6 +150,36 @@
           "image_url": "https://www.lidl.ro/assets/gcp6f3f30dadc934e9f949b42ede7365a73.png",
           "source_url": "https://www.lidl.ro/p/pulpe-superioare-de-curcan/p11574388",
           "valid_from": "2026-11-12",
+          "valid_to": "2026-11-15",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11573485",
+          "store": "Lidl",
+          "name": "- Cotlet de porc fără os, feliat",
+          "price_ron": 9.99,
+          "currency": "RON",
+          "size": "400 g",
+          "image_url": "https://www.lidl.ro/assets/gcp47038e1da0af4ebf8ea258783150f1c3.png",
+          "source_url": "https://www.lidl.ro/p/cotlet-de-porc-fara-os-feliat/p11573485",
+          "valid_from": "2026-11-14",
+          "valid_to": "2026-11-15",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11008526",
+          "store": "Lidl",
+          "name": "Mozzarella pentru pizza",
+          "price_ron": 9.99,
+          "currency": "RON",
+          "size": "400 g",
+          "image_url": "https://www.lidl.ro/assets/gcpe9dad8f1b9be4047933b03610086060e.png",
+          "source_url": "https://www.lidl.ro/p/mozzarella-pentru-pizza/p11008526",
+          "valid_from": "2026-11-14",
           "valid_to": "2026-11-15",
           "membership_required": false,
           "kind": "Ofertă în magazin",
@@ -338,7 +383,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-13T14:29:35.245921+00:00",
+      "checked_at": "2026-11-14T13:26:02.645598+00:00",
       "products": [
         {
           "id": "kaufland-6bdfc96e943c9bc760e0",
