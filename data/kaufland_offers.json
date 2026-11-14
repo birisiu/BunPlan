@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-13T17:23:24+00:00",
-    "product_count": 184,
+    "checked_at": "2026-11-14T16:07:54+00:00",
+    "product_count": 181,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -2800,23 +2800,6 @@
       "original_offer_id": "20261111000000.00124653.RO.3400.0000059870"
     },
     {
-      "id": "kaufland-a9ee01b4f66dd8f0e6db",
-      "store": "Kaufland",
-      "name": "K-Bio Portocale",
-      "size": "plasă 1 kg",
-      "category": "Legume fructe K-Bio  11.11.2026 - 17.11.2026",
-      "price_ron": 9.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/25224931_RO_P",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-11",
-      "valid_to": "2026-11-17",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261111000000.00076393.RO.3400.0000059870"
-    },
-    {
       "id": "kaufland-76ed8705a9b35204629c",
       "store": "Kaufland",
       "name": "K-Bio Rucola\n100g",
@@ -2832,23 +2815,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261111000000.00124658.RO.3400.0000059870"
-    },
-    {
-      "id": "kaufland-a199e61376c34bacd0c7",
-      "store": "Kaufland",
-      "name": "K-Bio Vinete",
-      "size": "buc",
-      "category": "Legume fructe K-Bio  11.11.2026 - 17.11.2026",
-      "price_ron": 7.49,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/25227710_RO_P-1",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-11",
-      "valid_to": "2026-11-17",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261111000000.00079175.RO.3400.0000059870"
     },
     {
       "id": "kaufland-008875303a351bba57ec",
@@ -2900,23 +2866,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261111000000.09700117.RO.3400.0000059870"
-    },
-    {
-      "id": "kaufland-46ed1f32c05a77ef93a8",
-      "store": "Kaufland",
-      "name": "Dovlecei Zucchini calitatea I\nkg",
-      "size": "kg",
-      "category": "Legume, fructe, flori",
-      "price_ron": 7.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/2831900000000_RO_P-1",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-11",
-      "valid_to": "2026-11-17",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261111000000.00023115.RO.3400.0000059870"
     },
     {
       "id": "kaufland-536e1ab6715e53af6d73",
