@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16T15:36:29.889900+00:00",
+  "generated_at": "2026-11-17T15:54:57.206239+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-16T15:36:29.889900+00:00",
+      "checked_at": "2026-11-17T15:54:57.206239+00:00",
       "products": [
         {
           "id": "lidl-11029663",
@@ -158,12 +158,12 @@
         {
           "id": "lidl-11029800",
           "store": "Lidl",
-          "name": "Roșii",
+          "name": "QUALITÉ SUISSE Roșii",
           "price_ron": 8.99,
           "currency": "RON",
           "size": "per kg",
           "image_url": "https://www.lidl.ro/assets/gcpcab84929da7f4080b200b6ad64c8a93c.png",
-          "source_url": "https://www.lidl.ro/p/rosii/p11029800",
+          "source_url": "https://www.lidl.ro/p/qualite-suisse-rosii/p11029800",
           "valid_from": "2026-11-16",
           "valid_to": "2026-11-22",
           "membership_required": false,
@@ -668,7 +668,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-16T15:36:29.889900+00:00",
+      "checked_at": "2026-11-17T15:54:57.206239+00:00",
       "products": [
         {
           "id": "kaufland-6bdfc96e943c9bc760e0",
