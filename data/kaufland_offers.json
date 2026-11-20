@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-19T18:41:02+00:00",
-    "product_count": 116,
+    "checked_at": "2026-11-20T18:02:03+00:00",
+    "product_count": 115,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -1812,23 +1812,6 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261118000000.09700120.RO.3400.0000058328"
-    },
-    {
-      "id": "kaufland-a0f2325b97af3cd329ec",
-      "store": "Kaufland",
-      "name": "Crin oriental",
-      "size": "buc",
-      "category": "Legume, fructe, flori",
-      "price_ron": 36.99,
-      "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00032658_P-1",
-      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-      "valid_from": "2026-11-18",
-      "valid_to": "2026-11-24",
-      "kind": "ofertă săptămânală",
-      "membership_required": false,
-      "stock_status": "unknown",
-      "original_offer_id": "20261118000000.00032658.RO.3400.0000058328"
     },
     {
       "id": "kaufland-ac0affcc5424292cf642",
