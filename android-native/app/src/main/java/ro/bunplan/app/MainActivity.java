@@ -37,6 +37,9 @@ public class MainActivity extends Activity {
     private static final String TEST_UNIT = "ca-app-pub-3940256099942544/5354046379";
     private static final Pattern PLAN_KEY = Pattern.compile("^(Lidl|Kaufland)\\|\\d{4}-\\d{2}-\\d{2}$");
     private WebView web;
+    private android.widget.FrameLayout rootView;
+    private com.google.android.gms.ads.AdView cookingBanner;
+    private static final String TEST_BANNER_UNIT = "ca-app-pub-3940256099942544/6300978111";
     private BunPlanGoogleBrowser googleBrowser;
     public void startGoogleBrowser(){
         runOnUiThread(() -> {
@@ -65,6 +68,7 @@ public class MainActivity extends Activity {
         // WebView may override its padding during layout/resize, which causes
         // the logo to overlap the clock on Android 15/16 edge-to-edge devices.
         android.widget.FrameLayout root = new android.widget.FrameLayout(this);
+        rootView=root;
         root.setBackgroundColor(android.graphics.Color.rgb(247, 248, 239));
         root.setFitsSystemWindows(false);
         root.setOnApplyWindowInsetsListener((view, insets) -> {
@@ -257,7 +261,27 @@ public class MainActivity extends Activity {
             invokeJs("bunPlanOnAdEarned",key);
         });
     }
-    public class JsBridge {
+    private void showCookingBanner(double y){
+        if(rootView==null || web==null || consent==null || !consent.canRequestAds())return;
+        if(cookingBanner==null){
+            cookingBanner=new com.google.android.gms.ads.AdView(this);
+            cookingBanner.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
+            cookingBanner.setAdUnitId(TEST_BANNER_UNIT);
+            android.widget.FrameLayout.LayoutParams p=new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.Gravity.TOP|android.view.Gravity.CENTER_HORIZONTAL);
+            rootView.addView(cookingBanner,p);
+            cookingBanner.loadAd(new AdRequest.Builder().build());
+        }
+        android.widget.FrameLayout.LayoutParams p=(android.widget.FrameLayout.LayoutParams)cookingBanner.getLayoutParams();
+        p.topMargin=Math.max(0,(int)(y*getResources().getDisplayMetrics().density)+rootView.getPaddingTop());
+        cookingBanner.setLayoutParams(p);
+        cookingBanner.setVisibility(y>=0&&y<web.getHeight()/getResources().getDisplayMetrics().density?View.VISIBLE:View.GONE);
+    }
+    public class JsBridge { 
+        @JavascriptInterface public void showCookingBanner(double y){runOnUiThread(()->MainActivity.this.showCookingBanner(y));}
+        @JavascriptInterface public void hideCookingBanner(){runOnUiThread(()->{if(cookingBanner!=null)cookingBanner.setVisibility(View.GONE);});}
         @JavascriptInterface public void showRewardedInterstitial(String key) {
             runOnUiThread(()->requestAd(key));
         }
@@ -271,6 +295,7 @@ public class MainActivity extends Activity {
         if(googleBrowser!=null)googleBrowser.handleIntent(intent);
     }
     @Override protected void onDestroy() {
+        if(cookingBanner!=null){cookingBanner.destroy();cookingBanner=null;}
         if(web!=null){web.destroy();web=null;}
         super.onDestroy();
     }
