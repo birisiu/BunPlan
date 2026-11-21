@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T15:21:51.033513+00:00",
+  "generated_at": "2026-11-21T14:35:03.322659+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-20T15:21:51.033513+00:00",
+      "checked_at": "2026-11-21T14:35:03.322659+00:00",
       "products": [
         {
           "id": "lidl-11151004",
@@ -30,6 +30,21 @@
           "image_url": "https://www.lidl.ro/assets/gcp2c2bed498c2146c98c4582fd68d38162.png",
           "source_url": "https://www.lidl.ro/p/cartofi-pentru-copt-sau-piure/p11029473",
           "valid_from": "2026-11-19",
+          "valid_to": "2026-11-22",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11029883",
+          "store": "Lidl",
+          "name": "Mango",
+          "price_ron": 4.99,
+          "currency": "RON",
+          "size": "per buc.",
+          "image_url": "https://www.lidl.ro/assets/gcp33da608b8252405aa74498343bbe0d99.png",
+          "source_url": "https://www.lidl.ro/p/mango/p11029883",
+          "valid_from": "2026-11-21",
           "valid_to": "2026-11-22",
           "membership_required": false,
           "kind": "Ofertă în magazin",
@@ -218,12 +233,12 @@
         {
           "id": "lidl-11029474",
           "store": "Lidl",
-          "name": "QUALITÉ SUISSE Ceapă roșie",
+          "name": "RYNECZEK LIDLA Ceapă roșie",
           "price_ron": 2.39,
           "currency": "RON",
           "size": "per kg",
           "image_url": "https://www.lidl.ro/assets/gcpd9367103f16d4f84b7fa0e29d8f92c77.png",
-          "source_url": "https://www.lidl.ro/p/qualite-suisse-ceapa-rosie/p11029474",
+          "source_url": "https://www.lidl.ro/p/ryneczek-lidla-ceapa-rosie/p11029474",
           "valid_from": "2026-11-19",
           "valid_to": "2026-11-22",
           "membership_required": false,
@@ -906,21 +921,6 @@
           "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
         },
         {
-          "id": "lidl-11680884",
-          "store": "Lidl",
-          "name": "VASELINE Loțiune de corp",
-          "price_ron": 16.99,
-          "currency": "RON",
-          "size": "400 ml",
-          "image_url": "https://www.lidl.ro/assets/gcp6a1a4fa33a00404cbd925a528030335c.png",
-          "source_url": "https://www.lidl.ro/p/vaseline-lotiune-de-corp/p11680884",
-          "valid_from": "2026-11-16",
-          "valid_to": "2026-11-22",
-          "membership_required": false,
-          "kind": "Ofertă în magazin",
-          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
-        },
-        {
           "id": "lidl-11678287",
           "store": "Lidl",
           "name": "CIEN Gel de curățare / Loțiune tonică în stil corean",
@@ -1013,7 +1013,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-20T15:21:51.033513+00:00",
+      "checked_at": "2026-11-21T14:35:03.322659+00:00",
       "products": [
         {
           "id": "kaufland-6488569fc9fb6ecf12a4",
@@ -2921,24 +2921,6 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261118000000.09700120.RO.3400.0000058328",
-          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
-        },
-        {
-          "id": "kaufland-a0f2325b97af3cd329ec",
-          "store": "Kaufland",
-          "name": "Crin oriental",
-          "size": "buc",
-          "category": "Legume, fructe, flori",
-          "price_ron": 36.99,
-          "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00032658_P-1",
-          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-          "valid_from": "2026-11-18",
-          "valid_to": "2026-11-24",
-          "kind": "ofertă săptămânală",
-          "membership_required": false,
-          "stock_status": "unknown",
-          "original_offer_id": "20261118000000.00032658.RO.3400.0000058328",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
