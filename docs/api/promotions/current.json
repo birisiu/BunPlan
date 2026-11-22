@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-21T14:35:03.322659+00:00",
+  "generated_at": "2026-11-22T14:29:33.699399+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-21T14:35:03.322659+00:00",
+      "checked_at": "2026-11-22T14:29:33.699399+00:00",
       "products": [
         {
           "id": "lidl-11151004",
@@ -233,12 +233,12 @@
         {
           "id": "lidl-11029474",
           "store": "Lidl",
-          "name": "RYNECZEK LIDLA Ceapă roșie",
+          "name": "Ceapă roșie",
           "price_ron": 2.39,
           "currency": "RON",
           "size": "per kg",
           "image_url": "https://www.lidl.ro/assets/gcpd9367103f16d4f84b7fa0e29d8f92c77.png",
-          "source_url": "https://www.lidl.ro/p/ryneczek-lidla-ceapa-rosie/p11029474",
+          "source_url": "https://www.lidl.ro/p/ceapa-rosie/p11029474",
           "valid_from": "2026-11-19",
           "valid_to": "2026-11-22",
           "membership_required": false,
@@ -1013,7 +1013,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-21T14:35:03.322659+00:00",
+      "checked_at": "2026-11-22T14:29:33.699399+00:00",
       "products": [
         {
           "id": "kaufland-6488569fc9fb6ecf12a4",
