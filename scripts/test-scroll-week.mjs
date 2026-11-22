@@ -1,0 +1,16 @@
+import {readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const html=readFileSync('android-native/app/src/main/assets/main.html','utf8');
+assert.equal((html.match(/if\(!window\.__bunplanKeepScroll\)window\.scrollTo\(0,0\)/g)||[]).length,5);
+assert.match(html,/const sameScreen=currentTab===lastTab/);
+assert.match(html,/window\.scrollTo\(0,Math\.min\(oldY,maxY\)\)/);
+assert.match(html,/let observedMonday=bp35Monday\(new Date\(\)\)/);
+assert.match(html,/bp35\.week=observedMonday;bp35LoadPlan\(\)/);
+assert.match(html,/document\.addEventListener\('visibilitychange',.*syncCalendarWeek/);
+assert.match(html,/setInterval\(syncCalendarWeek,60000\)/);
+const monday=d=>{const date=new Date(d+'T12:00:00');date.setDate(date.getDate()-(date.getDay()+6)%7);return date.toISOString().slice(0,10)};
+assert.equal(monday('2026-10-19'),'2026-10-19');
+assert.equal(monday('2026-10-25'),'2026-10-19');
+assert.equal(monday('2026-10-26'),'2026-10-26');
+assert.equal(monday('2027-01-01'),'2026-12-28');
+console.log('PASS redraw scroll guard + calendar week rollover');
