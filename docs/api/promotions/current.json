@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23T17:58:10.007960+00:00",
+  "generated_at": "2026-11-24T17:35:58.956089+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-23T17:58:10.007960+00:00",
+      "checked_at": "2026-11-24T17:35:58.956089+00:00",
       "products": [
         {
           "id": "lidl-11030101",
@@ -46,21 +46,6 @@
           "source_url": "https://www.lidl.ro/p/pomelo/p11150773",
           "valid_from": "2026-11-23",
           "valid_to": "2026-11-25",
-          "membership_required": false,
-          "kind": "Ofertă în magazin",
-          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
-        },
-        {
-          "id": "lidl-11304392",
-          "store": "Lidl",
-          "name": "Argus Bere blondă",
-          "price_ron": 1.99,
-          "currency": "RON",
-          "size": "0,5 L",
-          "image_url": "https://www.lidl.ro/assets/gcp6e2d4880474d4752a6c5d3278032c912.png",
-          "source_url": "https://www.lidl.ro/p/argus-bere-blonda/p11304392",
-          "valid_from": "2026-11-23",
-          "valid_to": "2026-11-29",
           "membership_required": false,
           "kind": "Ofertă în magazin",
           "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
@@ -121,6 +106,21 @@
           "source_url": "https://www.lidl.ro/p/mini-tarte/p11684479",
           "valid_from": "2026-11-23",
           "valid_to": "2026-11-29",
+          "membership_required": false,
+          "kind": "Ofertă în magazin",
+          "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
+        },
+        {
+          "id": "lidl-11007545",
+          "store": "Lidl",
+          "name": "FAVORINA Biscuiti Mini-Speculatius ciocolată cu lapte / amăruie",
+          "price_ron": 9.99,
+          "currency": "RON",
+          "size": "200 g",
+          "image_url": "https://www.lidl.ro/assets/gcp4688ba010e7743609ed746753a3dc2d5.png",
+          "source_url": "https://www.lidl.ro/p/favorina-biscuiti-mini-speculatius-ciocolata-cu-lapte-amaruie/p11007545",
+          "valid_from": "2026-11-19",
+          "valid_to": "2026-12-24",
           "membership_required": false,
           "kind": "Ofertă în magazin",
           "price_scope": "Regiunea CHIAJNA; disponibilitate în limita stocului"
@@ -578,7 +578,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-23T17:58:10.007960+00:00",
+      "checked_at": "2026-11-24T17:35:58.956089+00:00",
       "products": [
         {
           "id": "kaufland-6488569fc9fb6ecf12a4",
@@ -660,7 +660,7 @@
           "category": "Alimente de bază",
           "price_ron": 24.99,
           "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/5201306800089_RO_P",
+          "image_url": null,
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-11-18",
           "valid_to": "2026-11-24",
@@ -678,7 +678,7 @@
           "category": "Alimente de bază",
           "price_ron": 6.59,
           "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/04000722_P",
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00165645_P",
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-11-18",
           "valid_to": "2026-11-24",
@@ -786,7 +786,7 @@
           "category": "Alimente de bază",
           "price_ron": 12.99,
           "currency": "RON",
-          "image_url": null,
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/00114740_P-3",
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-11-18",
           "valid_to": "2026-11-24",
@@ -1974,7 +1974,7 @@
           "category": "Dulciuri, snackuri",
           "price_ron": 13.59,
           "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/20949642_P",
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/7622202840579_RO_P",
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-11-18",
           "valid_to": "2026-11-24",
@@ -2190,7 +2190,7 @@
           "category": "Lactate, ouă",
           "price_ron": 3.79,
           "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/5941542000514_RO_P",
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/20835698_P",
           "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
           "valid_from": "2026-11-18",
           "valid_to": "2026-11-24",
@@ -2612,6 +2612,24 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261118000000.00136681.RO.3400.0000058661",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-d2664f01c0d3c06da22d",
+          "store": "Kaufland",
+          "name": "Rio Mare Paté",
+          "size": "100 g",
+          "category": "Pește",
+          "price_ron": 9.99,
+          "currency": "RON",
+          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/8004030070004_RO_P",
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-18",
+          "valid_to": "2026-11-24",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261118000000.01500271.RO.3400.0000058328",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
