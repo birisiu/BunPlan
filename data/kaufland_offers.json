@@ -1,8 +1,8 @@
 {
   "meta": {
     "store": "Kaufland Romania",
-    "checked_at": "2026-11-23T21:42:05+00:00",
-    "product_count": 115,
+    "checked_at": "2026-11-24T20:21:39+00:00",
+    "product_count": 116,
     "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
     "price_scope": "weekly offers for the site's default selected store; not a national price list",
     "stock_available": false,
@@ -1328,7 +1328,7 @@
       "category": "Dulciuri, snackuri",
       "price_ron": 13.59,
       "currency": "RON",
-      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/20949642_P",
+      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/7622202840579_RO_P",
       "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
       "valid_from": "2026-11-18",
       "valid_to": "2026-11-24",
@@ -1931,6 +1931,23 @@
       "membership_required": false,
       "stock_status": "unknown",
       "original_offer_id": "20261118000000.00136681.RO.3400.0000058661"
+    },
+    {
+      "id": "kaufland-d2664f01c0d3c06da22d",
+      "store": "Kaufland",
+      "name": "Rio Mare Paté",
+      "size": "100 g",
+      "category": "Pește",
+      "price_ron": 9.99,
+      "currency": "RON",
+      "image_url": "https://kaufland.media.schwarz/is/image/schwarz/8004030070004_RO_P",
+      "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+      "valid_from": "2026-11-18",
+      "valid_to": "2026-11-24",
+      "kind": "ofertă săptămânală",
+      "membership_required": false,
+      "stock_status": "unknown",
+      "original_offer_id": "20261118000000.01500271.RO.3400.0000058328"
     },
     {
       "id": "kaufland-f735b441998b001a93e2",
