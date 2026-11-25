@@ -1,198 +1,202 @@
 ﻿id,store,name,size,category,price_ron,currency,image_url,source_url,valid_from,valid_to,kind,membership_required,stock_status,original_offer_id
-kaufland-6488569fc9fb6ecf12a4,Kaufland,"Băneasa Tăiţei
-de casã cuiburi",200 g,Alimente de bază,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/04100025_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.04100025.RO.3400.0000058328
-kaufland-0ba4e0ce99ce86161b99,Kaufland,Bucegi Pastă vegetală,300 g,Alimente de bază,6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941341039777_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00081766.RO.3400.0000058330
-kaufland-d72809cd17ccd2c1ca31,Kaufland,"DE NIGRIS Oțet din cocos bio
-500 ml",500 ml,Alimente de bază,25.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00165552_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00165552.RO.3400.0000058328
-kaufland-a298fc8df5acf646b094,Kaufland,"Delikat Bază pentru mâncăruri
-750 g",750 g,Alimente de bază,28.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20779861_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20779861.RO.3400.0000058631
-kaufland-56799cccb5fec8528f59,Kaufland,Delphi Ulei,1 l,Alimente de bază,24.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00063712.RO.3400.0000058631
-kaufland-adc2dbbb728580fa5362,Kaufland,Deroni Orez,1 kg,Alimente de bază,6.59,RON,https://kaufland.media.schwarz/is/image/schwarz/00165645_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.04000722.RO.3400.0000058328
-kaufland-f397807365addd00c9c4,Kaufland,Fineti Cremă cacao,400 g,Alimente de bază,13.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5201911240164_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.03300350.RO.3400.0000058328
-kaufland-83705e34ee1045aa855f,Kaufland,K-BIO Caju,150 g,Alimente de bază,11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367097676_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00120807.RO.3400.0000058328
-kaufland-9313357880afdc6996a8,Kaufland,"K-Classic Mălai
-1 kg",1 kg,Alimente de bază,1.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20901863_P_,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20901863.RO.3400.0000058328
-kaufland-1cb7c7e7b292645df2c1,Kaufland,"Knorr Supă cremă
-ciuperci, 48 g",48 g / 63 g / 101 g,Alimente de bază,5.89,RON,https://kaufland.media.schwarz/is/image/schwarz/8720182933454_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20813697.RO.3400.0000058328
-kaufland-6e17909064fc7bcc7415,Kaufland,"Kotanyi râșniță scoțișoară
-70g",70g/ 65g/ 63g,Alimente de bază,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20883791_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20883791.RO.3400.0000058330
-kaufland-a152b20dbd4f2e27e8d2,Kaufland,Monicol Prune uscate,250 g,Alimente de bază,12.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00114740_P-3,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00064428.RO.3400.0000058631
-kaufland-47a20e67e1fec2d9073f,Kaufland,NATURA Năut decojit,500 g,Alimente de bază,4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00137947_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00137947.RO.3400.0000058328
-kaufland-1aae11639f66eefe3390,Kaufland,"NESTLE Cheerios
-cereale integrale",450 g,Alimente de bază,12.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00170628_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00170628.RO.3400.0000058328
-kaufland-ec98c1fed8dc6d54c9cf,Kaufland,"Ogreen Fasole albă
-800 g",800 g,Alimente de bază,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20856475_20_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20856475.RO.3400.0000058330
-kaufland-5932bd6c3ceabb21f4b8,Kaufland,"Olympia Fasole galbenă
-720 ml",720 ml,Alimente de bază,8.99,RON,https://kaufland.media.schwarz/is/image/schwarz/03000446_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.03000446.RO.3400.0000058328
-kaufland-dc98edbb0d1b49ce58f6,Kaufland,"RAFTUL BUNICII Făină de grâu tip 000
-2 kg",2 kg,Alimente de bază,4.69,RON,https://kaufland.media.schwarz/is/image/schwarz/00137838_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00137838.RO.3400.0000058330
-kaufland-375e540b5655b5c16c64,Kaufland,Vegeta Bază de mâncare,75 g,Alimente de bază,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/03800441_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.03800441.RO.3400.0000058328
-kaufland-9d1d0ac4ef3c24fa41db,Kaufland,"Apa Craiului Apă minerală nat plată
-6 l pet",6 l,Băuturi,6.59,RON,https://kaufland.media.schwarz/is/image/schwarz/5942312000031_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00059103.RO.3400.0000058328
-kaufland-23ed2fbb351d99807185,Kaufland,"Bucovina apă aromă lămâie / piersică
-1,5 l","1,5 l",Băuturi,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20679063_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20679063.RO.3400.0000058328
-kaufland-be36214bdb7b715429fb,Kaufland,"Bucovina Apă minerală naturală
-plată",2 l,Băuturi,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20679015_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20679015.RO.3400.0000058328
-kaufland-a41715c0fd05a01e8568,Kaufland,"Dorna apă min nat intens carbo
-1 l",1 l,Băuturi,3.19,RON,https://kaufland.media.schwarz/is/image/schwarz/20988258_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20988258.RO.3400.0000058688
-kaufland-45157df12427dde0607b,Kaufland,"Unit băutură energizantă original
-0,25 l","0,25 l",Băuturi,3.59,RON,https://kaufland.media.schwarz/is/image/schwarz/20975527_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20975527.RO.3400.0000058688
-kaufland-b40a96656c97a69c52f8,Kaufland,"Berliner umplut cu cremă
-cu aromă Speculoos 80 g",80 g,Brutărie,4.89,RON,https://kaufland.media.schwarz/is/image/schwarz/FR_Backwaren_20829448a_Berliner_20mit_20Spekulatiusf_C3_BCllung,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20829448.RO.3400.0000058329
-kaufland-6996eca8f5f0b1029e00,Kaufland,"Gogoașă Crăciun stea / brăduț
-70 g",70 g,Brutărie,5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20900422_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20900422.RO.3400.0000058329
-kaufland-71ed826bcd7a0cd5dc90,Kaufland,"Huligan Covrigi
-sriracha",65 g,Brutărie,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20893590_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20893590.RO.3400.0000058330
-kaufland-a21d9b12d579c937b04b,Kaufland,"5 TO GO Matcha Latte
-250 g",250 g,Cafea și ceai,44.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20926347_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20926347.RO.3400.0000058688
-kaufland-595af8db900ed5671b2e,Kaufland,"Bardollini Ube latte
-pudră băutură",90 g,Cafea și ceai,14.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20967784.RO.3400.0000058688
-kaufland-bec18e21d717d4e6d904,Kaufland,Doncafe Cafea măcinată,100 g,Cafea și ceai,11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941623002765_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.02401611.RO.3400.0000058328
-kaufland-e87dbd85be593ee138b7,Kaufland,Ekoland Băutură instant,350 g,Cafea și ceai,6.49,RON,https://kaufland.media.schwarz/is/image/schwarz/5900909000444_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.02401144.RO.3400.0000058328
-kaufland-496e91758670294f19ad,Kaufland,Inka Înlocuitor pentru cafea,180 g,Cafea și ceai,11.49,RON,https://kaufland.media.schwarz/is/image/schwarz/5901154042005_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.02401950.RO.3400.0000058688
-kaufland-d9d8cf5cd996ce182e3f,Kaufland,Jacobs Cafea boabe,1 kg,Cafea și ceai,99.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00156901_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00156901.RO.3400.0000058751
-kaufland-5ab87ffe949fc71cf450,Kaufland,"Jacobs Cafea boabe upper espresso
-1 kg",1 kg,Cafea și ceai,99.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00118940_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00118940.RO.3400.0000060543
-kaufland-4561cf7af857c7d74857,Kaufland,Julius Meinl Cafea boabe,500 g,Cafea și ceai,49.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00035707_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00035707.RO.3400.0000058328
-kaufland-4b33532ea00e06eb7302,Kaufland,"KLC Cappuccino instant
-clasic",130 g,Cafea și ceai,4.39,RON,https://kaufland.media.schwarz/is/image/schwarz/5900649092457_23P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20860789.RO.3400.0000058688
-kaufland-942600d511548cc4fd6d,Kaufland,Nesquik Cacao instant,200 g,Cafea și ceai,11.49,RON,https://kaufland.media.schwarz/is/image/schwarz/02400079_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.02400079.RO.3400.0000058688
-kaufland-c00225f11ed145bf4060,Kaufland,"Agricola Salam boieresc vrac
-100gr",100g,"Carne, mezeluri",6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00147992_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00147992.RO.3400.0000058688
-kaufland-15858a6b12a4fd27687e,Kaufland,"Agricola Șuncă de pui gastro
-kg",kg,"Carne, mezeluri",27.9,RON,https://kaufland.media.schwarz/is/image/schwarz/20968013_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20968013.RO.3400.0000058688
-kaufland-90cbddb08e6d7c8c3291,Kaufland,"Aldis Cotlet haiducesc
-100g",100g,"Carne, mezeluri",4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2816690000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00032528.RO.3400.0000058328
-kaufland-6e08d448e0431308339d,Kaufland,Cap de piept de porc afumat,100 G,"Carne, mezeluri",2.19,RON,https://kaufland.media.schwarz/is/image/schwarz/2866480000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20773274.RO.3400.0000058329
-kaufland-f8d4ccda50e6e73dd32f,Kaufland,Cârnaţi de porc semiafumaţi,100 G,"Carne, mezeluri",2.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00043926_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00043926.RO.3400.0000058328
-kaufland-22aa2e629adaf1c0c423,Kaufland,"Cris-Tim Parizer țărănesc pui
-100gr",100gr,"Carne, mezeluri",2.69,RON,https://kaufland.media.schwarz/is/image/schwarz/20667796_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20667796.RO.3400.0000058688
-kaufland-b1995af50d10b0368324,Kaufland,Durdulan Piept de pui dezosat,kg,"Carne, mezeluri",27.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2807020000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00104692.RO.3400.0000058330
-kaufland-23ee99e4c9cc40329c1c,Kaufland,"Fox Crenvurşti cu piept de pui
-100gr",100gr,"Carne, mezeluri",3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00128873_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00128873.RO.3400.0000058688
-kaufland-1d911d9a76bcc8c1a7a9,Kaufland,"Fragedo Aripi de pui secţionate
-fără vârf",kg,"Carne, mezeluri",17.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2802500000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00076383.RO.3400.0000058328
-kaufland-f223e5cdbc2e6af6c5fb,Kaufland,"Gustavi Spinări și spate
-de pui",kg,"Carne, mezeluri",4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20938065_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20938065.RO.3400.0000058328
-kaufland-15aa13e6c49607f678b4,Kaufland,Irish Beef Rasol de vită fără os,kg,"Carne, mezeluri",55.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00076395_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00076395.RO.3400.0000058328
-kaufland-c7795b84265045702d83,Kaufland,"Meda Salam Boieresc
-100gr",100gr,"Carne, mezeluri",5.29,RON,https://kaufland.media.schwarz/is/image/schwarz/20811293_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20811293.RO.3400.0000058688
-kaufland-02915fc61952a4c1bf6f,Kaufland,"Meda Salam Sinaia crud uscat
-320 g",320 g,"Carne, mezeluri",19.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00159064_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00159064.RO.3400.0000058330
-kaufland-b0fa6b2c8ea9ad28d785,Kaufland,"Peneş Carne de curcan
-pentru ciorbă",kg,"Carne, mezeluri",14.49,RON,https://kaufland.media.schwarz/is/image/schwarz/20734141_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20734141.RO.3400.0000058328
-kaufland-7ea5feb7f8c63005d8b6,Kaufland,Peneş Pulpe de curcan,kg,"Carne, mezeluri",36.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00087565_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00087565.RO.3400.0000058328
-kaufland-eeba8090e9c848442941,Kaufland,Peneş Pulpe de curcan,kg,"Carne, mezeluri",24.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00087566_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00087566.RO.3400.0000058330
-kaufland-739139e58a7cd9ee5e25,Kaufland,"Puiul de Crăiesti Pui Grill
-kg",kg,"Carne, mezeluri",16.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20973912_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20973912.RO.3400.0000058330
-kaufland-444e77ec28c0cc36b856,Kaufland,"Pulpă de porc fără os semiafumată
-kg",100 G,"Carne, mezeluri",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2875210000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20815454.RO.3400.0000058329
-kaufland-5dcc46b9315f54b784d5,Kaufland,"Pulpă de rață cu piele
-kg",kg,"Carne, mezeluri",42.29,RON,https://kaufland.media.schwarz/is/image/schwarz/20998896_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20998896.RO.3400.0000058330
-kaufland-0b25a8cbf90a6868e435,Kaufland,"Spată de porc fără os bucată întreagă
-kg",kg,"Carne, mezeluri",13.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00093831_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00093831.RO.3400.0000058329
-kaufland-ac4a1b292d094fd7bac4,Kaufland,Wein Şuncă,200 g,"Carne, mezeluri",5.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00124573_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00124573.RO.3400.0000058328
-kaufland-7fdca386deefbf79d90d,Kaufland,"5 O'Clock Ceai Fructe Pădure
-ceai fructe pădure",80 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00163201_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00163201.RO.3400.0000058330
-kaufland-a27cd83f277779312334,Kaufland,Basilur Ceai plicuri,"37,5 - 50 g",Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4792252916470_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00133491.RO.3400.0000058330
-kaufland-7ddf0daccdfde9709afb,Kaufland,"Drink Me Chai Ceai Instant
-spiced",250 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,34.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20860480_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20860480.RO.3400.0000058330
-kaufland-d6d39a968ce56fcaf615,Kaufland,"ETS Ceai eco
-mușețel, lavandă",,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,23.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00122789_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00122789.RO.3400.0000058330
-kaufland-2f5c8aa53bc2170398bc,Kaufland,"Kingsleaf Ceai
-50 g",50 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00166009_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00166009.RO.3400.0000058328
-kaufland-19c833a7e386684de628,Kaufland,La Festa Ciocolată caldă,25 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,1.05,RON,https://kaufland.media.schwarz/is/image/schwarz/5900910000631_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.02400290.RO.3400.0000058328
-kaufland-906f3f02a627c8d3a649,Kaufland,"Lipton Ceai verde
-fresh nature",28 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,13.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20945877_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20945877.RO.3400.0000058330
-kaufland-3b0567d2abbf74584112,Kaufland,"Teekanne Ceai Verde Zen Chai
-20x1,75 g","20 x 1,65 - 20 x 2,5 g",Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,12.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20074939_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20074939.RO.3400.0000058330
-kaufland-d95a43a1e54c4e6addd8,Kaufland,"Twinings Ceai negru English breakfast
-25x2 g",25x2 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,19.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20097520_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20097520.RO.3400.0000058330
-kaufland-9a708e1c752368fdedae,Kaufland,"Vedda Ceai Mușețel
-piramidă",30 g / 40 g,Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00158181_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00158181.RO.3400.0000058330
-kaufland-297777c39e8da30905c4,Kaufland,"Yogi Tea Ceai Bio
-ashwagandha,balance","17x2 g / 17x1,8 g / 17x2,2 g",Ceaiuri si băuturi calde  18.11.2026 - 24.11.2026,14.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20935585_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20935585.RO.3400.0000058330
-kaufland-c8e3d0ab33a14ffb53dd,Kaufland,"Barilla Sos Pesto genovese
-190 g",190 g,"Delicatese, congelate",12.59,RON,https://kaufland.media.schwarz/is/image/schwarz/01300484_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.01300484.RO.3400.0000058328
-kaufland-c28143e720e7763980a9,Kaufland,"Beyond Burger Burger vegetal
-226 g",226 g,"Delicatese, congelate",25.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20647359_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20647359.RO.3400.0000058328
-kaufland-3c176a807d5410f1b5fd,Kaufland,Bonito Aluat foietaj,2 x 400 g,"Delicatese, congelate",6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00015825_P_%282%29,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00015825.RO.3400.0000058328
-kaufland-d60e098db2670ef3457b,Kaufland,"Edenia Fasole verde întreagă
-1,33 kg","1,33 kg","Delicatese, congelate",17.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00097300_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00097300.RO.3400.0000058328
-kaufland-e757c432a5296045d458,Kaufland,"K-Classic Pizza pe vatră
-șuncă",2 x 330 g,"Delicatese, congelate",17.49,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367435980_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20848219.RO.3400.0000058328
-kaufland-31f85eb0408678356016,Kaufland,Măsline mix tricolori,100 G,"Delicatese, congelate",6.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00094219_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00094219.RO.3400.0000058328
-kaufland-b121da1c400b21d05631,Kaufland,Măsline negre Mamouth,100 G,"Delicatese, congelate",1.79,RON,https://kaufland.media.schwarz/is/image/schwarz/2878400000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00153029.RO.3400.0000058328
-kaufland-35e4ff568855731142f5,Kaufland,Negro Macrou marinat cu legume,100 G,"Delicatese, congelate",7.99,RON,https://kaufland.media.schwarz/is/image/schwarz/01005373_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.01005373.RO.3400.0000058328
-kaufland-aa56b5cb7ee637ff4cb8,Kaufland,"Univer Sos de mioneză
-vegan",410 g,"Delicatese, congelate",11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20925371_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20925371.RO.3400.0000058751
-kaufland-f6c2360588d78e6fd2b3,Kaufland,"7 Days Minicroissant
-Cacao",300 g,"Dulciuri, snackuri",13.59,RON,https://kaufland.media.schwarz/is/image/schwarz/7622202840579_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20949642.RO.3400.0000058328
-kaufland-2d37f228f416f83a88ff,Kaufland,Alka meteoritzi sriracha cheese,75 g,"Dulciuri, snackuri",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00139225_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00139225.RO.3400.0000058328
-kaufland-2f3f6ea7a1717f5cee4f,Kaufland,"Amos Jeleuri
-aromă fructe",72 g / 65 g,"Dulciuri, snackuri",6.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20964713.RO.3400.0000058688
-kaufland-21f38dc764847fb6f3f1,Kaufland,"McVities Biscuiți
-cremă ciocolată",285 g,"Dulciuri, snackuri",11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20969848_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20969848.RO.3400.0000058330
-kaufland-8d7f73dce6402d2da8f6,Kaufland,"Mogyi Popcorn Caramoon
-aromă caramel",70 g,"Dulciuri, snackuri",5.49,RON,https://kaufland.media.schwarz/is/image/schwarz/20774972_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20774972.RO.3400.0000058330
-kaufland-a21a29d66ff0de386036,Kaufland,"Romcherie Covrigei
-Brânză",180 g,"Dulciuri, snackuri",5.49,RON,https://kaufland.media.schwarz/is/image/schwarz/20756192_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20756192.RO.3400.0000058330
-kaufland-a2c61f077b1faf33d481,Kaufland,"Salatini sărățele cu chimen
-110 g",110 g,"Dulciuri, snackuri",3.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00147442_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00147442.RO.3400.0000058328
-kaufland-5c3a55c49f92762bd269,Kaufland,"Sugus Baton ciocolată
-vată de zahăr",21 g,"Dulciuri, snackuri",1.79,RON,https://kaufland.media.schwarz/is/image/schwarz/5941047842824_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20986790.RO.3400.0000058330
-kaufland-5ee24516631dd4d273db,Kaufland,"Covalact Iaurt cremos
-900g",900g,"Lactate, ouă",9.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20970242_20_282_29,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20970242.RO.3400.0000058328
-kaufland-a102fc833aea71929e72,Kaufland,"Delaco Brânză pufoasă
-diverse sortimente140g",,"Lactate, ouă",5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00502658_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00502658.RO.3400.0000058328
-kaufland-c3ecce84959b890b3e78,Kaufland,"Delaco Cașcaval desenviș
-40 % grăsime 400 g",400 g,"Lactate, ouă",23.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941360015844_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20722717.RO.3400.0000058328
-kaufland-62c4efe3e55f95abfe43,Kaufland,"Dublin Dairy Cheddar de vacă Irish alb
-48% grăsime, 100 g",100 g,"Lactate, ouă",5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00162252_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00162252.RO.3400.0000058328
-kaufland-788aa066f7b364f535f9,Kaufland,Gordon Brânză topită,125 g,"Lactate, ouă",3.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20835698_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00500780.RO.3400.0000058328
-kaufland-929842b25fdbe4a713fd,Kaufland,"K-Gold Pecorino Romano
-Brânză tare",200 g,"Lactate, ouă",19.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8000407053267_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20937604.RO.3400.0000058328
-kaufland-57176289293a3d52f9ae,Kaufland,"Lacto Fresh Chefir
-330g",330g,"Lactate, ouă",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/6427948000468_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20797574.RO.3400.0000058328
-kaufland-4e4d8bd667d5d5ec998a,Kaufland,"Lacto Fresh Telemea de vacă sărată
-42% grăsime, 100 g",100 g,"Lactate, ouă",2.09,RON,https://kaufland.media.schwarz/is/image/schwarz/20758608_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20758608.RO.3400.0000058328
-kaufland-8ef4f19024fb28247167,Kaufland,"Lacto Tolle Brânză Gouda cu lapte vacă
-45% grăsime, 100 g",100 g,"Lactate, ouă",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20968815_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20968815.RO.3400.0000058751
-kaufland-e76a61a8df4373a1a7b4,Kaufland,"Muller Milch Lapte cu ciocolata
-377ml",377ml-400 ml,"Lactate, ouă",6.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00402616_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00402616.RO.3400.0000058328
-kaufland-2ae7c87d9a4f5aff8122,Kaufland,"Muller Supreme iaurt  cireșe
-150g",150g,"Lactate, ouă",4.59,RON,https://kaufland.media.schwarz/is/image/schwarz/20999336_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20999336.RO.3400.0000058328
-kaufland-cdd4536331b5fba9a504,Kaufland,"Napolact Pofticios Iaurt de băut căpșuni
-200g",200 g,"Lactate, ouă",3.69,RON,https://kaufland.media.schwarz/is/image/schwarz/20906904_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20906904.RO.3400.0000058331
-kaufland-a5b3502d180f6360aaf9,Kaufland,"Olympus lapte
-1,5 l","1,5 l","Lactate, ouă",12.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00140319_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00140319.RO.3400.0000058328
-kaufland-be8b863c58163909ca6c,Kaufland,"Plaiurile Moldovei Cașcaval afumat de vacă
-38% grăsime , 100 g",100 g,"Lactate, ouă",3.39,RON,https://kaufland.media.schwarz/is/image/schwarz/2821100000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00163550.RO.3400.0000058328
-kaufland-e5806f091ac6b99aa23d,Kaufland,"Plaiurile Moldovei Telemea de oaie
-47% grăsime, 100 g",100 g,"Lactate, ouă",5.59,RON,https://kaufland.media.schwarz/is/image/schwarz/20624001_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20624001.RO.3400.0000058328
-kaufland-f70d474c80b79aea13c2,Kaufland,"Vian Spumă spray pe bază de grăsimi vegetale
-250 ml",,"Lactate, ouă",6.49,RON,https://kaufland.media.schwarz/is/image/schwarz/4003490042334_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00402078.RO.3400.0000058328
-kaufland-1c7ecc09955a96fb1055,Kaufland,Vreau din România Caşcaval Dalia,500 g,"Lactate, ouă",15.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00028542_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00028542.RO.3400.0000058328
-kaufland-4562375322ed750a856f,Kaufland,"Zuzu Lapte fără lactoză
-1l",1l,"Lactate, ouă",8.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20997675_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20997675.RO.3400.0000058328
-kaufland-4b8b8e63c6e674918fa7,Kaufland,"Banane calitatea I
-kg",kg,"Legume, fructe, flori",5.49,RON,https://kaufland.media.schwarz/is/image/schwarz/2835000000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09700041.RO.3400.0000060276
-kaufland-99de7c19a3af54edae89,Kaufland,"Cartofi roşii plasă 5 kg
-calitatea I",plasă 5kg,"Legume, fructe, flori",9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/09700121_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09700121.RO.3400.0000060276
-kaufland-39a17726d021b89aabf8,Kaufland,"Ceapă galbenă calitatea I
-kg",kg,"Legume, fructe, flori",1.79,RON,https://kaufland.media.schwarz/is/image/schwarz/2832300000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09700120.RO.3400.0000058328
-kaufland-ac0affcc5424292cf642,Kaufland,Kalanchoe deco,buc,"Legume, fructe, flori",8.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00025939.RO.3400.0000058328
-kaufland-e682b554c3275ea35e8c,Kaufland,"Lămâi netratate 500g
-calitatea I",pachet 500 g,"Legume, fructe, flori",4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8033874788530_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00060483.RO.3400.0000060277
-kaufland-3949043671247c545a92,Kaufland,"Mini craciunita sclipici 6 cm
-buc",buc,"Legume, fructe, flori",9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4011261144118_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09901451.RO.3400.0000058328
-kaufland-8b5f688cfd43ad21ea7c,Kaufland,Mini schlumbergera,buc,"Legume, fructe, flori",11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/09902042_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09902042.RO.3400.0000058631
-kaufland-7e417810900d8f9848d5,Kaufland,"Schlumbergera 9 cm
-buc",buc,"Legume, fructe, flori",14.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5708869004720_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.09900450.RO.3400.0000058328
-kaufland-de487f3a2f47f36ad6b1,Kaufland,"Dayseaday File somon
-3x125g",3x125g,Pește,59.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20601124_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20601124.RO.3400.0000058328
-kaufland-79e86f23fe5dac36883b,Kaufland,Năvodul Plin Macrou în sos tomat,160 g,Pește,5.89,RON,https://kaufland.media.schwarz/is/image/schwarz/00136681_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.00136681.RO.3400.0000058661
-kaufland-d2664f01c0d3c06da22d,Kaufland,Rio Mare Paté,100 g,Pește,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8004030070004_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.01500271.RO.3400.0000058328
-kaufland-f735b441998b001a93e2,Kaufland,Rio Mare Pate de ton,100 g,Pește,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/01500273_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.01500273.RO.3400.0000058328
-kaufland-1b9852f2928e8ee3d191,Kaufland,"Trunchi de merluciu 0% glazură gheață
-900 g",900 g,Pește,22.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20985964_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-18,2026-11-24,ofertă săptămânală,False,unknown,20261118000000.20985964.RO.3400.0000058328
+kaufland-9572d41682e7b90147ed,Kaufland,"Arpis Mălai instant
+400 g",400 g,Alimente de bază,5.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20995504.RO.3400.0000058994
+kaufland-b3e93e8b4421856c926d,Kaufland,Atifco Orez sarmale,1 kg,Alimente de bază,6.59,RON,https://kaufland.media.schwarz/is/image/schwarz/00064529_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00064529.RO.3400.0000058559
+kaufland-797071ee343222826709,Kaufland,Băneasa Griş de grâu,500 g,Alimente de bază,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941142000037_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.03600032.RO.3400.0000058559
+kaufland-1b2bae2b3967a3fcd243,Kaufland,Costa d`Oro Ulei de măsline,1 l,Alimente de bază,39.99,RON,https://kaufland.media.schwarz/is/image/schwarz/03900477_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.03900477.RO.3400.0000058559
+kaufland-ea01da0d82cd04781e38,Kaufland,Deroni Arpacaş,1 kg,Alimente de bază,4.59,RON,https://kaufland.media.schwarz/is/image/schwarz/5948825000506_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.04000780.RO.3400.0000058995
+kaufland-3aa81a060ce1a04c36aa,Kaufland,Deroni Orez,1 kg,Alimente de bază,6.59,RON,https://kaufland.media.schwarz/is/image/schwarz/00165645_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.04000722.RO.3400.0000058559
+kaufland-eb0fe4c7fc0656d47c2a,Kaufland,"Giana Ardei capia
+copţi şi decojiţi 720 ml",720 ml,Alimente de bază,12.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8697400277242_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00035834.RO.3400.0000059081
+kaufland-e24cad90e135af0fd7bd,Kaufland,K-Classic Caju,200 g,Alimente de bază,10.39,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367507489_23P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00124822.RO.3400.0000058559
+kaufland-cf854dc4d44a5c370c47,Kaufland,"K-Classic Fasole albă
+în sos tomat",410 g,Alimente de bază,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20833462_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20833462.RO.3400.0000058559
+kaufland-bb65ce35f8c49160a4c9,Kaufland,"K-Classic Pastă de tomate
+24% 720 g",720 g,Alimente de bază,5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00122510_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00122510.RO.3400.0000058559
+kaufland-50c4450f1db6a0f4a75c,Kaufland,"K-Classic Pr. lactat ghee 99,8%
+500 g",500 g,Alimente de bază,27.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367518522_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20691633.RO.3400.0000058559
+kaufland-ce8ce5547ef941e093ba,Kaufland,KLC Mix de fructe,200 g,Alimente de bază,9.49,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367507427_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00124881.RO.3400.0000058559
+kaufland-e49cff3b9251411e9e30,Kaufland,"LA MOLISANA Paste mezzi rigatoni
+n 32",500 g,Alimente de bază,4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8004690313190_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00147281.RO.3400.0000058559
+kaufland-cbb45b38cdd28d7c8c65,Kaufland,Mandy Hummus,100 g,Alimente de bază,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20983211_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20983211.RO.3400.0000058994
+kaufland-80405f8850359faf0685,Kaufland,"Sadu Fasole cu costiță afumată
+400 g",400 g,Alimente de bază,8.59,RON,https://kaufland.media.schwarz/is/image/schwarz/00114784_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00114784.RO.3400.0000058559
+kaufland-9fa1ec304ba2f6877712,Kaufland,"Sano Vita fulgi de ovăz fini
+750 g",,Alimente de bază,10.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941882808023_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20917052.RO.3400.0000058559
+kaufland-1dd8cc9161875e2cf003,Kaufland,"SANTE Granola cereale
+nuci și miere/ ciocolată și",300 g,Alimente de bază,11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00124324_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00124324.RO.3400.0000058995
+kaufland-b29372d464fec4d1fa1c,Kaufland,"Seineana Oțet de mere
+și din miere, 500 ml",500 ml,Alimente de bază,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20760706_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20760706.RO.3400.0000058995
+kaufland-5ff49d13733ad47e0d5e,Kaufland,"Smart Organic Curmale bio
+fără sâmburi, 200 g",200 g,Alimente de bază,15.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20234649_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20234649.RO.3400.0000058994
+kaufland-d69950faf1a0f5ab6ef1,Kaufland,Sugars of the World Zahăr cubic,1 kg,Alimente de bază,8.29,RON,https://kaufland.media.schwarz/is/image/schwarz/00082658_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00082658.RO.3400.0000058559
+kaufland-a69e5725bd528e26a482,Kaufland,"Dorna Apă min naturală carbo
+1,5 l","1,5 l",Băuturi,3.69,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20854365.RO.3400.0000059000
+kaufland-ca2c93d7bc6da824262d,Kaufland,Vitamin Aqua Băutură răcoritoare,"0,6 l",Băuturi,4.49,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20679083.RO.3400.0000058559
+kaufland-33d00690f01a472a4dae,Kaufland,XIXO Ceai rece lămâie,"1,5 l",Băuturi,7.19,RON,https://kaufland.media.schwarz/is/image/schwarz/20988193_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20988193.RO.3400.0000058911
+kaufland-99d68419b891fdfe93ce,Kaufland,"Gogoașă în formă de steluță
+cu mere și scorțișoară 65 g",65 g,Brutărie,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/FR_Backwaren_20729067a_Sternberliner,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20729067.RO.3400.0000060708
+kaufland-5b2f0b154d2184cfc80f,Kaufland,"Minipizza cu cârnați de vită,
+mozzarella, ardei, roșii",147 g,Brutărie,5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/FR_Backwaren_20706907a_Pizzasnack_Sucuk,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20706907.RO.3400.0000060708
+kaufland-f4426584fc84f2cca548,Kaufland,"Prăjitură de Crăciun
+din pandișpan, 111 g",111 g,Brutărie,9.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20998773.RO.3400.0000058559
+kaufland-3fac1f4803fe0626e917,Kaufland,Jacobs Krönung Cafea boabe,1000 g,Cafea și ceai,89.99,RON,https://kaufland.media.schwarz/is/image/schwarz/8711000539330_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00076733.RO.3400.0000058559
+kaufland-9bf4914cedc0806df54d,Kaufland,"Jacobs Matcha Latte
+cu aromă de vanilie","11,6 - 14,5 g",Cafea și ceai,1.39,RON,https://kaufland.media.schwarz/is/image/schwarz/20941138_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20941138.RO.3400.0000059000
+kaufland-920934cfc25f6e8eb657,Kaufland,Julius Meinl Cafea măcinată,500 g,Cafea și ceai,39.99,RON,https://kaufland.media.schwarz/is/image/schwarz/9000403987350_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00035692.RO.3400.0000058559
+kaufland-c1e64098e99099f78c83,Kaufland,Nescafé Dolce Gusto Café au lait,diverse gramaje,Cafea și ceai,25.89,RON,https://kaufland.media.schwarz/is/image/schwarz/00097455_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00097455.RO.3400.0000058559
+kaufland-064c5a6d1a5cbf1883a0,Kaufland,"Agricola Aripi de pui secţionate
+kg",kg,"Carne, mezeluri",21.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00076379_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00076379.RO.3400.0000058559
+kaufland-bff40e485b3e23c809b0,Kaufland,"Aldis Salam Vienez
+100gr",100gr,"Carne, mezeluri",5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20343155_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20343155.RO.3400.0000059000
+kaufland-c353d1457a6d87e0d843,Kaufland,"Bucăți din piept de pui
+pentru gulaș",kg,"Carne, mezeluri",25.19,RON,https://kaufland.media.schwarz/is/image/schwarz/20738596_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20738596.RO.3400.0000058559
+kaufland-89adac04c0abddd56686,Kaufland,Cap de piept de porc,kg,"Carne, mezeluri",15.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2804550000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00088542.RO.3400.0000060708
+kaufland-2dd8392eac91fc677fbd,Kaufland,"Caroli Cremwurşti de porc extra
+280 g",280 g,"Carne, mezeluri",11.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00068703_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00068703.RO.3400.0000058559
+kaufland-c5ba1432f45a6d508f4f,Kaufland,Ceafă de porc fără os,kg,"Carne, mezeluri",18.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2817290000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00069312.RO.3400.0000061288
+kaufland-231b311d3a20afdd6dd2,Kaufland,"Ceafă de vițel fără os, rulată
+kg",kg,"Carne, mezeluri",79.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00072756_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00137332.RO.3400.0000058559
+kaufland-81f1c323b7eff76ae7f1,Kaufland,"Cris-Tim Parizer ţărănesc de porc
+100gr",100gr,"Carne, mezeluri",2.49,RON,https://kaufland.media.schwarz/is/image/schwarz/2877890000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01004181.RO.3400.0000058559
+kaufland-25cfe668425d9a4aee99,Kaufland,"Cris-Tim Salam săsesc
+100g",100g,"Carne, mezeluri",3.39,RON,https://kaufland.media.schwarz/is/image/schwarz/01000088_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01000088.RO.3400.0000058559
+kaufland-7ea3563d14e2dbc7aac8,Kaufland,Durdulan Pulpă inferioară,kg,"Carne, mezeluri",16.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00104690_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00104690.RO.3400.0000058559
+kaufland-add31d90ed132950405e,Kaufland,"Fox Salam sandwich
+vrac",vrac,"Carne, mezeluri",3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2800320000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00018148.RO.3400.0000058559
+kaufland-44cb9014d6fb9d00a74a,Kaufland,Frangosul Ficat de pui,1 kg,"Carne, mezeluri",9.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00149025_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00149025.RO.3400.0000058559
+kaufland-022542ffb80f2ec644f0,Kaufland,"Gustavi Pulpe de pui
+superioare, dezososate",kg,"Carne, mezeluri",22.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2878240000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20758097.RO.3400.0000058559
+kaufland-a302ea542e6b4cbc3155,Kaufland,"K-Favourites Rasol de vită Irlandeză
+kg",100 G,"Carne, mezeluri",6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2825190000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20847909.RO.3400.0000058559
+kaufland-a422e6024eedb41f1c53,Kaufland,"La Provincia Pui grill fără antibiotice
+kg",kg,"Carne, mezeluri",19.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2875600000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00150847.RO.3400.0000058559
+kaufland-54baed9356916c8f2695,Kaufland,"Meda Cârnaţi polonezi
+100g",100g,"Carne, mezeluri",2.69,RON,https://kaufland.media.schwarz/is/image/schwarz/01000860_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01000860.RO.3400.0000058559
+kaufland-261d0be84d5abfc2ccc3,Kaufland,"Meda Cârnaţi semiafumaţi
+100gr",100gr,"Carne, mezeluri",4.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00036228_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00036228.RO.3400.0000059000
+kaufland-8ad65aba9b94df484471,Kaufland,"Meda Şuncă de Praga
+100gr",100gr,"Carne, mezeluri",5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/01000445_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01000445.RO.3400.0000059000
+kaufland-43639dcc93b57131a8c6,Kaufland,Muşchiuleţ de porc,kg,"Carne, mezeluri",31.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00088524_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00088524.RO.3400.0000060708
+kaufland-e97214a995730895c699,Kaufland,"Piept de pui feliat
+650 g",650 g,"Carne, mezeluri",16.79,RON,https://kaufland.media.schwarz/is/image/schwarz/5941344005397_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20777444.RO.3400.0000058559
+kaufland-2bc6919e25d13e5d9223,Kaufland,Piept de raţă,kg,"Carne, mezeluri",54.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00129493_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00129493.RO.3400.0000058559
+kaufland-8644132a99d3ffbe503f,Kaufland,"Puiul de odinioară Mușchiulet din piept de pui
+hrănit cu porumb",kg,"Carne, mezeluri",30.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20864275_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20864275.RO.3400.0000058559
+kaufland-12b2bb2e8aa1ed12e90d,Kaufland,"Puiul de odinioară Spinări, gâturi de pui
+hrănit cu porumb",kg,"Carne, mezeluri",7.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20782250_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20782250.RO.3400.0000058559
+kaufland-3d390b5355933542f065,Kaufland,"Vreau din România Jambon de porc cu os pârlit
+kg",kg,"Carne, mezeluri",22.49,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.21008534.RO.3400.0000061435
+kaufland-44e9c08b8eba9119cb02,Kaufland,"Vreau din România Piept de porc cu os pârlit
+kg",kg,"Carne, mezeluri",25.49,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.21008533.RO.3400.0000061435
+kaufland-f8ceb05a4571363ff0dc,Kaufland,"Vreau din Romania Piept de pui dezosat vacum
+kg",kg,"Carne, mezeluri",24.5,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.21007056.RO.3400.0000058559
+kaufland-4eb6726c95335f57fe66,Kaufland,Ardei picanţi florini cu brânză,100 g,"Delicatese, congelate",5.99,RON,https://kaufland.media.schwarz/is/image/schwarz/01001177_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01001177.RO.3400.0000058559
+kaufland-9118814e04b56e36615f,Kaufland,Casa Ţărănească Amestec pentru salată boeuf,1 kg,"Delicatese, congelate",11.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5948626002686_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00801212.RO.3400.0000058559
+kaufland-46c86b95e5d99e8dbb44,Kaufland,"Edenia Mazăre fină
+1,33 kg","1,33 kg","Delicatese, congelate",18.29,RON,https://kaufland.media.schwarz/is/image/schwarz/20961025_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20961025.RO.3400.0000058559
+kaufland-e950731bf48018adf7ee,Kaufland,"Farm Freez vinete
+congelate 400 g",400 g,"Delicatese, congelate",4.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20902029_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20902029.RO.3400.0000058559
+kaufland-2e8efc0f7006137d4a9f,Kaufland,"Hellman's Sos de maioneză
+vegan",330 g,"Delicatese, congelate",14.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20809800_P_421,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20809800.RO.3400.0000059000
+kaufland-3f516913a3ef2c75ce44,Kaufland,La Minut Muştar,290 / 300 g,"Delicatese, congelate",4.49,RON,https://kaufland.media.schwarz/is/image/schwarz/5941486004142_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01300473.RO.3400.0000058559
+kaufland-0a3d69d3276187a06913,Kaufland,Linco Aluat foietaj,800 g,"Delicatese, congelate",10.79,RON,https://kaufland.media.schwarz/is/image/schwarz/5941119000817_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00800151.RO.3400.0000058559
+kaufland-0f42bfdf213fb41402e8,Kaufland,Măsline Kalamata calibru 201 / 260,100 g,"Delicatese, congelate",1.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4001438168559_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01004698.RO.3400.0000059079
+kaufland-1244da768af58a3e6291,Kaufland,Măsline negre Colosal,100 g,"Delicatese, congelate",1.59,RON,https://kaufland.media.schwarz/is/image/schwarz/2878380000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00153025.RO.3400.0000058999
+kaufland-fc343222eca2baa39043,Kaufland,Negro Icre sărate crap,100 g,"Delicatese, congelate",10.99,RON,https://kaufland.media.schwarz/is/image/schwarz/01003185_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01003185.RO.3400.0000059000
+kaufland-47e375baf8ffa4b82e88,Kaufland,"Patico biluțe de
+papanași 250 g",250 g,"Delicatese, congelate",12.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20964159_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20964159.RO.3400.0000058559
+kaufland-28ecb97279beb79b22f4,Kaufland,"Rusty skinny
+cartofi 2,5 kg","2,5 kg","Delicatese, congelate",16.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20849116_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20849116.RO.3400.0000058559
+kaufland-7ffa97d26f4b0fe4d696,Kaufland,,,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/02700052_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.02700052.RO.3400.0000060824
+kaufland-d0cde1a90f10efbf30e3,Kaufland,"7 Days Cake bar
+Prăjitură cu cacao",,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,1.69,RON,https://kaufland.media.schwarz/is/image/schwarz/20226097_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.20226097.RO.3400.0000060824
+kaufland-e3915bce5ebcf7a17762,Kaufland,Barni Prăjitură,30 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,1.49,RON,https://kaufland.media.schwarz/is/image/schwarz/02902470_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.02902470.RO.3400.0000060824
+kaufland-6a871036aacc068037ef,Kaufland,Boromir Turtă dulce,400 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941446008722_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00065183.RO.3400.0000060824
+kaufland-de7e6e292e1100dc106b,Kaufland,"Capri Sun Băutură răcoritoare
+necarbogazoasă","0,2 l",Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,2.89,RON,https://kaufland.media.schwarz/is/image/schwarz/00146161_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00146161.RO.3400.0000060824
+kaufland-36a12e3f946266ccc194,Kaufland,"GOO GOO Suc de mere și afine
+0,2 l","0,2 l",Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20914944_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.20914944.RO.3400.0000060824
+kaufland-9984e0d07a5b344b524f,Kaufland,Heidi - Gustul Copilăriei Ciocolată cu cremă,90 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,7.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00129231_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00129231.RO.3400.0000060824
+kaufland-de16be108de07d816a3b,Kaufland,Knoppers Napolitană,75 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00112028,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00112028.RO.3400.0000060824
+kaufland-54cf5b493b6f6fbed963,Kaufland,Manner Napolitane,75 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,4.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00130356_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00130356.RO.3400.0000060825
+kaufland-0b2c40fdf55bdae18613,Kaufland,"Milka Baton ciocolată
+caramel și alune",46 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,3.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20982696_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.20982696.RO.3400.0000060827
+kaufland-8a82d81a709de3615d7f,Kaufland,Milka Cake & choc,5 x 35 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,9.39,RON,https://kaufland.media.schwarz/is/image/schwarz/00037141_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00037141.RO.3400.0000060825
+kaufland-c9d46c19b198ec35132c,Kaufland,Milka Choco Brownie Prajitură ciocolată,150 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,9.39,RON,https://kaufland.media.schwarz/is/image/schwarz/7622210652775_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00108117.RO.3400.0000060824
+kaufland-69e853a5954105abda32,Kaufland,"Mr. Brownie Prăjituri
+cu buc. de ciocolată",200 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,16.59,RON,https://kaufland.media.schwarz/is/image/schwarz/20128728_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.20128728.RO.3400.0000060824
+kaufland-8e108692f1296eead017,Kaufland,"Nesquik Napolitană ciocolată lapte
+26 g",26 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,1.69,RON,https://kaufland.media.schwarz/is/image/schwarz/00098046_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00098046.RO.3400.0000060824
+kaufland-bab775a2b27e47cffe5c,Kaufland,"Tedi Mousse Immuno
+zmeură măceșe","0,10 l",Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,2.89,RON,https://kaufland.media.schwarz/is/image/schwarz/20774214_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.20774214.RO.3400.0000060828
+kaufland-6fd78c17bd904a33a892,Kaufland,"Yummi Gummi Jeleuri
+frozen yogo",70 g,Dulciuri Crăciun & Sf Nicolae  25.11.2026 - 06.12.2026,3.39,RON,https://kaufland.media.schwarz/is/image/schwarz/00159537_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-06,ofertă săptămânală,False,unknown,20261125000000.00159537.RO.3400.0000060824
+kaufland-d08ee12993a90a4d39eb,Kaufland,"Alka Covrigei italieneşti
+100g",100 g,"Dulciuri, snackuri",3.49,RON,https://kaufland.media.schwarz/is/image/schwarz/5949499042007_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00099906.RO.3400.0000058559
+kaufland-d32bb117a31a3b54bb32,Kaufland,"Arca Tort cu aromă
+de vanilie și ciocolată",1 kg,"Dulciuri, snackuri",29.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20955304_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20955304.RO.3400.0000058559
+kaufland-2843a7bb38b2d2232676,Kaufland,Biskrem Biscuiți,150 g / 160 g,"Dulciuri, snackuri",4.59,RON,https://kaufland.media.schwarz/is/image/schwarz/00082782_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00082782.RO.3400.0000058559
+kaufland-203653e22d0cd016987f,Kaufland,"Heidi Ciocolată Neagră
+37 g",,"Dulciuri, snackuri",4.79,RON,https://kaufland.media.schwarz/is/image/schwarz/00147324_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00147324.RO.3400.0000058341
+kaufland-327a299f1eebed6d004f,Kaufland,"K-Classic Biscuiți Duo
+cremă lapte, cacao",128 g,"Dulciuri, snackuri",8.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4009176517226_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20859272.RO.3400.0000058994
+kaufland-832b7af00fecf1a86bb8,Kaufland,Lacmi Ciocolată cu lapte,235 g - 295 g,"Dulciuri, snackuri",16.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00153128_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00153128.RO.3400.0000058559
+kaufland-b4caa358c1d230ec2551,Kaufland,"Lay's Chips
+sare",125 g,"Dulciuri, snackuri",6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941000032187_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20711503.RO.3400.0000058559
+kaufland-3d9e829013c223c57ecc,Kaufland,Madison Napolitană cu cremă,36 g,"Dulciuri, snackuri",1.39,RON,https://kaufland.media.schwarz/is/image/schwarz/4335896574059_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.02802760.RO.3400.0000058559
+kaufland-7927bf8587a65fcf21bd,Kaufland,"Salatini Sticks cu Sare
+250 g",250 g,"Dulciuri, snackuri",4.79,RON,https://kaufland.media.schwarz/is/image/schwarz/20789013_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20789013.RO.3400.0000058994
+kaufland-e67a24535e950a2a9c9a,Kaufland,"Sanovita Mini Rondele Orez
+smântână și ceapă",65 g,"Dulciuri, snackuri",7.99,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20969165.RO.3400.0000058994
+kaufland-31fc1f418f3b0aeead34,Kaufland,Soltino Arahide,500 g,"Dulciuri, snackuri",9.49,RON,https://kaufland.media.schwarz/is/image/schwarz/4063367101250_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.02800630.RO.3400.0000058559
+kaufland-0cbe3589984ec108af5c,Kaufland,"Artesana Kefir din lapte de vacă
+1L",1L,"Lactate, ouă",14.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20980835_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20980835.RO.3400.0000058559
+kaufland-635a89bc8719217983dd,Kaufland,"Aviputna Ouă din ogradă M, cod 2
+20 buc",20 buc,"Lactate, ouă",19.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00063655_P_315_-_2T3A1519,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00063655.RO.3400.0000058559
+kaufland-ce0e28baf809f4a74a01,Kaufland,"Covalact de ţară Brânză burduf de vacă
+45% grăsime, 100 g",100 g,"Lactate, ouă",5.49,RON,https://kaufland.media.schwarz/is/image/schwarz/01005261_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01005261.RO.3400.0000058559
+kaufland-a5757e0fb8bf20fa54e6,Kaufland,"Cris Tim cașcaval afumat
+felii 40% grăsime 140 g",140 g,"Lactate, ouă",7.49,RON,https://kaufland.media.schwarz/is/image/schwarz/20949551_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20949551.RO.3400.0000058911
+kaufland-2bfca354c8134b8c5fe2,Kaufland,"Cris-Tim Telemea din lapte de vacă
+48% grăsime, 350 g",350 g,"Lactate, ouă",12.59,RON,,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20982622.RO.3400.0000058911
+kaufland-f0222088a8111a248ee2,Kaufland,"Delaco lapte pentru cafea
+10 x 7,5g",,"Lactate, ouă",1.79,RON,https://kaufland.media.schwarz/is/image/schwarz/5941360002257_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00402992.RO.3400.0000058559
+kaufland-7ec39fcf67add473f5e4,Kaufland,"Gordon Brânză Olanda de vacă
+40% grăsime, 100 g",100 g,"Lactate, ouă",2.79,RON,https://kaufland.media.schwarz/is/image/schwarz/2826950000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00037899.RO.3400.0000058559
+kaufland-77f9d6b6a9e787bd405c,Kaufland,"Hochland Caşcaval clasic de vacă
+45% grăsime, 100g",100 g,"Lactate, ouă",4.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2561011000000_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.01004435.RO.3400.0000058559
+kaufland-6f283335dddaf72a8c28,Kaufland,"K-Classic Mozzarela
+125 g",125 g,"Lactate, ouă",3.49,RON,https://kaufland.media.schwarz/is/image/schwarz/4008432022023_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00135466.RO.3400.0000058559
+kaufland-c55f6e721ebeffcb0c69,Kaufland,Lacto Fresh caș de vacă,100 G,"Lactate, ouă",3.59,RON,https://kaufland.media.schwarz/is/image/schwarz/20783004_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20783004.RO.3400.0000058559
+kaufland-db83e547349226c47f94,Kaufland,"Lacto Fresh Lapte 3,5%
+1 l",1 l,"Lactate, ouă",6.29,RON,https://kaufland.media.schwarz/is/image/schwarz/20946521_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20946521.RO.3400.0000058559
+kaufland-06b7a2105d706fcbc5c0,Kaufland,"Lacto Fresh Telemea de capră și vacă
+41% grăsime, 100 g",100 g,"Lactate, ouă",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20758607_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20758607.RO.3400.0000058559
+kaufland-aff6eac29122b4abb97d,Kaufland,Lurpak Unt/Amestec tartinabil,200 g,"Lactate, ouă",10.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5740900400016_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00600773.RO.3400.0000060816
+kaufland-68d3d394212cc15e5ffa,Kaufland,"PLAIURILE MOLDOVEI Cașcaval capră 42%gr
+300 g",300 g,"Lactate, ouă",20.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20783733_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20783733.RO.3400.0000058559
+kaufland-5ac07d719c307af318f2,Kaufland,"Retezat Amestec
+Brânză rasă",200 g,"Lactate, ouă",8.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5941845001706_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20944638.RO.3400.0000058341
+kaufland-da5c76a72437ead9a609,Kaufland,"Zanetti Grana Padano ras 9 M
+100g",100g,"Lactate, ouă",12.49,RON,https://kaufland.media.schwarz/is/image/schwarz/00148880_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00148880.RO.3400.0000058559
+kaufland-3394ad6b872a4dcf3681,Kaufland,"Clementine kg
+a nu se consuma coaja",kg,"Legume, fructe, flori",6.99,RON,https://kaufland.media.schwarz/is/image/schwarz/2831090000000_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09700107.RO.3400.0000058559
+kaufland-bba7af2c67f4a8a77420,Kaufland,Crăciuniță 17 cm buc,buc,"Legume, fructe, flori",55.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5949053906554_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00017878.RO.3400.0000058559
+kaufland-ff4b5076f8f2645063f9,Kaufland,"Crin oriental deco 13cm
+buc",buc,"Legume, fructe, flori",49.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5708869249732_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00103462.RO.3400.0000058559
+kaufland-bcd3f67d6bfe7adcfa1f,Kaufland,"Fasole albă uscată calitatea I
+kg",kg,"Legume, fructe, flori",7.79,RON,https://kaufland.media.schwarz/is/image/schwarz/2836110000000_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09700390.RO.3400.0000060639
+kaufland-2a429576c1c1cbd6bd43,Kaufland,"Mix plante aromatice Rosmarin,Salvie
+Oregano,Thymus",buc,"Legume, fructe, flori",37.99,RON,https://kaufland.media.schwarz/is/image/schwarz/00089640_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00089640.RO.3400.0000058559
+kaufland-e5b22ba38b8a7280a1ae,Kaufland,"Portocale plasă 2 kg
+Nerec.consumul cojii",plasă 2kg,"Legume, fructe, flori",9.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4000007046304_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09700029.RO.3400.0000060639
+kaufland-d6a3a610334c8017dc0c,Kaufland,Rodii buc,buc,"Legume, fructe, flori",2.99,RON,https://kaufland.media.schwarz/is/image/schwarz/25008005_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09700153.RO.3400.0000060635
+kaufland-8ad06e254de1c08a683e,Kaufland,Rosa trandafir,buc,"Legume, fructe, flori",14.99,RON,https://kaufland.media.schwarz/is/image/schwarz/4066629028159_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09902440.RO.3400.0000058559
+kaufland-4e2a1f51f18ddbc40550,Kaufland,"Schlumbergera în vas ceramic 9 cm
+buc",buc,"Legume, fructe, flori",22.99,RON,https://kaufland.media.schwarz/is/image/schwarz/5707256553308_RO_P-1,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.09901420.RO.3400.0000058559
+kaufland-d3107c2a81b1ae47a0aa,Kaufland,"Day sea day Trunchi de merluciu
+calibru 100-200, 900 g",900 g,Pește,18.99,RON,https://kaufland.media.schwarz/is/image/schwarz/20874464_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20874464.RO.3400.0000058559
+kaufland-9bafc32c5fd5c42054d1,Kaufland,"Rio Mare Ton
+în ulei de măsline",3 x 80 g,Pește,22.39,RON,https://kaufland.media.schwarz/is/image/schwarz/8004030344938_RO_P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.00013259.RO.3400.0000058559
+kaufland-97c2b076dfd579398083,Kaufland,Somon file porționat,refrigerat,Pește,74.9,RON,https://kaufland.media.schwarz/is/image/schwarz/2816090000000_23P,https://www.kaufland.ro/oferte/prezentare-generala-oferte.html,2026-11-25,2026-12-01,ofertă săptămânală,False,unknown,20261125000000.20731730.RO.3400.0000058559
