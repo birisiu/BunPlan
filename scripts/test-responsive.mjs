@@ -129,7 +129,7 @@ try{
         budget:!!document.querySelector('.bp-brand-ring'),
         theme:getComputedStyle(document.body).backgroundColor
       }));
-      if(!b.home||b.dayCount!==7||!b.logo||b.navCount!==4||b.navIcons!==4||!b.budget)
+      if(!b.home||b.dayCount!==7||!b.logo||b.navCount!==5||b.navIcons!==5||!b.budget)
         failures.push({test:'branding-home',width,b});
       if(width===390)await page.screenshot({path:screens+'/bunplan-brand-home-390.png',fullPage:true});
     }
@@ -222,7 +222,7 @@ try{
       width:document.documentElement.scrollWidth-window.innerWidth,
       logo:document.querySelector('.bp-brand-symbol')?.naturalWidth||0
    }));
-   if(gallery.count!==4||gallery.width>2||gallery.logo===0)
+   if(gallery.count!==5||gallery.width>2||gallery.logo===0)
       failures.push({test:'branded-recipe-gallery',gallery});
    await page.screenshot({path:screens+'/bunplan-brand-recipes-390.png',fullPage:true});
    await page.locator('.p-headsearch').fill('Terci de ovăz cu mere');
