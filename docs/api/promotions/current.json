@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T16:47:56.537819+00:00",
+  "generated_at": "2026-11-27T16:33:50.287488+00:00",
   "stores": {
     "Lidl": {
-      "checked_at": "2026-11-26T16:47:56.537819+00:00",
+      "checked_at": "2026-11-27T16:33:50.287488+00:00",
       "products": [
         {
           "id": "lidl-11030101",
@@ -908,7 +908,7 @@
       ]
     },
     "Kaufland": {
-      "checked_at": "2026-11-26T16:47:56.537819+00:00",
+      "checked_at": "2026-11-27T16:33:50.287488+00:00",
       "products": [
         {
           "id": "kaufland-9572d41682e7b90147ed",
@@ -1865,6 +1865,60 @@
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
+          "id": "kaufland-6cfd3357b5bd92e19b6f",
+          "store": "Kaufland",
+          "name": "Vreau din România Ceafă de porc pârlit\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 29.99,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008539.RO.3400.0000061496",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-6234d2cf6a83b3f2f46e",
+          "store": "Kaufland",
+          "name": "Vreau din România Costițe de porc șoric pârlit\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 23.99,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008537.RO.3400.0000061496",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-1d686240614154b9ffe4",
+          "store": "Kaufland",
+          "name": "Vreau din România Cotlet de porc cu os pârlit\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 25.49,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008536.RO.3400.0000061496",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
           "id": "kaufland-3d390b5355933542f065",
           "store": "Kaufland",
           "name": "Vreau din România Jambon de porc cu os pârlit\nkg",
@@ -1880,6 +1934,24 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261125000000.21008534.RO.3400.0000061435",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-5389b6cbee243d7df096",
+          "store": "Kaufland",
+          "name": "Vreau din România Mix pentru piftie din porc\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 11.99,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008535.RO.3400.0000061496",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
@@ -1916,6 +1988,42 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261125000000.21007056.RO.3400.0000058559",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-4e7c1e5fd64b252c95a9",
+          "store": "Kaufland",
+          "name": "Vreau din România Rasol din pulpă pârlit\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 14.19,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008532.RO.3400.0000061496",
+          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
+        },
+        {
+          "id": "kaufland-e7017fe9ed015de64701",
+          "store": "Kaufland",
+          "name": "Vreau din România Rasol feliat pârlit\nkg",
+          "size": "kg",
+          "category": "Carne, mezeluri",
+          "price_ron": 16.49,
+          "currency": "RON",
+          "image_url": null,
+          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
+          "valid_from": "2026-11-26",
+          "valid_to": "2026-12-01",
+          "kind": "ofertă săptămânală",
+          "membership_required": false,
+          "stock_status": "unknown",
+          "original_offer_id": "20261126000000.21008538.RO.3400.0000061496",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
@@ -2438,24 +2546,6 @@
           "membership_required": false,
           "stock_status": "unknown",
           "original_offer_id": "20261125000000.00099906.RO.3400.0000058559",
-          "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
-        },
-        {
-          "id": "kaufland-d32bb117a31a3b54bb32",
-          "store": "Kaufland",
-          "name": "Arca Tort cu aromă\nde vanilie și ciocolată",
-          "size": "1 kg",
-          "category": "Dulciuri, snackuri",
-          "price_ron": 29.99,
-          "currency": "RON",
-          "image_url": "https://kaufland.media.schwarz/is/image/schwarz/20955304_P",
-          "source_url": "https://www.kaufland.ro/oferte/prezentare-generala-oferte.html",
-          "valid_from": "2026-11-25",
-          "valid_to": "2026-12-01",
-          "kind": "ofertă săptămânală",
-          "membership_required": false,
-          "stock_status": "unknown",
-          "original_offer_id": "20261125000000.20955304.RO.3400.0000058559",
           "price_scope": "Magazinul implicit al site-ului Kaufland; în limita stocului"
         },
         {
